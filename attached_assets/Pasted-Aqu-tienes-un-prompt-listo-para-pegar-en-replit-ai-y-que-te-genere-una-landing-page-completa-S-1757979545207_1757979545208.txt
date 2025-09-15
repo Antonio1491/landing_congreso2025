@@ -1,0 +1,122 @@
+Aquí tienes un prompt listo para pegar en **replit.ai** y que te genere una landing page completa. Solo copia y pega tal cual:
+
+---
+
+**PROMPT PARA REPLIT.AI (Landing Congreso Parques Tijuana 2026)**
+
+Actúa como un desarrollador front-end sénior. Crea una landing page **estática, responsiva y accesible** para “Congreso Parques Tijuana 2026”, usando **HTML + TailwindCSS + JS vanilla** (un solo archivo `index.html` con `<script>` interno). No uses frameworks ni dependencias externas salvo el CDN de Tailwind. El sitio debe estar en **español (es-MX)** y optimizado para **SEO** y **Open Graph**.
+
+### Requisitos de marca y UI
+
+* Paleta base ANPR: primario `#012787`, acento `#BCCE16`. Neutros con buen contraste.
+* Tipografía del sistema, diseño limpio, grid, tarjetas con bordes redondeados y sombras suaves.
+* Header fijo con logo (placeholder), menú anclado a secciones y CTA visible.
+* Botones prominentes con estados hover/focus, y CTA “Sé parte del Congreso”.
+* Componentes reutilizables: `Section`, `Card`, `Badge`, `Stat`, `Timeline`, `Accordion(FAQ)`.
+
+### Accesibilidad y performance
+
+* Semántica HTML5 correcta, navegación por teclado, `aria-*` donde aplique, `alt` en imágenes.
+* Contrast ratio AA, `prefers-reduced-motion`, `loading="lazy"` en imágenes/iframes.
+* Metadatos: `<title>`, `<meta name="description">`, OG/Twitter tags e ícono.
+
+### Estructura y contenido (integrar textualmente lo siguiente)
+
+**1) Hero / Encabezado Principal (id="hero")**
+
+* Título (H1): 🌎 “Congreso Parques Tijuana 2026: Inspirando el futuro de los espacios públicos”
+* Subtítulo: “El punto de encuentro más importante en Latinoamérica para profesionales, líderes y organizaciones que transforman la vida urbana a través de parques y espacios públicos.”
+* Hero Image/Video: placeholder de imagen panorámica de Tijuana (mar, frontera, ciudad y parques) con overlay.
+* CTA (above the fold): 👉 “Sé parte del Congreso Parques” (botón que hace scroll a #convocatorias y duplica en #registro).
+
+**2) Información básica y propuesta de valor (id="info")**
+
+* Párrafo “Qué es el Congreso Parques”: evento internacional de capacitación, intercambio y experiencias inmersivas…
+* Objetivo: reunir y capacitar presencialmente a profesionales, sociedad civil, funcionarios públicos, académicos y empresas…
+* Detalles clave en lista con íconos:
+
+  * 📅 13 al 15 de mayo de 2026
+  * 📍 Tijuana, Baja California, México
+  * 🤝 Organizado por: Asociación Nacional de Parques y Recreación de México (ANPR)
+* Propuesta de valor (“¿Por qué asistir?”) en bullets: conecta, tendencias, aprende, experiencia única.
+
+**3) Experiencias del evento (id="experiencias")**
+Tarjetas con fechas y descripciones:
+
+* Conferencias Magistrales (14 y 15 de mayo).
+* Sesiones Educativas (14 y 15 de mayo, +30 espacios).
+* Talleres Vivenciales (13 de mayo).
+* Master Classes (13 de mayo).
+* Expo Espacio Público (14 y 15 de mayo).
+* Eventos Sociales (14 y 15 de mayo): Beer and Mix Party y clausura.
+
+**4) Ejes temáticos (id="ejes")**
+Seis bloques con título, “Por qué” y subtemas en listas (copiar literalmente):
+
+1. Naturaleza y Sostenibilidad – resiliencia climática… (hidrología primero; bosque urbano; biodiversidad funcional; buenas prácticas).
+2. Comunidad y Participación Ciudadana – legitimidad… (co-gestión, comunicación y educación, eventos ancla).
+3. Diseño, Operación y Gestión Eficiente – lo que no se mantiene, se pierde… (asset management, TCO, mantenimiento, innovaciones, gestión integral, diseño universal…).
+4. Tecnología e Innovación Urbana – datos para decidir… (mantenimiento predictivo, inventarios, señalética digital, AR/QR, analítica de aforos).
+5. Ciudad, Movilidad y Gobernanza – parques como red… (parques + movilidad, planeación sistémica, modelos de gobernanza).
+6. Finanzas, Patrocinios y Modelos de Ingreso – sin flujo financiero… (ingresos, patrocinios con ROI, fondos climáticos y SBN).
+
+**5) Convocatorias 2026 (id="convocatorias")**
+
+* Convocatoria de Sesiones Educativas: descripción breve.
+* Convocatoria de Póster Científico: descripción breve.
+* Fechas (mostrar en un componente “Timeline”):
+
+  * 📅 Apertura: 26 de septiembre de 2025
+  * 📅 Cierre: 15 de enero de 2026
+  * 📝 Evaluación: 16–31 de enero de 2026
+  * 📢 Resultados: primera semana de febrero de 2026
+* Dos botones CTA:
+
+  * “Conoce las bases para aplicar aquí – Sesiones Educativas” (placeholder `href="#"`)
+  * “Conoce las bases – Póster Científico” (placeholder `href="#"`)
+
+**6) Nuestro legado (id="legado")**
+Estadísticas en counters/`Stat` cards:
+
+* +8,500 asistentes
+* +139 países representados
+* +550 ponentes
+* +270 conferencias
+* +75 talleres
+* +220 expositores
+  Galería (grid) con placeholders de imágenes y opción de video (poster + modal).
+
+**7) Elementos de confianza (id="aliados")**
+Franja con logos (placeholders) de ANPR, aliados estratégicos y patrocinadores.
+
+**8) CTA y formulario de registro (id="registro")**
+
+* Bloque CTA: 👉 “Sé parte del Congreso”.
+* Formulario simple (nombre, organización, correo, teléfono, opción de interés): validación básica JS, mensaje de éxito simulado; NO envío real.
+* Segundo botón que dirija a #convocatorias.
+
+**9) Footer (id="footer")**
+
+* Logo oficial (placeholder).
+* Enlaces: Políticas de privacidad | Términos y condiciones | Preguntas frecuentes (placeholders).
+* Contacto directo: correo y WhatsApp (placeholders).
+* Íconos de redes: Facebook, LinkedIn, Instagram, YouTube (placeholders).
+* Hashtag: #CongresoParques2026
+
+### Navegación
+
+* Menú anclado a: Hero, Información, Experiencias, Ejes, Convocatorias, Legado, Aliados, Registro.
+* El CTA del header y del hero hacen scroll suave a **#convocatorias** y **#registro**.
+
+### JS mínimo
+
+* Smooth scroll, validación del formulario, apertura/cierre de modal de galería.
+* “Back to top” flotante.
+* Guardar formulario en `localStorage` (solo demo) y mostrar toast de confirmación.
+
+### Entregable
+
+* Un único archivo **`index.html`** con todo lo anterior, bien comentado, listo para publicar.
+* Incluir sección de “Editar contenido” comentada al inicio con instrucciones para cambiar textos/fechas/enlaces/logos.
+
+**Fin del prompt.**
