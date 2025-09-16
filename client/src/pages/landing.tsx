@@ -1,0 +1,733 @@
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
+import { 
+  Menu, 
+  X, 
+  ArrowUp, 
+  Calendar, 
+  MapPin, 
+  Users, 
+  Mic, 
+  BookOpen, 
+  Hammer, 
+  Target, 
+  Building, 
+  PartyPopper,
+  Mail,
+  Phone,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Youtube,
+  Play,
+  ZoomIn,
+  ChevronUp
+} from "lucide-react";
+
+
+interface StatCounterProps {
+  target: number;
+  duration?: number;
+}
+
+function StatCounter({ target, duration = 2000 }: StatCounterProps) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const increment = target / (duration / 16); // 60 FPS
+    let currentValue = 0;
+
+    const updateCounter = () => {
+      if (currentValue < target) {
+        currentValue += increment;
+        setCurrent(Math.floor(currentValue));
+        requestAnimationFrame(updateCounter);
+      } else {
+        setCurrent(target);
+      }
+    };
+
+    updateCounter();
+  }, [target, duration]);
+
+  return <span className="stat-counter">{current.toLocaleString()}</span>;
+}
+
+export default function Landing() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
+
+
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.pageYOffset > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Stats visibility observer
+  useEffect(() => {
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setStatsVisible(true);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const statsSection = document.getElementById('legado');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    return () => statsObserver.disconnect();
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+
+  const openImageModal = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+    setImageModalOpen(true);
+  };
+
+  const experiencias = [
+    {
+      icon: <Mic className="w-8 h-8" />,
+      title: "Conferencias Magistrales",
+      description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
+      fecha: "14 y 15 de mayo"
+    },
+    {
+      icon: <BookOpen className="w-8 h-8" />,
+      title: "Sesiones Educativas",
+      description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
+      fecha: "14 y 15 de mayo"
+    },
+    {
+      icon: <Hammer className="w-8 h-8" />,
+      title: "Talleres Vivenciales",
+      description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
+      fecha: "13 de mayo"
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Master Classes",
+      description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
+      fecha: "13 de mayo"
+    },
+    {
+      icon: <Building className="w-8 h-8" />,
+      title: "Expo Espacio Público",
+      description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
+      fecha: "14 y 15 de mayo"
+    },
+    {
+      icon: <PartyPopper className="w-8 h-8" />,
+      title: "Eventos Sociales",
+      description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
+      fecha: "14 y 15 de mayo"
+    }
+  ];
+
+  const ejesTemáticos = [
+    {
+      título: "1. Naturaleza y Sostenibilidad",
+      descripción: "Resiliencia climática y adaptación de espacios públicos ante el cambio climático.",
+      subtemas: [
+        "Hidrología urbana y gestión de agua",
+        "Bosque urbano y silvicultura",
+        "Biodiversidad funcional",
+        "Buenas prácticas ambientales"
+      ]
+    },
+    {
+      título: "2. Comunidad y Participación Ciudadana",
+      descripción: "Legitimidad social y apropiación comunitaria de los espacios públicos.",
+      subtemas: [
+        "Co-gestión comunitaria",
+        "Comunicación y educación ambiental",
+        "Eventos ancla y activación",
+        "Metodologías participativas"
+      ]
+    },
+    {
+      título: "3. Diseño, Operación y Gestión Eficiente",
+      descripción: "Lo que no se mantiene, se pierde. Gestión integral de activos públicos.",
+      subtemas: [
+        "Asset management",
+        "Costo total de propiedad (TCO)",
+        "Mantenimiento preventivo",
+        "Innovaciones en materiales",
+        "Diseño universal"
+      ]
+    },
+    {
+      título: "4. Tecnología e Innovación Urbana",
+      descripción: "Datos para decidir. Transformación digital de la gestión de espacios públicos.",
+      subtemas: [
+        "Mantenimiento predictivo",
+        "Inventarios digitales",
+        "Señalética digital",
+        "AR/QR y experiencias inmersivas",
+        "Analítica de aforos"
+      ]
+    },
+    {
+      título: "5. Ciudad, Movilidad y Gobernanza",
+      descripción: "Parques como red. Integración sistémica en la planificación urbana.",
+      subtemas: [
+        "Parques + movilidad sostenible",
+        "Planeación sistémica",
+        "Modelos de gobernanza",
+        "Políticas públicas"
+      ]
+    },
+    {
+      título: "6. Finanzas, Patrocinios y Modelos de Ingreso",
+      descripción: "Sin flujo financiero no hay sostenibilidad. Diversificación de fuentes de ingresos.",
+      subtemas: [
+        "Modelos de ingresos",
+        "Patrocinios con ROI",
+        "Fondos climáticos",
+        "Soluciones basadas en naturaleza (SBN)"
+      ]
+    }
+  ];
+
+  const timeline = [
+    { icon: <Calendar className="w-6 h-6" />, título: "Apertura", fecha: "26 de septiembre de 2025" },
+    { icon: <Calendar className="w-6 h-6" />, título: "Cierre", fecha: "15 de enero de 2026" }
+  ];
+
+  const estadísticas = [
+    { valor: 8500, etiqueta: "Asistentes" },
+    { valor: 139, etiqueta: "Países" },
+    { valor: 550, etiqueta: "Ponentes" },
+    { valor: 270, etiqueta: "Conferencias" },
+    { valor: 75, etiqueta: "Talleres" },
+    { valor: 220, etiqueta: "Expositores" }
+  ];
+
+  const galeriaImagenes = [
+    {
+      src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Parque urbano con familias disfrutando"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Auditorio con conferencia magistral"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Desarrollo urbano sostenible con espacios verdes"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Niños jugando en parque infantil moderno"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Evento de networking con profesionales"
+    }
+  ];
+
+  return (
+    <div className="bg-background text-foreground">
+      {/* Header Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <img 
+                src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=40" 
+                alt="ANPR Logo" 
+                className="h-8 w-auto" 
+              />
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                <button onClick={() => scrollToSection('hero')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-hero">Inicio</button>
+                <button onClick={() => scrollToSection('info')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-info">Información</button>
+                <button onClick={() => scrollToSection('experiencias')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-experiencias">Experiencias</button>
+                <button onClick={() => scrollToSection('ejes')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-ejes">Ejes</button>
+                <button onClick={() => scrollToSection('convocatorias')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
+                <button onClick={() => scrollToSection('legado')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-legado">Legado</button>
+                <button onClick={() => scrollToSection('aliados')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-aliados">Aliados</button>
+              </div>
+            </div>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button 
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-muted-foreground hover:text-primary"
+                aria-controls="mobile-menu" 
+                aria-expanded={mobileMenuOpen}
+                data-testid="mobile-menu-button"
+              >
+                <span className="sr-only">Abrir menú principal</span>
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
+          </div>
+          
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden" id="mobile-menu" data-testid="mobile-menu">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-border">
+                <button onClick={() => scrollToSection('hero')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-hero">Inicio</button>
+                <button onClick={() => scrollToSection('info')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-info">Información</button>
+                <button onClick={() => scrollToSection('experiencias')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-experiencias">Experiencias</button>
+                <button onClick={() => scrollToSection('ejes')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-ejes">Ejes</button>
+                <button onClick={() => scrollToSection('convocatorias')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-convocatorias">Convocatorias</button>
+                <button onClick={() => scrollToSection('legado')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-legado">Legado</button>
+                <button onClick={() => scrollToSection('aliados')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-aliados">Aliados</button>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
+              🌎 Congreso Parques Tijuana 2026: <span className="text-accent">Inspirando el futuro</span> de los espacios públicos
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto" data-testid="hero-subtitle">
+              El punto de encuentro más importante en Latinoamérica para profesionales, líderes y organizaciones que transforman la vida urbana a través de parques y espacios públicos.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={() => scrollToSection('convocatorias')} 
+                className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
+                data-testid="hero-cta"
+              >
+Conoce más sobre el evento
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Information Section */}
+      <section id="info" className="py-16 bg-muted">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="info-title">¿Qué es el Congreso Parques?</h2>
+            
+            <div className="prose prose-lg max-w-none mb-12 text-center">
+              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="info-description">
+                Un evento internacional de capacitación, intercambio y experiencias inmersivas que reúne a los principales actores del sector de parques y espacios públicos para compartir conocimientos, innovaciones y mejores prácticas.
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto mb-12">
+              <Card className="bg-white p-8 shadow-sm border border-border" data-testid="info-details-card">
+                <CardContent className="p-0">
+                  <h3 className="text-2xl font-semibold mb-6 text-primary text-center">Detalles del Evento</h3>
+                  <ul className="space-y-4 text-muted-foreground">
+                    <li className="flex items-center gap-4 justify-center">
+                      <Calendar className="w-6 h-6 text-primary" />
+                      <span className="text-lg"><strong>13 al 15 de mayo de 2026</strong></span>
+                    </li>
+                    <li className="flex items-center gap-4 justify-center">
+                      <MapPin className="w-6 h-6 text-primary" />
+                      <span className="text-lg"><strong>Tijuana, Baja California, México</strong></span>
+                    </li>
+                    <li className="flex items-center gap-4 justify-center">
+                      <Users className="w-6 h-6 text-primary" />
+                      <span className="text-lg"><strong>Organizado por:</strong> ANPR México</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="bg-white p-8 shadow-sm border border-border" data-testid="info-value-proposition">
+              <CardContent className="p-0">
+                <h3 className="text-2xl font-semibold mb-6 text-primary text-center">¿Por qué asistir?</h3>
+                <ul className="space-y-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Conecta con líderes y profesionales del sector.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Descubre tendencias globales y soluciones innovadoras.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Aprende de expertos nacionales e internacionales.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Vive una experiencia única de capacitación, inspiración y networking.</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Experiences Section */}
+      <section id="experiencias" className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="experiences-title">Experiencias del Evento</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {experiencias.map((experiencia, index) => (
+                <Card key={index} className="bg-muted p-6 border border-border hover:shadow-lg transition-shadow" data-testid={`experience-${index}`}>
+                  <CardContent className="p-0">
+                    <div className="text-primary mb-4">{experiencia.icon}</div>
+                    <h3 className="text-xl font-semibold mb-3 text-primary">{experiencia.title}</h3>
+                    <p className="text-muted-foreground mb-4">{experiencia.description}</p>
+                    <div className="text-sm text-primary font-medium">📅 {experiencia.fecha}</div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Thematic Axes Section */}
+      <section id="ejes" className="py-16 bg-muted">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="axes-title">Ejes Temáticos</h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ejesTemáticos.map((eje, index) => (
+                <Card 
+                  key={index} 
+                  className="bg-white p-6 shadow-sm border border-border hover:shadow-lg transition-all duration-300 cursor-pointer relative overflow-hidden" 
+                  data-testid={`axis-${index}`}
+                  onMouseEnter={() => setHoveredAxis(index)}
+                  onMouseLeave={() => setHoveredAxis(null)}
+                >
+                  <CardContent className="p-0">
+                    <h3 className="text-lg font-bold mb-3 text-primary">{eje.título}</h3>
+                    <div className={`transition-all duration-300 ${hoveredAxis === index ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                      <p className="text-muted-foreground mb-4 text-sm">{eje.descripción}</p>
+                      <ul className="text-sm text-muted-foreground space-y-2">
+                        {eje.subtemas.map((subtema, subIndex) => (
+                          <li key={subIndex} className="flex items-start gap-2">
+                            <span className="text-primary mt-1 text-xs">▸</span>
+                            <span>{subtema}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {hoveredAxis !== index && (
+                      <p className="text-sm text-muted-foreground opacity-60">Pasa el cursor para ver más detalles</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Convocatorias Section */}
+      <section id="convocatorias" className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="calls-title">Convocatorias 2026</h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <Card className="bg-muted p-8 border border-border" data-testid="call-educational">
+                <CardContent className="p-0">
+                  <h3 className="text-xl font-semibold mb-4 text-primary">Convocatoria de Sesiones Educativas</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-muted p-8 border border-border" data-testid="call-poster">
+                <CardContent className="p-0">
+                  <h3 className="text-xl font-semibold mb-4 text-primary">Convocatoria de Póster Científico</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Timeline */}
+            <Card className="bg-muted p-8 border border-border mb-8" data-testid="calls-timeline">
+              <CardContent className="p-0">
+                <h3 className="text-xl font-semibold mb-6 text-primary text-center">Cronograma de Convocatorias</h3>
+                <div className="space-y-4">
+                  {timeline.map((item, index) => (
+                    <div key={index} className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border" data-testid={`timeline-${index}`}>
+                      <div className="text-primary">{item.icon}</div>
+                      <div>
+                        <div className="font-semibold text-primary">{item.título}</div>
+                        <div className="text-muted-foreground">{item.fecha}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 font-semibold" data-testid="cta-educational">
+                Conoce las bases para aplicar aquí – Sesiones Educativas
+              </Button>
+              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 font-semibold" data-testid="cta-poster">
+                Conoce las bases – Póster Científico
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Legacy Section */}
+      <section id="legado" className="py-16 bg-muted">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="legacy-title">Nuestro Legado</h2>
+            
+            {/* Statistics */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
+              {estadísticas.map((stat, index) => (
+                <Card key={index} className="bg-white p-6 shadow-sm border border-border text-center" data-testid={`stat-${index}`}>
+                  <CardContent className="p-0">
+                    <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                      {statsVisible ? <StatCounter target={stat.valor} /> : "0"}
+                    </div>
+                    <div className="text-sm text-muted-foreground">{stat.etiqueta}</div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Gallery */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galeriaImagenes.map((imagen, index) => (
+                <div 
+                  key={index}
+                  className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
+                  onClick={() => openImageModal(imagen.src, imagen.alt)}
+                  data-testid={`gallery-image-${index}`}
+                >
+                  <img 
+                    src={imagen.thumbnail} 
+                    alt={imagen.alt} 
+                    className="w-full h-48 object-cover" 
+                    loading="lazy" 
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ZoomIn className="w-8 h-8" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Video placeholder */}
+              <div 
+                className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                onClick={() => setVideoModalOpen(true)}
+                data-testid="gallery-video"
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
+                  alt="Video resumen Congreso Parques" 
+                  className="w-full h-48 object-cover" 
+                  loading="lazy" 
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                  <div className="bg-white bg-opacity-90 rounded-full p-4">
+                    <Play className="w-8 h-8 text-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Elements / Partners */}
+      <section id="aliados" className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-primary" data-testid="partners-title">Aliados Estratégicos y Patrocinadores</h2>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity">
+              {[...Array(6)].map((_, index) => (
+                <img 
+                  key={index}
+                  src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=60" 
+                  alt="Partner Logo" 
+                  className="h-12 w-auto filter grayscale hover:grayscale-0 transition-all"
+                  data-testid={`partner-logo-${index}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Footer */}
+      <footer id="footer" className="bg-primary text-primary-foreground py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8">
+              {/* Logo and Description */}
+              <div className="md:col-span-2">
+                <img 
+                  src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=40" 
+                  alt="ANPR Logo" 
+                  className="h-8 w-auto mb-4" 
+                  data-testid="footer-logo"
+                />
+                <p className="text-primary-foreground/80 mb-4">
+                  Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
+                </p>
+                <div className="text-2xl font-bold text-accent" data-testid="footer-hashtag">#CongresoParques2026</div>
+              </div>
+              
+              {/* Links */}
+              <div>
+                <h4 className="font-semibold mb-4">Enlaces</h4>
+                <ul className="space-y-2 text-primary-foreground/80">
+                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
+                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
+                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+                </ul>
+              </div>
+              
+              {/* Contact */}
+              <div>
+                <h4 className="font-semibold mb-4">Contacto</h4>
+                <ul className="space-y-2 text-primary-foreground/80">
+                  <li className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    <a href="mailto:info@congresoparques.mx" className="hover:text-accent transition-colors" data-testid="footer-email">info@congresoparques.mx</a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Phone className="w-4 h-4" />
+                    <a href="https://wa.me/525512345678" className="hover:text-accent transition-colors" data-testid="footer-whatsapp">WhatsApp</a>
+                  </li>
+                </ul>
+                
+                {/* Social Icons */}
+                <div className="flex gap-4 mt-4">
+                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="LinkedIn" data-testid="social-linkedin">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                    <Youtube className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
+              <p>&copy; 2024 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Back to Top Button */}
+      <Button
+        onClick={scrollToTop}
+        className={`fixed bottom-4 right-4 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:bg-primary/90 z-40 transition-all duration-300 ${
+          showBackToTop ? 'opacity-100 transform-none' : 'opacity-0 transform-translate-y-20 pointer-events-none'
+        }`}
+        aria-label="Volver arriba"
+        data-testid="back-to-top"
+      >
+        <ChevronUp className="w-6 h-6" />
+      </Button>
+
+      {/* Image Modal */}
+      <Dialog open={imageModalOpen} onOpenChange={setImageModalOpen}>
+        <DialogContent className="max-w-4xl max-h-full p-4" data-testid="image-modal">
+          <DialogHeader>
+            <DialogTitle className="sr-only">Galería de imágenes</DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <img 
+              src={selectedImage.src} 
+              alt={selectedImage.alt} 
+              className="max-w-full max-h-[80vh] object-contain rounded-lg mx-auto"
+              data-testid="modal-image"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Video Modal */}
+      <Dialog open={videoModalOpen} onOpenChange={setVideoModalOpen}>
+        <DialogContent className="max-w-4xl" data-testid="video-modal">
+          <DialogHeader>
+            <DialogTitle>Video del Congreso Parques</DialogTitle>
+          </DialogHeader>
+          <div className="bg-gray-800 p-8 rounded-lg text-center text-white">
+            <p className="text-gray-300 mb-6">En una implementación real, aquí se mostraría el video promocional del evento.</p>
+            <div className="bg-gray-700 aspect-video rounded-lg flex items-center justify-center">
+              <div className="text-center">
+                <Play className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-400">Video placeholder</p>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
