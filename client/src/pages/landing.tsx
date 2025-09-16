@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useToast } from "@/hooks/use-toast";
 import { 
   Menu, 
   X, 
@@ -236,29 +235,29 @@ export default function Landing() {
 
   const galeriaImagenes = [
     {
-      src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Parque urbano con familias disfrutando"
+      src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Conferencia sobre desarrollo urbano sostenible"
     },
     {
-      src: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Auditorio con conferencia magistral"
+      src: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Parque urbano moderno en Tijuana"
     },
     {
-      src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Desarrollo urbano sostenible con espacios verdes"
+      src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Auditorio con asistentes al congreso"
     },
     {
-      src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Niños jugando en parque infantil moderno"
+      src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Espacios públicos sostenibles con vegetación"
     },
     {
-      src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Evento de networking con profesionales"
+      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
+      thumbnail: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+      alt: "Red de profesionales en conferencia"
     }
   ];
 
@@ -270,11 +269,15 @@ export default function Landing() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <img 
-                src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=40" 
-                alt="ANPR Logo" 
-                className="h-8 w-auto" 
-              />
+              <div className="flex items-center gap-3">
+                <div className="bg-accent w-10 h-10 rounded-lg flex items-center justify-center">
+                  <span className="text-accent-foreground font-bold text-lg">A</span>
+                </div>
+                <div>
+                  <div className="text-primary font-bold text-lg">ANPR</div>
+                  <div className="text-xs text-muted-foreground">México</div>
+                </div>
+              </div>
             </div>
             
             {/* Desktop Navigation */}
@@ -515,10 +518,18 @@ Conoce más sobre el evento
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 font-semibold" data-testid="cta-educational">
+              <Button 
+                onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 font-semibold" 
+                data-testid="cta-educational"
+              >
                 Conoce las bases para aplicar aquí – Sesiones Educativas
               </Button>
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 font-semibold" data-testid="cta-poster">
+              <Button 
+                onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
+                className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 font-semibold" 
+                data-testid="cta-poster"
+              >
                 Conoce las bases – Póster Científico
               </Button>
             </div>
@@ -598,16 +609,31 @@ Conoce más sobre el evento
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-primary" data-testid="partners-title">Aliados Estratégicos y Patrocinadores</h2>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity">
-              {[...Array(6)].map((_, index) => (
-                <img 
-                  key={index}
-                  src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=60" 
-                  alt="Partner Logo" 
-                  className="h-12 w-auto filter grayscale hover:grayscale-0 transition-all"
-                  data-testid={`partner-logo-${index}`}
-                />
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity">
+              <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
+                <div className="text-primary font-bold text-sm text-center">ANPR México</div>
+                <div className="text-xs text-muted-foreground text-center mt-1">Organizador Principal</div>
+              </div>
+              <div className="bg-gray-100 p-4 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+                <div className="text-gray-600 font-semibold text-sm text-center">Gobierno Tijuana</div>
+                <div className="text-xs text-gray-500 text-center mt-1">Aliado Estratégico</div>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
+                <div className="text-green-700 font-semibold text-sm text-center">ONU Hábitat</div>
+                <div className="text-xs text-green-600 text-center mt-1">Socio Internacional</div>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors">
+                <div className="text-blue-700 font-semibold text-sm text-center">CONAVI</div>
+                <div className="text-xs text-blue-600 text-center mt-1">Institución Federal</div>
+              </div>
+              <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors">
+                <div className="text-orange-700 font-semibold text-sm text-center">Universidad CETYS</div>
+                <div className="text-xs text-orange-600 text-center mt-1">Socio Académico</div>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
+                <div className="text-purple-700 font-semibold text-sm text-center">Fundación Bancomer</div>
+                <div className="text-xs text-purple-600 text-center mt-1">Patrocinador</div>
+              </div>
             </div>
           </div>
         </div>
@@ -621,12 +647,15 @@ Conoce más sobre el evento
             <div className="grid md:grid-cols-4 gap-8">
               {/* Logo and Description */}
               <div className="md:col-span-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=40" 
-                  alt="ANPR Logo" 
-                  className="h-8 w-auto mb-4" 
-                  data-testid="footer-logo"
-                />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-accent w-10 h-10 rounded-lg flex items-center justify-center">
+                    <span className="text-accent-foreground font-bold text-lg">A</span>
+                  </div>
+                  <div>
+                    <div className="text-white font-bold text-lg">ANPR México</div>
+                    <div className="text-xs text-primary-foreground/60">Asociación Nacional</div>
+                  </div>
+                </div>
                 <p className="text-primary-foreground/80 mb-4">
                   Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
                 </p>
@@ -637,9 +666,9 @@ Conoce más sobre el evento
               <div>
                 <h4 className="font-semibold mb-4">Enlaces</h4>
                 <ul className="space-y-2 text-primary-foreground/80">
-                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
-                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
-                  <li><a href="#" className="hover:text-accent transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+                  <li><a href="https://anprmexico.org/privacidad" className="hover:text-accent transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
+                  <li><a href="https://anprmexico.org/terminos" className="hover:text-accent transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
+                  <li><a href="https://anprmexico.org/faq" className="hover:text-accent transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
                 </ul>
               </div>
               
@@ -649,26 +678,26 @@ Conoce más sobre el evento
                 <ul className="space-y-2 text-primary-foreground/80">
                   <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
-                    <a href="mailto:info@congresoparques.mx" className="hover:text-accent transition-colors" data-testid="footer-email">info@congresoparques.mx</a>
+                    <a href="mailto:congreso@anprmexico.org" className="hover:text-accent transition-colors" data-testid="footer-email">congreso@anprmexico.org</a>
                   </li>
                   <li className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
-                    <a href="https://wa.me/525512345678" className="hover:text-accent transition-colors" data-testid="footer-whatsapp">WhatsApp</a>
+                    <a href="https://wa.me/526641234567" className="hover:text-accent transition-colors" data-testid="footer-whatsapp">+52 (664) 123-4567</a>
                   </li>
                 </ul>
                 
                 {/* Social Icons */}
                 <div className="flex gap-4 mt-4">
-                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                  <a href="https://facebook.com/ANPRMexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Facebook" data-testid="social-facebook">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="LinkedIn" data-testid="social-linkedin">
+                  <a href="https://linkedin.com/company/anpr-mexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="LinkedIn" data-testid="social-linkedin">
                     <Linkedin className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                  <a href="https://instagram.com/anprmexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Instagram" data-testid="social-instagram">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="#" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                  <a href="https://youtube.com/@ANPRMexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
