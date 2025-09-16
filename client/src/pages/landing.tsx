@@ -63,6 +63,7 @@ export default function Landing() {
   const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
   const [statsVisible, setStatsVisible] = useState(false);
   const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
+  const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
 
 
   // Handle scroll events
@@ -434,39 +435,129 @@ Conoce más sobre el evento
       </section>
 
       {/* Thematic Axes Section */}
-      <section id="ejes" className="py-16 bg-muted">
+      <section id="ejes" className="py-16 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="axes-title">Ejes Temáticos</h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {ejesTemáticos.map((eje, index) => (
-                <Card 
-                  key={index} 
-                  className="bg-white p-6 shadow-sm border border-border hover:shadow-lg transition-all duration-300 cursor-pointer relative overflow-hidden" 
-                  data-testid={`axis-${index}`}
-                  onMouseEnter={() => setHoveredAxis(index)}
-                  onMouseLeave={() => setHoveredAxis(null)}
-                >
-                  <CardContent className="p-0">
-                    <h3 className="text-lg font-bold mb-3 text-primary">{eje.título}</h3>
-                    <div className={`transition-all duration-300 ${hoveredAxis === index ? 'opacity-100 max-h-96' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                      <p className="text-muted-foreground mb-4 text-sm">{eje.descripción}</p>
-                      <ul className="text-sm text-muted-foreground space-y-2">
-                        {eje.subtemas.map((subtema, subIndex) => (
-                          <li key={subIndex} className="flex items-start gap-2">
-                            <span className="text-primary mt-1 text-xs">▸</span>
-                            <span>{subtema}</span>
-                          </li>
-                        ))}
-                      </ul>
+            <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
+              {ejesTemáticos.map((eje, index) => {
+                const colors = [
+                  'bg-gradient-to-br from-yellow-400 to-orange-500', // Naturaleza - Yellow/Orange
+                  'bg-gradient-to-br from-pink-500 to-rose-600',     // Comunidad - Pink
+                  'bg-gradient-to-br from-teal-400 to-cyan-500',     // Diseño - Teal  
+                  'bg-gradient-to-br from-blue-600 to-indigo-700',   // Tecnología - Blue
+                  'bg-gradient-to-br from-purple-500 to-violet-600', // Ciudad - Purple
+                  'bg-gradient-to-br from-green-500 to-emerald-600'  // Finanzas - Green
+                ];
+                
+                const isHovered = hoveredAxis === index;
+                const isSelected = selectedAxis === index;
+                const isExpanded = isHovered || isSelected;
+                const isOtherExpanded = (hoveredAxis !== null && hoveredAxis !== index) || (selectedAxis !== null && selectedAxis !== index);
+                
+                const handleClick = () => {
+                  setSelectedAxis(selectedAxis === index ? null : index);
+                };
+                
+                const handleKeyDown = (e: React.KeyboardEvent) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleClick();
+                  }
+                };
+                
+                return (
+                  <div
+                    key={index}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isExpanded}
+                    aria-label={`${eje.título}: ${eje.descripción}`}
+                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden ${colors[index]} focus:outline-none focus:ring-4 focus:ring-white/30 ${
+                      isExpanded 
+                        ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
+                        : isOtherExpanded 
+                          ? 'md:flex-[0.5] opacity-75' 
+                          : 'flex-1 hover:shadow-lg'
+                    } ${
+                      isExpanded 
+                        ? 'h-auto md:h-full' 
+                        : 'h-24 md:h-full'
+                    }`}
+                    data-testid={`axis-${index}`}
+                    onClick={handleClick}
+                    onKeyDown={handleKeyDown}
+                    onMouseEnter={() => setHoveredAxis(index)}
+                    onMouseLeave={() => setHoveredAxis(null)}
+                  >
+                    <div className="h-full p-6 flex flex-col justify-between text-white relative">
+                      {/* Main Content */}
+                      <div className={`transition-all duration-300 ${isHovered ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
+                        <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
+                        <h3 className={`font-bold text-white leading-tight transition-all duration-300 ${
+                          isHovered ? 'text-xl mb-4' : 'text-lg mb-2'
+                        }`}>
+                          {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                        </h3>
+                        
+                        {/* Expanded Content on Hover/Click */}
+                        <div className={`transition-all duration-300 overflow-hidden ${
+                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
+                          <p className="text-sm text-white/90 mb-4 leading-relaxed">
+                            {eje.descripción}
+                          </p>
+                          <div className="space-y-2">
+                            <div className="text-xs font-semibold text-white/80 mb-2">TEMAS PRINCIPALES:</div>
+                            <ul className="text-xs text-white/80 space-y-1">
+                              {eje.subtemas.map((subtema, subIndex) => (
+                                <li key={subIndex} className="flex items-start gap-2">
+                                  <span className="text-white/60 mt-0.5">•</span>
+                                  <span>{subtema}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* MORE INFO Button */}
+                      <div className={`transition-all duration-300 ${
+                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-2'
+                      }`}>
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Scroll to convocatorias section as this is thematically related
+                            scrollToSection('convocatorias');
+                          }}
+                          className="bg-black/20 hover:bg-black/30 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        >
+                          MÁS INFO →
+                        </button>
+                      </div>
+                      
+                      {/* Vertical Title for Non-Expanded State - Hidden on Mobile */}
+                      {!isExpanded && (
+                        <div className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 origin-center">
+                          <div className="text-xs font-semibold text-white/70 whitespace-nowrap">
+                            {eje.título.replace(/^\d+\.\s*/, '').split(' ').slice(0, 2).join(' ')}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                    {hoveredAxis !== index && (
-                      <p className="text-sm text-muted-foreground opacity-60">Pasa el cursor para ver más detalles</p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Instructions */}
+            <div className="text-center mt-8">
+              <p className="text-muted-foreground text-sm">
+                <span className="hidden md:inline">Pasa el cursor o haz clic sobre cada eje para conocer más detalles</span>
+                <span className="md:hidden">Toca cada eje para conocer más detalles</span>
+              </p>
             </div>
           </div>
         </div>
