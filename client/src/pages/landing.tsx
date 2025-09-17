@@ -456,16 +456,6 @@ Conoce más sobre el evento
                 const isExpanded = isHovered || isSelected;
                 const isOtherExpanded = (hoveredAxis !== null && hoveredAxis !== index) || (selectedAxis !== null && selectedAxis !== index);
                 
-                const handleClick = () => {
-                  setSelectedAxis(selectedAxis === index ? null : index);
-                };
-                
-                const handleKeyDown = (e: React.KeyboardEvent) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleClick();
-                  }
-                };
                 
                 return (
                   <div
@@ -486,17 +476,22 @@ Conoce más sobre el evento
                         : 'h-24 md:h-full'
                     }`}
                     data-testid={`axis-${index}`}
-                    onClick={handleClick}
-                    onKeyDown={handleKeyDown}
+                    onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setSelectedAxis(selectedAxis === index ? null : index);
+                      }
+                    }}
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
                     <div className="h-full p-6 flex flex-col justify-between text-white relative">
                       {/* Main Content */}
-                      <div className={`transition-all duration-300 ${isHovered ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
+                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
                         <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
                         <h3 className={`font-bold text-white leading-tight transition-all duration-300 ${
-                          isHovered ? 'text-xl mb-4' : 'text-lg mb-2'
+                          isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
