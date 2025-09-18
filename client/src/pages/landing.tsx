@@ -64,12 +64,14 @@ export default function Landing() {
   const [statsVisible, setStatsVisible] = useState(false);
   const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
   const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
 
   // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.pageYOffset > 300);
+      setScrolled(window.pageYOffset > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -265,32 +267,34 @@ export default function Landing() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-[#6847f6] shadow-lg' 
+          : 'bg-[#6847f6]/30 backdrop-blur-md'
+      }`}>
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="flex items-center gap-3">
-                <div className="bg-accent w-10 h-10 rounded-lg flex items-center justify-center">
-                  <span className="text-accent-foreground font-bold text-lg">A</span>
-                </div>
-                <div>
-                  <div className="text-primary font-bold text-lg">ANPR</div>
-                  <div className="text-xs text-muted-foreground">México</div>
-                </div>
+              <div className="flex items-center">
+                <img 
+                  src="/@assets/LOGO Congreso Parques_1758238962196.png" 
+                  alt="Congreso Parques Logo" 
+                  className="h-10 w-auto"
+                />
               </div>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <button onClick={() => scrollToSection('hero')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-hero">Inicio</button>
-                <button onClick={() => scrollToSection('info')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-info">Información</button>
-                <button onClick={() => scrollToSection('experiencias')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-experiencias">Experiencias</button>
-                <button onClick={() => scrollToSection('ejes')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-ejes">Ejes</button>
-                <button onClick={() => scrollToSection('convocatorias')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
-                <button onClick={() => scrollToSection('legado')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-legado">Legado</button>
-                <button onClick={() => scrollToSection('aliados')} className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-aliados">Aliados</button>
+              <div className="ml-10 flex items-baseline space-x-6">
+                <button onClick={() => scrollToSection('hero')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-hero">Inicio</button>
+                <button onClick={() => scrollToSection('info')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-info">Información</button>
+                <button onClick={() => scrollToSection('experiencias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-experiencias">Experiencias</button>
+                <button onClick={() => scrollToSection('ejes')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-ejes">Ejes</button>
+                <button onClick={() => scrollToSection('convocatorias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
+                <button onClick={() => scrollToSection('legado')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-legado">Legado</button>
+                <button onClick={() => scrollToSection('aliados')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-aliados">Aliados</button>
               </div>
             </div>
             
@@ -300,7 +304,7 @@ export default function Landing() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-muted-foreground hover:text-primary"
+                className="text-white/90 hover:text-white hover:bg-white/10"
                 aria-controls="mobile-menu" 
                 aria-expanded={mobileMenuOpen}
                 data-testid="mobile-menu-button"
@@ -314,14 +318,14 @@ export default function Landing() {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="md:hidden" id="mobile-menu" data-testid="mobile-menu">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-border">
-                <button onClick={() => scrollToSection('hero')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-hero">Inicio</button>
-                <button onClick={() => scrollToSection('info')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-info">Información</button>
-                <button onClick={() => scrollToSection('experiencias')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-experiencias">Experiencias</button>
-                <button onClick={() => scrollToSection('ejes')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-ejes">Ejes</button>
-                <button onClick={() => scrollToSection('convocatorias')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-convocatorias">Convocatorias</button>
-                <button onClick={() => scrollToSection('legado')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-legado">Legado</button>
-                <button onClick={() => scrollToSection('aliados')} className="block text-muted-foreground hover:text-primary px-3 py-2 text-base font-medium w-full text-left" data-testid="mobile-nav-aliados">Aliados</button>
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20">
+                <button onClick={() => scrollToSection('hero')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-hero">Inicio</button>
+                <button onClick={() => scrollToSection('info')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-info">Información</button>
+                <button onClick={() => scrollToSection('experiencias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-experiencias">Experiencias</button>
+                <button onClick={() => scrollToSection('ejes')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-ejes">Ejes</button>
+                <button onClick={() => scrollToSection('convocatorias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-convocatorias">Convocatorias</button>
+                <button onClick={() => scrollToSection('legado')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-legado">Legado</button>
+                <button onClick={() => scrollToSection('aliados')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-aliados">Aliados</button>
               </div>
             </div>
           )}
