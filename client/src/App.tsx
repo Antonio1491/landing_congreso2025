@@ -1,35 +1,16 @@
-import { Switch, Route } from "wouter";
-
-function Landing() {
-  return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>¡Congreso Parques Tijuana 2026!</h1>
-      <p>Bienvenidos al sitio del congreso</p>
-      <p>13-15 mayo 2026, Tijuana</p>
-    </div>
-  );
-}
-
-function NotFound() {
-  return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Página no encontrada</h1>
-      <p>La página que buscas no existe.</p>
-    </div>
-  );
-}
-
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Landing} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
-  return <Router />;
+  return (
+    <div style={{ padding: '40px', textAlign: 'center', backgroundColor: '#f8fafc', minHeight: '100vh' }}>
+      <h1 style={{ color: '#012787', fontSize: '3rem', marginBottom: '20px' }}>¡Congreso Parques Tijuana 2026!</h1>
+      <h2 style={{ color: '#BCCE16', fontSize: '1.5rem', marginBottom: '20px' }}>Inspirando el futuro de los espacios públicos</h2>
+      <p style={{ fontSize: '1.2rem', color: '#64748b', marginBottom: '30px' }}>El punto de encuentro más importante en Latinoamérica para profesionales que transforman la vida urbana</p>
+      <div style={{ backgroundColor: '#012787', color: 'white', padding: '20px', borderRadius: '10px', margin: '20px auto', maxWidth: '600px' }}>
+        <h3 style={{ margin: '0 0 10px 0' }}>📅 13-15 mayo 2026</h3>
+        <h3 style={{ margin: '0 0 10px 0' }}>📍 Tijuana, México</h3>
+        <p style={{ margin: '0' }}>Proyecto convertido exitosamente a frontend-only</p>
+      </div>
+    </div>
+  );
 }
 
 export default App;
