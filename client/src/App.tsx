@@ -1,10 +1,23 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Landing from "@/pages/landing";
-import NotFound from "@/pages/not-found";
+
+function Landing() {
+  return (
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h1>¡Congreso Parques Tijuana 2026!</h1>
+      <p>Bienvenidos al sitio del congreso</p>
+      <p>13-15 mayo 2026, Tijuana</p>
+    </div>
+  );
+}
+
+function NotFound() {
+  return (
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h1>Página no encontrada</h1>
+      <p>La página que buscas no existe.</p>
+    </div>
+  );
+}
 
 function Router() {
   return (
@@ -16,14 +29,7 @@ function Router() {
 }
 
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
+  return <Router />;
 }
 
 export default App;
