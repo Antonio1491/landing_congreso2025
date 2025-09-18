@@ -20,7 +20,13 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    allowedHosts: ['all'],
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      '.replit.dev',
+      '.spock.replit.dev',
+      'ced7e7f9-6da4-47dc-9bcf-c42d9cea0210-00-q5o221s0keeg.spock.replit.dev'
+    ],
     fs: {
       strict: true,
       deny: ["**/.*"],
