@@ -267,73 +267,77 @@ export default function Landing() {
   return (
     <div className="bg-background text-foreground">
       {/* Header Navigation */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-[#6847f6] shadow-lg' 
-          : 'bg-[#6847f6]/30 backdrop-blur-md'
-      }`}>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <div className="flex items-center">
-                <img 
-                  src="/@assets/LOGO Congreso Parques_1758238962196.png" 
-                  alt="Congreso Parques Logo" 
-                  className="h-10 w-auto"
-                />
+          <div className="flex flex-col items-center py-4">
+            {/* Logo centered */}
+            <div className="flex flex-col items-center mb-4">
+              <img 
+                src="/@assets/LOGO Congreso Parques_1758315663051.png" 
+                alt="Congreso Parques Logo" 
+                className="h-16 w-auto mb-2"
+              />
+              
+              {/* Tijuana 2026 Banner */}
+              <div className="bg-[#0e0477] px-4 py-1 rounded-sm">
+                <span className="text-[#d2dd0a] font-black text-lg tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  TIJUANA 2026
+                </span>
               </div>
             </div>
             
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-6">
-                <button onClick={() => scrollToSection('hero')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-hero">Inicio</button>
-                <button onClick={() => scrollToSection('info')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-info">Información</button>
-                <button onClick={() => scrollToSection('experiencias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-experiencias">Experiencias</button>
-                <button onClick={() => scrollToSection('ejes')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-ejes">Ejes</button>
-                <button onClick={() => scrollToSection('convocatorias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
-                <button onClick={() => scrollToSection('legado')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-legado">Legado</button>
-                <button onClick={() => scrollToSection('aliados')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-aliados">Aliados</button>
+            {/* Navigation */}
+            <div className="flex items-center justify-between w-full">
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center justify-center flex-1">
+                <div className="flex items-center space-x-6">
+                  <button onClick={() => scrollToSection('hero')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-hero">Inicio</button>
+                  <button onClick={() => scrollToSection('info')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-info">Información</button>
+                  <button onClick={() => scrollToSection('experiencias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-experiencias">Experiencias</button>
+                  <button onClick={() => scrollToSection('ejes')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-ejes">Ejes</button>
+                  <button onClick={() => scrollToSection('convocatorias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
+                  <button onClick={() => scrollToSection('legado')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-legado">Legado</button>
+                  <button onClick={() => scrollToSection('aliados')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-aliados">Aliados</button>
+                </div>
+              </div>
+              
+              {/* Mobile menu button */}
+              <div className="md:hidden ml-auto">
+                <Button 
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="text-white/90 hover:text-white hover:bg-white/10"
+                  aria-controls="mobile-menu" 
+                  aria-expanded={mobileMenuOpen}
+                  data-testid="mobile-menu-button"
+                >
+                  <span className="sr-only">Abrir menú principal</span>
+                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </Button>
               </div>
             </div>
             
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button 
-                variant="ghost"
-                size="sm"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-white/90 hover:text-white hover:bg-white/10"
-                aria-controls="mobile-menu" 
-                aria-expanded={mobileMenuOpen}
-                data-testid="mobile-menu-button"
-              >
-                <span className="sr-only">Abrir menú principal</span>
-                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
+            {/* Mobile Navigation */}
+            {mobileMenuOpen && (
+              <div className="md:hidden w-full mt-4" id="mobile-menu" data-testid="mobile-menu">
+                <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+                  <button onClick={() => scrollToSection('hero')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-hero">Inicio</button>
+                  <button onClick={() => scrollToSection('info')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-info">Información</button>
+                  <button onClick={() => scrollToSection('experiencias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-experiencias">Experiencias</button>
+                  <button onClick={() => scrollToSection('ejes')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-ejes">Ejes</button>
+                  <button onClick={() => scrollToSection('convocatorias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-convocatorias">Convocatorias</button>
+                  <button onClick={() => scrollToSection('legado')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-legado">Legado</button>
+                  <button onClick={() => scrollToSection('aliados')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-aliados">Aliados</button>
+                </div>
+              </div>
+            )}
           </div>
-          
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden" id="mobile-menu" data-testid="mobile-menu">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20">
-                <button onClick={() => scrollToSection('hero')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-hero">Inicio</button>
-                <button onClick={() => scrollToSection('info')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-info">Información</button>
-                <button onClick={() => scrollToSection('experiencias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-experiencias">Experiencias</button>
-                <button onClick={() => scrollToSection('ejes')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-ejes">Ejes</button>
-                <button onClick={() => scrollToSection('convocatorias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-convocatorias">Convocatorias</button>
-                <button onClick={() => scrollToSection('legado')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-legado">Legado</button>
-                <button onClick={() => scrollToSection('aliados')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-aliados">Aliados</button>
-              </div>
-            </div>
-          )}
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg pt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
