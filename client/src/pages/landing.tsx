@@ -369,10 +369,10 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
-              🌎 Congreso Parques Tijuana 2026: <span className="text-accent">Inspirando el futuro</span> de los espacios públicos
+              IX Congreso Internacional de Parques Urbanos y Espacio Público
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto" data-testid="hero-subtitle">
-              El punto de encuentro más importante en Latinoamérica para profesionales, líderes y organizaciones que transforman la vida urbana a través de parques y espacios públicos.
+              Forma parte de este Evento
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -380,7 +380,7 @@ export default function Landing() {
                 className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
                 data-testid="hero-cta"
               >
-Conoce más sobre el evento
+                Conoce nuestras Convocatorias
               </Button>
             </div>
           </div>
