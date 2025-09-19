@@ -289,7 +289,7 @@ export default function Landing() {
               {/* Tijuana 2026 Banner */}
               <div className="bg-[#0e0477] px-4 py-1 rounded-sm">
                 <span className="text-[#d2dd0a] font-black text-lg tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  TIJUANA 2026
+                  TIJUANA <span className="text-[#1edede]">2026</span>
                 </span>
               </div>
             </div>
@@ -299,7 +299,23 @@ export default function Landing() {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center justify-center flex-1">
                 <div className="flex items-center space-x-6">
-                  <button onClick={() => scrollToSection('convocatorias')} className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors" data-testid="nav-convocatorias">Convocatorias</button>
+                  <button 
+                    onClick={() => scrollToSection('convocatorias')} 
+                    className="relative overflow-hidden text-white/90 hover:text-white px-6 py-3 text-sm font-medium transition-colors rounded-lg group"
+                    data-testid="nav-convocatorias"
+                  >
+                    <span className="relative z-10">Convocatorias</span>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="particle-container">
+                        <div className="particle particle-1"></div>
+                        <div className="particle particle-2"></div>
+                        <div className="particle particle-3"></div>
+                        <div className="particle particle-4"></div>
+                        <div className="particle particle-5"></div>
+                        <div className="particle particle-6"></div>
+                      </div>
+                    </div>
+                  </button>
                 </div>
               </div>
               
@@ -324,7 +340,23 @@ export default function Landing() {
             {mobileMenuOpen && (
               <div className="md:hidden w-full mt-4" id="mobile-menu" data-testid="mobile-menu">
                 <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
-                  <button onClick={() => scrollToSection('convocatorias')} className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors" data-testid="mobile-nav-convocatorias">Convocatorias</button>
+                  <button 
+                    onClick={() => scrollToSection('convocatorias')} 
+                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                    data-testid="mobile-nav-convocatorias"
+                  >
+                    <span className="relative z-10">Convocatorias</span>
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="particle-container">
+                        <div className="particle particle-1"></div>
+                        <div className="particle particle-2"></div>
+                        <div className="particle particle-3"></div>
+                        <div className="particle particle-4"></div>
+                        <div className="particle particle-5"></div>
+                        <div className="particle particle-6"></div>
+                      </div>
+                    </div>
+                  </button>
                 </div>
               </div>
             )}
