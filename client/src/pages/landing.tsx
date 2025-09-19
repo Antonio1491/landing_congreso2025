@@ -26,6 +26,7 @@ import {
   ChevronUp
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import decorativeLeavesUrl from "@assets/Recurso 3_1758325044379.png";
 
 
 interface StatCounterProps {
@@ -412,9 +413,9 @@ export default function Landing() {
         </div>
         
         {/* Bottom Decorative Image */}
-        <div className="absolute bottom-0 left-0 right-0 z-20">
+        <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
           <img 
-            src="/attached_assets/Recurso 3_1758325044379.png" 
+            src={decorativeLeavesUrl} 
             alt="Decorative leaves border" 
             className="w-full h-auto hero-bottom-image"
             data-testid="hero-bottom-decoration"
