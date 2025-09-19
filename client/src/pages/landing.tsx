@@ -389,6 +389,10 @@ export default function Landing() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
+            <div className="event-date-location mb-4" data-testid="event-date-location">
+              <p className="text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
+              <p className="text-base md:text-lg font-medium">TIJUANA, BAJA CALIFORNIA</p>
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
               IX Congreso Internacional de Parques Urbanos y Espacio Público
             </h1>
@@ -396,13 +400,13 @@ export default function Landing() {
               Forma parte de este Evento
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <button 
                 onClick={() => scrollToSection('convocatorias')} 
-                className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
+                className="hero-cta-button px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0"
                 data-testid="hero-cta"
               >
                 Conoce nuestras Convocatorias
-              </Button>
+              </button>
             </div>
           </div>
         </div>
