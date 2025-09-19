@@ -25,6 +25,7 @@ import {
   ZoomIn,
   ChevronUp
 } from "lucide-react";
+import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
 
 interface StatCounterProps {
@@ -273,7 +274,7 @@ export default function Landing() {
             {/* Logo centered */}
             <div className="flex flex-col items-center mb-4">
               <img 
-                src="/@assets/LOGO Congreso Parques_1758315663051.png" 
+                src={logoUrl} 
                 alt="Congreso Parques Logo" 
                 className="h-16 w-auto mb-2"
               />
