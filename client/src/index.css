@@ -54,6 +54,10 @@ html {
   background-attachment: fixed;
 }
 
+.hero-bg-new {
+  background: #35219b;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-bg {
     background-attachment: scroll;
@@ -164,6 +168,197 @@ html {
   }
   75% {
     transform: translateY(-8px) rotate(270deg);
+    opacity: 1;
+  }
+}
+
+/* Hero Section Waves */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: #0e0477;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 50%);
+  animation: waveMove 8s ease-in-out infinite;
+}
+
+.wave-1 {
+  opacity: 0.7;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+
+.wave-2 {
+  opacity: 0.5;
+  height: 80px;
+  animation-delay: -2s;
+  animation-duration: 10s;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 20%, 0% 70%);
+}
+
+.wave-3 {
+  opacity: 0.3;
+  height: 60px;
+  animation-delay: -4s;
+  animation-duration: 14s;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 40%, 0% 90%);
+}
+
+@keyframes waveMove {
+  0%, 100% {
+    transform: translateX(0) scaleY(1);
+  }
+  25% {
+    transform: translateX(-25%) scaleY(1.1);
+  }
+  50% {
+    transform: translateX(-50%) scaleY(0.8);
+  }
+  75% {
+    transform: translateX(-25%) scaleY(1.2);
+  }
+}
+
+/* Hero Particles */
+.hero-particle {
+  position: absolute;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+/* Triangle Particles */
+.triangle-particle-1 {
+  top: 20%;
+  left: 10%;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #d0dd15;
+  animation-delay: 0s;
+  animation-duration: 6s;
+}
+
+.triangle-particle-2 {
+  top: 60%;
+  right: 15%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 8px solid #1edede;
+  animation-delay: 1s;
+  animation-duration: 7s;
+}
+
+.triangle-particle-3 {
+  top: 80%;
+  left: 70%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 9px solid #f71cdd;
+  animation-delay: 2s;
+  animation-duration: 5s;
+}
+
+.triangle-particle-4 {
+  top: 30%;
+  right: 30%;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 6px solid #d0dd15;
+  animation-delay: 3s;
+  animation-duration: 8s;
+}
+
+.triangle-particle-5 {
+  top: 90%;
+  left: 20%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid #1edede;
+  animation-delay: 4s;
+  animation-duration: 6s;
+}
+
+/* Circle Particles */
+.circle-particle-1 {
+  top: 15%;
+  right: 20%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f71cdd;
+  animation-delay: 0.5s;
+  animation-duration: 5s;
+}
+
+.circle-particle-2 {
+  top: 50%;
+  left: 15%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #d0dd15;
+  animation-delay: 1.5s;
+  animation-duration: 7s;
+}
+
+.circle-particle-3 {
+  top: 75%;
+  right: 40%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1edede;
+  animation-delay: 2.5s;
+  animation-duration: 6s;
+}
+
+.circle-particle-4 {
+  top: 40%;
+  left: 80%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #f71cdd;
+  animation-delay: 3.5s;
+  animation-duration: 8s;
+}
+
+.circle-particle-5 {
+  top: 95%;
+  right: 60%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #d0dd15;
+  animation-delay: 4.5s;
+  animation-duration: 5s;
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px) rotate(270deg);
     opacity: 1;
   }
 }

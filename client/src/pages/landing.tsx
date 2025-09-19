@@ -365,7 +365,28 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg pt-32">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-32 overflow-hidden">
+        {/* Animated Waves Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="wave wave-1"></div>
+          <div className="wave wave-2"></div>
+          <div className="wave wave-3"></div>
+        </div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0 z-5">
+          <div className="hero-particle triangle-particle-1"></div>
+          <div className="hero-particle triangle-particle-2"></div>
+          <div className="hero-particle triangle-particle-3"></div>
+          <div className="hero-particle circle-particle-1"></div>
+          <div className="hero-particle circle-particle-2"></div>
+          <div className="hero-particle circle-particle-3"></div>
+          <div className="hero-particle triangle-particle-4"></div>
+          <div className="hero-particle circle-particle-4"></div>
+          <div className="hero-particle triangle-particle-5"></div>
+          <div className="hero-particle circle-particle-5"></div>
+        </div>
+        
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
