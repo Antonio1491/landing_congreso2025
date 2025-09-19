@@ -387,7 +387,7 @@ export default function Landing() {
           <div className="hero-particle circle-particle-5"></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-32">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="event-date-location mb-4" data-testid="event-date-location">
               <p className="text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
@@ -409,6 +409,16 @@ export default function Landing() {
               </button>
             </div>
           </div>
+        </div>
+        
+        {/* Bottom Decorative Image */}
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          <img 
+            src="/attached_assets/Recurso 3_1758325044379.png" 
+            alt="Decorative leaves border" 
+            className="w-full h-auto hero-bottom-image"
+            data-testid="hero-bottom-decoration"
+          />
         </div>
       </section>
 
