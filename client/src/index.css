@@ -463,11 +463,11 @@ html {
   opacity: 0.2;
 }
 
-/* Icon container with gradient */
+/* Icon container with solid background and gradient icons */
 .icon-container-gradient {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #d0dd15 0%, #00deff 100%);
+  background-color: #35219b;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -476,7 +476,7 @@ html {
 }
 
 .icon-container-gradient svg {
-  stroke: white;
+  stroke: url(#iconGradient);
   fill: none;
   stroke-width: 2;
 }

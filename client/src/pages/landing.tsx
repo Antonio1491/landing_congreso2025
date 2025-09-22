@@ -450,6 +450,14 @@ export default function Landing() {
 
               {/* Right Column - Icons aligned with subtitle */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0" data-testid="info-value-proposition">
+                <svg width="0" height="0" style={{ position: 'absolute' }}>
+                  <defs>
+                    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#d0dd15" />
+                      <stop offset="100%" stopColor="#00deff" />
+                    </linearGradient>
+                  </defs>
+                </svg>
                 <div className="text-center">
                   <div className="icon-container-gradient mb-6">
                     <Users className="w-8 h-8" />
