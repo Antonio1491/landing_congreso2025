@@ -55,7 +55,7 @@ html {
 }
 
 .hero-bg-new {
-  background: #35219b;
+  background: #6847f6;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -179,30 +179,30 @@ html {
   left: 0;
   width: 200%;
   height: 50vh;
-  background: #0e0477;
+  background: #35219b;
   clip-path: polygon(0% 100%, 5% 85%, 15% 70%, 25% 75%, 35% 60%, 45% 65%, 55% 50%, 65% 55%, 75% 40%, 85% 45%, 95% 30%, 100% 35%, 100% 100%);
-  animation: waveMove 8s ease-in-out infinite;
+  animation: waveMove 16s ease-in-out infinite;
 }
 
 .wave-1 {
   opacity: 0.7;
   animation-delay: 0s;
-  animation-duration: 12s;
+  animation-duration: 20s;
 }
 
 .wave-2 {
   opacity: 0.5;
   height: 40vh;
-  animation-delay: -2s;
-  animation-duration: 10s;
+  animation-delay: -4s;
+  animation-duration: 18s;
   clip-path: polygon(0% 100%, 8% 80%, 18% 85%, 28% 70%, 38% 75%, 48% 60%, 58% 65%, 68% 50%, 78% 55%, 88% 40%, 98% 45%, 100% 50%, 100% 100%);
 }
 
 .wave-3 {
   opacity: 0.3;
   height: 35vh;
-  animation-delay: -4s;
-  animation-duration: 14s;
+  animation-delay: -8s;
+  animation-duration: 22s;
   clip-path: polygon(0% 100%, 10% 75%, 20% 80%, 30% 65%, 40% 70%, 50% 55%, 60% 60%, 70% 45%, 80% 50%, 90% 35%, 100% 40%, 100% 100%);
 }
 
@@ -365,11 +365,7 @@ html {
 
 /* Event Date and Location Styling */
 .event-date-location {
-  background: linear-gradient(90deg, #d0dd15, #00deff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-stroke: 1px transparent;
-  text-shadow: 0 0 10px rgba(208, 221, 21, 0.5), 0 0 20px rgba(0, 222, 255, 0.3);
+  color: white;
 }
 
 /* Hero CTA Button */
@@ -415,11 +411,10 @@ html {
 
 /* Hero Bottom Image Optimization */
 .hero-bottom-image {
-  max-height: 150px;
-  min-height: 80px;
+  height: 120px;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: center bottom;
   filter: brightness(1.1) contrast(1.05) saturate(1.1);
   transition: transform 0.3s ease;
   display: block;

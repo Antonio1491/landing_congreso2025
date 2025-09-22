@@ -390,9 +390,15 @@ export default function Landing() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-32">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="event-date-location mb-4" data-testid="event-date-location">
-              <p className="text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
-              <p className="text-base md:text-lg font-medium">TIJUANA, BAJA CALIFORNIA</p>
+            <div className="event-date-location mb-4 flex justify-between items-center max-w-4xl mx-auto" data-testid="event-date-location">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-white" />
+                <p className="text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-white" />
+                <p className="text-base md:text-lg font-medium">TIJUANA, BAJA CALIFORNIA</p>
+              </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="hero-title">
               IX Congreso Internacional de Parques Urbanos y Espacio Público
