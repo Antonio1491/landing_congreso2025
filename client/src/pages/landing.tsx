@@ -33,6 +33,12 @@ import sesionEducativaUrl from "@assets/Sesion educativa_1758578349360.jpg";
 import conferenciaMagistralUrl from "@assets/Conferencia Magistral_1758578349365.jpg";
 import masterClassesUrl from "@assets/Master classes_1758578349365.jpg";
 import eventosSocialesUrl from "@assets/Eventos Sociales_1758578349366.jpg";
+import masterClassesIconUrl from "@assets/Master Classes_1758578569492.png";
+import conferenciasIconUrl from "@assets/Conferencias Magistrales_1758578569495.png";
+import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
+import expoIconUrl from "@assets/Master Classes_1758578569492.png"; // Temporal fix for encoding issue
+import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
+import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 
 
 interface StatCounterProps {
@@ -135,42 +141,42 @@ export default function Landing() {
 
   const experiencias = [
     {
-      icon: <Mic className="w-6 h-6" />,
+      iconUrl: conferenciasIconUrl,
       title: "Conferencias Magistrales",
       description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
       fecha: "14 y 15 de mayo",
       image: conferenciaMagistralUrl
     },
     {
-      icon: <BookOpen className="w-6 h-6" />,
+      iconUrl: sesionesIconUrl,
       title: "Sesiones Educativas",
       description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
       fecha: "14 y 15 de mayo",
       image: sesionEducativaUrl
     },
     {
-      icon: <Hammer className="w-6 h-6" />,
+      iconUrl: talleresIconUrl,
       title: "Talleres Vivenciales",
       description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
       fecha: "13 de mayo",
       image: tallerVivencialUrl
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      iconUrl: masterClassesIconUrl,
       title: "Master Classes",
       description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
       fecha: "13 de mayo",
       image: masterClassesUrl
     },
     {
-      icon: <Building className="w-6 h-6" />,
+      iconUrl: expoIconUrl,
       title: "Expo Espacio Público",
       description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
       fecha: "14 y 15 de mayo",
       image: expoEspacioPublicoUrl
     },
     {
-      icon: <PartyPopper className="w-6 h-6" />,
+      iconUrl: eventosIconUrl,
       title: "Eventos Sociales",
       description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
       fecha: "14 y 15 de mayo",
@@ -508,29 +514,43 @@ export default function Landing() {
       <section id="experiencias" className="py-16" style={{ backgroundColor: '#35219b' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="experiences-title">Experiencias del Evento</h2>
+            <h2 className="text-center mb-12" data-testid="experiences-title">
+              <span className="experience-title-experiencias">EXPERIENCIAS</span>
+              <span className="experience-title-evento">DEL EVENTO</span>
+            </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {experiencias.map((experiencia, index) => (
-                <Card key={index} className="bg-white overflow-hidden hover:shadow-lg transition-shadow" data-testid={`experience-${index}`}>
-                  <div className="relative">
-                    <img 
-                      src={experiencia.image} 
-                      alt={experiencia.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="absolute top-3 right-3 bg-black bg-opacity-50 rounded-full p-2 backdrop-blur-sm">
-                      <div className="text-white">
-                        {experiencia.icon}
-                      </div>
+                <div 
+                  key={index} 
+                  className="experience-card animate"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  data-testid={`experience-${index}`}
+                >
+                  <Card className="bg-white overflow-hidden relative">
+                    <div className="experience-icon">
+                      <img 
+                        src={experiencia.iconUrl}
+                        alt={`${experiencia.title} icon`}
+                      />
                     </div>
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
-                    <div className="text-sm font-medium" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>📅 {experiencia.fecha}</div>
-                  </CardContent>
-                </Card>
+                    <div className="relative">
+                      <img 
+                        src={experiencia.image} 
+                        alt={experiencia.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                      <div className="flex items-center text-sm font-medium" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4 mr-2" />
+                        {experiencia.fecha}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
