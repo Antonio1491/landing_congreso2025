@@ -414,23 +414,36 @@ html {
   }
 }
 
-/* Hero Bottom Image Optimization */
-.hero-bottom-image {
-  height: 180px;
+/* Hero Bottom Image Mosaic Optimization */
+.hero-bottom-image-mosaic {
+  height: 160px;
   width: 100vw;
-  max-width: none;
-  object-fit: contain;
-  object-position: center bottom;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  background-size: auto 100%;
   filter: brightness(1.1) contrast(1.05) saturate(1.1);
   transition: transform 0.3s ease;
   display: block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  image-rendering: optimizeQuality;
+  will-change: transform;
 }
 
-.hero-bottom-image:hover {
-  transform: scale(1.02);
+.hero-bottom-image-mosaic:hover {
+  transform: scale(1.01);
+}
+
+/* Optimize for different screen sizes */
+@media (max-width: 768px) {
+  .hero-bottom-image-mosaic {
+    height: 120px;
+    background-size: auto 100%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .hero-bottom-image-mosaic {
+    height: 180px;
+  }
 }
 
 /* Adjust waves to work better with bottom image */
