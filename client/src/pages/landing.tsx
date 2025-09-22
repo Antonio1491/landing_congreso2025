@@ -429,49 +429,54 @@ export default function Landing() {
       {/* Information Section */}
       <section id="info" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="info-title">¿Qué es el Congreso Parques?</h2>
-            
-            <div className="prose prose-lg max-w-none mb-12 text-center">
-              <p className="text-xl text-muted-foreground leading-relaxed" data-testid="info-description">
-                Un evento internacional de capacitación, intercambio y experiencias inmersivas que reúne a los principales actores del sector de parques y espacios públicos para compartir conocimientos, innovaciones y mejores prácticas.
-              </p>
-            </div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Left Column - Text Content */}
+              <div className="text-left">
+                {/* Main Title */}
+                <h2 className="mb-6" data-testid="info-title">
+                  <span className="title-conoce">CONOCE</span>
+                  <span className="title-congreso">EL CONGRESO PARQUES</span>
+                </h2>
+                
+                {/* Subtitle */}
+                <h3 className="subtitle-section" data-testid="info-subtitle">¿Por qué asistir?</h3>
+                
+                {/* Description */}
+                <p className="text-description" data-testid="info-description">
+                  Un evento internacional de capacitación, intercambio y experiencias inmersivas que reúne a los principales actores del sector de parques y espacios públicos para compartir conocimientos, innovaciones y mejores prácticas.
+                </p>
+              </div>
 
-
-            <div className="bg-white" data-testid="info-value-proposition">
-              <svg width="0" height="0" style={{ position: 'absolute' }}>
-                <defs>
-                  <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#d0dd15" />
-                    <stop offset="100%" stopColor="#00deff" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div className="flex flex-col items-center text-center">
-                  <div className="icon-container-gradient mb-4">
+              {/* Right Column - Icons */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8" data-testid="info-value-proposition">
+                <div className="text-center">
+                  <div className="icon-container-simple mb-4">
                     <Users className="w-8 h-8" />
                   </div>
-                  <p className="text-gray-700 font-medium">Conecta con líderes y profesionales del sector</p>
+                  <div className="keyword-text">Conecta</div>
+                  <div className="description-text">Con líderes y profesionales del sector</div>
                 </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="icon-container-gradient mb-4">
+                <div className="text-center">
+                  <div className="icon-container-simple mb-4">
                     <Target className="w-8 h-8" />
                   </div>
-                  <p className="text-gray-700 font-medium">Descubre tendencias globales y soluciones innovadoras</p>
+                  <div className="keyword-text">Descubre</div>
+                  <div className="description-text">Tendencias globales e innovación</div>
                 </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="icon-container-gradient mb-4">
+                <div className="text-center">
+                  <div className="icon-container-simple mb-4">
                     <BookOpen className="w-8 h-8" />
                   </div>
-                  <p className="text-gray-700 font-medium">Aprende de expertos nacionales e internacionales</p>
+                  <div className="keyword-text">Aprende</div>
+                  <div className="description-text">De expertos nacionales e internacionales</div>
                 </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="icon-container-gradient mb-4">
+                <div className="text-center">
+                  <div className="icon-container-simple mb-4">
                     <PartyPopper className="w-8 h-8" />
                   </div>
-                  <p className="text-gray-700 font-medium">Vive una experiencia única de capacitación, inspiración y networking</p>
+                  <div className="keyword-text">Vive</div>
+                  <div className="description-text">Capacitación, inspiración y networking</div>
                 </div>
               </div>
             </div>
