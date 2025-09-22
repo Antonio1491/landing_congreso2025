@@ -556,7 +556,7 @@ export default function Landing() {
               <span className="experience-title-evento">DEL EVENTO</span>
             </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {experiencias.map((experiencia, index) => (
                 <div 
                   key={index} 
