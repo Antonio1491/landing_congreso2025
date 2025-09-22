@@ -26,7 +26,7 @@ import {
   ChevronUp
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
-import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562242103.png";
+import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
 
 
 interface StatCounterProps {
