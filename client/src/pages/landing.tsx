@@ -737,42 +737,44 @@ export default function Landing() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="calls-title">Convocatorias 2026</h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-12 stagger-children">
+            <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-4" style={{ backgroundColor: '#35219b' }}>
-                  <h3 className="text-lg font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-6" style={{ backgroundColor: '#35219b' }}>
+                  <h3 className="text-2xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
                 {/* Content */}
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-center mb-4 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <div className="p-8">
+                  <h4 className="text-xl font-bold text-center mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     SESIONES EDUCATIVAS
                   </h4>
                   
                   {/* Descripción */}
-                  <p className="text-gray-600 mb-6 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-gray-600 mb-8 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
                   </p>
                   
                   {/* Fechas */}
-                  <div className="mb-6 text-center">
-                    <p className="text-gray-700 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <strong>Apertura:</strong> 15 de enero, 2026
-                    </p>
-                    <p className="text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <strong>Cierre:</strong> 15 de marzo, 2026
-                    </p>
+                  <div className="mb-8 space-y-3">
+                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4" />
+                      <span><strong>Apertura:</strong> 6 de septiembre, 2025</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4" />
+                      <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                    </div>
                   </div>
                   
                   {/* Botón */}
                   <div className="text-center">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
-                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300"
+                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
                       style={{ 
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
@@ -788,38 +790,40 @@ export default function Landing() {
               {/* Convocatoria Poster Científico */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-4" style={{ backgroundColor: '#35219b' }}>
-                  <h3 className="text-lg font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-6" style={{ backgroundColor: '#35219b' }}>
+                  <h3 className="text-2xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
                 {/* Content */}
-                <div className="p-6">
-                  <h4 className="text-xl font-bold text-center mb-4 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <div className="p-8">
+                  <h4 className="text-xl font-bold text-center mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     POSTER CIENTÍFICO
                   </h4>
                   
                   {/* Descripción */}
-                  <p className="text-gray-600 mb-6 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-gray-600 mb-8 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
                   </p>
                   
                   {/* Fechas */}
-                  <div className="mb-6 text-center">
-                    <p className="text-gray-700 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <strong>Apertura:</strong> 1 de febrero, 2026
-                    </p>
-                    <p className="text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <strong>Cierre:</strong> 31 de marzo, 2026
-                    </p>
+                  <div className="mb-8 space-y-3">
+                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4" />
+                      <span><strong>Apertura:</strong> 6 de septiembre, 2025</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4" />
+                      <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                    </div>
                   </div>
                   
                   {/* Botón */}
                   <div className="text-center">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
-                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300"
+                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
                       style={{ 
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
