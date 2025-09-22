@@ -680,31 +680,19 @@ html {
 /* Section Animation Classes */
 .section-animate {
   opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(60px);
 }
 
-.section-animate.animate-fadeInUp {
+.section-animate.animate {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.section-animate.animate-fadeInLeft {
+.animate-fadeInLeft.animate {
   animation: fadeInLeft 0.8s ease-out forwards;
 }
 
-.section-animate.animate-fadeInRight {
-  animation: fadeInRight 0.8s ease-out forwards;
-}
-
-.section-animate.animate-scaleIn {
+.animate-scaleIn.animate {
   animation: scaleIn 0.8s ease-out forwards;
-}
-
-.section-animate.animate-slideInUp {
-  animation: slideInUp 0.8s ease-out forwards;
-}
-
-.section-animate.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
 }
 
 /* Staggered animations for child elements */

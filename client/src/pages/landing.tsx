@@ -123,6 +123,7 @@ export default function Landing() {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
             if (sectionId && !animatedSections.has(sectionId)) {
+              console.log('Animating section:', sectionId);
               setAnimatedSections(prev => new Set(Array.from(prev).concat([sectionId])));
               entry.target.classList.add('animate');
               sectionsObserver.unobserve(entry.target);
@@ -146,7 +147,7 @@ export default function Landing() {
     });
 
     return () => sectionsObserver.disconnect();
-  }, [animatedSections]);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
