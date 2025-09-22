@@ -748,7 +748,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 flex flex-col h-full">
                   <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     SESIONES EDUCATIVAS
                   </h4>
@@ -771,7 +771,7 @@ export default function Landing() {
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center">
+                  <div className="text-center mt-auto">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
@@ -797,7 +797,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 flex flex-col h-full">
                   <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     POSTER CIENTÍFICO
                   </h4>
@@ -820,7 +820,7 @@ export default function Landing() {
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center">
+                  <div className="text-center mt-auto">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
@@ -835,42 +835,6 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Timeline */}
-            <Card className="bg-muted p-8 border border-border mb-8" data-testid="calls-timeline">
-              <CardContent className="p-0">
-                <h3 className="text-xl font-semibold mb-6 text-primary text-center">Cronograma de Convocatorias</h3>
-                <div className="space-y-4">
-                  {timeline.map((item, index) => (
-                    <div key={index} className="flex items-center gap-4 p-4 bg-white rounded-lg border border-border" data-testid={`timeline-${index}`}>
-                      <div className="text-primary">{item.icon}</div>
-                      <div>
-                        <div className="font-semibold text-primary">{item.título}</div>
-                        <div className="text-muted-foreground">{item.fecha}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 font-semibold" 
-                data-testid="cta-educational"
-              >
-                Conoce las bases para aplicar aquí – Sesiones Educativas
-              </Button>
-              <Button 
-                onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
-                className="bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 font-semibold" 
-                data-testid="cta-poster"
-              >
-                Conoce las bases – Póster Científico
-              </Button>
             </div>
           </div>
         </div>
