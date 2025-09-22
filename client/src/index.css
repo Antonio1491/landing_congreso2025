@@ -463,11 +463,11 @@ html {
   opacity: 0.2;
 }
 
-/* Icon container without gradient */
-.icon-container-simple {
+/* Icon container with gradient */
+.icon-container-gradient {
   width: 80px;
   height: 80px;
-  background-color: #35219b;
+  background: linear-gradient(135deg, #d0dd15 0%, #00deff 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -475,7 +475,7 @@ html {
   margin: 0 auto;
 }
 
-.icon-container-simple svg {
+.icon-container-gradient svg {
   stroke: white;
   fill: none;
   stroke-width: 2;
@@ -490,9 +490,9 @@ html {
   padding: 8px 16px;
   border-radius: 4px;
   display: inline-block;
-  margin-right: 12px;
   font-size: clamp(24px, 4vw, 32px);
   letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
 .title-congreso {
@@ -500,6 +500,7 @@ html {
   font-weight: 700;
   color: #0e0477;
   font-size: clamp(24px, 4vw, 32px);
+  display: block;
 }
 
 .subtitle-section {

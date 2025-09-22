@@ -427,14 +427,14 @@ export default function Landing() {
       </section>
 
       {/* Information Section */}
-      <section id="info" className="py-16 bg-white">
+      <section id="info" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left Column - Text Content */}
               <div className="text-left">
                 {/* Main Title */}
-                <h2 className="mb-6" data-testid="info-title">
+                <h2 className="mb-8" data-testid="info-title">
                   <span className="title-conoce">CONOCE</span>
                   <span className="title-congreso">EL CONGRESO PARQUES</span>
                 </h2>
@@ -448,31 +448,31 @@ export default function Landing() {
                 </p>
               </div>
 
-              {/* Right Column - Icons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8" data-testid="info-value-proposition">
+              {/* Right Column - Icons aligned with subtitle */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0" data-testid="info-value-proposition">
                 <div className="text-center">
-                  <div className="icon-container-simple mb-4">
+                  <div className="icon-container-gradient mb-6">
                     <Users className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Conecta</div>
                   <div className="description-text">Con líderes y profesionales del sector</div>
                 </div>
                 <div className="text-center">
-                  <div className="icon-container-simple mb-4">
+                  <div className="icon-container-gradient mb-6">
                     <Target className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Descubre</div>
                   <div className="description-text">Tendencias globales e innovación</div>
                 </div>
                 <div className="text-center">
-                  <div className="icon-container-simple mb-4">
+                  <div className="icon-container-gradient mb-6">
                     <BookOpen className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Aprende</div>
                   <div className="description-text">De expertos nacionales e internacionales</div>
                 </div>
                 <div className="text-center">
-                  <div className="icon-container-simple mb-4">
+                  <div className="icon-container-gradient mb-6">
                     <PartyPopper className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Vive</div>
