@@ -27,6 +27,12 @@ import {
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
+import expoEspacioPublicoUrl from "@assets/Expo Espacio Publico_1758578349359.jpg";
+import tallerVivencialUrl from "@assets/Taller vivencial_1758578349360.jpg";
+import sesionEducativaUrl from "@assets/Sesion educativa_1758578349360.jpg";
+import conferenciaMagistralUrl from "@assets/Conferencia Magistral_1758578349365.jpg";
+import masterClassesUrl from "@assets/Master classes_1758578349365.jpg";
+import eventosSocialesUrl from "@assets/Eventos Sociales_1758578349366.jpg";
 
 
 interface StatCounterProps {
@@ -129,40 +135,46 @@ export default function Landing() {
 
   const experiencias = [
     {
-      icon: <Mic className="w-8 h-8" />,
+      icon: <Mic className="w-6 h-6" />,
       title: "Conferencias Magistrales",
       description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
-      fecha: "14 y 15 de mayo"
+      fecha: "14 y 15 de mayo",
+      image: conferenciaMagistralUrl
     },
     {
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: <BookOpen className="w-6 h-6" />,
       title: "Sesiones Educativas",
       description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
-      fecha: "14 y 15 de mayo"
+      fecha: "14 y 15 de mayo",
+      image: sesionEducativaUrl
     },
     {
-      icon: <Hammer className="w-8 h-8" />,
+      icon: <Hammer className="w-6 h-6" />,
       title: "Talleres Vivenciales",
       description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
-      fecha: "13 de mayo"
+      fecha: "13 de mayo",
+      image: tallerVivencialUrl
     },
     {
-      icon: <Target className="w-8 h-8" />,
+      icon: <Target className="w-6 h-6" />,
       title: "Master Classes",
       description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
-      fecha: "13 de mayo"
+      fecha: "13 de mayo",
+      image: masterClassesUrl
     },
     {
-      icon: <Building className="w-8 h-8" />,
+      icon: <Building className="w-6 h-6" />,
       title: "Expo Espacio Público",
       description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
-      fecha: "14 y 15 de mayo"
+      fecha: "14 y 15 de mayo",
+      image: expoEspacioPublicoUrl
     },
     {
-      icon: <PartyPopper className="w-8 h-8" />,
+      icon: <PartyPopper className="w-6 h-6" />,
       title: "Eventos Sociales",
       description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
-      fecha: "14 y 15 de mayo"
+      fecha: "14 y 15 de mayo",
+      image: eventosSocialesUrl
     }
   ];
 
@@ -493,19 +505,30 @@ export default function Landing() {
       </section>
 
       {/* Experiences Section */}
-      <section id="experiencias" className="py-16 bg-white">
+      <section id="experiencias" className="py-16" style={{ backgroundColor: '#35219b' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="experiences-title">Experiencias del Evento</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="experiences-title">Experiencias del Evento</h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiencias.map((experiencia, index) => (
-                <Card key={index} className="bg-muted p-6 border border-border hover:shadow-lg transition-shadow" data-testid={`experience-${index}`}>
-                  <CardContent className="p-0">
-                    <div className="text-primary mb-4">{experiencia.icon}</div>
-                    <h3 className="text-xl font-semibold mb-3 text-primary">{experiencia.title}</h3>
-                    <p className="text-muted-foreground mb-4">{experiencia.description}</p>
-                    <div className="text-sm text-primary font-medium">📅 {experiencia.fecha}</div>
+                <Card key={index} className="bg-white overflow-hidden hover:shadow-lg transition-shadow" data-testid={`experience-${index}`}>
+                  <div className="relative">
+                    <img 
+                      src={experiencia.image} 
+                      alt={experiencia.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute top-3 right-3 bg-black bg-opacity-50 rounded-full p-2 backdrop-blur-sm">
+                      <div className="text-white">
+                        {experiencia.icon}
+                      </div>
+                    </div>
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                    <div className="text-sm font-medium" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>📅 {experiencia.fecha}</div>
                   </CardContent>
                 </Card>
               ))}
