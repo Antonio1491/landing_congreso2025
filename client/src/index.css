@@ -608,6 +608,17 @@ html {
   object-fit: cover;
 }
 
+/* Convocatoria Button Styles */
+.convocatoria-btn {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.convocatoria-btn:hover {
+  background-color: #1edede !important;
+  box-shadow: 0 8px 20px rgba(30, 222, 222, 0.3);
+  transform: translateY(-2px);
+}
+
 /* Section Animation Keyframes */
 @keyframes fadeInUp {
   0% {
