@@ -576,7 +576,6 @@ html {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
   position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
   height: 100%;
   cursor: pointer;
 }
@@ -595,6 +594,10 @@ html {
   transform: scale(1.08);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
   z-index: 10;
+}
+
+.experience-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .experience-icon {
