@@ -749,12 +749,12 @@ export default function Landing() {
                 
                 {/* Content */}
                 <div className="p-8">
-                  <h4 className="text-xl font-bold text-center mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     SESIONES EDUCATIVAS
                   </h4>
                   
                   {/* Descripción */}
-                  <p className="text-gray-600 mb-8 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-gray-600 mb-12 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
                   </p>
                   
@@ -762,7 +762,7 @@ export default function Landing() {
                   <div className="mb-8 space-y-3">
                     <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4" />
-                      <span><strong>Apertura:</strong> 6 de septiembre, 2025</span>
+                      <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4" />
@@ -798,12 +798,12 @@ export default function Landing() {
                 
                 {/* Content */}
                 <div className="p-8">
-                  <h4 className="text-xl font-bold text-center mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     POSTER CIENTÍFICO
                   </h4>
                   
                   {/* Descripción */}
-                  <p className="text-gray-600 mb-8 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-gray-600 mb-12 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
                   </p>
                   
@@ -811,7 +811,7 @@ export default function Landing() {
                   <div className="mb-8 space-y-3">
                     <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4" />
-                      <span><strong>Apertura:</strong> 6 de septiembre, 2025</span>
+                      <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4" />
