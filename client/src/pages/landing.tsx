@@ -125,6 +125,9 @@ export default function Landing() {
             if (sectionId && !animatedSections.has(sectionId)) {
               setAnimatedSections(prev => new Set(Array.from(prev).concat([sectionId])));
               entry.target.classList.add('animate');
+              // Also add animate class to any stagger-children elements
+              const staggerElements = entry.target.querySelectorAll('.stagger-children');
+              staggerElements.forEach(el => el.classList.add('animate'));
               sectionsObserver.unobserve(entry.target);
             }
           }
