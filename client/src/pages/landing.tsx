@@ -519,7 +519,7 @@ export default function Landing() {
               <span className="experience-title-evento">DEL EVENTO</span>
             </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiencias.map((experiencia, index) => (
                 <div 
                   key={index} 
@@ -534,8 +534,6 @@ export default function Landing() {
                         alt={`${experiencia.title} icon`}
                       />
                     </div>
-                    <div className="triangle-particle-3"></div>
-                    <div className="triangle-particle-4"></div>
                     <div className="relative overflow-hidden rounded-t-lg">
                       <img 
                         src={experiencia.image} 
