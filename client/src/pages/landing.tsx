@@ -564,7 +564,7 @@ export default function Landing() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                   data-testid={`experience-${index}`}
                 >
-                  <Card className="bg-white overflow-visible relative card-content">
+                  <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px' }}>
                     <div className="experience-icon">
                       <img 
                         src={experiencia.iconUrl}
