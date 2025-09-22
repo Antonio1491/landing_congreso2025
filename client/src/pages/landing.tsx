@@ -79,6 +79,7 @@ export default function Landing() {
   const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
   const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
 
 
   // Handle scroll events
@@ -113,6 +114,39 @@ export default function Landing() {
 
     return () => statsObserver.disconnect();
   }, []);
+
+  // Section entrance animations observer
+  useEffect(() => {
+    const sectionsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            if (sectionId && !animatedSections.has(sectionId)) {
+              setAnimatedSections(prev => new Set(Array.from(prev).concat([sectionId])));
+              entry.target.classList.add('animate');
+              sectionsObserver.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Observe all main sections except header and footer
+    const sections = [
+      'info', 'experiencias', 'ejes', 'convocatorias', 'legado', 'aliados'
+    ];
+    
+    sections.forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        sectionsObserver.observe(section);
+      }
+    });
+
+    return () => sectionsObserver.disconnect();
+  }, [animatedSections]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -445,7 +479,7 @@ export default function Landing() {
       </section>
 
       {/* Information Section */}
-      <section id="info" className="py-20 bg-white">
+      <section id="info" className="py-20 bg-white section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
@@ -467,7 +501,7 @@ export default function Landing() {
               </div>
 
               {/* Right Column - Icons aligned with subtitle */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0" data-testid="info-value-proposition">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0 stagger-children" data-testid="info-value-proposition">
                 <svg width="0" height="0" style={{ position: 'absolute' }}>
                   <defs>
                     <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -558,7 +592,7 @@ export default function Landing() {
       </section>
 
       {/* Thematic Axes Section */}
-      <section id="ejes" className="py-16 bg-white overflow-hidden">
+      <section id="ejes" className="py-16 bg-white overflow-hidden section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="axes-title">Ejes Temáticos</h2>
@@ -682,12 +716,12 @@ export default function Landing() {
       </section>
 
       {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 bg-white">
+      <section id="convocatorias" className="py-16 bg-white section-animate animate-fadeInLeft">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="calls-title">Convocatorias 2026</h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="grid md:grid-cols-2 gap-8 mb-12 stagger-children">
               <Card className="bg-muted p-8 border border-border" data-testid="call-educational">
                 <CardContent className="p-0">
                   <h3 className="text-xl font-semibold mb-4 text-primary">Convocatoria de Sesiones Educativas</h3>
@@ -747,13 +781,13 @@ export default function Landing() {
       </section>
 
       {/* Legacy Section */}
-      <section id="legado" className="py-16 bg-muted">
+      <section id="legado" className="py-16 bg-muted section-animate animate-scaleIn">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="legacy-title">Nuestro Legado</h2>
             
             {/* Statistics */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 stagger-children">
               {estadísticas.map((stat, index) => (
                 <Card key={index} className="bg-white p-6 shadow-sm border border-border text-center" data-testid={`stat-${index}`}>
                   <CardContent className="p-0">
@@ -813,12 +847,12 @@ export default function Landing() {
       </section>
 
       {/* Trust Elements / Partners */}
-      <section id="aliados" className="py-16 bg-white">
+      <section id="aliados" className="py-16 bg-white section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-primary" data-testid="partners-title">Aliados Estratégicos y Patrocinadores</h2>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity stagger-children">
               <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
                 <div className="text-primary font-bold text-sm text-center">ANPR México</div>
                 <div className="text-xs text-muted-foreground text-center mt-1">Organizador Principal</div>
