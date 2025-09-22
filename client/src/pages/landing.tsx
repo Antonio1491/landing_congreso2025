@@ -771,7 +771,7 @@ export default function Landing() {
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center mt-auto">
+                  <div className="text-center mt-6">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
@@ -820,7 +820,7 @@ export default function Landing() {
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center mt-auto">
+                  <div className="text-center mt-6">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
