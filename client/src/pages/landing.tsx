@@ -23,7 +23,11 @@ import {
   Youtube,
   Play,
   ZoomIn,
-  ChevronUp
+  ChevronUp,
+  Leaf,
+  Compass,
+  Zap,
+  DollarSign
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
@@ -603,12 +607,21 @@ export default function Landing() {
             <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
                 const colors = [
-                  'bg-gradient-to-br from-yellow-400 to-orange-500', // Naturaleza - Yellow/Orange
+                  'bg-gradient-to-br from-green-500 to-emerald-600', // Naturaleza - Green
                   'bg-gradient-to-br from-pink-500 to-rose-600',     // Comunidad - Pink
                   'bg-gradient-to-br from-teal-400 to-cyan-500',     // Diseño - Teal  
                   'bg-gradient-to-br from-blue-600 to-indigo-700',   // Tecnología - Blue
                   'bg-gradient-to-br from-purple-500 to-violet-600', // Ciudad - Purple
-                  'bg-gradient-to-br from-green-500 to-emerald-600'  // Finanzas - Green
+                  'bg-gradient-to-br from-yellow-400 to-orange-500'  // Finanzas - Orange
+                ];
+                
+                const icons = [
+                  <Leaf className="w-8 h-8" />,           // Naturaleza
+                  <Users className="w-8 h-8" />,          // Comunidad
+                  <Compass className="w-8 h-8" />,        // Diseño
+                  <Zap className="w-8 h-8" />,            // Tecnología
+                  <Building className="w-8 h-8" />,       // Ciudad
+                  <DollarSign className="w-8 h-8" />      // Finanzas
                 ];
                 
                 const isHovered = hoveredAxis === index;
@@ -693,11 +706,11 @@ export default function Landing() {
                         </button>
                       </div>
                       
-                      {/* Vertical Title for Non-Expanded State - Hidden on Mobile */}
+                      {/* Minimalist Icon for Non-Expanded State - Hidden on Mobile */}
                       {!isExpanded && (
-                        <div className="hidden md:block absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 origin-center">
-                          <div className="text-xs font-semibold text-white/70 whitespace-nowrap">
-                            {eje.título.replace(/^\d+\.\s*/, '').split(' ').slice(0, 2).join(' ')}
+                        <div className="hidden md:block absolute right-6 top-1/2 transform -translate-y-1/2">
+                          <div className="text-white/80">
+                            {icons[index]}
                           </div>
                         </div>
                       )}
