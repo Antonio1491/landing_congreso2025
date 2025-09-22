@@ -36,7 +36,7 @@ import eventosSocialesUrl from "@assets/Eventos Sociales_1758578349366.jpg";
 import masterClassesIconUrl from "@assets/Master Classes_1758578569492.png";
 import conferenciasIconUrl from "@assets/Conferencias Magistrales_1758578569495.png";
 import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
-import expoIconUrl from "@assets/Master Classes_1758578569492.png"; // Temporal fix for encoding issue
+import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 
@@ -513,7 +513,7 @@ export default function Landing() {
       {/* Experiences Section */}
       <section id="experiencias" className="py-16" style={{ backgroundColor: '#35219b' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-center mb-12" data-testid="experiences-title">
               <span className="experience-title-experiencias">EXPERIENCIAS</span>
               <span className="experience-title-evento">DEL EVENTO</span>
@@ -541,7 +541,7 @@ export default function Landing() {
                         className="w-full h-48 object-cover"
                       />
                     </div>
-                    <CardContent className="p-6 flex-1">
+                    <CardContent className="p-8 flex-1">
                       <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
                       <p className="text-gray-600 mb-4 leading-relaxed flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
                       <div className="flex items-center text-sm font-medium mt-auto" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
