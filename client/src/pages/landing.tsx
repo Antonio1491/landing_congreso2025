@@ -753,6 +753,11 @@ export default function Landing() {
                     SESIONES EDUCATIVAS
                   </h4>
                   
+                  {/* Descripción */}
+                  <p className="text-gray-600 mb-6 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
+                  </p>
+                  
                   {/* Fechas */}
                   <div className="mb-6 text-center">
                     <p className="text-gray-700 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -794,6 +799,11 @@ export default function Landing() {
                   <h4 className="text-xl font-bold text-center mb-4 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     POSTER CIENTÍFICO
                   </h4>
+                  
+                  {/* Descripción */}
+                  <p className="text-gray-600 mb-6 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
+                  </p>
                   
                   {/* Fechas */}
                   <div className="mb-6 text-center">
