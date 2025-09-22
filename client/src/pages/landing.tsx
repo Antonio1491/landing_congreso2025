@@ -427,7 +427,7 @@ export default function Landing() {
       </section>
 
       {/* Information Section */}
-      <section id="info" className="py-16 bg-muted">
+      <section id="info" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="info-title">¿Qué es el Congreso Parques?</h2>
@@ -438,51 +438,43 @@ export default function Landing() {
               </p>
             </div>
 
-            <div className="max-w-2xl mx-auto mb-12">
-              <Card className="bg-white p-8 shadow-sm border border-border" data-testid="info-details-card">
-                <CardContent className="p-0">
-                  <h3 className="text-2xl font-semibold mb-6 text-primary text-center">Detalles del Evento</h3>
-                  <ul className="space-y-4 text-muted-foreground">
-                    <li className="flex items-center gap-4 justify-center">
-                      <Calendar className="w-6 h-6 text-primary" />
-                      <span className="text-lg"><strong>13 al 15 de mayo de 2026</strong></span>
-                    </li>
-                    <li className="flex items-center gap-4 justify-center">
-                      <MapPin className="w-6 h-6 text-primary" />
-                      <span className="text-lg"><strong>Tijuana, Baja California, México</strong></span>
-                    </li>
-                    <li className="flex items-center gap-4 justify-center">
-                      <Users className="w-6 h-6 text-primary" />
-                      <span className="text-lg"><strong>Organizado por:</strong> ANPR México</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
 
-            <Card className="bg-white p-8 shadow-sm border border-border" data-testid="info-value-proposition">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-semibold mb-6 text-primary text-center">¿Por qué asistir?</h3>
-                <ul className="space-y-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Conecta con líderes y profesionales del sector.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Descubre tendencias globales y soluciones innovadoras.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Aprende de expertos nacionales e internacionales.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Vive una experiencia única de capacitación, inspiración y networking.</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="bg-white" data-testid="info-value-proposition">
+              <svg width="0" height="0" style={{ position: 'absolute' }}>
+                <defs>
+                  <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#d0dd15" />
+                    <stop offset="100%" stopColor="#00deff" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div className="flex flex-col items-center text-center">
+                  <div className="icon-container-gradient mb-4">
+                    <Users className="w-8 h-8" />
+                  </div>
+                  <p className="text-gray-700 font-medium">Conecta con líderes y profesionales del sector</p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="icon-container-gradient mb-4">
+                    <Target className="w-8 h-8" />
+                  </div>
+                  <p className="text-gray-700 font-medium">Descubre tendencias globales y soluciones innovadoras</p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="icon-container-gradient mb-4">
+                    <BookOpen className="w-8 h-8" />
+                  </div>
+                  <p className="text-gray-700 font-medium">Aprende de expertos nacionales e internacionales</p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="icon-container-gradient mb-4">
+                    <PartyPopper className="w-8 h-8" />
+                  </div>
+                  <p className="text-gray-700 font-medium">Vive una experiencia única de capacitación, inspiración y networking</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

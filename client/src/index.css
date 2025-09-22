@@ -463,6 +463,53 @@ html {
   opacity: 0.2;
 }
 
+/* Icon container with gradient */
+.icon-container-gradient {
+  width: 80px;
+  height: 80px;
+  background-color: #35219b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-container-gradient svg {
+  stroke: url(#iconGradient);
+  fill: none;
+  stroke-width: 2;
+  position: relative;
+  z-index: 2;
+}
+
+/* Add gradient definition for SVG */
+.icon-container-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: conic-gradient(from 0deg, #d0dd15, #00deff, #d0dd15);
+  border-radius: 50%;
+  padding: 3px;
+  z-index: 1;
+}
+
+.icon-container-gradient::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: #35219b;
+  border-radius: 50%;
+  z-index: 1;
+}
+
 @layer base {
   * {
     @apply border-border;
