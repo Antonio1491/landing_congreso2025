@@ -739,39 +739,46 @@ export default function Landing() {
             
             <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden min-h-[600px]" data-testid="call-educational">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ backgroundColor: '#35219b' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-6" style={{ backgroundColor: '#35219b', height: '84px' }}>
+                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col h-full">
-                  <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    SESIONES EDUCATIVAS
-                  </h4>
-                  
-                  {/* Descripción */}
-                  <p className="text-gray-600 mb-12 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
-                  </p>
-                  
-                  {/* Fechas */}
-                  <div className="mb-8 space-y-3">
-                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4" />
-                      <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
+                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
+                  <div>
+                    {/* Título */}
+                    <div style={{ height: '60px' }} className="flex items-center justify-center">
+                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        SESIONES EDUCATIVAS
+                      </h4>
                     </div>
-                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4" />
-                      <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                    
+                    {/* Descripción */}
+                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
+                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
+                      </p>
+                    </div>
+                    
+                    {/* Fechas */}
+                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
+                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4" />
+                        <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4" />
+                        <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                      </div>
                     </div>
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center mt-6">
+                  <div className="text-center">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
@@ -788,39 +795,46 @@ export default function Landing() {
               </div>
               
               {/* Convocatoria Poster Científico */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden min-h-[600px]" data-testid="call-poster">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ backgroundColor: '#35219b' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-6" style={{ backgroundColor: '#35219b', height: '84px' }}>
+                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col h-full">
-                  <h4 className="text-xl font-bold text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    POSTER CIENTÍFICO
-                  </h4>
-                  
-                  {/* Descripción */}
-                  <p className="text-gray-600 mb-12 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
-                  </p>
-                  
-                  {/* Fechas */}
-                  <div className="mb-8 space-y-3">
-                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4" />
-                      <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
+                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
+                  <div>
+                    {/* Título */}
+                    <div style={{ height: '60px' }} className="flex items-center justify-center">
+                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        POSTER CIENTÍFICO
+                      </h4>
                     </div>
-                    <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4" />
-                      <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                    
+                    {/* Descripción */}
+                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
+                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
+                      </p>
+                    </div>
+                    
+                    {/* Fechas */}
+                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
+                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4" />
+                        <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
+                      </div>
+                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4" />
+                        <span><strong>Cierre:</strong> 15 de enero, 2026</span>
+                      </div>
                     </div>
                   </div>
                   
                   {/* Botón */}
-                  <div className="text-center mt-6">
+                  <div className="text-center">
                     <button 
                       onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
