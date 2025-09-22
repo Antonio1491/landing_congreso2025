@@ -695,6 +695,51 @@ html {
   animation: scaleIn 0.8s ease-out forwards;
 }
 
+/* Hero Animation Classes */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.hero-animate.animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-date-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.hero-title-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+.hero-subtitle-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+.hero-button-animate {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  animation: slideInScale 1s ease-out 1.2s forwards;
+}
+
+@keyframes slideInScale {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Staggered animations for child elements */
 .stagger-children > * {
   opacity: 0;

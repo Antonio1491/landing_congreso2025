@@ -123,7 +123,6 @@ export default function Landing() {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
             if (sectionId && !animatedSections.has(sectionId)) {
-              console.log('Animating section:', sectionId);
               setAnimatedSections(prev => new Set(Array.from(prev).concat([sectionId])));
               entry.target.classList.add('animate');
               sectionsObserver.unobserve(entry.target);
@@ -443,7 +442,7 @@ export default function Landing() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-40">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="event-date-location mb-4 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0" data-testid="event-date-location">
+            <div className="event-date-location mb-4 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 <p className="text-base sm:text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
@@ -453,13 +452,13 @@ export default function Landing() {
                 <p className="text-sm sm:text-base md:text-lg font-medium">TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2" data-testid="hero-title">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2 hero-title-animate" data-testid="hero-title">
               IX Congreso Internacional de Parques Urbanos y Espacio Público
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2" data-testid="hero-subtitle">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate">
               <button 
                 onClick={() => scrollToSection('convocatorias')} 
                 className="hero-cta-button px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0"
