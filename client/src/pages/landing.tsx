@@ -527,7 +527,7 @@ export default function Landing() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                   data-testid={`experience-${index}`}
                 >
-                  <Card className="bg-white overflow-visible relative">
+                  <Card className="bg-white overflow-visible relative card-content">
                     <div className="experience-icon">
                       <img 
                         src={experiencia.iconUrl}
@@ -543,10 +543,10 @@ export default function Landing() {
                         className="w-full h-48 object-cover"
                       />
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1">
                       <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
-                      <div className="flex items-center text-sm font-medium" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                      <p className="text-gray-600 mb-4 leading-relaxed flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                      <div className="flex items-center text-sm font-medium mt-auto" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                         <Calendar className="w-4 h-4 mr-2" />
                         {experiencia.fecha}
                       </div>

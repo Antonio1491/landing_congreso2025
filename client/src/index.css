@@ -638,6 +638,13 @@ html {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   overflow: visible;
   margin: 20px;
+  height: 100%;
+}
+
+.experience-card .card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .experience-card.animate {
@@ -649,33 +656,6 @@ html {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.experience-card:hover::before,
-.experience-card:hover::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  z-index: 15;
-}
-
-.experience-card:hover::before {
-  top: 20%;
-  left: 10%;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 10px solid rgba(255, 255, 255, 0.8);
-  animation: triangleParticle1 1.5s ease-out;
-}
-
-.experience-card:hover::after {
-  top: 30%;
-  right: 15%;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 12px solid rgba(255, 255, 255, 0.6);
-  animation: triangleParticle2 1.8s ease-out;
-}
 
 .experience-card:hover .triangle-particle-3 {
   position: absolute;
@@ -713,7 +693,6 @@ html {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  border: 3px solid white;
 }
 
 .experience-icon img {
