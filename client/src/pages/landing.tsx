@@ -582,10 +582,12 @@ export default function Landing() {
                         className="w-full h-48 object-cover"
                       />
                     </div>
-                    <CardContent className="p-8 flex-1">
-                      <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
-                      <div className="flex items-center text-sm font-medium mt-auto" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                    <CardContent className="p-8 flex flex-col h-full">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold mb-3 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                        <p className="text-gray-600 mb-4 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                      </div>
+                      <div className="flex items-center justify-center text-sm font-medium mt-auto pt-4 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                         <Calendar className="w-4 h-4 mr-2" />
                         {experiencia.fecha}
                       </div>
