@@ -43,6 +43,9 @@ import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
 import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
+import logoANPRUrl from "@assets/LOGO ANPR_1758652591788.png";
+import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
+import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 
@@ -947,30 +950,37 @@ export default function Landing() {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity stagger-children">
-              <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
-                <div className="text-primary font-bold text-sm text-center">ANPR México</div>
-                <div className="text-xs text-muted-foreground text-center mt-1">Organizador Principal</div>
+            <div className="max-w-4xl mx-auto space-y-12">
+              {/* Organiza */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
+                <div className="flex justify-center">
+                  <img 
+                    src={logoANPRUrl} 
+                    alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                    className="h-20 object-contain"
+                    data-testid="logo-anpr"
+                  />
+                </div>
               </div>
-              <div className="bg-gray-100 p-4 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
-                <div className="text-gray-600 font-semibold text-sm text-center">Gobierno Tijuana</div>
-                <div className="text-xs text-gray-500 text-center mt-1">Aliado Estratégico</div>
-              </div>
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200 hover:border-green-300 transition-colors">
-                <div className="text-green-700 font-semibold text-sm text-center">ONU Hábitat</div>
-                <div className="text-xs text-green-600 text-center mt-1">Socio Internacional</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 hover:border-blue-300 transition-colors">
-                <div className="text-blue-700 font-semibold text-sm text-center">CONAVI</div>
-                <div className="text-xs text-blue-600 text-center mt-1">Institución Federal</div>
-              </div>
-              <div className="bg-orange-50 p-4 rounded-lg border border-orange-200 hover:border-orange-300 transition-colors">
-                <div className="text-orange-700 font-semibold text-sm text-center">Universidad CETYS</div>
-                <div className="text-xs text-orange-600 text-center mt-1">Socio Académico</div>
-              </div>
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 hover:border-purple-300 transition-colors">
-                <div className="text-purple-700 font-semibold text-sm text-center">Fundación Bancomer</div>
-                <div className="text-xs text-purple-600 text-center mt-1">Patrocinador</div>
+
+              {/* Presenta */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                  <img 
+                    src={logoFIDEMUrl} 
+                    alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
+                    className="h-16 object-contain"
+                    data-testid="logo-fidem"
+                  />
+                  <img 
+                    src={logoCDTUrl} 
+                    alt="CDT - Centro de Desarrollo Tijuana" 
+                    className="h-16 object-contain"
+                    data-testid="logo-cdt"
+                  />
+                </div>
               </div>
             </div>
           </div>
