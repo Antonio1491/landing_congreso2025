@@ -743,7 +743,7 @@ export default function Landing() {
               {/* Convocatoria Sesiones Educativas */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ backgroundColor: '#35219b', height: '84px' }}>
+                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
@@ -799,7 +799,7 @@ export default function Landing() {
               {/* Convocatoria Poster Científico */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ backgroundColor: '#35219b', height: '84px' }}>
+                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
