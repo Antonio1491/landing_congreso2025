@@ -577,6 +577,7 @@ html {
   flex-direction: column;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .experience-card.animate {
@@ -584,9 +585,14 @@ html {
 }
 
 .experience-card:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
-  z-index: 10 !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .card-content {
+  background-color: #f8f9ff;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .experience-icon {
