@@ -560,7 +560,7 @@ export default function Landing() {
               <span className="experience-title-evento">DEL EVENTO</span>
             </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiencias.map((experiencia, index) => (
                 <div 
                   key={index} 
@@ -568,7 +568,7 @@ export default function Landing() {
                   style={{ animationDelay: `${index * 0.1}s` }}
                   data-testid={`experience-${index}`}
                 >
-                  <Card className="bg-white overflow-visible relative card-content" style={{ margin: '15px 10px' }}>
+                  <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px 8px' }}>
                     <div className="experience-icon">
                       <img 
                         src={experiencia.iconUrl}
