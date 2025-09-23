@@ -734,10 +734,10 @@ export default function Landing() {
       </section>
 
       {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 bg-white section-animate animate-fadeInLeft">
+      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft" style={{ backgroundColor: '#35219b' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="calls-title">Convocatorias 2026</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="calls-title">Convocatorias 2026</h2>
             
             <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
