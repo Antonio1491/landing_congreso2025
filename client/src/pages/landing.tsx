@@ -965,21 +965,25 @@ export default function Landing() {
               </div>
 
               {/* Presenta */}
-              <div className="text-center">
-                <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
-                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-                  <img 
-                    src={logoFIDEMUrl} 
-                    alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
-                    className="h-16 object-contain"
-                    data-testid="logo-fidem"
-                  />
-                  <img 
-                    src={logoCDTUrl} 
-                    alt="CDT - Centro de Desarrollo Tijuana" 
-                    className="h-16 object-contain"
-                    data-testid="logo-cdt"
-                  />
+              <div>
+                <h3 className="text-xl font-bold mb-6 text-right" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
+                <div className="flex flex-col md:flex-row items-end justify-end gap-6 md:gap-8">
+                  <div className="bg-white rounded-lg shadow-md p-4">
+                    <img 
+                      src={logoFIDEMUrl} 
+                      alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
+                      className="h-16 object-contain"
+                      data-testid="logo-fidem"
+                    />
+                  </div>
+                  <div className="bg-white rounded-lg shadow-md p-4">
+                    <img 
+                      src={logoCDTUrl} 
+                      alt="CDT - Centro de Desarrollo Tijuana" 
+                      className="h-16 object-contain"
+                      data-testid="logo-cdt"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
