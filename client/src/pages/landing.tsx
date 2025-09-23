@@ -955,13 +955,20 @@ export default function Landing() {
                 {/* Organiza */}
                 <div className="text-center">
                   <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-                  <div className="bg-white rounded-lg shadow-md p-6 w-48 h-32 flex items-center justify-center">
-                    <img 
-                      src={logoANPRUrl} 
-                      alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
-                      className="max-h-20 max-w-full object-contain"
-                      data-testid="logo-anpr"
-                    />
+                  <div className="bg-white rounded-lg shadow-md p-4 w-48 h-24 flex items-center justify-center">
+                    <a 
+                      href="https://anpr.org.mx/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-full h-full"
+                    >
+                      <img 
+                        src={logoANPRUrl} 
+                        alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                        className="max-h-16 max-w-full object-contain hover:scale-105 transition-transform"
+                        data-testid="logo-anpr"
+                      />
+                    </a>
                   </div>
                 </div>
 
@@ -969,7 +976,7 @@ export default function Landing() {
                 <div className="text-center">
                   <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
                   <div className="flex flex-col md:flex-row gap-4">
-                    <div className="bg-white rounded-lg shadow-md p-6 w-48 h-32 flex items-center justify-center">
+                    <div className="bg-white rounded-lg shadow-md p-4 w-48 h-24 flex items-center justify-center">
                       <img 
                         src={logoFIDEMUrl} 
                         alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
@@ -977,13 +984,20 @@ export default function Landing() {
                         data-testid="logo-fidem"
                       />
                     </div>
-                    <div className="bg-white rounded-lg shadow-md p-6 w-48 h-32 flex items-center justify-center">
-                      <img 
-                        src={logoCDTUrl} 
-                        alt="CDT - Centro de Desarrollo Tijuana" 
-                        className="max-h-16 max-w-full object-contain"
-                        data-testid="logo-cdt"
-                      />
+                    <div className="bg-white rounded-lg shadow-md p-4 w-48 h-24 flex items-center justify-center">
+                      <a 
+                        href="https://cdt.org.mx/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-full h-full"
+                      >
+                        <img 
+                          src={logoCDTUrl} 
+                          alt="CDT - Centro de Desarrollo Tijuana" 
+                          className="max-h-16 max-w-full object-contain hover:scale-105 transition-transform"
+                          data-testid="logo-cdt"
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
