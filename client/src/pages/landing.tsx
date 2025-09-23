@@ -606,7 +606,26 @@ export default function Landing() {
       <section id="ejes" className="py-16 bg-white overflow-hidden section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="axes-title">Ejes Temáticos</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 flex items-center justify-center gap-4" data-testid="axes-title">
+              <span 
+                className="px-6 py-3 text-white font-bold uppercase rounded-lg"
+                style={{ 
+                  backgroundColor: '#0e0477',
+                  fontFamily: 'Antonio, sans-serif'
+                }}
+              >
+                EJES
+              </span>
+              <span 
+                className="font-black uppercase"
+                style={{ 
+                  color: '#0e0477',
+                  fontFamily: 'Montserrat, sans-serif'
+                }}
+              >
+                TEMÁTICOS
+              </span>
+            </h2>
             
             <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
