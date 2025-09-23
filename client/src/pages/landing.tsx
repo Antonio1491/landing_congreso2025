@@ -643,12 +643,12 @@ export default function Landing() {
                 ];
                 
                 const textColors = [
-                  '#000000', // Negro para Naturaleza (fondo claro)
+                  '#0e0477', // Azul oscuro para Naturaleza (fondo claro)
                   '#ffffff', // Blanco para Comunidad
-                  '#000000', // Negro para Diseño (fondo claro)
+                  '#0e0477', // Azul oscuro para Diseño (fondo claro)
                   '#ffffff', // Blanco para Tecnología (fondo oscuro)
                   '#ffffff', // Blanco para Ciudad (fondo oscuro)
-                  '#000000'  // Negro para Finanzas (fondo claro)
+                  '#0e0477'  // Azul oscuro para Finanzas (fondo claro)
                 ];
                 
                 const icons = [
