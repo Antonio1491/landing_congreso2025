@@ -458,14 +458,14 @@ export default function Landing() {
             <div className="event-date-location mb-4 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-base sm:text-lg md:text-xl font-semibold">21-23 DE MAYO, 2026</p>
+                <p className="text-base sm:text-lg md:text-xl font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>21-23 DE MAYO, 2026</p>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-sm sm:text-base md:text-lg font-medium">TIJUANA, BAJA CALIFORNIA</p>
+                <p className="text-sm sm:text-base md:text-lg font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2 hero-title-animate" data-testid="hero-title">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional de Parques Urbanos y Espacio Público
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
