@@ -573,7 +573,7 @@ html {
 
 .experience-card .card-content {
   height: 100%;
-  min-height: 450px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
