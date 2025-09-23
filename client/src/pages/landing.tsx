@@ -950,39 +950,41 @@ export default function Landing() {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
             
-            <div className="max-w-4xl mx-auto space-y-12">
-              {/* Organiza */}
-              <div className="text-center">
-                <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-                <div className="flex justify-center">
-                  <img 
-                    src={logoANPRUrl} 
-                    alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
-                    className="h-20 object-contain"
-                    data-testid="logo-anpr"
-                  />
-                </div>
-              </div>
-
-              {/* Presenta */}
-              <div>
-                <h3 className="text-xl font-bold mb-6 text-right" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
-                <div className="flex flex-col md:flex-row items-end justify-end gap-6 md:gap-8">
-                  <div className="bg-white rounded-lg shadow-md p-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+                {/* Organiza */}
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
+                  <div className="bg-white rounded-lg shadow-md p-6">
                     <img 
-                      src={logoFIDEMUrl} 
-                      alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
-                      className="h-16 object-contain"
-                      data-testid="logo-fidem"
+                      src={logoANPRUrl} 
+                      alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                      className="h-20 object-contain"
+                      data-testid="logo-anpr"
                     />
                   </div>
-                  <div className="bg-white rounded-lg shadow-md p-4">
-                    <img 
-                      src={logoCDTUrl} 
-                      alt="CDT - Centro de Desarrollo Tijuana" 
-                      className="h-16 object-contain"
-                      data-testid="logo-cdt"
-                    />
+                </div>
+
+                {/* Presenta */}
+                <div className="text-center">
+                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
+                  <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                    <div className="bg-white rounded-lg shadow-md p-4">
+                      <img 
+                        src={logoFIDEMUrl} 
+                        alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
+                        className="h-16 object-contain"
+                        data-testid="logo-fidem"
+                      />
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-4">
+                      <img 
+                        src={logoCDTUrl} 
+                        alt="CDT - Centro de Desarrollo Tijuana" 
+                        className="h-16 object-contain"
+                        data-testid="logo-cdt"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
