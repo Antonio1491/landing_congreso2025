@@ -738,21 +738,19 @@ export default function Landing() {
       {/* Convocatorias Section */}
       <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
         {/* Imagen decorativa hojas izquierda */}
-        <div className="absolute bottom-0 left-0 w-32 h-40 z-0">
+        <div className="absolute w-40 h-48 z-5" style={{ bottom: '60px', left: '25%', transform: 'translateX(-50%)' }}>
           <img 
             src={hojasIzquierdaImg} 
             alt="Hojas decorativas izquierda"
-            className="w-full h-full object-cover opacity-30"
-            style={{ transform: 'translateX(-20%) translateY(30%)' }}
+            className="w-full h-full object-contain opacity-60"
           />
         </div>
         {/* Imagen decorativa hojas derecha */}
-        <div className="absolute bottom-0 right-0 w-32 h-40 z-0">
+        <div className="absolute w-40 h-48 z-5" style={{ bottom: '60px', right: '25%', transform: 'translateX(50%)' }}>
           <img 
             src={hojasDerechaImg} 
             alt="Hojas decorativas derecha"
-            className="w-full h-full object-cover opacity-30"
-            style={{ transform: 'translateX(20%) translateY(30%)' }}
+            className="w-full h-full object-contain opacity-60"
           />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
