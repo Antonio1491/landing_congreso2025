@@ -21,6 +21,7 @@ import {
   Linkedin,
   Instagram,
   Youtube,
+  Twitter,
   Play,
   ZoomIn,
   ChevronUp,
@@ -44,6 +45,7 @@ import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 import logoANPRUrl from "@assets/LOGO ANPR_1758652591788.png";
+import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
 import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
@@ -1009,71 +1011,72 @@ export default function Landing() {
 
 
       {/* Footer */}
-      <footer id="footer" className="bg-primary text-primary-foreground py-12">
+      <footer id="footer" className="py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8">
               {/* Logo and Description */}
               <div className="md:col-span-2">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-accent w-10 h-10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent-foreground font-bold text-lg">A</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-bold text-lg">ANPR México</div>
-                    <div className="text-xs text-primary-foreground/60">Asociación Nacional</div>
-                  </div>
+                  <a href="https://anpr.org.mx/" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src={logoANPRWhiteUrl} 
+                      alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                      className="h-16 object-contain hover:scale-105 transition-transform"
+                      data-testid="footer-logo-anpr"
+                    />
+                  </a>
                 </div>
-                <p className="text-primary-foreground/80 mb-4">
+                <p className="text-white/80 mb-4">
                   Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
                 </p>
-                <div className="text-2xl font-bold text-accent" data-testid="footer-hashtag">#CongresoParques2026</div>
+                <div className="text-2xl font-bold" style={{ color: '#BCCE16' }} data-testid="footer-hashtag">#CongresoParques2026</div>
               </div>
               
               {/* Links */}
               <div>
                 <h4 className="font-semibold mb-4">Enlaces</h4>
-                <ul className="space-y-2 text-primary-foreground/80">
-                  <li><a href="https://anprmexico.org/privacidad" className="hover:text-accent transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
-                  <li><a href="https://anprmexico.org/terminos" className="hover:text-accent transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
-                  <li><a href="https://anprmexico.org/faq" className="hover:text-accent transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+                <ul className="space-y-2 text-white/80">
+                  <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
+                  <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
+                  <li><a href="https://anpr.org.mx/faq" className="hover:opacity-80 transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
                 </ul>
               </div>
               
               {/* Contact */}
               <div>
                 <h4 className="font-semibold mb-4">Contacto</h4>
-                <ul className="space-y-2 text-primary-foreground/80">
+                <ul className="space-y-2 text-white/80">
                   <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
-                    <a href="mailto:congreso@anprmexico.org" className="hover:text-accent transition-colors" data-testid="footer-email">congreso@anprmexico.org</a>
+                    <a href="mailto:info@congresoparques.com" className="hover:opacity-80 transition-colors" data-testid="footer-email">info@congresoparques.com</a>
                   </li>
                   <li className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
-                    <a href="https://wa.me/526641234567" className="hover:text-accent transition-colors" data-testid="footer-whatsapp">+52 (664) 123-4567</a>
+                    <a href="https://wa.me/529993530691" className="hover:opacity-80 transition-colors" data-testid="footer-whatsapp">+52 999 353 0691</a>
                   </li>
                 </ul>
                 
                 {/* Social Icons */}
                 <div className="flex gap-4 mt-4">
-                  <a href="https://facebook.com/ANPRMexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="https://linkedin.com/company/anpr-mexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="LinkedIn" data-testid="social-linkedin">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="https://instagram.com/anprmexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                  <a href="https://www.instagram.com/congreso_parques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="https://youtube.com/@ANPRMexico" className="text-primary-foreground/80 hover:text-accent transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                  <a href="https://x.com/congreso_parque" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
+                    <Twitter className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.youtube.com/@anprmexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
               </div>
             </div>
             
-            <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-              <p>&copy; 2024 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
+            <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
+              <p>&copy; 2026 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
             </div>
           </div>
         </div>
