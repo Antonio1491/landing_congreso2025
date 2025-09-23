@@ -579,7 +579,7 @@ export default function Landing() {
                       <img 
                         src={experiencia.image} 
                         alt={experiencia.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-64 object-cover"
                       />
                     </div>
                     <CardContent className="p-8 flex flex-col h-full">
