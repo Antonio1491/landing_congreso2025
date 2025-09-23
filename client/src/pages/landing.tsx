@@ -78,9 +78,7 @@ function StatCounter({ target, duration = 2000 }: StatCounterProps) {
 export default function Landing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [imageModalOpen, setImageModalOpen] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState({ src: "", alt: "" });
   const [statsVisible, setStatsVisible] = useState(false);
   const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
   const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
@@ -177,10 +175,6 @@ export default function Landing() {
   };
 
 
-  const openImageModal = (src: string, alt: string) => {
-    setSelectedImage({ src, alt });
-    setImageModalOpen(true);
-  };
 
   const experiencias = [
     {
@@ -306,31 +300,36 @@ export default function Landing() {
     { valor: 250, etiqueta: "Expositores" }
   ];
 
-  const galeriaImagenes = [
+  const videosLegado = [
     {
-      src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Conferencia sobre desarrollo urbano sostenible"
+      embedUrl: "https://www.youtube.com/embed/Lr_ADiUJijc",
+      título: "MÉRIDA 2024",
+      año: "2024"
     },
     {
-      src: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Parque urbano moderno en Tijuana"
+      embedUrl: "https://www.youtube.com/embed/uqru5Tgoj_U",
+      título: "LEÓN 2023",
+      año: "2023"
     },
     {
-      src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Auditorio con asistentes al congreso"
+      embedUrl: "https://www.youtube.com/embed/Rov_ecOfY34",
+      título: "MUNDIAL MONTERREY 2022",
+      año: "2022"
     },
     {
-      src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Espacios públicos sostenibles con vegetación"
+      embedUrl: "https://www.youtube.com/embed/x_oSKftOUhY",
+      título: "LEÓN 2020",
+      año: "2020"
     },
     {
-      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-      thumbnail: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-      alt: "Red de profesionales en conferencia"
+      embedUrl: "https://www.youtube.com/embed/ZwH7OSGZxww",
+      título: "SALTA, ARGENTINA 2019",
+      año: "2019"
+    },
+    {
+      embedUrl: "https://www.youtube.com/embed/kOJ5Qm3vLHE",
+      título: "MÉRIDA 2018",
+      año: "2018"
     }
   ];
 
@@ -913,47 +912,30 @@ export default function Landing() {
               ))}
             </div>
 
-            {/* Gallery */}
+            {/* Videos del Legado */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {galeriaImagenes.map((imagen, index) => (
+              {videosLegado.map((video, index) => (
                 <div 
                   key={index}
-                  className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
-                  onClick={() => openImageModal(imagen.src, imagen.alt)}
-                  data-testid={`gallery-image-${index}`}
+                  className="relative overflow-hidden rounded-lg shadow-lg"
+                  data-testid={`legacy-video-${index}`}
                 >
-                  <img 
-                    src={imagen.thumbnail} 
-                    alt={imagen.alt} 
-                    className="w-full h-48 object-cover" 
-                    loading="lazy" 
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
-                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ZoomIn className="w-8 h-8" />
-                    </div>
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      src={video.embedUrl}
+                      title={video.título}
+                      className="absolute top-0 left-0 w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="p-4 bg-white">
+                    <h3 className="font-bold text-lg text-primary mb-1">{video.título}</h3>
+                    <p className="text-sm text-muted-foreground">{video.año}</p>
                   </div>
                 </div>
               ))}
-              
-              {/* Video placeholder */}
-              <div 
-                className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
-                onClick={() => setVideoModalOpen(true)}
-                data-testid="gallery-video"
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" 
-                  alt="Video resumen Congreso Parques" 
-                  className="w-full h-48 object-cover" 
-                  loading="lazy" 
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                  <div className="bg-white bg-opacity-90 rounded-full p-4">
-                    <Play className="w-8 h-8 text-primary" />
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1079,22 +1061,6 @@ export default function Landing() {
         <ChevronUp className="w-6 h-6" />
       </Button>
 
-      {/* Image Modal */}
-      <Dialog open={imageModalOpen} onOpenChange={setImageModalOpen}>
-        <DialogContent className="max-w-4xl max-h-full p-4" data-testid="image-modal">
-          <DialogHeader>
-            <DialogTitle className="sr-only">Galería de imágenes</DialogTitle>
-          </DialogHeader>
-          <div className="relative">
-            <img 
-              src={selectedImage.src} 
-              alt={selectedImage.alt} 
-              className="max-w-full max-h-[80vh] object-contain rounded-lg mx-auto"
-              data-testid="modal-image"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
 
       {/* Video Modal */}
       <Dialog open={videoModalOpen} onOpenChange={setVideoModalOpen}>
