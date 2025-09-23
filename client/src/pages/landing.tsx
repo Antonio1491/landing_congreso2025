@@ -298,12 +298,12 @@ export default function Landing() {
   ];
 
   const estadísticas = [
-    { valor: 8500, etiqueta: "Asistentes" },
-    { valor: 139, etiqueta: "Países" },
-    { valor: 550, etiqueta: "Ponentes" },
-    { valor: 270, etiqueta: "Conferencias" },
-    { valor: 75, etiqueta: "Talleres" },
-    { valor: 220, etiqueta: "Expositores" }
+    { valor: 9100, etiqueta: "Asistentes" },
+    { valor: 145, etiqueta: "Países" },
+    { valor: 600, etiqueta: "Ponentes" },
+    { valor: 300, etiqueta: "Conferencias" },
+    { valor: 85, etiqueta: "Talleres" },
+    { valor: 250, etiqueta: "Expositores" }
   ];
 
   const galeriaImagenes = [
