@@ -553,7 +553,7 @@ html {
 
 .experience-title-evento {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   color: white;
   font-size: clamp(24px, 4vw, 32px);
   display: block;

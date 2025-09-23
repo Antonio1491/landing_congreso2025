@@ -774,7 +774,7 @@ export default function Landing() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="calls-title">Convocatorias 2026</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
             
             <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
@@ -897,7 +897,7 @@ export default function Landing() {
       <section id="legado" className="py-16 bg-muted section-animate animate-scaleIn">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary" data-testid="legacy-title">Nuestro Legado</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="legacy-title">NUESTRO LEGADO</h2>
             
             {/* Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 stagger-children">
@@ -963,7 +963,7 @@ export default function Landing() {
       <section id="aliados" className="py-16 bg-white section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-primary" data-testid="partners-title">Aliados Estratégicos y Patrocinadores</h2>
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity stagger-children">
               <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors">
