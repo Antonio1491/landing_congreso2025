@@ -43,6 +43,8 @@ import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
 import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
+import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
+import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 
 
 interface StatCounterProps {
@@ -741,7 +743,16 @@ export default function Landing() {
             
             <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden relative" data-testid="call-educational">
+                {/* Imagen decorativa hojas izquierda */}
+                <div className="absolute bottom-0 right-0 w-24 h-32 z-0 overflow-hidden">
+                  <img 
+                    src={hojasIzquierdaImg} 
+                    alt="Hojas decorativas"
+                    className="w-full h-full object-cover opacity-70"
+                    style={{ transform: 'translateX(50%) translateY(20%)' }}
+                  />
+                </div>
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -750,7 +761,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
+                <div className="p-8 flex flex-col justify-between relative z-10" style={{ minHeight: '500px' }}>
                   <div>
                     {/* Título */}
                     <div style={{ height: '60px' }} className="flex items-center justify-center">
@@ -797,7 +808,16 @@ export default function Landing() {
               </div>
               
               {/* Convocatoria Poster Científico */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden relative" data-testid="call-poster">
+                {/* Imagen decorativa hojas derecha */}
+                <div className="absolute bottom-0 right-0 w-24 h-32 z-0 overflow-hidden">
+                  <img 
+                    src={hojasDerechaImg} 
+                    alt="Hojas decorativas"
+                    className="w-full h-full object-cover opacity-70"
+                    style={{ transform: 'translateX(50%) translateY(20%)' }}
+                  />
+                </div>
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -806,7 +826,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
+                <div className="p-8 flex flex-col justify-between relative z-10" style={{ minHeight: '500px' }}>
                   <div>
                     {/* Título */}
                     <div style={{ height: '60px' }} className="flex items-center justify-center">
