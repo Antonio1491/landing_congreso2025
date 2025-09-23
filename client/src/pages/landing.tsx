@@ -736,23 +736,32 @@ export default function Landing() {
       </section>
 
       {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft" style={{ backgroundColor: '#35219b' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
+        {/* Imagen decorativa hojas izquierda */}
+        <div className="absolute bottom-0 left-0 w-32 h-40 z-0">
+          <img 
+            src={hojasIzquierdaImg} 
+            alt="Hojas decorativas izquierda"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: 'translateX(-20%) translateY(30%)' }}
+          />
+        </div>
+        {/* Imagen decorativa hojas derecha */}
+        <div className="absolute bottom-0 right-0 w-32 h-40 z-0">
+          <img 
+            src={hojasDerechaImg} 
+            alt="Hojas decorativas derecha"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: 'translateX(20%) translateY(30%)' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white" data-testid="calls-title">Convocatorias 2026</h2>
             
             <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden relative" data-testid="call-educational">
-                {/* Imagen decorativa hojas izquierda */}
-                <div className="absolute bottom-0 right-0 w-24 h-32 z-0 overflow-hidden">
-                  <img 
-                    src={hojasIzquierdaImg} 
-                    alt="Hojas decorativas"
-                    className="w-full h-full object-cover opacity-70"
-                    style={{ transform: 'translateX(50%) translateY(20%)' }}
-                  />
-                </div>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -761,7 +770,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between relative z-10" style={{ minHeight: '500px' }}>
+                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
                   <div>
                     {/* Título */}
                     <div style={{ height: '60px' }} className="flex items-center justify-center">
@@ -808,16 +817,7 @@ export default function Landing() {
               </div>
               
               {/* Convocatoria Poster Científico */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden relative" data-testid="call-poster">
-                {/* Imagen decorativa hojas derecha */}
-                <div className="absolute bottom-0 right-0 w-24 h-32 z-0 overflow-hidden">
-                  <img 
-                    src={hojasDerechaImg} 
-                    alt="Hojas decorativas"
-                    className="w-full h-full object-cover opacity-70"
-                    style={{ transform: 'translateX(50%) translateY(20%)' }}
-                  />
-                </div>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -826,7 +826,7 @@ export default function Landing() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between relative z-10" style={{ minHeight: '500px' }}>
+                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
                   <div>
                     {/* Título */}
                     <div style={{ height: '60px' }} className="flex items-center justify-center">
