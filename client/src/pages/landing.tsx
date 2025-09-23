@@ -72,7 +72,7 @@ function StatCounter({ target, duration = 2000 }: StatCounterProps) {
     updateCounter();
   }, [target, duration]);
 
-  return <span className="stat-counter">{current.toLocaleString()}</span>;
+  return <span className="stat-counter">+{current.toLocaleString()}</span>;
 }
 
 export default function Landing() {
