@@ -633,13 +633,22 @@ export default function Landing() {
             
             <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
-                const colors = [
-                  'bg-gradient-to-br from-green-500 to-emerald-600', // Naturaleza - Green
-                  'bg-gradient-to-br from-pink-500 to-rose-600',     // Comunidad - Pink
-                  'bg-gradient-to-br from-teal-400 to-cyan-500',     // Diseño - Teal  
-                  'bg-gradient-to-br from-blue-600 to-indigo-700',   // Tecnología - Blue
-                  'bg-gradient-to-br from-purple-500 to-violet-600', // Ciudad - Purple
-                  'bg-gradient-to-br from-yellow-400 to-orange-500'  // Finanzas - Orange
+                const gradients = [
+                  'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
+                  'linear-gradient(to bottom right, #e47f71, #f819e1)', // Comunidad y Participación Ciudadana
+                  'linear-gradient(to bottom right, #45deaf, #00deff)', // Diseño, Operación y Gestión Eficiente
+                  'linear-gradient(to bottom right, #35219b, #0e0477)', // Tecnología e Innovación Urbana
+                  'linear-gradient(to bottom right, #6847f6, #5539d4)', // Ciudad, Movilidad y Gobernanza
+                  'linear-gradient(to bottom right, #d2dd0a, #e09757)'  // Finanzas, Patrocinios y Modelos de Ingreso
+                ];
+                
+                const textColors = [
+                  '#000000', // Negro para Naturaleza (fondo claro)
+                  '#ffffff', // Blanco para Comunidad
+                  '#000000', // Negro para Diseño (fondo claro)
+                  '#ffffff', // Blanco para Tecnología (fondo oscuro)
+                  '#ffffff', // Blanco para Ciudad (fondo oscuro)
+                  '#000000'  // Negro para Finanzas (fondo claro)
                 ];
                 
                 const icons = [
@@ -664,7 +673,8 @@ export default function Landing() {
                     tabIndex={0}
                     aria-expanded={isExpanded}
                     aria-label={`${eje.título}: ${eje.descripción}`}
-                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden ${colors[index]} focus:outline-none focus:ring-4 focus:ring-white/30 ${
+                    style={{ background: gradients[index] }}
+                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 ${
                       isExpanded 
                         ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
                         : isOtherExpanded 
@@ -686,11 +696,11 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-6 flex flex-col justify-between text-white relative">
+                    <div className="h-full p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
                       {/* Main Content */}
                       <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
                         <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold text-white leading-tight transition-all duration-300 ${
+                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
                           isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
@@ -700,15 +710,15 @@ export default function Landing() {
                         <div className={`transition-all duration-300 overflow-hidden ${
                           isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <p className="text-sm text-white/90 mb-4 leading-relaxed">
+                          <p className="text-sm mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
                             {eje.descripción}
                           </p>
                           <div className="space-y-2">
-                            <div className="text-xs font-semibold text-white/80 mb-2">TEMAS PRINCIPALES:</div>
-                            <ul className="text-xs text-white/80 space-y-1">
+                            <div className="text-xs font-semibold mb-2" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
+                            <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
                               {eje.subtemas.map((subtema, subIndex) => (
                                 <li key={subIndex} className="flex items-start gap-2">
-                                  <span className="text-white/60 mt-0.5">•</span>
+                                  <span className="mt-0.5" style={{ opacity: 0.6 }}>•</span>
                                   <span>{subtema}</span>
                                 </li>
                               ))}
