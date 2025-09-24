@@ -833,7 +833,7 @@ export default function Landing() {
                   {/* Botón */}
                   <div className="text-center">
                     <button 
-                      onClick={() => window.open('https://anprmexico.org/convocatoria-sesiones-2026', '_blank')}
+                      onClick={() => window.open('https://congresoparques.com/registro_sesiones.php', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
                       style={{ 
                         backgroundColor: '#35219b',
@@ -841,7 +841,7 @@ export default function Landing() {
                       }}
                       data-testid="cta-educational"
                     >
-                      CONSULTA LAS BASES
+                      REGÍSTRATE
                     </button>
                   </div>
                 </div>
@@ -889,7 +889,7 @@ export default function Landing() {
                   {/* Botón */}
                   <div className="text-center">
                     <button 
-                      onClick={() => window.open('https://anprmexico.org/convocatoria-poster-2026', '_blank')}
+                      onClick={() => window.open('https://congresoparques.com/registro_posters.php', '_blank')}
                       className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
                       style={{ 
                         backgroundColor: '#35219b',
@@ -897,7 +897,7 @@ export default function Landing() {
                       }}
                       data-testid="cta-poster"
                     >
-                      CONSULTA LAS BASES
+                      REGÍSTRATE
                     </button>
                   </div>
                 </div>
