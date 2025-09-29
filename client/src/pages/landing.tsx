@@ -25,10 +25,12 @@ import {
   Play,
   ZoomIn,
   ChevronUp,
+  ChevronDown,
   Leaf,
   Compass,
   Zap,
-  DollarSign
+  DollarSign,
+  TreePine
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
@@ -718,8 +720,10 @@ export default function Landing() {
               </span>
             </h2>
             
-            {/* Axes Container - Completely responsive */}
-            <div className="flex flex-col md:flex-row gap-3 md:gap-2 md:h-96 relative">
+            {/* Mobile Design: Stack cards, Desktop: Flex row */}
+            <div className="md:flex md:flex-row md:gap-2 md:h-96 relative">
+              {/* Mobile-only design */}
+              <div className="md:hidden space-y-3">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
                   'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
@@ -754,26 +758,80 @@ export default function Landing() {
                 const isOtherExpanded = (hoveredAxis !== null && hoveredAxis !== index) || (selectedAxis !== null && selectedAxis !== index);
                 
                 
-                return (
+                // Mobile-specific design
+                const mobileCard = (
                   <div
-                    key={index}
+                    key={`mobile-${index}`}
+                    className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 touch-manipulation"
+                    data-testid={`axis-mobile-${index}`}
+                  >
+                    {/* Mobile Header */}
+                    <div 
+                      className="h-20 flex items-center px-4 relative overflow-hidden"
+                      style={{ background: gradients[index] }}
+                    >
+                      <div className="flex items-center gap-3 w-full">
+                        <div className="text-white">
+                          {React.cloneElement(icons[index], { className: 'w-6 h-6' })}
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-xs font-medium text-white/80 mb-1">CONGRESO PARQUES</div>
+                          <h3 className="text-sm font-bold text-white leading-tight">
+                            {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                          </h3>
+                        </div>
+                        <button 
+                          onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
+                          className="text-white p-1 rounded-full hover:bg-white/20 transition-colors"
+                          aria-label={`${isSelected ? 'Cerrar' : 'Abrir'} información de ${eje.título}`}
+                        >
+                          {isSelected ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Mobile Expandable Content */}
+                    <div className={`transition-all duration-300 overflow-hidden ${
+                      isSelected ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="p-4 border-t border-gray-100">
+                        <p className="text-gray-700 text-sm leading-relaxed mb-3">
+                          {eje.descripción}
+                        </p>
+                        <div className="flex justify-between items-center">
+                          <span className="text-xs text-gray-500 font-medium">VER MÁS DETALLES</span>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              scrollToSection('convocatorias');
+                            }}
+                            className="bg-gray-800 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-700 transition-colors"
+                          >
+                            MÁS INFO →
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+                
+                // Desktop design (existing)
+                const desktopCard = (
+                  <div
+                    key={`desktop-${index}`}
                     role="button"
                     tabIndex={0}
                     aria-expanded={isExpanded}
                     aria-label={`${eje.título}: ${eje.descripción}`}
                     style={{ background: gradients[index] }}
-                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 touch-manipulation ${
+                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 ${
                       isExpanded 
-                        ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
+                        ? 'flex-[2] shadow-2xl transform scale-105' 
                         : isOtherExpanded 
-                          ? 'md:flex-[0.5] opacity-75' 
+                          ? 'flex-[0.5] opacity-75' 
                           : 'flex-1 hover:shadow-lg'
-                    } ${
-                      isExpanded 
-                        ? 'min-h-[160px] sm:min-h-[180px] md:h-auto md:h-full' 
-                        : 'min-h-[80px] sm:min-h-[100px] md:h-full'
-                    }`}
-                    data-testid={`axis-${index}`}
+                    } h-full`}
+                    data-testid={`axis-desktop-${index}`}
                     onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
@@ -784,58 +842,47 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-2 sm:p-3 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
-                      {/* Icon for Mobile - Top right corner */}
-                      <div className="md:hidden absolute top-2 right-2 opacity-70">
-                        <div className="text-current">
-                          {React.cloneElement(icons[index], { className: 'w-5 h-5' })}
-                        </div>
-                      </div>
-                      
-                      {/* Main Content */}
-                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-0 md:translate-y-4'}`}>
-                        <div className="text-xs font-semibold mb-1 sm:mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold leading-tight transition-all duration-300 pr-8 md:pr-0 ${
-                          isExpanded ? 'text-sm sm:text-base md:text-xl mb-2 sm:mb-3 md:mb-4' : 'text-xs sm:text-sm md:text-lg mb-1 md:mb-2'
+                    <div className="h-full p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                      {/* Desktop Main Content */}
+                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
+                        <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
+                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
+                          isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
                         
-                        {/* Mobile: Show expanded content when selected, Desktop: Show on hover/click */}
+                        {/* Desktop: Show expanded content on hover/click */}
                         <div className={`transition-all duration-300 overflow-hidden ${
-                          isExpanded ? 'max-h-32 sm:max-h-40 md:max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <p className="text-xs leading-tight mb-2 sm:mb-3" style={{ opacity: 0.9 }}>
+                          <p className="text-sm mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
                             {eje.descripción}
                           </p>
-                          {/* Hide subtemas on mobile to save space */}
-                          <div className="hidden sm:block">
-                            <div className="text-xs font-semibold mb-1" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
-                            <ul className="text-xs space-y-0.5" style={{ opacity: 0.8 }}>
-                              {eje.subtemas.slice(0, 3).map((subtema, subIndex) => (
-                                <li key={subIndex} className="flex items-start gap-1">
+                          <div className="space-y-2">
+                            <div className="text-xs font-semibold mb-2" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
+                            <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
+                              {eje.subtemas.map((subtema, subIndex) => (
+                                <li key={subIndex} className="flex items-start gap-2">
                                   <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
-                                  <span className="text-xs leading-tight">{subtema}</span>
+                                  <span>{subtema}</span>
                                 </li>
                               ))}
-                              {eje.subtemas.length > 3 && (
-                                <li className="text-xs italic" style={{ opacity: 0.6 }}>...y más</li>
-                              )}
                             </ul>
                           </div>
                         </div>
                       </div>
                       
-                      {/* MORE INFO Button - Mobile Optimized */}
-                      <div className={`mt-auto transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-0 md:translate-y-2'
+                      {/* Desktop MORE INFO Button */}
+                      <div className={`transition-all duration-300 ${
+                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-2'
                       }`}>
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[28px] sm:min-h-[32px] touch-manipulation"
+                          className="bg-black/20 hover:bg-black/30 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
                         >
                           MÁS INFO →
                         </button>
@@ -843,7 +890,7 @@ export default function Landing() {
                       
                       {/* Desktop Icon for Non-Expanded State */}
                       {!isExpanded && (
-                        <div className="hidden md:block absolute right-4 lg:right-6 top-1/2 transform -translate-y-1/2">
+                        <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
                           <div className="text-current opacity-80">
                             {icons[index]}
                           </div>
@@ -852,7 +899,18 @@ export default function Landing() {
                     </div>
                   </div>
                 );
+                
+                return (
+                  <React.Fragment key={index}>
+                    {/* Mobile card - only show in mobile container */}
+                    <div className="md:hidden">{mobileCard}</div>
+                    {/* Desktop card - only show in desktop container */}
+                    <div className="hidden md:block">{desktopCard}</div>
+                  </React.Fragment>
+                );
               })}
+              </div>
+              
             </div>
             
             {/* Instructions */}
