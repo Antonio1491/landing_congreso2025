@@ -731,24 +731,23 @@ export default function Landing() {
                     style={{ background: backgrounds[index] }}
                     data-testid={`axis-${index}`}
                   >
-                    {/* Mobile Simple Design */}
-                    <div className="md:hidden p-5 text-white">
-                      <div className="text-xs font-bold mb-2 opacity-90 uppercase tracking-wide">
-                        CONGRESO PARQUES
+                    {/* Mobile Compact Design - No text cutoff */}
+                    <div className="md:hidden p-4 text-white flex flex-col justify-between min-h-[140px]">
+                      <div>
+                        <div className="text-[10px] font-bold mb-1.5 opacity-80 uppercase tracking-wider">
+                          CONGRESO PARQUES
+                        </div>
+                        <h3 className="text-base font-black leading-tight break-words hyphens-auto" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-mobile-${index}`}>
+                          {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                        </h3>
                       </div>
-                      <h3 className="text-xl font-black leading-tight mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-mobile-${index}`}>
-                        {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                      </h3>
-                      <p className="text-sm leading-relaxed opacity-95 mb-4">
-                        {eje.descripción}
-                      </p>
                       <button 
                         onClick={() => scrollToSection('convocatorias')}
-                        className="bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-sm text-white text-sm font-bold px-5 py-2.5 rounded-full border-2 border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
+                        className="bg-white/25 hover:bg-white/35 active:bg-white/45 text-white text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 w-fit mt-3"
                         data-testid={`button-axis-mobile-${index}`}
                         aria-label={`Ver más información sobre ${eje.título.replace(/^\d+\.\s*/, '')}`}
                       >
-                        MÁS INFO →
+                        VER MÁS →
                       </button>
                     </div>
 
