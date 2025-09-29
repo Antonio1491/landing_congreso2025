@@ -770,8 +770,8 @@ export default function Landing() {
                           : 'flex-1 hover:shadow-lg'
                     } ${
                       isExpanded 
-                        ? 'min-h-[300px] md:h-auto md:h-full' 
-                        : 'min-h-[100px] sm:min-h-[120px] md:h-full'
+                        ? 'min-h-[160px] sm:min-h-[180px] md:h-auto md:h-full' 
+                        : 'min-h-[80px] sm:min-h-[100px] md:h-full'
                     }`}
                     data-testid={`axis-${index}`}
                     onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
@@ -784,7 +784,7 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-3 sm:p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                    <div className="h-full p-2 sm:p-3 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
                       {/* Icon for Mobile - Top right corner */}
                       <div className="md:hidden absolute top-2 right-2 opacity-70">
                         <div className="text-current">
@@ -796,42 +796,46 @@ export default function Landing() {
                       <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-0 md:translate-y-4'}`}>
                         <div className="text-xs font-semibold mb-1 sm:mb-2 opacity-90">CONGRESO PARQUES</div>
                         <h3 className={`font-bold leading-tight transition-all duration-300 pr-8 md:pr-0 ${
-                          isExpanded ? 'text-base sm:text-lg md:text-xl mb-3 md:mb-4' : 'text-sm sm:text-base md:text-lg mb-1 md:mb-2'
+                          isExpanded ? 'text-sm sm:text-base md:text-xl mb-2 sm:mb-3 md:mb-4' : 'text-xs sm:text-sm md:text-lg mb-1 md:mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
                         
                         {/* Mobile: Show expanded content when selected, Desktop: Show on hover/click */}
                         <div className={`transition-all duration-300 overflow-hidden ${
-                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                          isExpanded ? 'max-h-32 sm:max-h-40 md:max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <p className="text-xs sm:text-sm mb-3 md:mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
+                          <p className="text-xs leading-tight mb-2 sm:mb-3" style={{ opacity: 0.9 }}>
                             {eje.descripción}
                           </p>
-                          <div className="space-y-2">
-                            <div className="text-xs font-semibold mb-2" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
-                            <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
-                              {eje.subtemas.map((subtema, subIndex) => (
-                                <li key={subIndex} className="flex items-start gap-2">
+                          {/* Hide subtemas on mobile to save space */}
+                          <div className="hidden sm:block">
+                            <div className="text-xs font-semibold mb-1" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
+                            <ul className="text-xs space-y-0.5" style={{ opacity: 0.8 }}>
+                              {eje.subtemas.slice(0, 3).map((subtema, subIndex) => (
+                                <li key={subIndex} className="flex items-start gap-1">
                                   <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
-                                  <span>{subtema}</span>
+                                  <span className="text-xs leading-tight">{subtema}</span>
                                 </li>
                               ))}
+                              {eje.subtemas.length > 3 && (
+                                <li className="text-xs italic" style={{ opacity: 0.6 }}>...y más</li>
+                              )}
                             </ul>
                           </div>
                         </div>
                       </div>
                       
                       {/* MORE INFO Button - Mobile Optimized */}
-                      <div className={`transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-1 md:translate-y-2'
+                      <div className={`mt-auto transition-all duration-300 ${
+                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-0 md:translate-y-2'
                       }`}>
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[32px] touch-manipulation"
+                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[28px] sm:min-h-[32px] touch-manipulation"
                         >
                           MÁS INFO →
                         </button>
