@@ -25,12 +25,10 @@ import {
   Play,
   ZoomIn,
   ChevronUp,
-  ChevronDown,
   Leaf,
   Compass,
   Zap,
-  DollarSign,
-  TreePine
+  DollarSign
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
@@ -720,10 +718,8 @@ export default function Landing() {
               </span>
             </h2>
             
-            {/* Mobile Design: Stack cards, Desktop: Flex row */}
-            <div className="md:flex md:flex-row md:gap-2 md:h-96 relative">
-              {/* Mobile-only design with full width */}
-              <div className="md:hidden">
+            {/* Axes Container - Completely responsive */}
+            <div className="flex flex-col md:flex-row gap-3 md:gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
                   'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
@@ -758,131 +754,26 @@ export default function Landing() {
                 const isOtherExpanded = (hoveredAxis !== null && hoveredAxis !== index) || (selectedAxis !== null && selectedAxis !== index);
                 
                 
-                // Mobile-specific design
-                const mobileCard = (
+                return (
                   <div
-                    key={`mobile-${index}`}
-                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 touch-manipulation mb-4 mx-2"
-                    data-testid={`axis-mobile-${index}`}
-                  >
-                    {/* Mobile Header with gradient and modern styling */}
-                    <div 
-                      className="relative overflow-hidden"
-                      style={{ background: gradients[index] }}
-                    >
-                      {/* Decorative pattern overlay */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="h-full w-full" style={{
-                          backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 50%)'
-                        }}></div>
-                      </div>
-                      
-                      <button 
-                        onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
-                        className="w-full p-5 text-left relative z-10 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-200 active:scale-[0.98]"
-                        aria-label={`${isSelected ? 'Cerrar' : 'Abrir'} información de ${eje.título}`}
-                      >
-                        <div className="flex items-center gap-4">
-                          {/* Icon with background circle */}
-                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 shrink-0">
-                            {React.cloneElement(icons[index], { className: 'w-6 h-6 text-white' })}
-                          </div>
-                          
-                          <div className="flex-1 min-w-0">
-                            <div className="text-xs font-semibold text-white/80 mb-1.5 uppercase tracking-wide">
-                              CONGRESO PARQUES
-                            </div>
-                            <h3 className="text-xl font-black text-white leading-tight mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                              {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                            </h3>
-                            <div className="text-sm text-white/90 font-medium">
-                              Toca para {isSelected ? 'cerrar' : 'explorar'}
-                            </div>
-                          </div>
-                          
-                          {/* Chevron indicator */}
-                          <div className="bg-white/10 rounded-full p-2">
-                            {isSelected ? 
-                              <ChevronUp className="w-5 h-5 text-white" /> : 
-                              <ChevronDown className="w-5 h-5 text-white" />
-                            }
-                          </div>
-                        </div>
-                      </button>
-                    </div>
-                    
-                    {/* Mobile Expandable Content with improved styling and height */}
-                    <div className={`transition-all duration-500 ease-out overflow-hidden ${
-                      isSelected ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
-                      <div className="px-4 py-5 bg-gradient-to-b from-gray-50 to-white">
-                        <div className="mb-5">
-                          <p className="text-gray-700 text-base leading-relaxed font-medium">
-                            {eje.descripción}
-                          </p>
-                        </div>
-                        
-                        {/* Topics preview with better layout */}
-                        <div className="mb-5">
-                          <h4 className="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                            Temas principales
-                          </h4>
-                          <div className="grid grid-cols-1 gap-2">
-                            {eje.subtemas.slice(0, 4).map((subtema, subIndex) => (
-                              <div 
-                                key={subIndex}
-                                className="bg-white p-3 rounded-xl text-sm text-gray-700 border border-gray-200 shadow-sm flex items-center gap-3"
-                              >
-                                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0"></div>
-                                <span className="font-medium">{subtema}</span>
-                              </div>
-                            ))}
-                            {eje.subtemas.length > 4 && (
-                              <div className="bg-gray-100 p-3 rounded-xl text-sm text-gray-600 flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0"></div>
-                                <span className="font-medium italic">Y {eje.subtemas.length - 4} temas más...</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                        
-                        {/* Action button with improved styling */}
-                        <div className="pt-2">
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              scrollToSection('convocatorias');
-                            }}
-                            className="w-full bg-gradient-to-r from-gray-800 to-gray-900 text-white py-4 px-4 rounded-xl font-bold text-base hover:from-gray-700 hover:to-gray-800 active:from-gray-900 active:to-black transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98] flex items-center justify-center gap-2"
-                            style={{ minHeight: '50px' }}
-                          >
-                            <span>VER CONVOCATORIAS</span>
-                            <ChevronDown className="w-5 h-5 rotate-[-90deg]" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-                
-                // Desktop design (existing)
-                const desktopCard = (
-                  <div
-                    key={`desktop-${index}`}
+                    key={index}
                     role="button"
                     tabIndex={0}
                     aria-expanded={isExpanded}
                     aria-label={`${eje.título}: ${eje.descripción}`}
                     style={{ background: gradients[index] }}
-                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 ${
+                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 touch-manipulation ${
                       isExpanded 
-                        ? 'flex-[2] shadow-2xl transform scale-105' 
+                        ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
                         : isOtherExpanded 
-                          ? 'flex-[0.5] opacity-75' 
+                          ? 'md:flex-[0.5] opacity-75' 
                           : 'flex-1 hover:shadow-lg'
-                    } h-full`}
-                    data-testid={`axis-desktop-${index}`}
+                    } ${
+                      isExpanded 
+                        ? 'min-h-[300px] md:h-auto md:h-full' 
+                        : 'min-h-[100px] sm:min-h-[120px] md:h-full'
+                    }`}
+                    data-testid={`axis-${index}`}
                     onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
@@ -893,21 +784,28 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
-                      {/* Desktop Main Content */}
-                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
-                        <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
-                          isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
+                    <div className="h-full p-3 sm:p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                      {/* Icon for Mobile - Top right corner */}
+                      <div className="md:hidden absolute top-2 right-2 opacity-70">
+                        <div className="text-current">
+                          {React.cloneElement(icons[index], { className: 'w-5 h-5' })}
+                        </div>
+                      </div>
+                      
+                      {/* Main Content */}
+                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-0 md:translate-y-4'}`}>
+                        <div className="text-xs font-semibold mb-1 sm:mb-2 opacity-90">CONGRESO PARQUES</div>
+                        <h3 className={`font-bold leading-tight transition-all duration-300 pr-8 md:pr-0 ${
+                          isExpanded ? 'text-base sm:text-lg md:text-xl mb-3 md:mb-4' : 'text-sm sm:text-base md:text-lg mb-1 md:mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
                         
-                        {/* Desktop: Show expanded content on hover/click */}
+                        {/* Mobile: Show expanded content when selected, Desktop: Show on hover/click */}
                         <div className={`transition-all duration-300 overflow-hidden ${
                           isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <p className="text-sm mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
+                          <p className="text-xs sm:text-sm mb-3 md:mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
                             {eje.descripción}
                           </p>
                           <div className="space-y-2">
@@ -924,16 +822,16 @@ export default function Landing() {
                         </div>
                       </div>
                       
-                      {/* Desktop MORE INFO Button */}
+                      {/* MORE INFO Button - Mobile Optimized */}
                       <div className={`transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-2'
+                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-1 md:translate-y-2'
                       }`}>
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[32px] touch-manipulation"
                         >
                           MÁS INFO →
                         </button>
@@ -941,7 +839,7 @@ export default function Landing() {
                       
                       {/* Desktop Icon for Non-Expanded State */}
                       {!isExpanded && (
-                        <div className="absolute right-6 top-1/2 transform -translate-y-1/2">
+                        <div className="hidden md:block absolute right-4 lg:right-6 top-1/2 transform -translate-y-1/2">
                           <div className="text-current opacity-80">
                             {icons[index]}
                           </div>
@@ -950,18 +848,7 @@ export default function Landing() {
                     </div>
                   </div>
                 );
-                
-                return (
-                  <React.Fragment key={index}>
-                    {/* Mobile card - only show in mobile container */}
-                    <div className="md:hidden">{mobileCard}</div>
-                    {/* Desktop card - only show in desktop container */}
-                    <div className="hidden md:block">{desktopCard}</div>
-                  </React.Fragment>
-                );
               })}
-              </div>
-              
             </div>
             
             {/* Instructions */}
