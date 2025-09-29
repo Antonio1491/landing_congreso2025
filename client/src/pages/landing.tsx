@@ -83,7 +83,6 @@ export default function Landing() {
   const [statsVisible, setStatsVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
-  const [expandedAxes, setExpandedAxes] = useState<Set<number>>(new Set());
 
 
   // Handle scroll events
@@ -173,18 +172,6 @@ export default function Landing() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const toggleAxis = (index: number) => {
-    setExpandedAxes(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(index)) {
-        newSet.delete(index);
-      } else {
-        newSet.add(index);
-      }
-      return newSet;
-    });
   };
 
 
@@ -699,11 +686,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Thematic Axes Section - Accordion Style for Mobile */}
+      {/* Thematic Axes Section - Simple Cards for Mobile, Grid for Desktop */}
       <section id="ejes" className="py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            {/* Title - Mobile Optimized */}
+            {/* Title */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-4" data-testid="axes-title">
               <span 
                 className="px-4 sm:px-6 py-2 sm:py-3 text-white font-bold uppercase rounded-lg text-sm sm:text-base"
@@ -725,110 +712,82 @@ export default function Landing() {
               </span>
             </h2>
             
-            {/* Cards Container - Stacked on mobile with expandable cards */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+            {/* Cards Container */}
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {ejesTemáticos.map((eje, index) => {
                 const backgrounds = [
-                  'linear-gradient(135deg, #A8E063 0%, #56AB2F 100%)', // Naturaleza - Verde vibrante
-                  'linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%)', // Comunidad - Rosa
-                  'linear-gradient(135deg, #4DD0E1 0%, #00ACC1 100%)', // Diseño - Cyan
-                  'linear-gradient(135deg, #5B47F5 0%, #3B2BAD 100%)', // Tecnología - Púrpura oscuro
-                  'linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%)', // Ciudad - Púrpura medio
-                  'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)'  // Finanzas - Dorado/Naranja
+                  'linear-gradient(135deg, #A8E063 0%, #56AB2F 100%)', // Naturaleza
+                  'linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%)', // Comunidad
+                  'linear-gradient(135deg, #4DD0E1 0%, #00ACC1 100%)', // Diseño
+                  'linear-gradient(135deg, #5B47F5 0%, #3B2BAD 100%)', // Tecnología
+                  'linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%)', // Ciudad
+                  'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)'  // Finanzas
                 ];
-                
-                const textColor = '#ffffff';
-                const isExpanded = expandedAxes.has(index);
-                const axisId = `axis-content-${index}`;
                 
                 return (
                   <div
                     key={eje.título}
-                    className="rounded-xl shadow-md overflow-hidden transition-all duration-300"
+                    className="rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
                     style={{ background: backgrounds[index] }}
                     data-testid={`axis-${index}`}
                   >
-                    {/* Card Content */}
-                    <div 
-                      className="p-5 md:cursor-default"
-                      style={{ color: textColor }}
-                    >
-                      {/* Header - Clickable on mobile */}
-                      <button
-                        className="w-full text-left md:pointer-events-none"
-                        onClick={() => toggleAxis(index)}
-                        aria-expanded={isExpanded}
-                        aria-controls={axisId}
-                        data-testid={`axis-header-${index}`}
-                      >
-                        <div className="mb-2">
-                          <div className="text-xs font-bold mb-1 opacity-90 uppercase tracking-wide">
-                            CONGRESO PARQUES
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-black leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-${index}`}>
-                            {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                          </h3>
-                        </div>
-                        
-                        {/* Expand indicator - Mobile only */}
-                        <div className={`md:hidden mt-2 text-center transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-                          <ChevronUp className="w-5 h-5 mx-auto opacity-70" />
-                        </div>
-                      </button>
-                      
-                      {/* Expanded Content - Hidden on mobile unless expanded, always visible on desktop */}
-                      <div 
-                        id={axisId}
-                        role="region"
-                        aria-hidden={!isExpanded && 'true'}
-                        className={`transition-all duration-300 overflow-hidden ${
-                          isExpanded ? 'max-h-[2000px] opacity-100 mt-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100 md:mt-4'
-                        }`}
-                      >
-                        {/* Description */}
-                        <p className="text-sm mb-4 leading-relaxed opacity-95">
-                          {eje.descripción}
-                        </p>
-                        
-                        {/* Topics */}
-                        <div className="mb-4">
-                          <div className="text-xs font-bold mb-2 opacity-90 uppercase">
-                            TEMAS PRINCIPALES:
-                          </div>
-                          <ul className="text-xs space-y-1.5 opacity-90">
-                            {eje.subtemas.map((subtema, subIndex) => (
-                              <li key={subIndex} className="flex items-start gap-2">
-                                <span className="mt-0.5 flex-shrink-0 font-bold">•</span>
-                                <span className="leading-snug">{subtema}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        
-                        {/* Button */}
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            scrollToSection('convocatorias');
-                          }}
-                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 backdrop-blur-sm text-white text-sm font-bold px-5 py-2.5 rounded-full border-2 border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
-                          data-testid={`axis-button-${index}`}
-                        >
-                          MÁS INFO →
-                        </button>
+                    {/* Mobile Simple Design */}
+                    <div className="md:hidden p-5 text-white">
+                      <div className="text-xs font-bold mb-2 opacity-90 uppercase tracking-wide">
+                        CONGRESO PARQUES
                       </div>
+                      <h3 className="text-xl font-black leading-tight mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-mobile-${index}`}>
+                        {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                      </h3>
+                      <p className="text-sm leading-relaxed opacity-95 mb-4">
+                        {eje.descripción}
+                      </p>
+                      <button 
+                        onClick={() => scrollToSection('convocatorias')}
+                        className="bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-sm text-white text-sm font-bold px-5 py-2.5 rounded-full border-2 border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 touch-manipulation"
+                        data-testid={`button-axis-mobile-${index}`}
+                        aria-label={`Ver más información sobre ${eje.título.replace(/^\d+\.\s*/, '')}`}
+                      >
+                        MÁS INFO →
+                      </button>
+                    </div>
+
+                    {/* Desktop Full Design */}
+                    <div className="hidden md:block p-6 lg:p-8 text-white">
+                      <div className="text-xs font-bold mb-2 opacity-90 uppercase tracking-wide">
+                        CONGRESO PARQUES
+                      </div>
+                      <h3 className="text-xl lg:text-2xl font-black leading-tight mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-desktop-${index}`}>
+                        {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                      </h3>
+                      <p className="text-sm mb-4 leading-relaxed opacity-95">
+                        {eje.descripción}
+                      </p>
+                      <div className="mb-4">
+                        <div className="text-xs font-bold mb-2 opacity-90 uppercase">
+                          TEMAS PRINCIPALES:
+                        </div>
+                        <ul className="text-xs space-y-1.5 opacity-90">
+                          {eje.subtemas.map((subtema, subIndex) => (
+                            <li key={subIndex} className="flex items-start gap-2">
+                              <span className="mt-0.5 flex-shrink-0 font-bold">•</span>
+                              <span className="leading-snug">{subtema}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button 
+                        onClick={() => scrollToSection('convocatorias')}
+                        className="bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-sm text-white text-sm font-bold px-5 py-2.5 rounded-full border-2 border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        data-testid={`button-axis-desktop-${index}`}
+                        aria-label={`Ver más información sobre ${eje.título.replace(/^\d+\.\s*/, '')}`}
+                      >
+                        MÁS INFO →
+                      </button>
                     </div>
                   </div>
                 );
               })}
-            </div>
-            
-            {/* Instructions */}
-            <div className="text-center mt-8">
-              <p className="text-muted-foreground text-sm">
-                <span className="md:hidden">Toca cada eje para ver más detalles</span>
-                <span className="hidden md:inline">Explora nuestros seis ejes temáticos</span>
-              </p>
             </div>
           </div>
         </div>
