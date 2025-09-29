@@ -722,8 +722,8 @@ export default function Landing() {
             
             {/* Mobile Design: Stack cards, Desktop: Flex row */}
             <div className="md:flex md:flex-row md:gap-2 md:h-96 relative">
-              {/* Mobile-only design */}
-              <div className="md:hidden space-y-3">
+              {/* Mobile-only design with better spacing */}
+              <div className="md:hidden px-1">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
                   'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
@@ -762,54 +762,98 @@ export default function Landing() {
                 const mobileCard = (
                   <div
                     key={`mobile-${index}`}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 touch-manipulation"
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 touch-manipulation mb-4"
                     data-testid={`axis-mobile-${index}`}
                   >
-                    {/* Mobile Header */}
+                    {/* Mobile Header with gradient and modern styling */}
                     <div 
-                      className="h-20 flex items-center px-4 relative overflow-hidden"
+                      className="relative overflow-hidden"
                       style={{ background: gradients[index] }}
                     >
-                      <div className="flex items-center gap-3 w-full">
-                        <div className="text-white">
-                          {React.cloneElement(icons[index], { className: 'w-6 h-6' })}
-                        </div>
-                        <div className="flex-1">
-                          <div className="text-xs font-medium text-white/80 mb-1">CONGRESO PARQUES</div>
-                          <h3 className="text-sm font-bold text-white leading-tight">
-                            {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                          </h3>
-                        </div>
-                        <button 
-                          onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
-                          className="text-white p-1 rounded-full hover:bg-white/20 transition-colors"
-                          aria-label={`${isSelected ? 'Cerrar' : 'Abrir'} información de ${eje.título}`}
-                        >
-                          {isSelected ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                        </button>
+                      {/* Decorative pattern overlay */}
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="h-full w-full" style={{
+                          backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 0%, transparent 50%)'
+                        }}></div>
                       </div>
+                      
+                      <button 
+                        onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
+                        className="w-full p-5 text-left relative z-10 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-200 active:scale-[0.98]"
+                        aria-label={`${isSelected ? 'Cerrar' : 'Abrir'} información de ${eje.título}`}
+                      >
+                        <div className="flex items-center gap-4">
+                          {/* Icon with background circle */}
+                          <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 shrink-0">
+                            {React.cloneElement(icons[index], { className: 'w-6 h-6 text-white' })}
+                          </div>
+                          
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-semibold text-white/80 mb-1.5 uppercase tracking-wide">
+                              CONGRESO PARQUES
+                            </div>
+                            <h3 className="text-lg font-black text-white leading-tight mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                              {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                            </h3>
+                            <div className="text-sm text-white/90 font-medium">
+                              Toca para {isSelected ? 'cerrar' : 'ver más'}
+                            </div>
+                          </div>
+                          
+                          {/* Chevron indicator */}
+                          <div className="bg-white/10 rounded-full p-2">
+                            {isSelected ? 
+                              <ChevronUp className="w-5 h-5 text-white" /> : 
+                              <ChevronDown className="w-5 h-5 text-white" />
+                            }
+                          </div>
+                        </div>
+                      </button>
                     </div>
                     
-                    {/* Mobile Expandable Content */}
-                    <div className={`transition-all duration-300 overflow-hidden ${
-                      isSelected ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+                    {/* Mobile Expandable Content with improved styling */}
+                    <div className={`transition-all duration-500 ease-out overflow-hidden ${
+                      isSelected ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
-                      <div className="p-4 border-t border-gray-100">
-                        <p className="text-gray-700 text-sm leading-relaxed mb-3">
-                          {eje.descripción}
-                        </p>
-                        <div className="flex justify-between items-center">
-                          <span className="text-xs text-gray-500 font-medium">VER MÁS DETALLES</span>
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              scrollToSection('convocatorias');
-                            }}
-                            className="bg-gray-800 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-700 transition-colors"
-                          >
-                            MÁS INFO →
-                          </button>
+                      <div className="px-5 py-4 bg-gray-50">
+                        <div className="mb-4">
+                          <p className="text-gray-700 text-sm leading-relaxed">
+                            {eje.descripción}
+                          </p>
                         </div>
+                        
+                        {/* Topics preview */}
+                        <div className="mb-4">
+                          <h4 className="text-xs font-bold text-gray-800 mb-2 uppercase tracking-wide">
+                            Temas principales:
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {eje.subtemas.slice(0, 3).map((subtema, subIndex) => (
+                              <span 
+                                key={subIndex}
+                                className="bg-white px-3 py-1.5 rounded-lg text-xs font-medium text-gray-700 border border-gray-200 shadow-sm"
+                              >
+                                {subtema}
+                              </span>
+                            ))}
+                            {eje.subtemas.length > 3 && (
+                              <span className="bg-gray-200 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600">
+                                +{eje.subtemas.length - 3} más
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {/* Action button */}
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            scrollToSection('convocatorias');
+                          }}
+                          className="w-full bg-gray-900 text-white py-3 px-4 rounded-xl font-semibold text-sm hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98]"
+                        >
+                          VER CONVOCATORIAS →
+                        </button>
                       </div>
                     </div>
                   </div>
