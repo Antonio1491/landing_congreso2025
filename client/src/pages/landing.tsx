@@ -731,23 +731,21 @@ export default function Landing() {
                     style={{ background: backgrounds[index] }}
                     data-testid={`axis-${index}`}
                   >
-                    {/* Mobile Compact Design - Fixed height, no expansion */}
-                    <div className="md:hidden p-4 text-white h-[140px] flex flex-col justify-between">
-                      <div className="flex-1 overflow-hidden">
-                        <div className="text-[10px] font-bold mb-1.5 opacity-80 uppercase tracking-wider">
-                          CONGRESO PARQUES
-                        </div>
-                        <h3 className="text-base font-black leading-tight break-words hyphens-auto line-clamp-3" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-mobile-${index}`}>
-                          {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                        </h3>
+                    {/* Mobile Design - Auto height with minimum */}
+                    <div className="md:hidden p-5 text-white min-h-[200px] flex flex-col">
+                      <div className="text-[10px] font-bold mb-2 opacity-80 uppercase tracking-wider">
+                        CONGRESO PARQUES
                       </div>
+                      <h3 className="text-base sm:text-lg font-black leading-tight break-words mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-mobile-${index}`}>
+                        {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                      </h3>
                       <button 
                         onClick={() => scrollToSection('convocatorias')}
-                        className="bg-white/25 hover:bg-white/35 active:bg-white/45 text-white text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 w-fit flex-shrink-0"
+                        className="bg-white/25 hover:bg-white/35 active:bg-white/45 text-white text-sm font-bold px-5 py-2.5 rounded-full transition-all duration-200 w-fit mt-auto flex-shrink-0"
                         data-testid={`button-axis-mobile-${index}`}
                         aria-label={`Ver más información sobre ${eje.título.replace(/^\d+\.\s*/, '')}`}
                       >
-                        VER MÁS →
+                        MÁS INFO →
                       </button>
                     </div>
 
