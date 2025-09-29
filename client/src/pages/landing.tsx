@@ -24,11 +24,7 @@ import {
   Twitter,
   Play,
   ZoomIn,
-  ChevronUp,
-  Leaf,
-  Compass,
-  Zap,
-  DollarSign
+  ChevronUp
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
@@ -85,8 +81,6 @@ export default function Landing() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
-  const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
-  const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
 
@@ -692,10 +686,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Thematic Axes Section - Mobile Optimized */}
-      <section id="ejes" className="py-12 sm:py-16 bg-white overflow-hidden section-animate animate-fadeInUp">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+      {/* Thematic Axes Section - New Card-Based Design */}
+      <section id="ejes" className="py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden section-animate animate-fadeInUp">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
             {/* Title - Mobile Optimized */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-4" data-testid="axes-title">
               <span 
@@ -718,145 +712,76 @@ export default function Landing() {
               </span>
             </h2>
             
-            {/* Axes Container - Completely responsive */}
-            <div className="flex flex-col md:flex-row gap-3 md:gap-2 md:h-96 relative">
+            {/* Cards Container - Stacked on mobile, grid on desktop */}
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {ejesTemáticos.map((eje, index) => {
-                const gradients = [
-                  'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
-                  'linear-gradient(to bottom right, #e47f71, #f819e1)', // Comunidad y Participación Ciudadana
-                  'linear-gradient(to bottom right, #45deaf, #00deff)', // Diseño, Operación y Gestión Eficiente
-                  'linear-gradient(to bottom right, #35219b, #0e0477)', // Tecnología e Innovación Urbana
-                  'linear-gradient(to bottom right, #6847f6, #5539d4)', // Ciudad, Movilidad y Gobernanza
-                  'linear-gradient(to bottom right, #d2dd0a, #e09757)'  // Finanzas, Patrocinios y Modelos de Ingreso
+                const backgrounds = [
+                  'linear-gradient(135deg, #A8E063 0%, #56AB2F 100%)', // Naturaleza - Verde vibrante
+                  'linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%)', // Comunidad - Rosa
+                  'linear-gradient(135deg, #4DD0E1 0%, #00ACC1 100%)', // Diseño - Cyan
+                  'linear-gradient(135deg, #5B47F5 0%, #3B2BAD 100%)', // Tecnología - Púrpura oscuro
+                  'linear-gradient(135deg, #7B68EE 0%, #6A5ACD 100%)', // Ciudad - Púrpura medio
+                  'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)'  // Finanzas - Dorado/Naranja
                 ];
                 
-                const textColors = [
-                  '#0e0477', // Azul oscuro para Naturaleza (fondo claro)
-                  '#ffffff', // Blanco para Comunidad
-                  '#0e0477', // Azul oscuro para Diseño (fondo claro)
-                  '#ffffff', // Blanco para Tecnología (fondo oscuro)
-                  '#ffffff', // Blanco para Ciudad (fondo oscuro)
-                  '#0e0477'  // Azul oscuro para Finanzas (fondo claro)
-                ];
-                
-                const icons = [
-                  <Leaf className="w-8 h-8" />,           // Naturaleza
-                  <Users className="w-8 h-8" />,          // Comunidad
-                  <Compass className="w-8 h-8" />,        // Diseño
-                  <Zap className="w-8 h-8" />,            // Tecnología
-                  <Building className="w-8 h-8" />,       // Ciudad
-                  <DollarSign className="w-8 h-8" />      // Finanzas
-                ];
-                
-                const isHovered = hoveredAxis === index;
-                const isSelected = selectedAxis === index;
-                const isExpanded = isHovered || isSelected;
-                const isOtherExpanded = (hoveredAxis !== null && hoveredAxis !== index) || (selectedAxis !== null && selectedAxis !== index);
-                
+                // Using white text for all cards for optimal contrast
+                const textColor = '#ffffff';
                 
                 return (
                   <div
                     key={index}
-                    role="button"
-                    tabIndex={0}
-                    aria-expanded={isExpanded}
-                    aria-label={`${eje.título}: ${eje.descripción}`}
-                    style={{ background: gradients[index] }}
-                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 touch-manipulation ${
-                      isExpanded 
-                        ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
-                        : isOtherExpanded 
-                          ? 'md:flex-[0.5] opacity-75' 
-                          : 'flex-1 hover:shadow-lg'
-                    } ${
-                      isExpanded 
-                        ? 'min-h-[300px] md:h-auto md:h-full' 
-                        : 'min-h-[100px] sm:min-h-[120px] md:h-full'
-                    }`}
+                    className="rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    style={{ background: backgrounds[index] }}
                     data-testid={`axis-${index}`}
-                    onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setSelectedAxis(selectedAxis === index ? null : index);
-                      }
-                    }}
-                    onMouseEnter={() => setHoveredAxis(index)}
-                    onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-3 sm:p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
-                      {/* Icon for Mobile - Top right corner */}
-                      <div className="md:hidden absolute top-2 right-2 opacity-70">
-                        <div className="text-current">
-                          {React.cloneElement(icons[index], { className: 'w-5 h-5' })}
+                    <div className="p-6 sm:p-8 flex flex-col h-full min-h-[420px] sm:min-h-[460px]" style={{ color: textColor }}>
+                      {/* Header */}
+                      <div className="mb-4" data-testid={`axis-header-${index}`}>
+                        <div className="text-xs sm:text-sm font-bold mb-2 opacity-90 uppercase tracking-wide">
+                          CONGRESO PARQUES
                         </div>
-                      </div>
-                      
-                      {/* Main Content */}
-                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-0 md:translate-y-4'}`}>
-                        <div className="text-xs font-semibold mb-1 sm:mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold leading-tight transition-all duration-300 pr-8 md:pr-0 ${
-                          isExpanded ? 'text-base sm:text-lg md:text-xl mb-3 md:mb-4' : 'text-sm sm:text-base md:text-lg mb-1 md:mb-2'
-                        }`}>
+                        <h3 className="text-xl sm:text-2xl font-black leading-tight mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid={`axis-title-${index}`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
-                        
-                        {/* Mobile: Show expanded content when selected, Desktop: Show on hover/click */}
-                        <div className={`transition-all duration-300 overflow-hidden ${
-                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                        }`}>
-                          <p className="text-xs sm:text-sm mb-3 md:mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
-                            {eje.descripción}
-                          </p>
-                          <div className="space-y-2">
-                            <div className="text-xs font-semibold mb-2" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
-                            <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
-                              {eje.subtemas.map((subtema, subIndex) => (
-                                <li key={subIndex} className="flex items-start gap-2">
-                                  <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
-                                  <span>{subtema}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
                       </div>
                       
-                      {/* MORE INFO Button - Mobile Optimized */}
-                      <div className={`transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-1 md:translate-y-2'
-                      }`}>
+                      {/* Description */}
+                      <p className="text-sm sm:text-base mb-4 leading-relaxed opacity-95">
+                        {eje.descripción}
+                      </p>
+                      
+                      {/* Topics */}
+                      <div className="flex-grow mb-6">
+                        <div className="text-xs sm:text-sm font-bold mb-3 opacity-90 uppercase">
+                          TEMAS PRINCIPALES:
+                        </div>
+                        <ul className="text-xs sm:text-sm space-y-2 opacity-90">
+                          {eje.subtemas.map((subtema, subIndex) => (
+                            <li key={subIndex} className="flex items-start gap-2">
+                              <span className="mt-1 flex-shrink-0 font-bold">•</span>
+                              <span className="leading-snug">{subtema}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Button */}
+                      <div className="mt-auto">
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[32px] touch-manipulation"
+                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 backdrop-blur-sm text-white text-sm font-bold px-6 py-3 rounded-full border-2 border-white/30 transition-all duration-200 w-full sm:w-auto focus:outline-none focus:ring-4 focus:ring-white/50 touch-manipulation"
+                          data-testid={`axis-button-${index}`}
                         >
                           MÁS INFO →
                         </button>
                       </div>
-                      
-                      {/* Desktop Icon for Non-Expanded State */}
-                      {!isExpanded && (
-                        <div className="hidden md:block absolute right-4 lg:right-6 top-1/2 transform -translate-y-1/2">
-                          <div className="text-current opacity-80">
-                            {icons[index]}
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </div>
                 );
               })}
-            </div>
-            
-            {/* Instructions */}
-            <div className="text-center mt-8">
-              <p className="text-muted-foreground text-sm">
-                <span className="hidden md:inline">Pasa el cursor o haz clic sobre cada eje para conocer más detalles</span>
-                <span className="md:hidden">Toca cada eje para conocer más detalles</span>
-              </p>
             </div>
           </div>
         </div>
