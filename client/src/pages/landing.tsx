@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -163,8 +163,9 @@ export default function Landing() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Calculate offset to account for fixed header height
-      const headerHeight = 140; // Approximate height of the header with logo and banner
+      // Calculate dynamic header height
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight + 20 : 100; // Add small padding
       const elementPosition = element.offsetTop - headerHeight;
       
       window.scrollTo({
@@ -342,32 +343,32 @@ export default function Landing() {
     <div className="bg-background text-foreground">
       {/* Header Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
-          <div className="flex flex-col items-center py-4">
-            {/* Logo centered */}
-            <div className="flex flex-col items-center mb-4">
+        <nav className="container mx-auto px-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+          <div className="flex flex-col items-center py-2 sm:py-4">
+            {/* Logo centered - Optimized for mobile */}
+            <div className="flex flex-col items-center mb-2 sm:mb-4">
               <img 
                 src={logoUrl} 
                 alt="Congreso Parques Logo" 
-                className="h-20 w-auto mb-2"
+                className="h-12 sm:h-16 md:h-20 w-auto mb-1 sm:mb-2 object-contain"
               />
               
-              {/* Tijuana 2026 Banner */}
-              <div className="bg-[#0e0477] px-4 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-lg tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
+              {/* Tijuana 2026 Banner - Responsive sizing */}
+              <div className="bg-[#0e0477] px-2 sm:px-4 py-0.5 sm:py-1 rounded-sm">
+                <span className="text-[#d2dd0a] font-black text-sm sm:text-lg tracking-wide sm:tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
                   TIJUANA <span className="text-[#1edede]">2026</span>
                 </span>
               </div>
             </div>
             
-            {/* Navigation */}
+            {/* Navigation - Improved mobile layout */}
             <div className="flex items-center justify-between w-full">
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center justify-center flex-1">
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center space-x-6 lg:space-x-8">
                   <button 
                     onClick={() => scrollToSection('convocatorias')} 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-6 py-3 text-sm font-medium transition-colors rounded-lg group"
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-base font-medium transition-all duration-300 rounded-lg group hover:bg-white/10"
                     data-testid="nav-convocatorias"
                   >
                     <span className="relative z-10">Convocatorias</span>
@@ -385,13 +386,13 @@ export default function Landing() {
                 </div>
               </div>
               
-              {/* Mobile menu button */}
+              {/* Mobile menu button - Enhanced for better touch targets */}
               <div className="md:hidden ml-auto">
                 <Button 
                   variant="ghost"
                   size="sm"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="text-white/90 hover:text-white hover:bg-white/10"
+                  className="text-white/90 hover:text-white hover:bg-white/10 p-2 min-h-[44px] min-w-[44px] rounded-lg transition-all duration-300"
                   aria-controls="mobile-menu" 
                   aria-expanded={mobileMenuOpen}
                   data-testid="mobile-menu-button"
@@ -402,16 +403,22 @@ export default function Landing() {
               </div>
             </div>
             
-            {/* Mobile Navigation */}
+            {/* Mobile Navigation - Improved design and spacing */}
             {mobileMenuOpen && (
-              <div className="md:hidden w-full mt-4" id="mobile-menu" data-testid="mobile-menu">
-                <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+              <div className="md:hidden w-full mt-3 animate-in fade-in slide-in-from-top-2 duration-300" id="mobile-menu" data-testid="mobile-menu">
+                <div className="px-3 py-4 space-y-2 bg-[#5539d4]/95 backdrop-blur-md border border-white/20 rounded-lg shadow-xl">
                   <button 
-                    onClick={() => scrollToSection('convocatorias')} 
-                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                    onClick={() => {
+                      scrollToSection('convocatorias');
+                      setMobileMenuOpen(false);
+                    }} 
+                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-4 py-3 text-base font-medium w-full text-left rounded-lg transition-all duration-300 group min-h-[48px]"
                     data-testid="mobile-nav-convocatorias"
                   >
-                    <span className="relative z-10">Convocatorias</span>
+                    <span className="relative z-10 flex items-center gap-3">
+                      <Calendar className="h-4 w-4" />
+                      Convocatorias
+                    </span>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="particle-container">
                         <div className="particle particle-1"></div>
@@ -423,6 +430,35 @@ export default function Landing() {
                       </div>
                     </div>
                   </button>
+                  
+                  {/* Additional mobile navigation items */}
+                  <button 
+                    onClick={() => {
+                      scrollToSection('ejes');
+                      setMobileMenuOpen(false);
+                    }} 
+                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-4 py-3 text-base font-medium w-full text-left rounded-lg transition-all duration-300 group min-h-[48px]"
+                    data-testid="mobile-nav-ejes"
+                  >
+                    <span className="relative z-10 flex items-center gap-3">
+                      <Target className="h-4 w-4" />
+                      Ejes Temáticos
+                    </span>
+                  </button>
+                  
+                  <button 
+                    onClick={() => {
+                      scrollToSection('aliados');
+                      setMobileMenuOpen(false);
+                    }} 
+                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-4 py-3 text-base font-medium w-full text-left rounded-lg transition-all duration-300 group min-h-[48px]"
+                    data-testid="mobile-nav-aliados"
+                  >
+                    <span className="relative z-10 flex items-center gap-3">
+                      <Users className="h-4 w-4" />
+                      Aliados Estratégicos
+                    </span>
+                  </button>
                 </div>
               </div>
             )}
@@ -430,8 +466,8 @@ export default function Landing() {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-32 overflow-hidden">
+      {/* Hero Section - Fully Optimized for Mobile */}
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 sm:pt-32 overflow-hidden">
         {/* Animated Waves Background */}
         <div className="absolute inset-0 z-0">
           <div className="wave wave-1"></div>
@@ -439,8 +475,8 @@ export default function Landing() {
           <div className="wave wave-3"></div>
         </div>
         
-        {/* Floating Particles */}
-        <div className="absolute inset-0 z-5">
+        {/* Floating Particles - Reduced on mobile for performance */}
+        <div className="absolute inset-0 z-5 hidden sm:block">
           <div className="hero-particle triangle-particle-1"></div>
           <div className="hero-particle triangle-particle-2"></div>
           <div className="hero-particle triangle-particle-3"></div>
@@ -453,40 +489,69 @@ export default function Landing() {
           <div className="hero-particle circle-particle-5"></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-40">
+        {/* Mobile-only simplified particles */}
+        <div className="absolute inset-0 z-5 sm:hidden">
+          <div className="hero-particle triangle-particle-1"></div>
+          <div className="hero-particle circle-particle-1"></div>
+          <div className="hero-particle triangle-particle-3"></div>
+        </div>
+        
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8 relative z-10 pb-20 sm:pb-40">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="event-date-location mb-4 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-base sm:text-lg md:text-xl font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
+            {/* Event Date and Location - Mobile Optimized */}
+            <div className="event-date-location mb-6 sm:mb-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center max-w-4xl mx-auto gap-3 sm:gap-4 hero-date-animate" data-testid="event-date-location">
+              <div className="flex items-center gap-2 bg-black/20 backdrop-blur-sm rounded-lg px-3 py-2 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
+                <p className="text-sm sm:text-lg md:text-xl font-bold whitespace-nowrap" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-sm sm:text-base md:text-lg font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
+              <div className="flex items-center gap-2 bg-black/20 backdrop-blur-sm rounded-lg px-3 py-2 sm:bg-transparent sm:backdrop-blur-none sm:px-0 sm:py-0">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" />
+                <p className="text-xs sm:text-base md:text-lg font-bold whitespace-nowrap" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
-              IX Congreso Internacional de Parques Urbanos
+            
+            {/* Main Title - Mobile Optimized */}
+            <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+              <span className="block sm:inline">IX Congreso Internacional</span>
+              <span className="block sm:inline"> de Parques Urbanos</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
+            
+            {/* Subtitle - Mobile Optimized */}
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate">
+            
+            {/* CTA Button - Mobile Optimized */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4 sm:px-0">
               <button 
                 onClick={() => scrollToSection('convocatorias')} 
-                className="hero-cta-button px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0"
+                className="hero-cta-button px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-lg font-semibold transform hover:scale-105 active:scale-95 transition-all text-white rounded-lg border-0 w-full sm:w-auto min-h-[48px] touch-manipulation"
                 data-testid="hero-cta"
               >
-                Conoce nuestras Convocatorias
+                <span className="flex items-center justify-center gap-2">
+                  <Calendar className="w-4 h-4 sm:hidden" />
+                  <span>Conoce nuestras Convocatorias</span>
+                </span>
               </button>
+            </div>
+            
+            {/* Mobile-specific scroll indicator */}
+            <div className="mt-8 sm:hidden animate-bounce">
+              <div className="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
+                <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
+              </div>
+              <p className="text-xs text-white/70 mt-2">Desliza hacia abajo</p>
             </div>
           </div>
         </div>
         
-        {/* Bottom Decorative Image */}
+        {/* Bottom Decorative Image - Mobile Optimized */}
         <div 
           className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none hero-bottom-image-mosaic"
-          style={{ backgroundImage: `url(${decorativeLeavesUrl})` }}
+          style={{ 
+            backgroundImage: `url(${decorativeLeavesUrl})`,
+            height: 'clamp(80px, 15vh, 200px)'
+          }}
           data-testid="hero-bottom-decoration"
         ></div>
       </section>
@@ -557,62 +622,84 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Experiences Section */}
-      <section id="experiencias" className="py-16" style={{ backgroundColor: '#35219b' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Experiences Section - Mobile Optimized */}
+      <section id="experiencias" className="py-12 sm:py-16" style={{ backgroundColor: '#35219b' }}>
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-center mb-12" data-testid="experiences-title">
-              <span className="experience-title-experiencias">EXPERIENCIAS</span>
-              <span className="experience-title-evento">DEL EVENTO</span>
+            {/* Title - Mobile Optimized */}
+            <h2 className="text-center mb-8 sm:mb-12 px-4" data-testid="experiences-title">
+              <span className="experience-title-experiencias block sm:inline">EXPERIENCIAS</span>
+              <span className="experience-title-evento block sm:inline sm:ml-2">DEL EVENTO</span>
             </h2>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Grid - Fully Responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {experiencias.map((experiencia, index) => (
                 <div 
                   key={index} 
-                  className="experience-card animate"
+                  className="experience-card animate w-full"
                   style={{ animationDelay: `${index * 0.1}s` }}
                   data-testid={`experience-${index}`}
                 >
-                  <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px 8px' }}>
+                  <Card className="bg-white overflow-visible relative card-content h-full flex flex-col mx-1 my-2 sm:mx-2 sm:my-2">
+                    {/* Icon - Mobile Optimized */}
                     <div className="experience-icon">
                       <img 
                         src={experiencia.iconUrl}
                         alt={`${experiencia.title} icon`}
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                       />
                     </div>
+                    
+                    {/* Image - Mobile Optimized */}
                     <div className="relative overflow-hidden rounded-t-lg">
                       <img 
                         src={experiencia.image} 
                         alt={experiencia.title}
-                        className="w-full h-64 object-cover"
+                        className="w-full h-48 sm:h-56 lg:h-64 object-cover transition-transform duration-300 hover:scale-105"
                       />
                     </div>
-                    <CardContent className="p-4 flex flex-col h-48">
+                    
+                    {/* Content - Mobile Optimized */}
+                    <CardContent className="p-3 sm:p-4 flex flex-col flex-1">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
-                        <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                        <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          {experiencia.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-gray-600 mb-3 leading-relaxed line-clamp-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          {experiencia.description}
+                        </p>
                       </div>
-                      <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4 mr-2" />
-                        {experiencia.fecha}
+                      
+                      {/* Date Footer - Mobile Optimized */}
+                      <div className="flex items-center justify-center text-xs sm:text-sm font-medium mt-auto pt-3 border-t border-gray-100 min-h-[40px]" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2 flex-shrink-0" />
+                        <span className="text-center">{experiencia.fecha}</span>
                       </div>
                     </CardContent>
                   </Card>
                 </div>
               ))}
             </div>
+            
+            {/* Mobile Navigation Hint */}
+            <div className="text-center mt-8 sm:hidden">
+              <p className="text-white/70 text-sm">
+                Desliza para ver más experiencias
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Thematic Axes Section */}
-      <section id="ejes" className="py-16 bg-white overflow-hidden section-animate animate-fadeInUp">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Thematic Axes Section - Mobile Optimized */}
+      <section id="ejes" className="py-12 sm:py-16 bg-white overflow-hidden section-animate animate-fadeInUp">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 flex items-center justify-center gap-4" data-testid="axes-title">
+            {/* Title - Mobile Optimized */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-4" data-testid="axes-title">
               <span 
-                className="px-6 py-3 text-white font-bold uppercase rounded-lg"
+                className="px-4 sm:px-6 py-2 sm:py-3 text-white font-bold uppercase rounded-lg text-sm sm:text-base"
                 style={{ 
                   backgroundColor: '#0e0477',
                   fontFamily: 'Antonio, sans-serif'
@@ -621,7 +708,7 @@ export default function Landing() {
                 EJES
               </span>
               <span 
-                className="font-black uppercase"
+                className="font-black uppercase text-lg sm:text-2xl md:text-3xl"
                 style={{ 
                   color: '#0e0477',
                   fontFamily: 'Montserrat, sans-serif'
@@ -631,7 +718,8 @@ export default function Landing() {
               </span>
             </h2>
             
-            <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
+            {/* Axes Container - Completely responsive */}
+            <div className="flex flex-col md:flex-row gap-3 md:gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
                   'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
@@ -674,7 +762,7 @@ export default function Landing() {
                     aria-expanded={isExpanded}
                     aria-label={`${eje.título}: ${eje.descripción}`}
                     style={{ background: gradients[index] }}
-                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 ${
+                    className={`relative cursor-pointer transition-all duration-500 ease-in-out rounded-lg overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/30 touch-manipulation ${
                       isExpanded 
                         ? 'md:flex-[2] shadow-2xl md:transform md:scale-105' 
                         : isOtherExpanded 
@@ -682,8 +770,8 @@ export default function Landing() {
                           : 'flex-1 hover:shadow-lg'
                     } ${
                       isExpanded 
-                        ? 'h-auto md:h-full' 
-                        : 'h-24 md:h-full'
+                        ? 'min-h-[300px] md:h-auto md:h-full' 
+                        : 'min-h-[100px] sm:min-h-[120px] md:h-full'
                     }`}
                     data-testid={`axis-${index}`}
                     onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
@@ -696,21 +784,28 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                    <div className="h-full p-3 sm:p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                      {/* Icon for Mobile - Top right corner */}
+                      <div className="md:hidden absolute top-2 right-2 opacity-70">
+                        <div className="text-current">
+                          {React.cloneElement(icons[index], { className: 'w-5 h-5' })}
+                        </div>
+                      </div>
+                      
                       {/* Main Content */}
-                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
-                        <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
-                          isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
+                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-0 md:translate-y-4'}`}>
+                        <div className="text-xs font-semibold mb-1 sm:mb-2 opacity-90">CONGRESO PARQUES</div>
+                        <h3 className={`font-bold leading-tight transition-all duration-300 pr-8 md:pr-0 ${
+                          isExpanded ? 'text-base sm:text-lg md:text-xl mb-3 md:mb-4' : 'text-sm sm:text-base md:text-lg mb-1 md:mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
                         
-                        {/* Expanded Content on Hover/Click */}
+                        {/* Mobile: Show expanded content when selected, Desktop: Show on hover/click */}
                         <div className={`transition-all duration-300 overflow-hidden ${
                           isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <p className="text-sm mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
+                          <p className="text-xs sm:text-sm mb-3 md:mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
                             {eje.descripción}
                           </p>
                           <div className="space-y-2">
@@ -718,7 +813,7 @@ export default function Landing() {
                             <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
                               {eje.subtemas.map((subtema, subIndex) => (
                                 <li key={subIndex} className="flex items-start gap-2">
-                                  <span className="mt-0.5" style={{ opacity: 0.6 }}>•</span>
+                                  <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
                                   <span>{subtema}</span>
                                 </li>
                               ))}
@@ -727,26 +822,25 @@ export default function Landing() {
                         </div>
                       </div>
                       
-                      {/* MORE INFO Button */}
+                      {/* MORE INFO Button - Mobile Optimized */}
                       <div className={`transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-2'
+                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-1 md:translate-y-2'
                       }`}>
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
-                            // Scroll to convocatorias section as this is thematically related
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          className="bg-black/20 hover:bg-black/30 active:bg-black/40 text-white text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 min-h-[32px] touch-manipulation"
                         >
                           MÁS INFO →
                         </button>
                       </div>
                       
-                      {/* Minimalist Icon for Non-Expanded State - Hidden on Mobile */}
+                      {/* Desktop Icon for Non-Expanded State */}
                       {!isExpanded && (
-                        <div className="hidden md:block absolute right-6 top-1/2 transform -translate-y-1/2">
-                          <div className="text-white/80">
+                        <div className="hidden md:block absolute right-4 lg:right-6 top-1/2 transform -translate-y-1/2">
+                          <div className="text-current opacity-80">
                             {icons[index]}
                           </div>
                         </div>
@@ -768,73 +862,73 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
-        {/* Imagen decorativa hojas izquierda */}
-        <div className="absolute w-40 h-48 z-5" style={{ bottom: '120px', left: '25%', transform: 'translateX(-50%)' }}>
+      {/* Convocatorias Section - Mobile Optimized */}
+      <section id="convocatorias" className="py-12 sm:py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
+        {/* Imagen decorativa hojas izquierda - Hidden on mobile */}
+        <div className="absolute w-32 sm:w-40 h-40 sm:h-48 z-5 hidden sm:block" style={{ bottom: '120px', left: '25%', transform: 'translateX(-50%)' }}>
           <img 
             src={hojasIzquierdaImg} 
             alt="Hojas decorativas izquierda"
             className="w-full h-full object-contain"
           />
         </div>
-        {/* Imagen decorativa hojas derecha */}
-        <div className="absolute w-40 h-48 z-5" style={{ bottom: '120px', right: '25%', transform: 'translateX(50%)' }}>
+        {/* Imagen decorativa hojas derecha - Hidden on mobile */}
+        <div className="absolute w-32 sm:w-40 h-40 sm:h-48 z-5 hidden sm:block" style={{ bottom: '120px', right: '25%', transform: 'translateX(50%)' }}>
           <img 
             src={hojasDerechaImg} 
             alt="Hojas decorativas derecha"
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl text-center mb-8 sm:mb-12 text-white uppercase px-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
             
-            <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
-              {/* Convocatoria Sesiones Educativas */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-8 sm:mb-12 stagger-children">
+              {/* Convocatoria Sesiones Educativas - Mobile Optimized */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-4 sm:py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white uppercase flex items-center justify-center" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
-                {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
-                  <div>
+                {/* Content - Mobile Optimized */}
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-between min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Título */}
-                    <div style={{ height: '60px' }} className="flex items-center justify-center">
-                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="text-center">
+                      <h4 className="text-lg sm:text-xl font-bold uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         SESIONES EDUCATIVAS
                       </h4>
                     </div>
                     
                     {/* Descripción */}
-                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
-                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="text-center">
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
                       </p>
                     </div>
                     
                     {/* Fechas */}
-                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
+                    <div className="space-y-2 sm:space-y-3">
+                      <div className="flex items-center justify-center gap-2 text-gray-700 text-sm sm:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4 flex-shrink-0" />
                         <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
                       </div>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
+                      <div className="flex items-center justify-center gap-2 text-gray-700 text-sm sm:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4 flex-shrink-0" />
                         <span><strong>Cierre:</strong> 15 de enero, 2026</span>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Botón */}
-                  <div className="text-center">
+                  {/* Botón - Mobile Optimized */}
+                  <div className="text-center mt-6">
                     <button 
                       onClick={() => window.open('https://congresoparques.com/registro_sesiones.php', '_blank')}
-                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
+                      className="convocatoria-btn w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 touch-manipulation min-h-[48px]"
                       style={{ 
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
@@ -847,50 +941,50 @@ export default function Landing() {
                 </div>
               </div>
               
-              {/* Convocatoria Poster Científico */}
+              {/* Convocatoria Poster Científico - Mobile Optimized */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-4 sm:py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white uppercase flex items-center justify-center" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
                 
-                {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
-                  <div>
+                {/* Content - Mobile Optimized */}
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col justify-between min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Título */}
-                    <div style={{ height: '60px' }} className="flex items-center justify-center">
-                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="text-center">
+                      <h4 className="text-lg sm:text-xl font-bold uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         POSTER CIENTÍFICO
                       </h4>
                     </div>
                     
                     {/* Descripción */}
-                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
-                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="text-center">
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
                       </p>
                     </div>
                     
                     {/* Fechas */}
-                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
+                    <div className="space-y-2 sm:space-y-3">
+                      <div className="flex items-center justify-center gap-2 text-gray-700 text-sm sm:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4 flex-shrink-0" />
                         <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
                       </div>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
+                      <div className="flex items-center justify-center gap-2 text-gray-700 text-sm sm:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <Calendar className="w-4 h-4 flex-shrink-0" />
                         <span><strong>Cierre:</strong> 15 de enero, 2026</span>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Botón */}
-                  <div className="text-center">
+                  {/* Botón - Mobile Optimized */}
+                  <div className="text-center mt-6">
                     <button 
                       onClick={() => window.open('https://congresoparques.com/registro_posters.php', '_blank')}
-                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
+                      className="convocatoria-btn w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 touch-manipulation min-h-[48px]"
                       style={{ 
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
@@ -956,57 +1050,60 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Trust Elements / Partners */}
-      <section id="aliados" className="py-16 bg-white section-animate animate-fadeInUp">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Trust Elements / Partners - Mobile Optimized */}
+      <section id="aliados" className="py-12 sm:py-16 bg-white section-animate animate-fadeInUp">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
+            {/* Title - Mobile Optimized */}
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center mb-8 sm:mb-12 uppercase px-4 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">
+              ALIADOS ESTRATÉGICOS Y PATROCINADORES
+            </h2>
             
             <div className="max-w-4xl mx-auto">
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-                {/* Organiza */}
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-                  <div className="bg-white rounded-lg shadow-md p-6 w-56 h-32 flex items-center justify-center">
+              <div className="flex flex-col gap-8 sm:gap-12 lg:flex-row lg:gap-8 items-center justify-center">
+                {/* Organiza - Mobile Optimized */}
+                <div className="text-center w-full lg:w-auto">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
+                  <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 w-full max-w-xs mx-auto sm:w-56 h-28 sm:h-32 flex items-center justify-center">
                     <a 
                       href="https://anpr.org.mx/" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center w-full h-full"
+                      className="flex items-center justify-center w-full h-full touch-manipulation"
                     >
                       <img 
                         src={logoANPRUrl} 
                         alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
-                        className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
+                        className="max-h-16 sm:max-h-20 max-w-full object-contain hover:scale-105 active:scale-95 transition-transform"
                         data-testid="logo-anpr"
                       />
                     </a>
                   </div>
                 </div>
 
-                {/* Presenta */}
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <div className="bg-white rounded-lg shadow-md p-6 w-56 h-32 flex items-center justify-center">
+                {/* Presenta - Mobile Optimized */}
+                <div className="text-center w-full lg:w-auto">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
+                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 w-full max-w-xs sm:w-56 h-28 sm:h-32 flex items-center justify-center">
                       <img 
                         src={logoFIDEMUrl} 
                         alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
-                        className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
+                        className="max-h-16 sm:max-h-20 max-w-full object-contain hover:scale-105 active:scale-95 transition-transform"
                         data-testid="logo-fidem"
                       />
                     </div>
-                    <div className="bg-white rounded-lg shadow-md p-6 w-56 h-32 flex items-center justify-center">
+                    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 w-full max-w-xs sm:w-56 h-28 sm:h-32 flex items-center justify-center">
                       <a 
                         href="https://cdt.org.mx/" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-full h-full"
+                        className="flex items-center justify-center w-full h-full touch-manipulation"
                       >
                         <img 
                           src={logoCDTUrl} 
                           alt="CDT - Centro de Desarrollo Tijuana" 
-                          className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
+                          className="max-h-16 sm:max-h-20 max-w-full object-contain hover:scale-105 active:scale-95 transition-transform"
                           data-testid="logo-cdt"
                         />
                       </a>
@@ -1015,77 +1112,84 @@ export default function Landing() {
                 </div>
               </div>
             </div>
+            
+            {/* Mobile Call to Action */}
+            <div className="text-center mt-8 sm:hidden">
+              <p className="text-sm text-gray-600">
+                Toca los logos para visitar sus sitios web
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
 
-      {/* Footer */}
-      <footer id="footer" className="py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Footer - Mobile Optimized */}
+      <footer id="footer" className="py-8 sm:py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
+        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-8">
-              {/* Logo and Description */}
-              <div className="md:col-span-2">
-                <div className="flex items-center gap-3 mb-4">
-                  <a href="https://anpr.org.mx/" target="_blank" rel="noopener noreferrer">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {/* Logo and Description - Mobile Optimized */}
+              <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
+                <div className="flex items-center justify-center sm:justify-start gap-3 mb-4">
+                  <a href="https://anpr.org.mx/" target="_blank" rel="noopener noreferrer" className="touch-manipulation">
                     <img 
                       src={logoANPRWhiteUrl} 
                       alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
-                      className="h-16 object-contain hover:scale-105 transition-transform"
+                      className="h-12 sm:h-16 object-contain hover:scale-105 active:scale-95 transition-transform"
                       data-testid="footer-logo-anpr"
                     />
                   </a>
                 </div>
-                <p className="text-white/80 mb-4">
+                <p className="text-white/80 mb-4 text-sm sm:text-base leading-relaxed">
                   Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
                 </p>
-                <div className="text-2xl font-bold" style={{ color: '#BCCE16' }} data-testid="footer-hashtag">#CongresoParques2026</div>
+                <div className="text-xl sm:text-2xl font-bold" style={{ color: '#BCCE16' }} data-testid="footer-hashtag">#CongresoParques2026</div>
               </div>
               
-              {/* Links */}
-              <div>
-                <h4 className="font-semibold mb-4">Enlaces</h4>
-                <ul className="space-y-2 text-white/80">
-                  <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
-                  <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
-                  <li><a href="https://anpr.org.mx/faq" className="hover:opacity-80 transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+              {/* Links - Mobile Optimized */}
+              <div className="text-center sm:text-left">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Enlaces</h4>
+                <ul className="space-y-2 text-white/80 text-sm">
+                  <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 active:opacity-60 transition-colors touch-manipulation block py-1" data-testid="footer-privacy">Políticas de privacidad</a></li>
+                  <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 active:opacity-60 transition-colors touch-manipulation block py-1" data-testid="footer-terms">Términos y condiciones</a></li>
+                  <li><a href="https://anpr.org.mx/faq" className="hover:opacity-80 active:opacity-60 transition-colors touch-manipulation block py-1" data-testid="footer-faq">Preguntas frecuentes</a></li>
                 </ul>
               </div>
               
-              {/* Contact */}
-              <div>
-                <h4 className="font-semibold mb-4">Contacto</h4>
-                <ul className="space-y-2 text-white/80">
-                  <li className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    <a href="mailto:info@congresoparques.com" className="hover:opacity-80 transition-colors" data-testid="footer-email">info@congresoparques.com</a>
+              {/* Contact - Mobile Optimized */}
+              <div className="text-center sm:text-left">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Contacto</h4>
+                <ul className="space-y-2 text-white/80 text-sm">
+                  <li className="flex items-center justify-center sm:justify-start gap-2">
+                    <Mail className="w-4 h-4 flex-shrink-0" />
+                    <a href="mailto:info@congresoparques.com" className="hover:opacity-80 active:opacity-60 transition-colors touch-manipulation" data-testid="footer-email">info@congresoparques.com</a>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Phone className="w-4 h-4" />
-                    <a href="https://wa.me/529993530691" className="hover:opacity-80 transition-colors" data-testid="footer-whatsapp">+52 999 353 0691</a>
+                  <li className="flex items-center justify-center sm:justify-start gap-2">
+                    <Phone className="w-4 h-4 flex-shrink-0" />
+                    <a href="https://wa.me/529993530691" className="hover:opacity-80 active:opacity-60 transition-colors touch-manipulation" data-testid="footer-whatsapp">+52 999 353 0691</a>
                   </li>
                 </ul>
                 
-                {/* Social Icons */}
-                <div className="flex gap-4 mt-4">
-                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                {/* Social Icons - Mobile Optimized */}
+                <div className="flex gap-4 mt-4 justify-center sm:justify-start">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 active:opacity-60 transition-colors p-2 -m-2 touch-manipulation" aria-label="Facebook" data-testid="social-facebook">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="https://www.instagram.com/congreso_parques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                  <a href="https://www.instagram.com/congreso_parques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 active:opacity-60 transition-colors p-2 -m-2 touch-manipulation" aria-label="Instagram" data-testid="social-instagram">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="https://x.com/congreso_parque" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
+                  <a href="https://x.com/congreso_parque" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 active:opacity-60 transition-colors p-2 -m-2 touch-manipulation" aria-label="X (Twitter)" data-testid="social-twitter">
                     <Twitter className="w-5 h-5" />
                   </a>
-                  <a href="https://www.youtube.com/@anprmexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                  <a href="https://www.youtube.com/@anprmexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 active:opacity-60 transition-colors p-2 -m-2 touch-manipulation" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
               </div>
             </div>
             
-            <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
+            <div className="border-t border-white/20 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-white/60 text-xs sm:text-sm">
               <p>&copy; 2026 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
             </div>
           </div>
