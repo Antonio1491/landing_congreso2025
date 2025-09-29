@@ -722,8 +722,8 @@ export default function Landing() {
             
             {/* Mobile Design: Stack cards, Desktop: Flex row */}
             <div className="md:flex md:flex-row md:gap-2 md:h-96 relative">
-              {/* Mobile-only design with better spacing */}
-              <div className="md:hidden px-1">
+              {/* Mobile-only design with full width */}
+              <div className="md:hidden">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
                   'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
@@ -762,7 +762,7 @@ export default function Landing() {
                 const mobileCard = (
                   <div
                     key={`mobile-${index}`}
-                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 touch-manipulation mb-4"
+                    className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 touch-manipulation mb-4 mx-2"
                     data-testid={`axis-mobile-${index}`}
                   >
                     {/* Mobile Header with gradient and modern styling */}
@@ -792,11 +792,11 @@ export default function Landing() {
                             <div className="text-xs font-semibold text-white/80 mb-1.5 uppercase tracking-wide">
                               CONGRESO PARQUES
                             </div>
-                            <h3 className="text-lg font-black text-white leading-tight mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            <h3 className="text-xl font-black text-white leading-tight mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                               {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                             </h3>
                             <div className="text-sm text-white/90 font-medium">
-                              Toca para {isSelected ? 'cerrar' : 'ver más'}
+                              Toca para {isSelected ? 'cerrar' : 'explorar'}
                             </div>
                           </div>
                           
@@ -811,49 +811,56 @@ export default function Landing() {
                       </button>
                     </div>
                     
-                    {/* Mobile Expandable Content with improved styling */}
+                    {/* Mobile Expandable Content with improved styling and height */}
                     <div className={`transition-all duration-500 ease-out overflow-hidden ${
-                      isSelected ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      isSelected ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                     }`}>
-                      <div className="px-5 py-4 bg-gray-50">
-                        <div className="mb-4">
-                          <p className="text-gray-700 text-sm leading-relaxed">
+                      <div className="px-4 py-5 bg-gradient-to-b from-gray-50 to-white">
+                        <div className="mb-5">
+                          <p className="text-gray-700 text-base leading-relaxed font-medium">
                             {eje.descripción}
                           </p>
                         </div>
                         
-                        {/* Topics preview */}
-                        <div className="mb-4">
-                          <h4 className="text-xs font-bold text-gray-800 mb-2 uppercase tracking-wide">
-                            Temas principales:
+                        {/* Topics preview with better layout */}
+                        <div className="mb-5">
+                          <h4 className="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide flex items-center gap-2">
+                            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                            Temas principales
                           </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {eje.subtemas.slice(0, 3).map((subtema, subIndex) => (
-                              <span 
+                          <div className="grid grid-cols-1 gap-2">
+                            {eje.subtemas.slice(0, 4).map((subtema, subIndex) => (
+                              <div 
                                 key={subIndex}
-                                className="bg-white px-3 py-1.5 rounded-lg text-xs font-medium text-gray-700 border border-gray-200 shadow-sm"
+                                className="bg-white p-3 rounded-xl text-sm text-gray-700 border border-gray-200 shadow-sm flex items-center gap-3"
                               >
-                                {subtema}
-                              </span>
+                                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0"></div>
+                                <span className="font-medium">{subtema}</span>
+                              </div>
                             ))}
-                            {eje.subtemas.length > 3 && (
-                              <span className="bg-gray-200 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600">
-                                +{eje.subtemas.length - 3} más
-                              </span>
+                            {eje.subtemas.length > 4 && (
+                              <div className="bg-gray-100 p-3 rounded-xl text-sm text-gray-600 flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0"></div>
+                                <span className="font-medium italic">Y {eje.subtemas.length - 4} temas más...</span>
+                              </div>
                             )}
                           </div>
                         </div>
                         
-                        {/* Action button */}
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            scrollToSection('convocatorias');
-                          }}
-                          className="w-full bg-gray-900 text-white py-3 px-4 rounded-xl font-semibold text-sm hover:bg-gray-800 active:bg-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98]"
-                        >
-                          VER CONVOCATORIAS →
-                        </button>
+                        {/* Action button with improved styling */}
+                        <div className="pt-2">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              scrollToSection('convocatorias');
+                            }}
+                            className="w-full bg-gradient-to-r from-gray-800 to-gray-900 text-white py-4 px-4 rounded-xl font-bold text-base hover:from-gray-700 hover:to-gray-800 active:from-gray-900 active:to-black transition-all duration-200 shadow-lg hover:shadow-xl active:scale-[0.98] flex items-center justify-center gap-2"
+                            style={{ minHeight: '50px' }}
+                          >
+                            <span>VER CONVOCATORIAS</span>
+                            <ChevronDown className="w-5 h-5 rotate-[-90deg]" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
