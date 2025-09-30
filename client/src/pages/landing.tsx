@@ -770,27 +770,49 @@ export default function Landing() {
 
       {/* Convocatorias Section */}
       <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
-        {/* Imagen decorativa hojas izquierda */}
-        <div className="hidden lg:block absolute w-32 xl:w-40 h-40 xl:h-48 z-5" style={{ bottom: '150px', left: 'calc(50% - 600px)' }}>
-          <img 
-            src={hojasIzquierdaImg} 
-            alt="Hojas decorativas izquierda"
-            className="w-full h-full object-contain"
-          />
-        </div>
-        {/* Imagen decorativa hojas derecha */}
-        <div className="hidden lg:block absolute w-32 xl:w-40 h-40 xl:h-48 z-5" style={{ bottom: '150px', right: 'calc(50% - 600px)' }}>
-          <img 
-            src={hojasDerechaImg} 
-            alt="Hojas decorativas derecha"
-            className="w-full h-full object-contain"
-          />
-        </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
             
-            <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
+            {/* Wrapper relativo para hojas y tarjetas */}
+            <div className="relative">
+              {/* Imagen decorativa hojas izquierda */}
+              <div 
+                className="absolute pointer-events-none z-0 hidden sm:block" 
+                style={{ 
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  left: 'clamp(-110px, -8vw, -80px)',
+                  width: 'clamp(80px, 10vw, 120px)',
+                  height: 'clamp(100px, 12vw, 150px)'
+                }}
+              >
+                <img 
+                  src={hojasIzquierdaImg} 
+                  alt="Hojas decorativas izquierda"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              {/* Imagen decorativa hojas derecha */}
+              <div 
+                className="absolute pointer-events-none z-0 hidden sm:block" 
+                style={{ 
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  right: 'clamp(-110px, -8vw, -80px)',
+                  width: 'clamp(80px, 10vw, 120px)',
+                  height: 'clamp(100px, 12vw, 150px)'
+                }}
+              >
+                <img 
+                  src={hojasDerechaImg} 
+                  alt="Hojas decorativas derecha"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children relative z-10">
               {/* Convocatoria Sesiones Educativas */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
@@ -902,6 +924,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
