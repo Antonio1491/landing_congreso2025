@@ -774,27 +774,49 @@ export default function Landing() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
             
-            <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children">
+            {/* Wrapper para grid y hojas */}
+            <div className="relative">
+              {/* Imagen decorativa hojas izquierda */}
+              <div 
+                className="absolute pointer-events-none hidden md:block" 
+                style={{ 
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  left: '-110px',
+                  width: '100px',
+                  height: '120px',
+                  zIndex: 0
+                }}
+              >
+                <img 
+                  src={hojasIzquierdaImg} 
+                  alt="Hojas decorativas izquierda"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              {/* Imagen decorativa hojas derecha */}
+              <div 
+                className="absolute pointer-events-none hidden md:block" 
+                style={{ 
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  right: '-110px',
+                  width: '100px',
+                  height: '120px',
+                  zIndex: 0
+                }}
+              >
+                <img 
+                  src={hojasDerechaImg} 
+                  alt="Hojas decorativas derecha"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children relative z-10">
               {/* Convocatoria Sesiones Educativas */}
-              <div className="bg-white rounded-lg shadow-lg overflow-visible relative" data-testid="call-educational">
-                {/* Imagen decorativa hojas izquierda */}
-                <div 
-                  className="absolute pointer-events-none hidden md:block" 
-                  style={{ 
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    left: '-110px',
-                    width: '100px',
-                    height: '120px',
-                    zIndex: -1
-                  }}
-                >
-                  <img 
-                    src={hojasIzquierdaImg} 
-                    alt="Hojas decorativas izquierda"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -850,25 +872,7 @@ export default function Landing() {
               </div>
               
               {/* Convocatoria Poster Científico */}
-              <div className="bg-white rounded-lg shadow-lg overflow-visible relative" data-testid="call-poster">
-                {/* Imagen decorativa hojas derecha */}
-                <div 
-                  className="absolute pointer-events-none hidden md:block" 
-                  style={{ 
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    right: '-110px',
-                    width: '100px',
-                    height: '120px',
-                    zIndex: -1
-                  }}
-                >
-                  <img 
-                    src={hojasDerechaImg} 
-                    alt="Hojas decorativas derecha"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
                   <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
@@ -922,6 +926,7 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
