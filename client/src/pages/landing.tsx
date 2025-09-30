@@ -683,7 +683,7 @@ export default function Landing() {
                     } ${
                       isExpanded 
                         ? 'h-auto md:h-full' 
-                        : 'h-24 md:h-full'
+                        : 'min-h-[120px] md:h-full'
                     }`}
                     data-testid={`axis-${index}`}
                     onClick={() => setSelectedAxis(selectedAxis === index ? null : index)}
@@ -696,12 +696,12 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                    <div className="h-full p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
                       {/* Main Content */}
                       <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
-                        <div className="text-xs font-semibold mb-2 opacity-90">CONGRESO PARQUES</div>
+                        <div className="text-[10px] md:text-xs font-semibold mb-1 md:mb-2 opacity-90">CONGRESO PARQUES</div>
                         <h3 className={`font-bold leading-tight transition-all duration-300 ${
-                          isExpanded ? 'text-xl mb-4' : 'text-lg mb-2'
+                          isExpanded ? 'text-lg md:text-xl mb-4' : 'text-sm md:text-lg mb-2'
                         }`}>
                           {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
                         </h3>
