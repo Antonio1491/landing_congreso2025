@@ -778,13 +778,13 @@ export default function Landing() {
             <div className="relative">
               {/* Imagen decorativa hojas izquierda */}
               <div 
-                className="absolute pointer-events-none z-0 hidden sm:block" 
+                className="absolute pointer-events-none z-0 hidden md:block" 
                 style={{ 
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  left: 'clamp(-110px, -8vw, -80px)',
-                  width: 'clamp(80px, 10vw, 120px)',
-                  height: 'clamp(100px, 12vw, 150px)'
+                  left: '-90px',
+                  width: '100px',
+                  height: '120px'
                 }}
               >
                 <img 
@@ -796,13 +796,13 @@ export default function Landing() {
               
               {/* Imagen decorativa hojas derecha */}
               <div 
-                className="absolute pointer-events-none z-0 hidden sm:block" 
+                className="absolute pointer-events-none z-0 hidden md:block" 
                 style={{ 
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  right: 'clamp(-110px, -8vw, -80px)',
-                  width: 'clamp(80px, 10vw, 120px)',
-                  height: 'clamp(100px, 12vw, 150px)'
+                  right: '-90px',
+                  width: '100px',
+                  height: '120px'
                 }}
               >
                 <img 
