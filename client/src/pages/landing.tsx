@@ -771,7 +771,7 @@ export default function Landing() {
       {/* Convocatorias Section */}
       <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
         {/* Imagen decorativa hojas izquierda */}
-        <div className="absolute w-40 h-48 z-5" style={{ bottom: '120px', left: '25%', transform: 'translateX(-50%)' }}>
+        <div className="hidden lg:block absolute w-32 xl:w-40 h-40 xl:h-48 z-5" style={{ bottom: '150px', left: 'calc(50% - 600px)' }}>
           <img 
             src={hojasIzquierdaImg} 
             alt="Hojas decorativas izquierda"
@@ -779,7 +779,7 @@ export default function Landing() {
           />
         </div>
         {/* Imagen decorativa hojas derecha */}
-        <div className="absolute w-40 h-48 z-5" style={{ bottom: '120px', right: '25%', transform: 'translateX(50%)' }}>
+        <div className="hidden lg:block absolute w-32 xl:w-40 h-40 xl:h-48 z-5" style={{ bottom: '150px', right: 'calc(50% - 600px)' }}>
           <img 
             src={hojasDerechaImg} 
             alt="Hojas decorativas derecha"
