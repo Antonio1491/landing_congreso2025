@@ -455,26 +455,26 @@ export default function Landing() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-40">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="event-date-location mb-4 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
+            <div className="event-date-location mb-3 lg:mb-2 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-base sm:text-lg md:text-xl font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-4 lg:h-4 text-white" />
+                <p className="text-base sm:text-lg md:text-xl lg:text-base font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                <p className="text-sm sm:text-base md:text-lg font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 lg:w-4 lg:h-4 text-white" />
+                <p className="text-sm sm:text-base md:text-lg lg:text-sm font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-4xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional de Parques Urbanos
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-lg mb-6 lg:mb-4 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate">
               <button 
                 onClick={() => scrollToSection('convocatorias')} 
-                className="hero-cta-button px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0"
+                className="hero-cta-button px-8 py-4 lg:px-6 lg:py-3 text-lg lg:text-base font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0"
                 data-testid="hero-cta"
               >
                 Conoce nuestras Convocatorias
