@@ -465,7 +465,7 @@ export default function Landing() {
                 <p className="text-sm sm:text-base md:text-lg lg:text-sm font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-4xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional<br />de Parques Urbanos
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-lg mb-6 lg:mb-4 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
