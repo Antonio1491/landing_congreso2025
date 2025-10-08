@@ -431,7 +431,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 lg:pt-16 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 lg:pt-28 overflow-hidden">
         {/* Animated Waves Background */}
         <div className="absolute inset-0 z-0">
           <div className="wave wave-1"></div>
