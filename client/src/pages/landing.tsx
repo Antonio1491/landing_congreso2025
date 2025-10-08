@@ -453,7 +453,7 @@ export default function Landing() {
           <div className="hero-particle circle-particle-5"></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-40">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-40 lg:pb-0">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="event-date-location mb-3 lg:mb-2 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-4 sm:gap-0 hero-date-animate" data-testid="event-date-location">
               <div className="flex items-center gap-2">
