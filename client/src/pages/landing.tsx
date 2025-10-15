@@ -113,7 +113,7 @@ export default function Landing() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: '0px' }
     );
 
     const statsSection = document.getElementById('legado');
