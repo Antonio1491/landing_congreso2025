@@ -762,19 +762,6 @@ html {
   transition: all 0.3s ease;
 }
 
-.countdown-seconds-circle {
-  animation: rotateCircle 1s linear infinite;
-}
-
-@keyframes rotateCircle {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .hero-title-animate {
   opacity: 0;
   transform: translateY(50px);

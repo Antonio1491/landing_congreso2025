@@ -509,9 +509,19 @@ export default function Landing() {
                     <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-2">
                       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
                         <defs>
-                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform={index === 3 ? "rotate(0 60 60)" : undefined}>
                             <stop offset="0%" style={{ stopColor: index === 0 ? '#bddd23' : index === 1 ? '#bddd23' : index === 2 ? '#35219b' : '#00deff', stopOpacity: 1 }} />
                             <stop offset="100%" style={{ stopColor: index === 0 ? '#f819e1' : index === 1 ? '#f819e1' : index === 2 ? '#0e0477' : '#45deaf', stopOpacity: 1 }} />
+                            {index === 3 && (
+                              <animateTransform
+                                attributeName="gradientTransform"
+                                type="rotate"
+                                from="0 60 60"
+                                to="360 60 60"
+                                dur="3s"
+                                repeatCount="indefinite"
+                              />
+                            )}
                           </linearGradient>
                         </defs>
                         <circle
@@ -532,7 +542,7 @@ export default function Landing() {
                           strokeLinecap="round"
                           strokeDasharray="339.292"
                           strokeDashoffset="0"
-                          className={index === 3 ? "countdown-circle countdown-seconds-circle" : "countdown-circle"}
+                          className="countdown-circle"
                         />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
