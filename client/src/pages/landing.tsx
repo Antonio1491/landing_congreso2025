@@ -492,6 +492,10 @@ export default function Landing() {
               </div>
             </div>
 
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+              IX Congreso Internacional<br />de Parques Urbanos
+            </h1>
+
             {/* Countdown Timer */}
             <div className="mb-8 lg:mb-6 hero-countdown-animate" data-testid="countdown-timer">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-3xl mx-auto">
@@ -506,8 +510,8 @@ export default function Landing() {
                       <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
                         <defs>
                           <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style={{ stopColor: index === 0 ? '#6847f6' : index === 1 ? '#35219b' : index === 2 ? '#bddd23' : '#00deff', stopOpacity: 1 }} />
-                            <stop offset="100%" style={{ stopColor: index === 0 ? '#5539d4' : index === 1 ? '#0e0477' : index === 2 ? '#49db76' : '#45deaf', stopOpacity: 1 }} />
+                            <stop offset="0%" style={{ stopColor: index === 0 ? '#bddd23' : index === 1 ? '#bddd23' : index === 2 ? '#35219b' : '#00deff', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: index === 0 ? '#f819e1' : index === 1 ? '#f819e1' : index === 2 ? '#0e0477' : '#45deaf', stopOpacity: 1 }} />
                           </linearGradient>
                         </defs>
                         <circle
@@ -528,7 +532,7 @@ export default function Landing() {
                           strokeLinecap="round"
                           strokeDasharray="339.292"
                           strokeDashoffset="0"
-                          className="countdown-circle"
+                          className={index === 3 ? "countdown-circle countdown-seconds-circle" : "countdown-circle"}
                         />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -544,10 +548,6 @@ export default function Landing() {
                 ))}
               </div>
             </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
-              IX Congreso Internacional<br />de Parques Urbanos
-            </h1>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-lg mb-6 lg:mb-4 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>

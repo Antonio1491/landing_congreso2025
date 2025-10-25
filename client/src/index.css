@@ -744,7 +744,7 @@ html {
 .hero-countdown-animate {
   opacity: 0;
   transform: scale(0.8) translateY(40px);
-  animation: scaleInUp 1s ease-out 0.5s forwards;
+  animation: scaleInUp 1s ease-out 1.1s forwards;
 }
 
 @keyframes scaleInUp {
@@ -759,8 +759,20 @@ html {
 }
 
 .countdown-circle {
-  filter: drop-shadow(0 0 8px currentColor);
   transition: all 0.3s ease;
+}
+
+.countdown-seconds-circle {
+  animation: rotateCircle 1s linear infinite;
+}
+
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .hero-title-animate {
@@ -772,13 +784,13 @@ html {
 .hero-subtitle-animate {
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out 1.1s forwards;
+  animation: fadeInUp 0.8s ease-out 1.3s forwards;
 }
 
 .hero-button-animate {
   opacity: 0;
   transform: translateY(30px) scale(0.9);
-  animation: slideInScale 1s ease-out 1.4s forwards;
+  animation: slideInScale 1s ease-out 1.5s forwards;
 }
 
 @keyframes slideInScale {
