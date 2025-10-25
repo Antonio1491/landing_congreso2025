@@ -89,7 +89,33 @@ export default function Landing() {
   const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
+  const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
+
+  // Countdown timer
+  useEffect(() => {
+    const calculateTimeRemaining = () => {
+      const eventDate = new Date('2026-05-13T08:00:00');
+      const now = new Date();
+      const difference = eventDate.getTime() - now.getTime();
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeRemaining({ days, hours, minutes, seconds });
+      } else {
+        setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    calculateTimeRemaining();
+    const interval = setInterval(calculateTimeRemaining, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Handle scroll events
   useEffect(() => {
@@ -465,6 +491,60 @@ export default function Landing() {
                 <p className="text-sm sm:text-base md:text-lg lg:text-sm font-bold" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
+
+            {/* Countdown Timer */}
+            <div className="mb-8 lg:mb-6 hero-countdown-animate" data-testid="countdown-timer">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-3xl mx-auto">
+                {[
+                  { value: timeRemaining.days, label: 'Días' },
+                  { value: timeRemaining.hours, label: 'Horas' },
+                  { value: timeRemaining.minutes, label: 'Minutos' },
+                  { value: timeRemaining.seconds, label: 'Segundos' }
+                ].map((item, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-2">
+                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                        <defs>
+                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style={{ stopColor: index === 0 ? '#6847f6' : index === 1 ? '#35219b' : index === 2 ? '#bddd23' : '#00deff', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: index === 0 ? '#5539d4' : index === 1 ? '#0e0477' : index === 2 ? '#49db76' : '#45deaf', stopOpacity: 1 }} />
+                          </linearGradient>
+                        </defs>
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="54"
+                          fill="rgba(255, 255, 255, 0.1)"
+                          stroke="rgba(255, 255, 255, 0.2)"
+                          strokeWidth="3"
+                        />
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="54"
+                          fill="none"
+                          stroke={`url(#gradient-${index})`}
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                          strokeDasharray="339.292"
+                          strokeDashoffset="0"
+                          className="countdown-circle"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {String(item.value).padStart(2, '0')}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-xs sm:text-sm lg:text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional<br />de Parques Urbanos
             </h1>
