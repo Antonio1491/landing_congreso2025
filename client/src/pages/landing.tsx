@@ -52,7 +52,7 @@ import logoANPRUrl from "@assets/LOGO ANPR_1758652591788.png";
 import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
 import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
-import logoBCCUrl from "@assets/LOGO BCC_1761675283444.png";
+import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
 import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 
