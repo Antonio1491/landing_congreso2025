@@ -388,17 +388,17 @@ export default function Landing() {
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
           <div className="flex items-center justify-between py-3 md:py-4">
             {/* Left Side: Logo + Tijuana 2026 */}
-            <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex flex-row items-end gap-3 md:flex-col md:items-center md:gap-1.5">
               <img 
                 src={logoUrl} 
                 alt="Congreso Parques Logo" 
-                className="h-14 md:h-16 lg:h-18 w-auto"
+                className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
                 data-testid="header-logo"
               />
               
-              {/* Tijuana 2026 Badge */}
-              <div className="bg-[#0e0477] px-2.5 py-1 md:px-3 md:py-1.5 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm lg:text-base tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>
+              {/* Tijuana 2026 Badge - al lado en móvil (alineado al fondo), debajo en desktop (centrado) */}
+              <div className="bg-[#0e0477] px-2.5 py-1 md:px-3 md:py-1 rounded-sm">
+                <span className="text-[#d2dd0a] font-black text-[0.65rem] sm:text-xs md:text-sm lg:text-base tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>
                   TIJUANA <span className="text-[#1edede]">2026</span>
                 </span>
               </div>
@@ -516,7 +516,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-20 sm:pt-24 md:pt-36 lg:pt-40 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         {/* Background Image Carousel with Purple Halftone Filter */}
         <div className="absolute inset-0 hero-bg-carousel">
           {heroBackgroundImages.map((image, index) => (
