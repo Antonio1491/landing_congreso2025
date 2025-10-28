@@ -1185,3 +1185,53 @@ html {
     height: 2rem;
   }
 }
+
+/* ========================================
+   CONVOCATORIAS DECORATIVE LEAVES
+   ======================================== */
+
+/* Responsive adjustments for decorative leaves */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  /* Tablets and medium screens - slightly smaller and closer */
+  .hojas-decorativas-izq {
+    left: -60px !important;
+    width: 120px !important;
+    height: 145px !important;
+  }
+  
+  .hojas-decorativas-der {
+    right: -60px !important;
+    width: 120px !important;
+    height: 145px !important;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1536px) {
+  /* Large screens - standard size */
+  .hojas-decorativas-izq {
+    left: -70px !important;
+    width: 140px !important;
+    height: 170px !important;
+  }
+  
+  .hojas-decorativas-der {
+    right: -70px !important;
+    width: 140px !important;
+    height: 170px !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  /* Extra large screens - full size for better integration */
+  .hojas-decorativas-izq {
+    left: -90px !important;
+    width: 160px !important;
+    height: 190px !important;
+  }
+  
+  .hojas-decorativas-der {
+    right: -90px !important;
+    width: 160px !important;
+    height: 190px !important;
+  }
+}

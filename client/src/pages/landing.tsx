@@ -900,39 +900,39 @@ export default function Landing() {
             <div className="relative">
               {/* Imagen decorativa hojas izquierda */}
               <div 
-                className="absolute pointer-events-none hidden md:block" 
+                className="absolute pointer-events-none hidden lg:block hojas-decorativas-izq" 
                 style={{ 
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  left: '-110px',
-                  width: '100px',
-                  height: '120px',
-                  zIndex: 0
+                  left: '-80px',
+                  width: '150px',
+                  height: '180px',
+                  zIndex: 1
                 }}
               >
                 <img 
                   src={hojasIzquierdaImg} 
                   alt="Hojas decorativas izquierda"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain drop-shadow-lg"
                 />
               </div>
               
               {/* Imagen decorativa hojas derecha */}
               <div 
-                className="absolute pointer-events-none hidden md:block" 
+                className="absolute pointer-events-none hidden lg:block hojas-decorativas-der" 
                 style={{ 
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  right: '-110px',
-                  width: '100px',
-                  height: '120px',
-                  zIndex: 0
+                  right: '-80px',
+                  width: '150px',
+                  height: '180px',
+                  zIndex: 1
                 }}
               >
                 <img 
                   src={hojasDerechaImg} 
                   alt="Hojas decorativas derecha"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain drop-shadow-lg"
                 />
               </div>
               
