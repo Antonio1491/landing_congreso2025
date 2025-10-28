@@ -58,6 +58,108 @@ html {
   background: #6847f6;
 }
 
+/* Hero Background Image Carousel */
+.hero-bg-carousel {
+  z-index: -2;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out, filter 2s ease-in-out, transform 0.3s ease;
+  will-change: opacity, filter;
+  
+  /* Purple halftone filter effect */
+  filter: 
+    grayscale(100%) 
+    sepia(100%) 
+    hue-rotate(240deg) 
+    saturate(300%) 
+    brightness(0.6) 
+    contrast(1.2) 
+    blur(0.5px);
+  
+  /* Overlay blending for purple tint */
+  background-blend-mode: multiply;
+  
+  /* Image optimization for mobile */
+  image-rendering: optimizeQuality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.hero-bg-image.active {
+  opacity: 0.25;
+  animation: heroImageGlow 2s ease-in-out;
+}
+
+/* Subtle glow/shimmer animation on image transition */
+@keyframes heroImageGlow {
+  0% {
+    opacity: 0;
+    filter: 
+      grayscale(100%) 
+      sepia(100%) 
+      hue-rotate(240deg) 
+      saturate(300%) 
+      brightness(0.6) 
+      contrast(1.2) 
+      blur(0.5px) 
+      drop-shadow(0 0 0px rgba(104, 71, 246, 0));
+  }
+  50% {
+    filter: 
+      grayscale(100%) 
+      sepia(100%) 
+      hue-rotate(240deg) 
+      saturate(300%) 
+      brightness(0.7) 
+      contrast(1.3) 
+      blur(0.5px) 
+      drop-shadow(0 0 20px rgba(104, 71, 246, 0.4));
+  }
+  100% {
+    opacity: 0.25;
+    filter: 
+      grayscale(100%) 
+      sepia(100%) 
+      hue-rotate(240deg) 
+      saturate(300%) 
+      brightness(0.6) 
+      contrast(1.2) 
+      blur(0.5px) 
+      drop-shadow(0 0 0px rgba(104, 71, 246, 0));
+  }
+}
+
+/* Mobile optimization for background images */
+@media (max-width: 768px) {
+  .hero-bg-image {
+    background-size: cover;
+    background-position: center center;
+    filter: 
+      grayscale(100%) 
+      sepia(100%) 
+      hue-rotate(240deg) 
+      saturate(250%) 
+      brightness(0.5) 
+      contrast(1.1) 
+      blur(0.8px);
+  }
+  
+  .hero-bg-image.active {
+    opacity: 0.2;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-bg {
     background-attachment: scroll;
@@ -183,6 +285,7 @@ html {
   clip-path: polygon(0% 100%, 10% 80%, 20% 85%, 30% 75%, 40% 80%, 50% 70%, 60% 75%, 70% 65%, 80% 70%, 90% 60%, 100% 65%, 100% 100%);
   animation: waveMove 30s ease-in-out infinite;
   border-radius: 50% 50% 0 0;
+  z-index: 1;
 }
 
 .wave-1 {
@@ -446,11 +549,7 @@ html {
   }
 }
 
-/* Adjust waves to work better with bottom image */
-.wave {
-  z-index: 5;
-}
-
+/* Adjust waves to work better with bottom image and background carousel */
 .wave-1 {
   opacity: 0.5;
 }

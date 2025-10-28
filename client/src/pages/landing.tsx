@@ -32,6 +32,10 @@ import {
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
+import heroImage1 from "@assets/Congreso Parques 1_1761672357092.jpg";
+import heroImage2 from "@assets/Congreso Parques 2_1761672357092.jpg";
+import heroImage3 from "@assets/Congreso Parques 3_1761672357092.jpg";
+import heroImage4 from "@assets/Congreso Parques 4_1761672357092.jpg";
 import expoEspacioPublicoUrl from "@assets/Expo Espacio Publico_1758578349359.jpg";
 import tallerVivencialUrl from "@assets/Taller vivencial_1758578349360.jpg";
 import sesionEducativaUrl from "@assets/Sesion educativa_1758578349360.jpg";
@@ -90,7 +94,19 @@ export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [currentBgImage, setCurrentBgImage] = useState(0);
+  
+  const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
+
+  // Background image carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgImage((prev) => (prev + 1) % heroBackgroundImages.length);
+    }, 6000); // Change image every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [heroBackgroundImages.length]);
 
   // Countdown timer
   useEffect(() => {
@@ -458,6 +474,17 @@ export default function Landing() {
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 sm:pt-24 lg:pt-32 xl:pt-40 pb-24 sm:pb-0 overflow-hidden">
+        {/* Background Image Carousel with Purple Halftone Filter */}
+        <div className="absolute inset-0 hero-bg-carousel">
+          {heroBackgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className={`hero-bg-image ${index === currentBgImage ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))}
+        </div>
+        
         {/* Animated Waves Background */}
         <div className="absolute inset-0 z-0">
           <div className="wave wave-1"></div>
