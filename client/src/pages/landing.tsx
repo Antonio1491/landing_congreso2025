@@ -500,19 +500,23 @@ export default function Landing() {
             <div className="mb-8 lg:mb-6 hero-countdown-animate" data-testid="countdown-timer">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-3xl mx-auto">
                 {[
-                  { value: timeRemaining.days, label: 'Días' },
-                  { value: timeRemaining.hours, label: 'Horas' },
-                  { value: timeRemaining.minutes, label: 'Minutos' },
-                  { value: timeRemaining.seconds, label: 'Segundos' }
-                ].map((item, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-2">
-                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
-                        <defs>
-                          <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform={index === 3 ? "rotate(0 60 60)" : undefined}>
-                            <stop offset="0%" style={{ stopColor: index === 0 ? '#bddd23' : index === 1 ? '#bddd23' : index === 2 ? '#35219b' : '#00deff', stopOpacity: 1 }} />
-                            <stop offset="100%" style={{ stopColor: index === 0 ? '#f819e1' : index === 1 ? '#f819e1' : index === 2 ? '#0e0477' : '#45deaf', stopOpacity: 1 }} />
-                            {index === 3 && (
+                  { value: timeRemaining.days, label: 'Días', max: 365, colors: ['#ff69b4', '#ff8c42'] },
+                  { value: timeRemaining.hours, label: 'Horas', max: 24, colors: ['#4169e1', '#40e0d0'] },
+                  { value: timeRemaining.minutes, label: 'Minutos', max: 60, colors: ['#ffd700', '#ff8c42'] },
+                  { value: timeRemaining.seconds, label: 'Segundos', max: 60, colors: ['#ffd700', '#87ceeb'] }
+                ].map((item, index) => {
+                  const circumference = 2 * Math.PI * 54;
+                  const progress = item.value / item.max;
+                  const offset = circumference - (progress * circumference);
+                  
+                  return (
+                    <div key={index} className="flex flex-col items-center">
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-2">
+                        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                          <defs>
+                            <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(0 60 60)">
+                              <stop offset="0%" style={{ stopColor: item.colors[0], stopOpacity: 1 }} />
+                              <stop offset="100%" style={{ stopColor: item.colors[1], stopOpacity: 1 }} />
                               <animateTransform
                                 attributeName="gradientTransform"
                                 type="rotate"
@@ -521,41 +525,42 @@ export default function Landing() {
                                 dur="3s"
                                 repeatCount="indefinite"
                               />
-                            )}
-                          </linearGradient>
-                        </defs>
-                        <circle
-                          cx="60"
-                          cy="60"
-                          r="54"
-                          fill="rgba(255, 255, 255, 0.1)"
-                          stroke="rgba(255, 255, 255, 0.2)"
-                          strokeWidth="3"
-                        />
-                        <circle
-                          cx="60"
-                          cy="60"
-                          r="54"
-                          fill="none"
-                          stroke={`url(#gradient-${index})`}
-                          strokeWidth="4"
-                          strokeLinecap="round"
-                          strokeDasharray="339.292"
-                          strokeDashoffset="0"
-                          className="countdown-circle"
-                        />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
-                          {String(item.value).padStart(2, '0')}
-                        </span>
+                            </linearGradient>
+                          </defs>
+                          <circle
+                            cx="60"
+                            cy="60"
+                            r="54"
+                            fill="rgba(255, 255, 255, 0.1)"
+                            stroke="rgba(255, 255, 255, 0.2)"
+                            strokeWidth="3"
+                          />
+                          <circle
+                            cx="60"
+                            cy="60"
+                            r="54"
+                            fill="none"
+                            stroke={`url(#gradient-${index})`}
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                            strokeDasharray={circumference}
+                            strokeDashoffset={offset}
+                            className="countdown-circle"
+                            style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                            {String(item.value).padStart(2, '0')}
+                          </span>
+                        </div>
                       </div>
+                      <span className="text-xs sm:text-sm lg:text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        {item.label}
+                      </span>
                     </div>
-                    <span className="text-xs sm:text-sm lg:text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-lg mb-6 lg:mb-4 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
