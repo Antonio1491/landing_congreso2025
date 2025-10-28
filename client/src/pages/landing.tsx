@@ -457,7 +457,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 lg:pt-28 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 lg:pt-32 xl:pt-40 overflow-hidden">
         {/* Animated Waves Background */}
         <div className="absolute inset-0 z-0">
           <div className="wave wave-1"></div>
@@ -492,12 +492,12 @@ export default function Landing() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-4 lg:mb-3 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-6 lg:mb-8 leading-tight px-2 hero-title-animate" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional<br />de Parques Urbanos
             </h1>
 
             {/* Countdown Timer */}
-            <div className="mb-8 lg:mb-6 hero-countdown-animate" data-testid="countdown-timer">
+            <div className="mb-6 lg:mb-8 hero-countdown-animate" data-testid="countdown-timer">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-3xl mx-auto">
                 {[
                   { value: timeRemaining.days, label: 'Días', max: 365, colors: ['#ff69b4', '#ff8c42'] },
@@ -555,7 +555,7 @@ export default function Landing() {
                           </span>
                         </div>
                       </div>
-                      <span className="text-xs sm:text-sm lg:text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         {item.label}
                       </span>
                     </div>
@@ -563,7 +563,7 @@ export default function Landing() {
                 })}
               </div>
             </div>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-lg mb-6 lg:mb-4 text-gray-100 leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold mb-8 lg:mb-10 text-white leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate">
