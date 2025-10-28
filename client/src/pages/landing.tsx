@@ -1201,9 +1201,9 @@ export default function Landing() {
                       <MapPin className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
                       <div>
                         <p className="font-semibold text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>Dirección</p>
-                        <p className="text-gray-700">Blvd. Fundadores 10151, Mesa de Otay</p>
-                        <p className="text-gray-700">Tijuana, Baja California, México</p>
-                        <p className="text-gray-700">C.P. 22427</p>
+                        <p className="text-gray-700">Carretera Escénica Tijuana – Ensenada</p>
+                        <p className="text-gray-700">Ejido No.1029 Mazatlan</p>
+                        <p className="text-gray-700">22710 Playas de Rosarito, B.C., México</p>
                       </div>
                     </div>
                     
@@ -1233,17 +1233,18 @@ export default function Landing() {
               </div>
               
               {/* Interactive Map */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden min-h-[500px]">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3361.783494782837!2d-116.96875492374625!3d32.54490417326582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d94898eb1bb6a9%3A0xe11f189ematically2!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1698765432100!5m2!1sen!2smx"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.5638725662387!2d-117.08087279999999!3d32.393126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d934024224d295%3A0x4cbb5ca2998369be!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1698765432100!5m2!1sen!2smx"
                   width="100%"
-                  height="500"
+                  height="400"
                   style={{ border: 0 }}
+                  allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Ubicación del Baja California Center"
                   data-testid="map-iframe"
-                />
+                ></iframe>
               </div>
             </div>
           </div>
