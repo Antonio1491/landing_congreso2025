@@ -474,7 +474,7 @@ export default function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 sm:pt-24 lg:pt-32 xl:pt-40 pb-24 sm:pb-0 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         {/* Background Image Carousel with Purple Halftone Filter */}
         <div className="absolute inset-0 hero-bg-carousel">
           {heroBackgroundImages.map((image, index) => (
@@ -509,24 +509,24 @@ export default function Landing() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="event-date-location mb-2 sm:mb-3 lg:mb-2 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-2 sm:gap-0 hero-date-animate" data-testid="event-date-location">
+            <div className="event-date-location mb-3 sm:mb-4 md:mb-5 flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto gap-2 sm:gap-0 hero-date-animate px-4" data-testid="event-date-location">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 lg:w-4 lg:h-4 text-white hero-icon" />
-                <p className="text-sm sm:text-lg md:text-xl lg:text-base font-bold hero-date-text" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-white hero-icon" />
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold hero-date-text" style={{ fontFamily: 'Antonio, sans-serif' }}>13-15 DE MAYO, 2026</p>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 lg:w-4 lg:h-4 text-white hero-icon" />
-                <p className="text-xs sm:text-base md:text-lg lg:text-sm font-bold hero-location-text" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-white hero-icon" />
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold hero-location-text" style={{ fontFamily: 'Antonio, sans-serif' }}>TIJUANA, BAJA CALIFORNIA</p>
               </div>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-5xl font-bold mb-3 sm:mb-6 lg:mb-8 leading-tight px-2 hero-title-animate hero-main-title" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-tight px-4 hero-title-animate hero-main-title" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="hero-title">
               IX Congreso Internacional<br />de Parques Urbanos
             </h1>
 
             {/* Countdown Timer */}
-            <div className="mb-4 sm:mb-8 lg:mb-6 hero-countdown-animate" data-testid="countdown-timer">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 max-w-3xl mx-auto">
+            <div className="mb-5 sm:mb-6 md:mb-7 lg:mb-8 hero-countdown-animate px-4" data-testid="countdown-timer">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-3xl mx-auto">
                 {[
                   { value: timeRemaining.days, label: 'Días', max: 365, colors: ['#ff69b4', '#ff8c42'] },
                   { value: timeRemaining.hours, label: 'Horas', max: 24, colors: ['#4169e1', '#40e0d0'] },
@@ -539,7 +539,7 @@ export default function Landing() {
                   
                   return (
                     <div key={index} className="flex flex-col items-center">
-                      <div className="relative w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 mb-1.5 sm:mb-2 hero-countdown-circle">
+                      <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mb-2 hero-countdown-circle">
                         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
                           <defs>
                             <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(0 60 60)">
@@ -578,12 +578,12 @@ export default function Landing() {
                           />
                         </svg>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-xl sm:text-3xl lg:text-4xl font-bold text-white hero-countdown-number" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white hero-countdown-number" style={{ fontFamily: 'Antonio, sans-serif' }}>
                             {String(item.value).padStart(2, '0')}
                           </span>
                         </div>
                       </div>
-                      <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <span className="text-xs sm:text-sm md:text-base font-semibold text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         {item.label}
                       </span>
                     </div>
@@ -591,13 +591,13 @@ export default function Landing() {
                 })}
               </div>
             </div>
-            <p className="text-lg sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-8 lg:mb-10 text-white leading-relaxed max-w-3xl mx-auto px-2 hero-subtitle-animate hero-subtitle-text" data-testid="hero-subtitle">
+            <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold mb-5 sm:mb-6 md:mb-7 lg:mb-8 text-white leading-relaxed max-w-3xl mx-auto px-4 hero-subtitle-animate hero-subtitle-text" data-testid="hero-subtitle">
               Forma parte de este Evento
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-2">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4">
               <button 
                 onClick={() => scrollToSection('convocatorias')} 
-                className="hero-cta-button px-6 py-3 sm:px-8 sm:py-4 lg:px-6 lg:py-3 text-sm sm:text-lg lg:text-base font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0 hero-cta-responsive"
+                className="hero-cta-button px-6 py-3 sm:px-7 md:px-8 sm:py-3.5 md:py-4 text-sm sm:text-base md:text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0 hero-cta-responsive"
                 data-testid="hero-cta"
               >
                 Conoce nuestras Convocatorias
