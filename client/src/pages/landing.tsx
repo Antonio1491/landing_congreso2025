@@ -1174,78 +1174,77 @@ export default function Landing() {
       </section>
 
       {/* Location Section */}
-      <section id="ubicacion" className="py-16 section-animate animate-fadeInUp" style={{ backgroundColor: '#f8f9fa' }}>
+      <section id="ubicacion" className="py-16" style={{ backgroundColor: '#f8f9fa' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="location-title">Ubicación del Evento</h2>
             
-            <div className="grid lg:grid-cols-2 gap-8 items-start">
-              {/* Venue Information */}
+            <div className="grid lg:grid-cols-2 gap-8">
               <div className="space-y-6">
-                {/* BCC Logo */}
-                <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center min-h-[180px]">
-                  <img 
-                    src={logoBCCUrl} 
-                    alt="Baja California Center" 
-                    className="max-h-32 max-w-full object-contain"
-                    data-testid="logo-bcc"
-                  />
-                </div>
-                
-                {/* Venue Details */}
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                  <h3 className="text-2xl font-bold mb-6" style={{ color: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}>Baja California Center</h3>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <MapPin className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
-                      <div>
-                        <p className="font-semibold text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>Dirección</p>
-                        <p className="text-gray-700">Carretera Escénica Tijuana – Ensenada</p>
-                        <p className="text-gray-700">Ejido No.1029 Mazatlan</p>
-                        <p className="text-gray-700">22710 Playas de Rosarito, B.C., México</p>
+                <Card className="bg-white shadow-lg p-8">
+                  <CardContent className="p-0">
+                    <div className="flex items-center justify-center mb-6">
+                      <img 
+                        src={logoBCCUrl} 
+                        alt="Baja California Center" 
+                        className="max-h-32 object-contain"
+                        data-testid="logo-bcc"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-6 text-center" style={{ color: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}>Baja California Center</h3>
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Dirección</p>
+                          <p className="text-gray-700 text-sm">Carretera Escénica Tijuana – Ensenada</p>
+                          <p className="text-gray-700 text-sm">Ejido No.1029 Mazatlan</p>
+                          <p className="text-gray-700 text-sm">22710 Playas de Rosarito, B.C., México</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3">
+                        <Building className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>Recinto</p>
+                          <p className="text-gray-700 text-sm">Centro de convenciones de clase mundial con instalaciones modernas.</p>
+                        </div>
+                      </div>
+                      
+                      <div className="pt-4">
+                        <a 
+                          href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-all hover:opacity-90 w-full justify-center"
+                          style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                          data-testid="button-view-map"
+                        >
+                          <MapPin className="w-5 h-5" />
+                          Ver en Google Maps
+                        </a>
                       </div>
                     </div>
-                    
-                    <div className="flex items-start gap-3">
-                      <Building className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
-                      <div>
-                        <p className="font-semibold text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>Recinto</p>
-                        <p className="text-gray-700">Centro de convenciones de clase mundial con instalaciones modernas y equipamiento de última generación.</p>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6">
-                      <a 
-                        href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-all hover:opacity-90"
-                        style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
-                        data-testid="button-view-map"
-                      >
-                        <MapPin className="w-5 h-5" />
-                        Ver en Google Maps
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
               
-              {/* Interactive Map */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.5638725662387!2d-117.08087279999999!3d32.393126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d934024224d295%3A0x4cbb5ca2998369be!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1698765432100!5m2!1sen!2smx"
-                  width="100%"
-                  height="400"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación del Baja California Center"
-                  data-testid="map-iframe"
-                ></iframe>
-              </div>
+              <Card className="bg-white shadow-lg overflow-hidden">
+                <CardContent className="p-0">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.5638725662387!2d-117.08087279999999!3d32.393126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d934024224d295%3A0x4cbb5ca2998369be!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1698765432100!5m2!1sen!2smx"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: '400px' }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Ubicación del Baja California Center"
+                    data-testid="map-iframe"
+                  />
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
