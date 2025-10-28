@@ -819,6 +819,31 @@ html {
    DEVICE-SPECIFIC RESPONSIVE ADJUSTMENTS
    ======================================== */
 
+/* General Mobile Adjustments (all screens < 640px) */
+@media (max-width: 639px) {
+  #hero {
+    padding-top: 5.5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  
+  .hero-icon {
+    width: 1.125rem !important;
+    height: 1.125rem !important;
+  }
+  
+  .hero-date-text {
+    font-size: 1rem !important;
+  }
+  
+  .hero-location-text {
+    font-size: 0.9rem !important;
+  }
+  
+  .event-date-location {
+    margin-bottom: 1rem !important;
+  }
+}
+
 /* iPhone SE (375px x 667px) - Compact adjustments */
 @media only screen 
   and (min-device-width: 375px) 
@@ -828,26 +853,13 @@ html {
   and (-webkit-device-pixel-ratio: 2) {
   
   #hero {
-    padding-top: 5.5rem !important;
+    padding-top: 6rem !important;
     padding-bottom: 6rem !important;
   }
   
   .hero-main-title {
     font-size: 1.75rem !important;
     margin-bottom: 0.75rem !important;
-  }
-  
-  .hero-date-text {
-    font-size: 0.875rem !important;
-  }
-  
-  .hero-location-text {
-    font-size: 0.75rem !important;
-  }
-  
-  .hero-icon {
-    width: 0.875rem !important;
-    height: 0.875rem !important;
   }
   
   .hero-countdown-circle {
@@ -877,21 +889,25 @@ html {
   and (min-device-height: 780px) 
   and (max-device-height: 820px) {
   
+  #hero {
+    padding-top: 6rem !important;
+  }
+  
   .hero-main-title {
     font-size: 2.25rem !important;
   }
   
   .hero-date-text {
-    font-size: 1rem !important;
+    font-size: 1.125rem !important;
   }
   
   .hero-location-text {
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
   }
   
   .hero-icon {
-    width: 1.125rem !important;
-    height: 1.125rem !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
   }
   
   .hero-countdown-circle {
@@ -920,21 +936,25 @@ html {
   and (min-device-height: 900px) 
   and (max-device-height: 930px) {
   
+  #hero {
+    padding-top: 6rem !important;
+  }
+  
   .hero-main-title {
     font-size: 2.5rem !important;
   }
   
   .hero-date-text {
-    font-size: 1.125rem !important;
+    font-size: 1.25rem !important;
   }
   
   .hero-location-text {
-    font-size: 1rem !important;
+    font-size: 1.125rem !important;
   }
   
   .hero-icon {
-    width: 1.25rem !important;
-    height: 1.25rem !important;
+    width: 1.375rem !important;
+    height: 1.375rem !important;
   }
   
   .hero-countdown-circle {
@@ -952,6 +972,66 @@ html {
   
   .hero-cta-responsive {
     padding: 1rem 2rem !important;
+    font-size: 1.125rem !important;
+  }
+}
+
+/* Extra small devices and narrow phones (< 360px) */
+@media (max-width: 359px) {
+  #hero {
+    padding-top: 5.5rem !important;
+  }
+  
+  .hero-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  .hero-date-text {
+    font-size: 0.875rem !important;
+  }
+  
+  .hero-location-text {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Medium mobile devices (360px - 414px) */
+@media (min-width: 360px) and (max-width: 414px) {
+  #hero {
+    padding-top: 6rem !important;
+  }
+  
+  .hero-icon {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+  
+  .hero-date-text {
+    font-size: 1.125rem !important;
+  }
+  
+  .hero-location-text {
+    font-size: 1rem !important;
+  }
+}
+
+/* Larger mobile devices (415px - 639px) */
+@media (min-width: 415px) and (max-width: 639px) {
+  #hero {
+    padding-top: 6rem !important;
+  }
+  
+  .hero-icon {
+    width: 1.375rem !important;
+    height: 1.375rem !important;
+  }
+  
+  .hero-date-text {
+    font-size: 1.25rem !important;
+  }
+  
+  .hero-location-text {
     font-size: 1.125rem !important;
   }
 }
