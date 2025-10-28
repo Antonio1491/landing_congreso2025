@@ -1183,7 +1183,7 @@ export default function Landing() {
               {/* Venue Information */}
               <div className="space-y-6">
                 {/* BCC Logo */}
-                <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center" style={{ minHeight: '180px' }}>
+                <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center min-h-[180px]">
                   <img 
                     src={logoBCCUrl} 
                     alt="Baja California Center" 
@@ -1233,20 +1233,17 @@ export default function Landing() {
               </div>
               
               {/* Interactive Map */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ minHeight: '500px' }}>
-                <div className="relative w-full h-full" style={{ minHeight: '500px' }}>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3361.7826943547437!2d-116.96689892366916!3d32.54491049770282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d94898d3e1e7d5%3A0x9b5f8f8c8f8c8f8d!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1234567890123!5m2!1sen!2smx"
-                    width="100%"
-                    height="500"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Ubicación del Baja California Center"
-                    data-testid="map-iframe"
-                  ></iframe>
-                </div>
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden min-h-[500px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3361.783494782837!2d-116.96875492374625!3d32.54490417326582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d94898eb1bb6a9%3A0xe11f189ematically2!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1698765432100!5m2!1sen!2smx"
+                  width="100%"
+                  height="500"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación del Baja California Center"
+                  data-testid="map-iframe"
+                />
               </div>
             </div>
           </div>
