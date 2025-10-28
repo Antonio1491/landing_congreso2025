@@ -937,10 +937,23 @@ html {
    DEVICE-SPECIFIC RESPONSIVE ADJUSTMENTS
    ======================================== */
 
+/* Header Responsive Adjustments */
+header {
+  transition: all 0.3s ease;
+}
+
+/* Ensure proper spacing for new horizontal header */
+@media (max-width: 767px) {
+  header nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
 /* General Mobile Adjustments (all screens < 640px) */
 @media (max-width: 639px) {
   #hero {
-    padding-top: 7rem !important;
+    padding-top: 5.5rem !important;
     padding-bottom: 5rem !important;
     min-height: 100vh;
   }
@@ -1012,7 +1025,7 @@ html {
   and (-webkit-device-pixel-ratio: 2) {
   
   #hero {
-    padding-top: 7.5rem !important;
+    padding-top: 6rem !important;
     padding-bottom: 5.5rem !important;
   }
   
@@ -1049,7 +1062,7 @@ html {
   and (max-device-height: 820px) {
   
   #hero {
-    padding-top: 7rem !important;
+    padding-top: 5.5rem !important;
     padding-bottom: 5rem !important;
   }
   
@@ -1098,7 +1111,7 @@ html {
   and (max-device-height: 930px) {
   
   #hero {
-    padding-top: 7rem !important;
+    padding-top: 5.75rem !important;
     padding-bottom: 5.5rem !important;
   }
   

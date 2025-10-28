@@ -386,95 +386,137 @@ export default function Landing() {
       {/* Header Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
-          <div className="flex flex-col items-center py-4">
-            {/* Logo centered */}
-            <div className="flex flex-col items-center mb-4">
+          <div className="flex items-center justify-between py-3 md:py-4">
+            {/* Left Side: Logo + Tijuana 2026 */}
+            <div className="flex items-center gap-3 md:gap-4">
               <img 
                 src={logoUrl} 
                 alt="Congreso Parques Logo" 
-                className="h-20 w-auto mb-2"
+                className="h-14 md:h-16 lg:h-18 w-auto"
+                data-testid="header-logo"
               />
               
-              {/* Tijuana 2026 Banner */}
-              <div className="bg-[#0e0477] px-4 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-lg tracking-wider" style={{fontFamily: 'Montserrat, sans-serif'}}>
+              {/* Tijuana 2026 Badge */}
+              <div className="bg-[#0e0477] px-2.5 py-1 md:px-3 md:py-1.5 rounded-sm">
+                <span className="text-[#d2dd0a] font-black text-xs md:text-sm lg:text-base tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>
                   TIJUANA <span className="text-[#1edede]">2026</span>
                 </span>
               </div>
             </div>
             
-            {/* Navigation */}
-            <div className="flex items-center justify-between w-full">
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center justify-center flex-1">
-                <div className="flex items-center space-x-6">
-                  <button 
-                    onClick={() => scrollToSection('convocatorias')} 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-6 py-3 text-sm font-medium transition-colors rounded-lg group"
-                    data-testid="nav-convocatorias"
-                  >
-                    <span className="relative z-10">Convocatorias</span>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="particle-container">
-                        <div className="particle particle-1"></div>
-                        <div className="particle particle-2"></div>
-                        <div className="particle particle-3"></div>
-                        <div className="particle particle-4"></div>
-                        <div className="particle particle-5"></div>
-                        <div className="particle particle-6"></div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-              
-              {/* Mobile menu button */}
-              <div className="md:hidden ml-auto">
-                <Button 
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="text-white/90 hover:text-white hover:bg-white/10"
-                  aria-controls="mobile-menu" 
-                  aria-expanded={mobileMenuOpen}
-                  data-testid="mobile-menu-button"
+            {/* Right Side: Desktop Navigation */}
+            <div className="hidden md:flex items-center">
+              <div className="flex items-center space-x-1 lg:space-x-2">
+                <button 
+                  onClick={() => scrollToSection('convocatorias')} 
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  data-testid="nav-convocatorias"
                 >
-                  <span className="sr-only">Abrir menú principal</span>
-                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                </Button>
+                  <span className="relative z-10">Convocatorias</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
+                </button>
+                {/* Ready for more menu items:
+                <button 
+                  onClick={() => scrollToSection('section-name')} 
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  data-testid="nav-section-name"
+                >
+                  <span className="relative z-10">Menu Item</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
+                </button>
+                */}
               </div>
             </div>
             
-            {/* Mobile Navigation */}
-            {mobileMenuOpen && (
-              <div className="md:hidden w-full mt-4" id="mobile-menu" data-testid="mobile-menu">
-                <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
-                  <button 
-                    onClick={() => scrollToSection('convocatorias')} 
-                    className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
-                    data-testid="mobile-nav-convocatorias"
-                  >
-                    <span className="relative z-10">Convocatorias</span>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="particle-container">
-                        <div className="particle particle-1"></div>
-                        <div className="particle particle-2"></div>
-                        <div className="particle particle-3"></div>
-                        <div className="particle particle-4"></div>
-                        <div className="particle particle-5"></div>
-                        <div className="particle particle-6"></div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            )}
+            {/* Right Side: Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button 
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-white/90 hover:text-white hover:bg-white/10"
+                aria-controls="mobile-menu" 
+                aria-expanded={mobileMenuOpen}
+                data-testid="mobile-menu-button"
+              >
+                <span className="sr-only">Abrir menú principal</span>
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
           </div>
+          
+          {/* Mobile Navigation Dropdown */}
+          {mobileMenuOpen && (
+            <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+                <button 
+                  onClick={() => {
+                    scrollToSection('convocatorias');
+                    setMobileMenuOpen(false);
+                  }} 
+                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                  data-testid="mobile-nav-convocatorias"
+                >
+                  <span className="relative z-10">Convocatorias</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
+                </button>
+                {/* Ready for more menu items:
+                <button 
+                  onClick={() => {
+                    scrollToSection('section-name');
+                    setMobileMenuOpen(false);
+                  }} 
+                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                  data-testid="mobile-nav-section-name"
+                >
+                  <span className="relative z-10">Menu Item</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
+                </button>
+                */}
+              </div>
+            </div>
+          )}
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         {/* Background Image Carousel with Purple Halftone Filter */}
         <div className="absolute inset-0 hero-bg-carousel">
           {heroBackgroundImages.map((image, index) => (
