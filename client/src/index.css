@@ -1235,3 +1235,32 @@ html {
     height: 190px !important;
   }
 }
+
+/* ========================================
+   LOCATION SECTION STYLES
+   ======================================== */
+
+/* Responsive map adjustments */
+@media (max-width: 1023px) {
+  /* Mobile and tablets - stack layout */
+  #ubicacion .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #ubicacion iframe {
+    min-height: 400px !important;
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Small mobile - compact height */
+  #ubicacion iframe {
+    min-height: 350px !important;
+    height: 350px !important;
+  }
+  
+  #ubicacion .bg-white.rounded-lg.shadow-lg.p-8 {
+    padding: 1.5rem !important;
+  }
+}

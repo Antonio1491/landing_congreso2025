@@ -52,6 +52,7 @@ import logoANPRUrl from "@assets/LOGO ANPR_1758652591788.png";
 import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
 import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
+import logoBCCUrl from "@assets/LOGO BCC_1761675283444.png";
 import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 
@@ -1172,6 +1173,85 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Location Section */}
+      <section id="ubicacion" className="py-16 section-animate animate-fadeInUp" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="location-title">Ubicación del Evento</h2>
+            
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+              {/* Venue Information */}
+              <div className="space-y-6">
+                {/* BCC Logo */}
+                <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center" style={{ minHeight: '180px' }}>
+                  <img 
+                    src={logoBCCUrl} 
+                    alt="Baja California Center" 
+                    className="max-h-32 max-w-full object-contain"
+                    data-testid="logo-bcc"
+                  />
+                </div>
+                
+                {/* Venue Details */}
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                  <h3 className="text-2xl font-bold mb-6" style={{ color: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}>Baja California Center</h3>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
+                      <div>
+                        <p className="font-semibold text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>Dirección</p>
+                        <p className="text-gray-700">Blvd. Fundadores 10151, Mesa de Otay</p>
+                        <p className="text-gray-700">Tijuana, Baja California, México</p>
+                        <p className="text-gray-700">C.P. 22427</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3">
+                      <Building className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: '#6847f6' }} />
+                      <div>
+                        <p className="font-semibold text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>Recinto</p>
+                        <p className="text-gray-700">Centro de convenciones de clase mundial con instalaciones modernas y equipamiento de última generación.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6">
+                      <a 
+                        href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-all hover:opacity-90"
+                        style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                        data-testid="button-view-map"
+                      >
+                        <MapPin className="w-5 h-5" />
+                        Ver en Google Maps
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Interactive Map */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{ minHeight: '500px' }}>
+                <div className="relative w-full h-full" style={{ minHeight: '500px' }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3361.7826943547437!2d-116.96689892366916!3d32.54491049770282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d94898d3e1e7d5%3A0x9b5f8f8c8f8c8f8d!2sBaja%20California%20Center!5e0!3m2!1sen!2smx!4v1234567890123!5m2!1sen!2smx"
+                    width="100%"
+                    height="500"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Ubicación del Baja California Center"
+                    data-testid="map-iframe"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer id="footer" className="py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
