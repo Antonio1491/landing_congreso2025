@@ -339,12 +339,12 @@ export default function Landing() {
   ];
 
   const estadísticas = [
-    { valor: 9100, etiqueta: "Asistentes" },
-    { valor: 145, etiqueta: "Países" },
-    { valor: 600, etiqueta: "Ponentes" },
-    { valor: 300, etiqueta: "Conferencias" },
-    { valor: 85, etiqueta: "Talleres" },
-    { valor: 250, etiqueta: "Expositores" }
+    { valor: 9100, etiqueta: "Asistentes", icon: Users },
+    { valor: 145, etiqueta: "Países", icon: Compass },
+    { valor: 600, etiqueta: "Ponentes", icon: Mic },
+    { valor: 300, etiqueta: "Conferencias", icon: BookOpen },
+    { valor: 85, etiqueta: "Talleres", icon: Hammer },
+    { valor: 250, etiqueta: "Expositores", icon: Building }
   ];
 
   const videosLegado = [
@@ -1055,23 +1055,29 @@ export default function Landing() {
       </section>
 
       {/* Legacy Section */}
-      <section id="legado" className="py-16 bg-muted section-animate animate-scaleIn">
+      <section id="legado" className="py-16 section-animate animate-scaleIn" style={{ backgroundColor: '#6847f6' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="legacy-title">NUESTRO LEGADO</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="legacy-title">NUESTRO LEGADO</h2>
             
             {/* Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 stagger-children">
-              {estadísticas.map((stat, index) => (
-                <Card key={index} className="bg-white p-6 shadow-sm border border-border text-center" data-testid={`stat-${index}`}>
-                  <CardContent className="p-0">
-                    <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              {estadísticas.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div key={index} className="p-6 text-center legacy-stat-card" data-testid={`stat-${index}`}>
+                    <div className="flex justify-center mb-3">
+                      <div className="legacy-icon-gradient">
+                        <IconComponent className="w-10 h-10" strokeWidth={2.5} />
+                      </div>
+                    </div>
+                    <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ fontFamily: 'Antonio, sans-serif' }}>
                       {statsVisible ? <StatCounter target={stat.valor} /> : "0"}
                     </div>
-                    <div className="text-sm text-muted-foreground">{stat.etiqueta}</div>
-                  </CardContent>
-                </Card>
-              ))}
+                    <div className="text-sm text-white font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>{stat.etiqueta}</div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Videos del Legado */}

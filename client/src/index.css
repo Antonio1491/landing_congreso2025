@@ -1134,3 +1134,54 @@ html {
     font-size: 1.125rem !important;
   }
 }
+
+/* ========================================
+   LEGACY SECTION STYLES
+   ======================================== */
+
+/* Legacy stat card with subtle hover effect */
+.legacy-stat-card {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.legacy-stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient icon container */
+.legacy-icon-gradient {
+  background: linear-gradient(135deg, #d2dd0a 0%, #00dfbf 100%);
+  padding: 12px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(210, 221, 10, 0.3);
+  transition: all 0.3s ease;
+}
+
+.legacy-icon-gradient svg {
+  color: #0e0477;
+  stroke-width: 2.5;
+}
+
+.legacy-stat-card:hover .legacy-icon-gradient {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(210, 221, 10, 0.5);
+}
+
+/* Responsive adjustments for legacy section */
+@media (max-width: 768px) {
+  .legacy-icon-gradient {
+    padding: 10px;
+  }
+  
+  .legacy-icon-gradient svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
