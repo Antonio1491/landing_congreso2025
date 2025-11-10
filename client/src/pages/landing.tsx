@@ -1219,86 +1219,95 @@ export default function Landing() {
       </section>
 
       {/* Expo Banner - Promotional Banner for Stand Reservation */}
-      <section className="expo-banner-section py-12 md:py-16 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6847f6 0%, #35219b 50%, #0e0477 100%)' }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-              {/* Left: Event Image */}
-              <div className="lg:col-span-4 order-2 lg:order-1">
-                <div className="expo-image-wrapper rounded-xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={expoEspacioPublico2026Img} 
-                    alt="Expo Espacio Público - Ambiente del Evento" 
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    data-testid="expo-banner-image"
-                  />
-                </div>
-              </div>
-              
-              {/* Center: Main Message */}
-              <div className="lg:col-span-5 order-1 lg:order-2 text-center lg:text-left space-y-4">
-                <h2 
-                  className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight"
-                  style={{ 
-                    fontFamily: 'Montserrat, sans-serif',
-                    color: '#d2dd0a',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
-                  }}
-                  data-testid="expo-banner-title"
-                >
-                  ¡RESERVA TU STAND!
-                </h2>
-                
-                <p className="text-white text-base sm:text-lg md:text-xl font-semibold leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="expo-banner-subtitle">
-                  Tu marca merece estar donde se toman las decisiones.
-                </p>
-                
-                <p className="text-[#1edede] text-sm sm:text-base md:text-lg flex items-center justify-center lg:justify-start gap-2" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="expo-banner-cta-text">
-                  <span className="text-2xl">💡</span>
-                  <span className="font-bold">Participa como expositor y conéctate con nuevos clientes.</span>
-                </p>
-                
-                {/* WhatsApp Contact Button */}
-                <div className="pt-4">
-                  <a
-                    href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 group"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    data-testid="whatsapp-contact-button"
-                  >
-                    <FaWhatsapp className="text-2xl group-hover:rotate-12 transition-transform duration-300" />
-                    <span className="text-base sm:text-lg">SOLICITAR INFORMES</span>
-                  </a>
-                </div>
-              </div>
-              
-              {/* Right: Expo Logo with Link */}
-              <div className="lg:col-span-3 order-3 flex items-center justify-center">
-                <a 
-                  href="https://expoespaciopublico.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="expo-logo-link block transform hover:scale-110 transition-all duration-500 hover:rotate-3"
-                  data-testid="expo-logo-link"
-                >
-                  <img 
-                    src={logoExpoEspacioPublicoUrl} 
-                    alt="Expo Espacio Público 2026" 
-                    className="w-full max-w-[280px] lg:max-w-full h-auto object-contain drop-shadow-2xl"
-                    loading="lazy"
-                  />
-                </a>
-              </div>
+      <section className="expo-banner-section relative overflow-hidden" style={{ backgroundColor: '#0e0477' }}>
+        <div className="grid lg:grid-cols-12 min-h-[400px] lg:min-h-[450px]">
+          {/* Left Side: Logo on Solid Background */}
+          <div className="lg:col-span-3 flex items-center justify-center p-8 lg:p-12" style={{ backgroundColor: '#0e0477' }}>
+            <a 
+              href="https://expoespaciopublico.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="expo-logo-link block transition-transform duration-300 hover:scale-105"
+              data-testid="expo-logo-link"
+            >
+              <img 
+                src={logoExpoEspacioPublicoUrl} 
+                alt="Expo Espacio Público 2026" 
+                className="w-full max-w-[240px] lg:max-w-[280px] h-auto object-contain"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          
+          {/* Center: Text Content with Hierarchy */}
+          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16 space-y-6" style={{ backgroundColor: '#0e0477' }}>
+            {/* Level 1: Main Title */}
+            <h2 
+              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight"
+              style={{ 
+                fontFamily: 'Montserrat, sans-serif',
+                color: '#d2dd0a'
+              }}
+              data-testid="expo-banner-title"
+            >
+              ¡RESERVA TU STAND!
+            </h2>
+            
+            {/* Level 2: Subtitle */}
+            <h3 
+              className="text-lg sm:text-xl lg:text-2xl font-bold leading-snug"
+              style={{ 
+                fontFamily: 'Montserrat, sans-serif',
+                color: '#ffffff'
+              }}
+              data-testid="expo-banner-subtitle"
+            >
+              Tu marca merece estar donde se toman las decisiones.
+            </h3>
+            
+            {/* Level 3: Description */}
+            <p 
+              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              style={{ 
+                fontFamily: 'Montserrat, sans-serif',
+                color: '#1edede'
+              }}
+              data-testid="expo-banner-description"
+            >
+              Participa como expositor y conéctate con nuevos clientes.
+            </p>
+            
+            {/* WhatsApp Contact Button */}
+            <div className="pt-2">
+              <a
+                href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3.5 rounded-lg transition-colors duration-300"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+                data-testid="whatsapp-contact-button"
+              >
+                <FaWhatsapp className="text-xl" />
+                <span className="text-base sm:text-lg">SOLICITAR INFORMES</span>
+              </a>
+            </div>
+          </div>
+          
+          {/* Right Side: Event Image with Gradient Overlay */}
+          <div className="lg:col-span-4 relative min-h-[300px] lg:min-h-full order-first lg:order-last">
+            <div className="expo-image-container absolute inset-0">
+              <img 
+                src={expoEspacioPublico2026Img} 
+                alt="Expo Espacio Público - Ambiente del Evento" 
+                className="w-full h-full object-cover"
+                loading="lazy"
+                data-testid="expo-banner-image"
+              />
+              {/* Gradient overlay to blend with solid background */}
+              <div className="expo-gradient-overlay absolute inset-0"></div>
             </div>
           </div>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#d2dd0a] rounded-full opacity-10 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#1edede] rounded-full opacity-10 blur-3xl translate-x-1/2 translate-y-1/2"></div>
       </section>
 
       {/* Location Section */}
