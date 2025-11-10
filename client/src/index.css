@@ -1406,8 +1406,7 @@ header {
 
 /* Responsive adjustments for Expo Banner */
 @media (max-width: 1023px) {
-  .expo-banner-section .grid {
-    grid-template-rows: auto auto auto;
+  .expo-banner-section .flex {
     min-height: auto !important;
   }
   
@@ -1416,21 +1415,25 @@ header {
     background: linear-gradient(to top, rgba(14, 4, 119, 0) 0%, rgba(14, 4, 119, 0.3) 50%, rgba(14, 4, 119, 0.95) 100%);
   }
   
-  .expo-banner-section .lg\:col-span-3,
-  .expo-banner-section .lg\:col-span-5,
-  .expo-banner-section .lg\:col-span-4 {
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
+  /* Image container for mobile - proper height */
+  .expo-banner-section .lg\:w-\[55\%\] {
+    min-height: 250px !important;
+  }
+  
+  /* Ensure proper spacing on mobile */
+  .expo-banner-section .lg\:w-\[45\%\] > div {
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 639px) {
-  .expo-banner-section .grid {
-    min-height: auto !important;
+  /* Compact image height on small mobile */
+  .expo-banner-section .lg\:w-\[55\%\] {
+    min-height: 200px !important;
   }
   
-  .expo-banner-section .lg\:col-span-3,
-  .expo-banner-section .lg\:col-span-5 {
-    padding: 1rem !important;
+  /* Reduce padding on small screens */
+  .expo-banner-section .lg\:w-\[45\%\] > div {
+    padding: 1rem;
   }
 }

@@ -1220,86 +1220,89 @@ export default function Landing() {
 
       {/* Expo Banner - Promotional Banner for Stand Reservation */}
       <section className="expo-banner-section relative overflow-hidden" style={{ backgroundColor: '#0e0477' }}>
-        <div className="grid lg:grid-cols-12 min-h-[320px] lg:min-h-[340px]">
-          {/* Left Side: Logo on Solid Background */}
-          <div className="lg:col-span-3 flex items-center justify-center p-6 lg:p-8" style={{ backgroundColor: '#0e0477' }}>
-            <a 
-              href="https://expoespaciopublico.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="expo-logo-link block transition-transform duration-300 hover:scale-105"
-              data-testid="expo-logo-link"
-            >
-              <img 
-                src={logoExpoEspacioPublicoUrl} 
-                alt="Expo Espacio Público 2026" 
-                className="w-full max-w-[200px] lg:max-w-[220px] h-auto object-contain"
-                loading="lazy"
-              />
-            </a>
-          </div>
-          
-          {/* Center: Text Content with Hierarchy */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-6 lg:px-8 py-8 lg:py-10 space-y-4" style={{ backgroundColor: '#0e0477' }}>
-            {/* Level 1: Main Title */}
-            <h2 
-              className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight"
-              style={{ 
-                fontFamily: 'Montserrat, sans-serif',
-                color: '#d2dd0a'
-              }}
-              data-testid="expo-banner-title"
-            >
-              ¡RESERVA TU STAND!
-            </h2>
-            
-            {/* Level 2: Subtitle */}
-            <h3 
-              className="text-base sm:text-lg lg:text-xl font-bold leading-snug"
-              style={{ 
-                fontFamily: 'Montserrat, sans-serif',
-                color: '#ffffff'
-              }}
-              data-testid="expo-banner-subtitle"
-            >
-              Tu marca merece estar donde se toman las decisiones.
-            </h3>
-            
-            {/* Level 3: Description */}
-            <p 
-              className="text-sm sm:text-base lg:text-base leading-relaxed"
-              style={{ 
-                fontFamily: 'Montserrat, sans-serif',
-                color: '#1edede'
-              }}
-              data-testid="expo-banner-description"
-            >
-              Participa como expositor y conéctate con nuevos clientes.
-            </p>
-            
-            {/* WhatsApp Contact Button */}
-            <div className="pt-1">
-              <a
-                href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
-                target="_blank"
+        <div className="flex flex-col lg:flex-row min-h-[280px] lg:min-h-[300px]">
+          {/* Left Side: Content Area (Logo + Text) - 45% */}
+          <div className="flex flex-col lg:flex-row lg:w-[45%]" style={{ backgroundColor: '#0e0477' }}>
+            {/* Logo */}
+            <div className="flex items-center justify-center p-4 lg:p-6 lg:w-[30%]">
+              <a 
+                href="https://expoespaciopublico.com/" 
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3 rounded-lg transition-colors duration-300"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-                data-testid="whatsapp-contact-button"
+                className="expo-logo-link block transition-transform duration-300 hover:scale-105"
+                data-testid="expo-logo-link"
               >
-                <FaWhatsapp className="text-xl" />
-                <span className="text-sm sm:text-base lg:text-base">SOLICITAR INFORMES</span>
+                <img 
+                  src={logoExpoEspacioPublicoUrl} 
+                  alt="Expo Espacio Público 2026" 
+                  className="w-full max-w-[140px] lg:max-w-[160px] h-auto object-contain"
+                  loading="lazy"
+                />
               </a>
+            </div>
+            
+            {/* Text Content with Hierarchy */}
+            <div className="flex flex-col justify-center px-4 sm:px-5 lg:px-6 py-6 lg:py-8 space-y-3 lg:w-[70%]">
+              {/* Level 1: Main Title */}
+              <h2 
+                className="text-xl sm:text-2xl lg:text-3xl font-black uppercase leading-tight"
+                style={{ 
+                  fontFamily: 'Montserrat, sans-serif',
+                  color: '#d2dd0a'
+                }}
+                data-testid="expo-banner-title"
+              >
+                ¡RESERVA TU STAND!
+              </h2>
+              
+              {/* Level 2: Subtitle */}
+              <h3 
+                className="text-sm sm:text-base lg:text-lg font-bold leading-snug"
+                style={{ 
+                  fontFamily: 'Montserrat, sans-serif',
+                  color: '#ffffff'
+                }}
+                data-testid="expo-banner-subtitle"
+              >
+                Tu marca merece estar donde se toman las decisiones.
+              </h3>
+              
+              {/* Level 3: Description */}
+              <p 
+                className="text-xs sm:text-sm lg:text-base leading-relaxed"
+                style={{ 
+                  fontFamily: 'Montserrat, sans-serif',
+                  color: '#1edede'
+                }}
+                data-testid="expo-banner-description"
+              >
+                Participa como expositor y conéctate con nuevos clientes.
+              </p>
+              
+              {/* WhatsApp Contact Button */}
+              <div className="pt-1">
+                <a
+                  href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-4 py-2.5 rounded-lg transition-colors duration-300"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  data-testid="whatsapp-contact-button"
+                >
+                  <FaWhatsapp className="text-lg" />
+                  <span className="text-xs sm:text-sm lg:text-base">SOLICITAR INFORMES</span>
+                </a>
+              </div>
             </div>
           </div>
           
-          {/* Right Side: Event Image with Gradient Overlay */}
-          <div className="lg:col-span-4 relative min-h-[240px] lg:min-h-full order-first lg:order-last h-full">
-            <div className="expo-image-container absolute inset-0 h-full">
+          {/* Right Side: Event Image with Gradient Overlay - 55% */}
+          <div className="relative min-h-[240px] lg:min-h-full lg:w-[55%] h-full order-first lg:order-last">
+            <div className="expo-image-container absolute inset-0 h-full flex items-center justify-center" style={{ backgroundColor: '#0e0477' }}>
               <img 
                 src={expoEspacioPublico2026Img} 
                 alt="Expo Espacio Público - Ambiente del Evento" 
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-contain"
                 loading="lazy"
                 data-testid="expo-banner-image"
               />
