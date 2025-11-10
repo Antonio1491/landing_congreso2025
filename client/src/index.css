@@ -1408,24 +1408,29 @@ header {
 @media (max-width: 1023px) {
   .expo-banner-section .grid {
     grid-template-rows: auto auto auto;
+    min-height: auto !important;
   }
   
   /* On tablet/mobile: logo on top, text in middle, image at bottom */
   .expo-gradient-overlay {
     background: linear-gradient(to top, rgba(14, 4, 119, 0) 0%, rgba(14, 4, 119, 0.3) 50%, rgba(14, 4, 119, 0.95) 100%);
   }
+  
+  .expo-banner-section .lg\:col-span-3,
+  .expo-banner-section .lg\:col-span-5,
+  .expo-banner-section .lg\:col-span-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
 }
 
 @media (max-width: 639px) {
-  .expo-banner-section h2 {
-    font-size: 2rem !important;
+  .expo-banner-section .grid {
+    min-height: auto !important;
   }
   
-  .expo-banner-section h3 {
-    font-size: 1.25rem !important;
-  }
-  
-  .expo-banner-section p {
-    font-size: 0.95rem !important;
+  .expo-banner-section .lg\:col-span-3,
+  .expo-banner-section .lg\:col-span-5 {
+    padding: 1rem !important;
   }
 }

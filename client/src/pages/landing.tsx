@@ -1220,9 +1220,9 @@ export default function Landing() {
 
       {/* Expo Banner - Promotional Banner for Stand Reservation */}
       <section className="expo-banner-section relative overflow-hidden" style={{ backgroundColor: '#0e0477' }}>
-        <div className="grid lg:grid-cols-12 min-h-[400px] lg:min-h-[450px]">
+        <div className="grid lg:grid-cols-12 min-h-[320px] lg:min-h-[340px]">
           {/* Left Side: Logo on Solid Background */}
-          <div className="lg:col-span-3 flex items-center justify-center p-8 lg:p-12" style={{ backgroundColor: '#0e0477' }}>
+          <div className="lg:col-span-3 flex items-center justify-center p-6 lg:p-8" style={{ backgroundColor: '#0e0477' }}>
             <a 
               href="https://expoespaciopublico.com/" 
               target="_blank" 
@@ -1233,17 +1233,17 @@ export default function Landing() {
               <img 
                 src={logoExpoEspacioPublicoUrl} 
                 alt="Expo Espacio Público 2026" 
-                className="w-full max-w-[240px] lg:max-w-[280px] h-auto object-contain"
+                className="w-full max-w-[200px] lg:max-w-[220px] h-auto object-contain"
                 loading="lazy"
               />
             </a>
           </div>
           
           {/* Center: Text Content with Hierarchy */}
-          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-8 lg:px-12 py-12 lg:py-16 space-y-6" style={{ backgroundColor: '#0e0477' }}>
+          <div className="lg:col-span-5 flex flex-col justify-center px-6 sm:px-6 lg:px-8 py-8 lg:py-10 space-y-4" style={{ backgroundColor: '#0e0477' }}>
             {/* Level 1: Main Title */}
             <h2 
-              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight"
+              className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight"
               style={{ 
                 fontFamily: 'Montserrat, sans-serif',
                 color: '#d2dd0a'
@@ -1255,7 +1255,7 @@ export default function Landing() {
             
             {/* Level 2: Subtitle */}
             <h3 
-              className="text-lg sm:text-xl lg:text-2xl font-bold leading-snug"
+              className="text-base sm:text-lg lg:text-xl font-bold leading-snug"
               style={{ 
                 fontFamily: 'Montserrat, sans-serif',
                 color: '#ffffff'
@@ -1267,7 +1267,7 @@ export default function Landing() {
             
             {/* Level 3: Description */}
             <p 
-              className="text-sm sm:text-base lg:text-lg leading-relaxed"
+              className="text-sm sm:text-base lg:text-base leading-relaxed"
               style={{ 
                 fontFamily: 'Montserrat, sans-serif',
                 color: '#1edede'
@@ -1278,28 +1278,28 @@ export default function Landing() {
             </p>
             
             {/* WhatsApp Contact Button */}
-            <div className="pt-2">
+            <div className="pt-1">
               <a
                 href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3.5 rounded-lg transition-colors duration-300"
+                className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3 rounded-lg transition-colors duration-300"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
                 data-testid="whatsapp-contact-button"
               >
                 <FaWhatsapp className="text-xl" />
-                <span className="text-base sm:text-lg">SOLICITAR INFORMES</span>
+                <span className="text-sm sm:text-base lg:text-base">SOLICITAR INFORMES</span>
               </a>
             </div>
           </div>
           
           {/* Right Side: Event Image with Gradient Overlay */}
-          <div className="lg:col-span-4 relative min-h-[300px] lg:min-h-full order-first lg:order-last">
-            <div className="expo-image-container absolute inset-0">
+          <div className="lg:col-span-4 relative min-h-[240px] lg:min-h-full order-first lg:order-last h-full">
+            <div className="expo-image-container absolute inset-0 h-full">
               <img 
                 src={expoEspacioPublico2026Img} 
                 alt="Expo Espacio Público - Ambiente del Evento" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
                 loading="lazy"
                 data-testid="expo-banner-image"
               />
