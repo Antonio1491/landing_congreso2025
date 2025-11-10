@@ -30,6 +30,7 @@ import {
   Zap,
   DollarSign
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
 import heroImage1 from "@assets/Congreso Parques 1_1761672357092.jpg";
@@ -55,6 +56,8 @@ import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
 import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
+import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
+import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
 
 
 interface StatCounterProps {
@@ -1213,6 +1216,89 @@ export default function Landing() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Expo Banner - Promotional Banner for Stand Reservation */}
+      <section className="expo-banner-section py-12 md:py-16 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6847f6 0%, #35219b 50%, #0e0477 100%)' }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+              {/* Left: Event Image */}
+              <div className="lg:col-span-4 order-2 lg:order-1">
+                <div className="expo-image-wrapper rounded-xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={expoEspacioPublico2026Img} 
+                    alt="Expo Espacio Público - Ambiente del Evento" 
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    data-testid="expo-banner-image"
+                  />
+                </div>
+              </div>
+              
+              {/* Center: Main Message */}
+              <div className="lg:col-span-5 order-1 lg:order-2 text-center lg:text-left space-y-4">
+                <h2 
+                  className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight"
+                  style={{ 
+                    fontFamily: 'Montserrat, sans-serif',
+                    color: '#d2dd0a',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                  }}
+                  data-testid="expo-banner-title"
+                >
+                  ¡RESERVA TU STAND!
+                </h2>
+                
+                <p className="text-white text-base sm:text-lg md:text-xl font-semibold leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="expo-banner-subtitle">
+                  Tu marca merece estar donde se toman las decisiones.
+                </p>
+                
+                <p className="text-[#1edede] text-sm sm:text-base md:text-lg flex items-center justify-center lg:justify-start gap-2" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="expo-banner-cta-text">
+                  <span className="text-2xl">💡</span>
+                  <span className="font-bold">Participa como expositor y conéctate con nuevos clientes.</span>
+                </p>
+                
+                {/* WhatsApp Contact Button */}
+                <div className="pt-4">
+                  <a
+                    href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 group"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    data-testid="whatsapp-contact-button"
+                  >
+                    <FaWhatsapp className="text-2xl group-hover:rotate-12 transition-transform duration-300" />
+                    <span className="text-base sm:text-lg">SOLICITAR INFORMES</span>
+                  </a>
+                </div>
+              </div>
+              
+              {/* Right: Expo Logo with Link */}
+              <div className="lg:col-span-3 order-3 flex items-center justify-center">
+                <a 
+                  href="https://expoespaciopublico.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="expo-logo-link block transform hover:scale-110 transition-all duration-500 hover:rotate-3"
+                  data-testid="expo-logo-link"
+                >
+                  <img 
+                    src={logoExpoEspacioPublicoUrl} 
+                    alt="Expo Espacio Público 2026" 
+                    className="w-full max-w-[280px] lg:max-w-full h-auto object-contain drop-shadow-2xl"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#d2dd0a] rounded-full opacity-10 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#1edede] rounded-full opacity-10 blur-3xl translate-x-1/2 translate-y-1/2"></div>
       </section>
 
       {/* Location Section */}

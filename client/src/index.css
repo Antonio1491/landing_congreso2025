@@ -1367,3 +1367,107 @@ header {
     padding: 1.5rem !important;
   }
 }
+
+/* ========================================
+   EXPO BANNER SECTION STYLES
+   ======================================== */
+
+/* Expo Banner Animation */
+.expo-banner-section {
+  animation: expoFadeInUp 0.8s ease-out;
+}
+
+@keyframes expoFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Expo Image Wrapper */
+.expo-image-wrapper {
+  position: relative;
+  height: 250px;
+  transition: all 0.3s ease;
+}
+
+.expo-image-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(104, 71, 246, 0.2), rgba(30, 222, 222, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 0.75rem;
+}
+
+.expo-image-wrapper:hover::before {
+  opacity: 1;
+}
+
+/* Logo Animation */
+.expo-logo-link {
+  filter: drop-shadow(0 10px 25px rgba(210, 221, 10, 0.3));
+}
+
+.expo-logo-link:hover {
+  filter: drop-shadow(0 15px 35px rgba(30, 222, 222, 0.5));
+}
+
+/* Responsive adjustments for Expo Banner */
+@media (max-width: 1023px) {
+  .expo-image-wrapper {
+    height: 280px;
+  }
+  
+  .expo-banner-section h2 {
+    font-size: 2.25rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .expo-image-wrapper {
+    height: 220px;
+  }
+  
+  .expo-banner-section h2 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .expo-image-wrapper {
+    height: 200px;
+  }
+  
+  .expo-banner-section h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  .expo-banner-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* WhatsApp Button Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+  }
+}
+
+.expo-banner-section a[href^="https://wa.me/"] {
+  animation: pulse 2s infinite;
+}
