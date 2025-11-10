@@ -1219,12 +1219,24 @@ export default function Landing() {
       </section>
 
       {/* Expo Banner - Promotional Banner for Stand Reservation */}
-      <section className="expo-banner-section relative overflow-hidden" style={{ backgroundColor: '#0e0477' }}>
-        <div className="flex flex-col lg:flex-row min-h-[280px] lg:min-h-[300px]">
-          {/* Left Side: Content Area (Logo + Text) - 45% */}
-          <div className="flex flex-col lg:flex-row lg:w-[45%]" style={{ backgroundColor: '#0e0477' }}>
+      <section 
+        className="expo-banner-section relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${expoEspacioPublico2026Img})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '350px'
+        }}
+      >
+        {/* Dark Overlay for Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(14,4,119,0.85)] via-[rgba(14,4,119,0.75)] to-[rgba(14,4,119,0.65)]"></div>
+        
+        {/* Content Container */}
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8 max-w-6xl">
             {/* Logo */}
-            <div className="flex items-center justify-center p-4 lg:p-6 lg:w-[30%]">
+            <div className="flex-shrink-0">
               <a 
                 href="https://expoespaciopublico.com/" 
                 target="_blank" 
@@ -1235,20 +1247,21 @@ export default function Landing() {
                 <img 
                   src={logoExpoEspacioPublicoUrl} 
                   alt="Expo Espacio Público 2026" 
-                  className="w-full max-w-[140px] lg:max-w-[160px] h-auto object-contain"
+                  className="w-full max-w-[160px] lg:max-w-[200px] h-auto object-contain"
                   loading="lazy"
                 />
               </a>
             </div>
             
             {/* Text Content with Hierarchy */}
-            <div className="flex flex-col justify-center px-4 sm:px-5 lg:px-6 py-6 lg:py-8 space-y-3 lg:w-[70%]">
+            <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
               {/* Level 1: Main Title */}
               <h2 
-                className="text-xl sm:text-2xl lg:text-3xl font-black uppercase leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black uppercase leading-tight"
                 style={{ 
                   fontFamily: 'Montserrat, sans-serif',
-                  color: '#d2dd0a'
+                  color: '#d2dd0a',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
                 }}
                 data-testid="expo-banner-title"
               >
@@ -1257,10 +1270,11 @@ export default function Landing() {
               
               {/* Level 2: Subtitle */}
               <h3 
-                className="text-sm sm:text-base lg:text-lg font-bold leading-snug"
+                className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold leading-snug"
                 style={{ 
                   fontFamily: 'Montserrat, sans-serif',
-                  color: '#ffffff'
+                  color: '#ffffff',
+                  textShadow: '1px 1px 3px rgba(0,0,0,0.5)'
                 }}
                 data-testid="expo-banner-subtitle"
               >
@@ -1269,10 +1283,11 @@ export default function Landing() {
               
               {/* Level 3: Description */}
               <p 
-                className="text-xs sm:text-sm lg:text-base leading-relaxed"
+                className="text-sm sm:text-base lg:text-lg leading-relaxed"
                 style={{ 
                   fontFamily: 'Montserrat, sans-serif',
-                  color: '#1edede'
+                  color: '#1edede',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
                 }}
                 data-testid="expo-banner-description"
               >
@@ -1280,34 +1295,19 @@ export default function Landing() {
               </p>
               
               {/* WhatsApp Contact Button */}
-              <div className="pt-1">
+              <div className="pt-2">
                 <a
                   href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-4 py-2.5 rounded-lg transition-colors duration-300"
+                  className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   data-testid="whatsapp-contact-button"
                 >
-                  <FaWhatsapp className="text-lg" />
-                  <span className="text-xs sm:text-sm lg:text-base">SOLICITAR INFORMES</span>
+                  <FaWhatsapp className="text-xl" />
+                  <span className="text-sm sm:text-base lg:text-lg">SOLICITAR INFORMES</span>
                 </a>
               </div>
-            </div>
-          </div>
-          
-          {/* Right Side: Event Image with Gradient Overlay - 55% */}
-          <div className="relative min-h-[240px] lg:min-h-full lg:w-[55%] h-full order-first lg:order-last">
-            <div className="expo-image-container absolute inset-0 h-full flex items-center justify-center" style={{ backgroundColor: '#0e0477' }}>
-              <img 
-                src={expoEspacioPublico2026Img} 
-                alt="Expo Espacio Público - Ambiente del Evento" 
-                className="w-full h-full object-contain"
-                loading="lazy"
-                data-testid="expo-banner-image"
-              />
-              {/* Gradient overlay to blend with solid background */}
-              <div className="expo-gradient-overlay absolute inset-0"></div>
             </div>
           </div>
         </div>
