@@ -394,7 +394,7 @@ export default function Landing() {
             <div className="flex flex-row items-end gap-3 md:flex-col md:items-center md:gap-1.5">
               <img 
                 src={logoUrl} 
-                alt="Congreso Parques Logo" 
+                alt="IX Congreso Internacional de Parques Urbanos y Espacio Público - Logo Oficial ANPR Tijuana 2026" 
                 className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
                 data-testid="header-logo"
               />
@@ -958,7 +958,7 @@ export default function Landing() {
               >
                 <img 
                   src={hojasIzquierdaImg} 
-                  alt="Hojas decorativas izquierda"
+                  alt="Decoración natural hojas verdes - Congreso Parques Urbanos Tijuana 2026"
                   className="w-full h-full object-contain drop-shadow-lg"
                 />
               </div>
@@ -977,7 +977,7 @@ export default function Landing() {
               >
                 <img 
                   src={hojasDerechaImg} 
-                  alt="Hojas decorativas derecha"
+                  alt="Elementos vegetales áreas verdes - Congreso Espacio Público México 2026"
                   className="w-full h-full object-contain drop-shadow-lg"
                 />
               </div>
@@ -1175,7 +1175,7 @@ export default function Landing() {
                     >
                       <img 
                         src={logoANPRUrl} 
-                        alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                        alt="ANPR - Asociación Nacional de Parques y Recreación México - Organizadores Congreso Parques Urbanos 2026" 
                         className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
                         data-testid="logo-anpr"
                       />
@@ -1190,7 +1190,7 @@ export default function Landing() {
                     <div className="bg-white rounded-lg shadow-md p-6 w-56 h-32 flex items-center justify-center">
                       <img 
                         src={logoFIDEMUrl} 
-                        alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California" 
+                        alt="FIDEM - Fideicomiso Empresarial Baja California - Patrocinador Congreso Espacio Público Tijuana" 
                         className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
                         data-testid="logo-fidem"
                       />
@@ -1204,7 +1204,7 @@ export default function Landing() {
                       >
                         <img 
                           src={logoCDTUrl} 
-                          alt="CDT - Centro de Desarrollo Tijuana" 
+                          alt="CDT - Centro de Desarrollo Tijuana - Aliado Congreso Parques Urbanos México 2026" 
                           className="max-h-20 max-w-full object-contain hover:scale-105 transition-transform"
                           data-testid="logo-cdt"
                         />
@@ -1246,7 +1246,7 @@ export default function Landing() {
               >
                 <img 
                   src={logoExpoEspacioPublicoUrl} 
-                  alt="Expo Espacio Público 2026" 
+                  alt="Expo Espacio Público 2026 - Exposición Productos y Servicios Parques Urbanos México" 
                   className="w-full max-w-[160px] lg:max-w-[200px] h-auto object-contain"
                   loading="lazy"
                 />
@@ -1326,7 +1326,7 @@ export default function Landing() {
                     <div className="flex items-center justify-center mb-6">
                       <img 
                         src={logoBCCUrl} 
-                        alt="Baja California Center" 
+                        alt="Baja California Center - Sede Congreso Internacional Parques Urbanos Tijuana 2026" 
                         className="max-h-32 object-contain"
                         data-testid="logo-bcc"
                       />
@@ -1401,7 +1401,7 @@ export default function Landing() {
                   <a href="https://anpr.org.mx/" target="_blank" rel="noopener noreferrer">
                     <img 
                       src={logoANPRWhiteUrl} 
-                      alt="ANPR - Asociación Nacional de Parques y Recreación de México" 
+                      alt="ANPR México - Organizadores IX Congreso Internacional Parques Urbanos Espacio Público Tijuana 2026" 
                       className="h-16 object-contain hover:scale-105 transition-transform"
                       data-testid="footer-logo-anpr"
                     />
