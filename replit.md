@@ -1,5 +1,6 @@
 # Overview
 
+
 This is a React-based landing page application for "Congreso Parques Tijuana 2026" - a Latin American conference focused on public spaces and urban parks. The application is built as a full-stack web application with Express.js backend and React frontend, featuring a modern UI component system and responsive design. The landing page showcases event information, registration forms, and interactive elements to promote the conference.
 
 # User Preferences
