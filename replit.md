@@ -68,3 +68,17 @@ Preferred communication style: Simple, everyday language.
 - **Drizzle Kit**: Database migration and schema management tooling
 - **Drizzle Zod**: Integration between Drizzle ORM and Zod for runtime validation
 - **PostgreSQL**: Primary database system via Neon's serverless platform
+
+## Vercel Deployment Configuration
+- **Config File**: `vercel.json` with build settings and URL rewrites for SPA
+- **Build Config**: `vite.config.vercel.ts` - Vite config without Replit-specific plugins
+- **Build Command**: `npm run build:vercel` - Generates static files in `dist/` folder
+- **Output**: Static SPA with all assets optimized for production
+
+## SEO Implementation
+- **Google Analytics**: GA4 tracking enabled (G-5JBQPS6SX1)
+- **Meta Tags**: Title, description, keywords optimized for "Congreso Parques Urbanos Tijuana 2026"
+- **Open Graph**: Facebook/LinkedIn sharing optimization
+- **Twitter Cards**: Twitter sharing with large image preview
+- **Structured Data**: JSON-LD schemas for Event, Organization, WebPage, BreadcrumbList
+- **Geo Tags**: Location metadata for Tijuana, Baja California, México
