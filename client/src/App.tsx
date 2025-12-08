@@ -9,9 +9,6 @@ import Organizadores from "@/pages/organizadores";
 import Ponentes from "@/pages/ponentes";
 import PreguntasFrecuentes from "@/pages/preguntas-frecuentes";
 import Preparate from "@/pages/preparate";
-import Programa from "@/pages/programa";
-import Talleres from "@/pages/talleres";
-import EventosSociales from "@/pages/eventos-sociales";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,9 +20,6 @@ function Router() {
       <Route path="/ponentes" component={Ponentes} />
       <Route path="/preguntas-frecuentes" component={PreguntasFrecuentes} />
       <Route path="/preparate" component={Preparate} />
-      <Route path="/programa" component={Programa} />
-      <Route path="/talleres" component={Talleres} />
-      <Route path="/eventos-sociales" component={EventosSociales} />
       <Route component={NotFound} />
     </Switch>
   );

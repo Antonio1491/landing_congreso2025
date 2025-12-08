@@ -103,8 +103,6 @@ export default function Landing() {
   const [currentBgImage, setCurrentBgImage] = useState(0);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
-  const [activitiesDropdownOpen, setActivitiesDropdownOpen] = useState(false);
-  const [mobileActivitiesOpen, setMobileActivitiesOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
@@ -416,69 +414,85 @@ export default function Landing() {
             {/* Right Side: Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center space-x-1 lg:space-x-2">
-                {/* Acerca de Dropdown - Isolated stacking context */}
+                {/* Acerca de Dropdown */}
                 <div 
-                  className="relative isolate"
+                  className="relative"
                   onMouseEnter={() => setAboutDropdownOpen(true)}
                   onMouseLeave={() => setAboutDropdownOpen(false)}
                 >
                   <button 
-                    className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg flex items-center gap-1"
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
                     data-testid="nav-acerca-de"
                     onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   >
-                    Acerca de
+                    <span className="relative z-10">Acerca de</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
                   
+                  {/* Desktop Dropdown Menu */}
                   {aboutDropdownOpen && (
-                    <div 
-                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-[100]"
-                      style={{ backgroundColor: '#6847f6' }}
-                    >
-                      <Link data-testid="nav-dropdown-congreso" href="/congreso" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Congreso</Link>
-                      <Link data-testid="nav-dropdown-organizadores" href="/organizadores" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Organizadores</Link>
-                      <Link data-testid="nav-dropdown-ponentes" href="/ponentes" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Ponentes</Link>
-                      <Link data-testid="nav-dropdown-faq" href="/preguntas-frecuentes" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Preguntas Frecuentes</Link>
-                      <Link data-testid="nav-dropdown-preparate" href="/preparate" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Prepárate</Link>
-                      <span className="block px-4 py-2.5 text-white/50 cursor-default text-sm" data-testid="nav-dropdown-galerias">Galerías</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Actividades Dropdown - Isolated stacking context */}
-                <div 
-                  className="relative isolate"
-                  onMouseEnter={() => setActivitiesDropdownOpen(true)}
-                  onMouseLeave={() => setActivitiesDropdownOpen(false)}
-                >
-                  <button 
-                    className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg flex items-center gap-1"
-                    data-testid="nav-actividades"
-                    onClick={() => setActivitiesDropdownOpen(!activitiesDropdownOpen)}
-                  >
-                    Actividades
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activitiesDropdownOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  
-                  {activitiesDropdownOpen && (
-                    <div 
-                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-[100]"
-                      style={{ backgroundColor: '#6847f6' }}
-                    >
-                      <Link data-testid="nav-dropdown-programa" href="/programa" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Programa</Link>
-                      <Link data-testid="nav-dropdown-talleres" href="/talleres" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Talleres</Link>
-                      <Link data-testid="nav-dropdown-eventos-sociales" href="/eventos-sociales" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Eventos Sociales</Link>
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#0e0477] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                      <Link 
+                        href="/congreso"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-congreso"
+                      >
+                        Congreso
+                      </Link>
+                      <Link 
+                        href="/organizadores"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-organizadores"
+                      >
+                        Organizadores
+                      </Link>
+                      <Link 
+                        href="/ponentes"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-ponentes"
+                      >
+                        Ponentes
+                      </Link>
+                      <Link 
+                        href="/preguntas-frecuentes"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-faq"
+                      >
+                        Preguntas Frecuentes
+                      </Link>
+                      <Link 
+                        href="/preparate"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-preparate"
+                      >
+                        Prepárate
+                      </Link>
+                      <span 
+                        className="block px-4 py-2.5 text-white/50 cursor-default text-sm"
+                        data-testid="nav-dropdown-galerias"
+                      >
+                        Galerías
+                      </span>
                     </div>
                   )}
                 </div>
 
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
-                  className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg"
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
                   data-testid="nav-convocatorias"
                 >
-                  Convocatorias
+                  <span className="relative z-10">Convocatorias</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -567,56 +581,25 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Mobile Actividades Accordion */}
-                <div>
-                  <button 
-                    onClick={() => setMobileActivitiesOpen(!mobileActivitiesOpen)}
-                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
-                    data-testid="mobile-nav-actividades"
-                  >
-                    <span>Actividades</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileActivitiesOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  
-                  {mobileActivitiesOpen && (
-                    <div className="pl-4 space-y-1 mt-1">
-                      <Link 
-                        href="/programa"
-                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-programa"
-                      >
-                        Programa
-                      </Link>
-                      <Link 
-                        href="/talleres"
-                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-talleres"
-                      >
-                        Talleres
-                      </Link>
-                      <Link 
-                        href="/eventos-sociales"
-                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-eventos-sociales"
-                      >
-                        Eventos Sociales
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
                 <button 
                   onClick={() => {
                     scrollToSection('convocatorias');
                     setMobileMenuOpen(false);
                   }} 
-                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
                   data-testid="mobile-nav-convocatorias"
                 >
-                  Convocatorias
+                  <span className="relative z-10">Convocatorias</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
                 </button>
               </div>
             </div>
