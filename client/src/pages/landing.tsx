@@ -414,24 +414,26 @@ export default function Landing() {
             {/* Right Side: Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center space-x-1 lg:space-x-2">
-                {/* Acerca de Dropdown */}
+                {/* Acerca de Dropdown - Isolated stacking context */}
                 <div 
-                  className="relative"
+                  className="relative isolate"
                   onMouseEnter={() => setAboutDropdownOpen(true)}
                   onMouseLeave={() => setAboutDropdownOpen(false)}
                 >
                   <button 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg flex items-center gap-1"
                     data-testid="nav-acerca-de"
                     onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   >
-                    <span className="relative z-10">Acerca de</span>
+                    Acerca de
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
                   
-                  {/* Desktop Dropdown Menu */}
                   {aboutDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div 
+                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-[100]"
+                      style={{ backgroundColor: '#6847f6' }}
+                    >
                       <Link data-testid="nav-dropdown-congreso" href="/congreso" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Congreso</Link>
                       <Link data-testid="nav-dropdown-organizadores" href="/organizadores" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Organizadores</Link>
                       <Link data-testid="nav-dropdown-ponentes" href="/ponentes" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Ponentes</Link>
