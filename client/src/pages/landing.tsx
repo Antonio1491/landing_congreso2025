@@ -434,9 +434,11 @@ export default function Landing() {
                       className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-[100]"
                       style={{ backgroundColor: '#6847f6' }}
                     >
-                      <Link data-testid="nav-dropdown-programa" href="/programa" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-[#5c3fe0] transition-colors text-sm">Programa</Link>
-                      <Link data-testid="nav-dropdown-talleres" href="/talleres" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-[#5c3fe0] transition-colors text-sm">Talleres</Link>
-                      <Link data-testid="nav-dropdown-eventos-sociales" href="/eventos-sociales" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-[#5c3fe0] transition-colors text-sm">Eventos Sociales</Link>
+                      <Link data-testid="nav-dropdown-congreso" href="/congreso" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Congreso</Link>
+                      <Link data-testid="nav-dropdown-organizadores" href="/organizadores" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Organizadores</Link>
+                      <Link data-testid="nav-dropdown-ponentes" href="/ponentes" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Ponentes</Link>
+                      <Link data-testid="nav-dropdown-faq" href="/preguntas-frecuentes" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Preguntas Frecuentes</Link>
+                      <Link data-testid="nav-dropdown-preparate" href="/preparate" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Prepárate</Link>
                       <span className="block px-4 py-2.5 text-white/50 cursor-default text-sm" data-testid="nav-dropdown-galerias">Galerías</span>
                     </div>
                   )}
@@ -482,12 +484,12 @@ export default function Landing() {
           {/* Mobile Navigation Dropdown */}
           {mobileMenuOpen && (
             <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
-              <div className="px-2 pt-2 pb-3 space-y-1 border-t border-white/20 rounded-md" style={{ backgroundColor: '#6847f6' }}>
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
                 {/* Mobile Acerca de Accordion */}
                 <div>
                   <button 
                     onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-[#5c3fe0] px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                     data-testid="mobile-nav-acerca-de"
                   >
                     <span>Acerca de</span>
@@ -497,31 +499,47 @@ export default function Landing() {
                   {mobileAboutOpen && (
                     <div className="pl-4 space-y-1 mt-1">
                       <Link 
-                        href="/programa"
-                        className="block text-white/80 hover:text-white hover:bg-[#5c3fe0] px-3 py-2 text-sm rounded-md transition-colors"
+                        href="/congreso"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-programa"
+                        data-testid="mobile-nav-congreso"
                       >
-                        Programa
+                        Congreso
                       </Link>
                       <Link 
-                        href="/talleres"
-                        className="block text-white/80 hover:text-white hover:bg-[#5c3fe0] px-3 py-2 text-sm rounded-md transition-colors"
+                        href="/organizadores"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-talleres"
+                        data-testid="mobile-nav-organizadores"
                       >
-                        Talleres
+                        Organizadores
                       </Link>
                       <Link 
-                        href="/eventos-sociales"
-                        className="block text-white/80 hover:text-white hover:bg-[#5c3fe0] px-3 py-2 text-sm rounded-md transition-colors"
+                        href="/ponentes"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-eventos-sociales"
+                        data-testid="mobile-nav-ponentes"
                       >
-                        Eventos Sociales
+                        Ponentes
+                      </Link>
+                      <Link 
+                        href="/preguntas-frecuentes"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-faq"
+                      >
+                        Preguntas Frecuentes
+                      </Link>
+                      <Link 
+                        href="/preparate"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-preparate"
+                      >
+                        Prepárate
                       </Link>
                       <span 
-                        className="block text-white/50 px-3 py-2 text-sm cursor-default"
+                        className="block text-white/40 px-3 py-2 text-sm cursor-default"
                         data-testid="mobile-nav-galerias"
                       >
                         Galerías
@@ -529,21 +547,33 @@ export default function Landing() {
                     </div>
                   )}
                 </div>
-                
-                {/* Convocatorias */}
+
                 <button 
-                  onClick={() => { scrollToSection('convocatorias'); setMobileMenuOpen(false); }}
-                  className="block text-white/90 hover:text-white hover:bg-[#5c3fe0] px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                  onClick={() => {
+                    scrollToSection('convocatorias');
+                    setMobileMenuOpen(false);
+                  }} 
+                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
                   data-testid="mobile-nav-convocatorias"
                 >
-                  Convocatorias
+                  <span className="relative z-10">Convocatorias</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="particle-container">
+                      <div className="particle particle-1"></div>
+                      <div className="particle particle-2"></div>
+                      <div className="particle particle-3"></div>
+                      <div className="particle particle-4"></div>
+                      <div className="particle particle-5"></div>
+                      <div className="particle particle-6"></div>
+                    </div>
+                  </div>
                 </button>
               </div>
             </div>
           )}
         </nav>
       </header>
-      
+
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-20 sm:pt-24 md:pt-36 lg:pt-40 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
         {/* Background Image Carousel with Purple Halftone Filter */}
