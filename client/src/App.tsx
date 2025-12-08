@@ -12,6 +12,9 @@ import Preparate from "@/pages/preparate";
 import Programa from "@/pages/programa";
 import Talleres from "@/pages/talleres";
 import EventosSociales from "@/pages/eventos-sociales";
+import MeridaYucatan from "@/pages/merida-yucatan";
+import Conectividad from "@/pages/conectividad";
+import Hospedaje from "@/pages/hospedaje";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +29,9 @@ function Router() {
       <Route path="/programa" component={Programa} />
       <Route path="/talleres" component={Talleres} />
       <Route path="/eventos-sociales" component={EventosSociales} />
+      <Route path="/merida-yucatan" component={MeridaYucatan} />
+      <Route path="/conectividad" component={Conectividad} />
+      <Route path="/hospedaje" component={Hospedaje} />
       <Route component={NotFound} />
     </Switch>
   );

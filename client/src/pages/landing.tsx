@@ -104,6 +104,8 @@ export default function Landing() {
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [activitiesDropdownOpen, setActivitiesDropdownOpen] = useState(false);
   const [mobileActivitiesOpen, setMobileActivitiesOpen] = useState(false);
+  const [sedeDropdownOpen, setSedeDropdownOpen] = useState(false);
+  const [mobileSedeOpen, setMobileSedeOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
@@ -522,6 +524,49 @@ export default function Landing() {
                   )}
                 </div>
 
+                {/* Sede Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setSedeDropdownOpen(true)}
+                  onMouseLeave={() => setSedeDropdownOpen(false)}
+                >
+                  <button 
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    data-testid="nav-sede"
+                    onClick={() => setSedeDropdownOpen(!sedeDropdownOpen)}
+                  >
+                    <span className="relative z-10">Sede</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${sedeDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Sede Dropdown Menu */}
+                  {sedeDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                      <Link 
+                        href="/merida-yucatan"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-merida"
+                      >
+                        Mérida, Yucatán
+                      </Link>
+                      <Link 
+                        href="/conectividad"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-conectividad"
+                      >
+                        Conectividad
+                      </Link>
+                      <Link 
+                        href="/hospedaje"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-hospedaje"
+                      >
+                        Hospedaje
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
                   className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
@@ -662,6 +707,47 @@ export default function Landing() {
                         data-testid="mobile-nav-eventos-sociales"
                       >
                         Eventos Sociales
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Sede Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileSedeOpen(!mobileSedeOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-sede"
+                  >
+                    <span>Sede</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileSedeOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileSedeOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/merida-yucatan"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-merida"
+                      >
+                        Mérida, Yucatán
+                      </Link>
+                      <Link 
+                        href="/conectividad"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-conectividad"
+                      >
+                        Conectividad
+                      </Link>
+                      <Link 
+                        href="/hospedaje"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-hospedaje"
+                      >
+                        Hospedaje
                       </Link>
                     </div>
                   )}
