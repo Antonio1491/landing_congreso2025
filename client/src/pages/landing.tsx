@@ -25,6 +25,7 @@ import {
   Play,
   ZoomIn,
   ChevronUp,
+  ChevronDown,
   Leaf,
   Compass,
   Zap,
@@ -90,6 +91,8 @@ function StatCounter({ target, duration = 2000 }: StatCounterProps) {
 
 export default function Landing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [acercaDeOpen, setAcercaDeOpen] = useState(false);
+  const [mobileAcercaDeOpen, setMobileAcercaDeOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
@@ -410,42 +413,86 @@ export default function Landing() {
             {/* Right Side: Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center space-x-1 lg:space-x-2">
+                {/* Acerca De Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setAcercaDeOpen(true)}
+                  onMouseLeave={() => setAcercaDeOpen(false)}
+                >
+                  <button 
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    data-testid="nav-acerca-de"
+                    onClick={() => setAcercaDeOpen(!acercaDeOpen)}
+                  >
+                    <span className="relative z-10">Acerca de</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${acercaDeOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  {acercaDeOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/20 py-2 z-50">
+                      <a 
+                        href="#congreso" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-congreso"
+                      >
+                        Congreso
+                      </a>
+                      <a 
+                        href="#organizadores" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-organizadores"
+                      >
+                        Organizadores
+                      </a>
+                      <a 
+                        href="#ponentes" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-ponentes"
+                      >
+                        Ponentes
+                      </a>
+                      <a 
+                        href="#preguntas-frecuentes" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-faq"
+                      >
+                        Preguntas Frecuentes
+                      </a>
+                      <a 
+                        href="#preparate" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-preparate"
+                      >
+                        Prepárate
+                      </a>
+                      <a 
+                        href="#galerias" 
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+                        data-testid="nav-dropdown-galerias"
+                      >
+                        Galerías
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                {/* Actividades Link */}
+                <button 
+                  onClick={() => scrollToSection('actividades')} 
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  data-testid="nav-actividades"
+                >
+                  <span className="relative z-10">Actividades</span>
+                </button>
+
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
                   className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
                   data-testid="nav-convocatorias"
                 >
                   <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
                 </button>
-                {/* Ready for more menu items:
-                <button 
-                  onClick={() => scrollToSection('section-name')} 
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
-                  data-testid="nav-section-name"
-                >
-                  <span className="relative z-10">Menu Item</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
-                </button>
-                */}
               </div>
             </div>
             
@@ -470,48 +517,94 @@ export default function Landing() {
           {mobileMenuOpen && (
             <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+                {/* Acerca De Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileAcercaDeOpen(!mobileAcercaDeOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-acerca-de"
+                  >
+                    <span>Acerca de</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAcercaDeOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileAcercaDeOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <a 
+                        href="#congreso"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-congreso"
+                      >
+                        Congreso
+                      </a>
+                      <a 
+                        href="#organizadores"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-organizadores"
+                      >
+                        Organizadores
+                      </a>
+                      <a 
+                        href="#ponentes"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-ponentes"
+                      >
+                        Ponentes
+                      </a>
+                      <a 
+                        href="#preguntas-frecuentes"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-faq"
+                      >
+                        Preguntas Frecuentes
+                      </a>
+                      <a 
+                        href="#preparate"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-preparate"
+                      >
+                        Prepárate
+                      </a>
+                      <a 
+                        href="#galerias"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm font-medium rounded-md transition-colors"
+                        data-testid="mobile-nav-galerias"
+                      >
+                        Galerías
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                {/* Actividades */}
+                <button 
+                  onClick={() => {
+                    scrollToSection('actividades');
+                    setMobileMenuOpen(false);
+                  }} 
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                  data-testid="mobile-nav-actividades"
+                >
+                  Actividades
+                </button>
+
+                {/* Convocatorias */}
                 <button 
                   onClick={() => {
                     scrollToSection('convocatorias');
                     setMobileMenuOpen(false);
                   }} 
-                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-convocatorias"
                 >
-                  <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
+                  Convocatorias
                 </button>
-                {/* Ready for more menu items:
-                <button 
-                  onClick={() => {
-                    scrollToSection('section-name');
-                    setMobileMenuOpen(false);
-                  }} 
-                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
-                  data-testid="mobile-nav-section-name"
-                >
-                  <span className="relative z-10">Menu Item</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
-                </button>
-                */}
               </div>
             </div>
           )}
