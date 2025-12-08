@@ -106,6 +106,8 @@ export default function Landing() {
   const [mobileActivitiesOpen, setMobileActivitiesOpen] = useState(false);
   const [sedeDropdownOpen, setSedeDropdownOpen] = useState(false);
   const [mobileSedeOpen, setMobileSedeOpen] = useState(false);
+  const [convocatoriasDropdownOpen, setConvocatoriasDropdownOpen] = useState(false);
+  const [mobileConvocatoriasOpen, setMobileConvocatoriasOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
@@ -567,23 +569,55 @@ export default function Landing() {
                   )}
                 </div>
 
-                <button 
-                  onClick={() => scrollToSection('convocatorias')} 
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
-                  data-testid="nav-convocatorias"
+                {/* Convocatorias Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setConvocatoriasDropdownOpen(true)}
+                  onMouseLeave={() => setConvocatoriasDropdownOpen(false)}
                 >
-                  <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
+                  <button 
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    data-testid="nav-convocatorias"
+                    onClick={() => setConvocatoriasDropdownOpen(!convocatoriasDropdownOpen)}
+                  >
+                    <span className="relative z-10">Convocatorias</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${convocatoriasDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Convocatorias Dropdown Menu */}
+                  {convocatoriasDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                      <Link 
+                        href="/sesiones-educativas"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-sesiones-educativas"
+                      >
+                        Sesiones Educativas
+                      </Link>
+                      <Link 
+                        href="/posters-cientificos"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-posters"
+                      >
+                        Pósters Científicos
+                      </Link>
+                      <Link 
+                        href="/voluntarios"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-voluntarios"
+                      >
+                        Voluntarios
+                      </Link>
+                      <Link 
+                        href="/comite-evaluador"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-comite"
+                      >
+                        Comité Evaluador
+                      </Link>
                     </div>
-                  </div>
-                </button>
+                  )}
+                </div>
               </div>
             </div>
             
@@ -753,26 +787,54 @@ export default function Landing() {
                   )}
                 </div>
 
-                <button 
-                  onClick={() => {
-                    scrollToSection('convocatorias');
-                    setMobileMenuOpen(false);
-                  }} 
-                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
-                  data-testid="mobile-nav-convocatorias"
-                >
-                  <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
+                {/* Mobile Convocatorias Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileConvocatoriasOpen(!mobileConvocatoriasOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-convocatorias"
+                  >
+                    <span>Convocatorias</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileConvocatoriasOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileConvocatoriasOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/sesiones-educativas"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-sesiones-educativas"
+                      >
+                        Sesiones Educativas
+                      </Link>
+                      <Link 
+                        href="/posters-cientificos"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-posters"
+                      >
+                        Pósters Científicos
+                      </Link>
+                      <Link 
+                        href="/voluntarios"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-voluntarios"
+                      >
+                        Voluntarios
+                      </Link>
+                      <Link 
+                        href="/comite-evaluador"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-comite"
+                      >
+                        Comité Evaluador
+                      </Link>
                     </div>
-                  </div>
-                </button>
+                  )}
+                </div>
               </div>
             </div>
           )}

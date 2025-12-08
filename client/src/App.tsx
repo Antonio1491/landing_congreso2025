@@ -15,6 +15,10 @@ import EventosSociales from "@/pages/eventos-sociales";
 import MeridaYucatan from "@/pages/merida-yucatan";
 import Conectividad from "@/pages/conectividad";
 import Hospedaje from "@/pages/hospedaje";
+import SesionesEducativas from "@/pages/sesiones-educativas";
+import PostersCientificos from "@/pages/posters-cientificos";
+import Voluntarios from "@/pages/voluntarios";
+import ComiteEvaluador from "@/pages/comite-evaluador";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -32,6 +36,10 @@ function Router() {
       <Route path="/merida-yucatan" component={MeridaYucatan} />
       <Route path="/conectividad" component={Conectividad} />
       <Route path="/hospedaje" component={Hospedaje} />
+      <Route path="/sesiones-educativas" component={SesionesEducativas} />
+      <Route path="/posters-cientificos" component={PostersCientificos} />
+      <Route path="/voluntarios" component={Voluntarios} />
+      <Route path="/comite-evaluador" component={ComiteEvaluador} />
       <Route component={NotFound} />
     </Switch>
   );
