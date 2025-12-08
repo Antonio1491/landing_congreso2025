@@ -25,11 +25,13 @@ import {
   Play,
   ZoomIn,
   ChevronUp,
+  ChevronDown,
   Leaf,
   Compass,
   Zap,
   DollarSign
 } from "lucide-react";
+import { Link } from "wouter";
 import { FaWhatsapp } from "react-icons/fa";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
@@ -99,6 +101,8 @@ export default function Landing() {
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentBgImage, setCurrentBgImage] = useState(0);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
@@ -410,6 +414,69 @@ export default function Landing() {
             {/* Right Side: Desktop Navigation */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center space-x-1 lg:space-x-2">
+                {/* Acerca de Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setAboutDropdownOpen(true)}
+                  onMouseLeave={() => setAboutDropdownOpen(false)}
+                >
+                  <button 
+                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    data-testid="nav-acerca-de"
+                    onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                  >
+                    <span className="relative z-10">Acerca de</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Dropdown Menu */}
+                  {aboutDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#0e0477] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                      <Link 
+                        href="/congreso"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-congreso"
+                      >
+                        Congreso
+                      </Link>
+                      <Link 
+                        href="/organizadores"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-organizadores"
+                      >
+                        Organizadores
+                      </Link>
+                      <Link 
+                        href="/ponentes"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-ponentes"
+                      >
+                        Ponentes
+                      </Link>
+                      <Link 
+                        href="/preguntas-frecuentes"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-faq"
+                      >
+                        Preguntas Frecuentes
+                      </Link>
+                      <Link 
+                        href="/preparate"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                        data-testid="nav-dropdown-preparate"
+                      >
+                        Prepárate
+                      </Link>
+                      <span 
+                        className="block px-4 py-2.5 text-white/50 cursor-default text-sm"
+                        data-testid="nav-dropdown-galerias"
+                      >
+                        Galerías
+                      </span>
+                    </div>
+                  )}
+                </div>
+
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
                   className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
@@ -427,25 +494,6 @@ export default function Landing() {
                     </div>
                   </div>
                 </button>
-                {/* Ready for more menu items:
-                <button 
-                  onClick={() => scrollToSection('section-name')} 
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
-                  data-testid="nav-section-name"
-                >
-                  <span className="relative z-10">Menu Item</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
-                </button>
-                */}
               </div>
             </div>
             
@@ -470,6 +518,69 @@ export default function Landing() {
           {mobileMenuOpen && (
             <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+                {/* Mobile Acerca de Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-acerca-de"
+                  >
+                    <span>Acerca de</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileAboutOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/congreso"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-congreso"
+                      >
+                        Congreso
+                      </Link>
+                      <Link 
+                        href="/organizadores"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-organizadores"
+                      >
+                        Organizadores
+                      </Link>
+                      <Link 
+                        href="/ponentes"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-ponentes"
+                      >
+                        Ponentes
+                      </Link>
+                      <Link 
+                        href="/preguntas-frecuentes"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-faq"
+                      >
+                        Preguntas Frecuentes
+                      </Link>
+                      <Link 
+                        href="/preparate"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-preparate"
+                      >
+                        Prepárate
+                      </Link>
+                      <span 
+                        className="block text-white/40 px-3 py-2 text-sm cursor-default"
+                        data-testid="mobile-nav-galerias"
+                      >
+                        Galerías
+                      </span>
+                    </div>
+                  )}
+                </div>
+
                 <button 
                   onClick={() => {
                     scrollToSection('convocatorias');
@@ -490,28 +601,6 @@ export default function Landing() {
                     </div>
                   </div>
                 </button>
-                {/* Ready for more menu items:
-                <button 
-                  onClick={() => {
-                    scrollToSection('section-name');
-                    setMobileMenuOpen(false);
-                  }} 
-                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
-                  data-testid="mobile-nav-section-name"
-                >
-                  <span className="relative z-10">Menu Item</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
-                </button>
-                */}
               </div>
             </div>
           )}
