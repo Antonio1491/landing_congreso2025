@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Clock, Calendar, MapPin, Globe } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
+import lineaTiempo from "@assets/image_1765236417102.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
 import sesionEducativa from "@assets/Sesion educativa_1758578349360.jpg";
 import tallerVivencial from "@assets/Taller vivencial_1758578349360.jpg";
@@ -185,15 +186,20 @@ export default function Congreso() {
           </div>
         </section>
 
-        {/* Nuestro Legado - Placeholder */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        {/* Nuestro Legado */}
+        <section className="py-16 bg-black">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Nuestro Legado
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Línea del tiempo del Congreso Parques próximamente.
-            </p>
+            <div className="max-w-6xl mx-auto">
+              <img 
+                src={lineaTiempo} 
+                alt="Línea del tiempo del Congreso Parques 2018-2024" 
+                className="w-full h-auto"
+                data-testid="linea-tiempo-img"
+              />
+            </div>
           </div>
         </section>
 
