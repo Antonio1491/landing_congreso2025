@@ -627,6 +627,15 @@ export default function Landing() {
                 >
                   <span className="relative z-10">Expo Espacio Público</span>
                 </Link>
+
+                {/* Construcción Comunitaria - Direct Link */}
+                <Link 
+                  href="/construccion-comunitaria"
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  data-testid="nav-construccion-comunitaria"
+                >
+                  <span className="relative z-10">Construcción Comunitaria</span>
+                </Link>
               </div>
             </div>
             
@@ -853,6 +862,16 @@ export default function Landing() {
                   data-testid="mobile-nav-expo-espacio-publico"
                 >
                   Expo Espacio Público
+                </Link>
+
+                {/* Mobile Construcción Comunitaria - Direct Link */}
+                <Link 
+                  href="/construccion-comunitaria"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  data-testid="mobile-nav-construccion-comunitaria"
+                >
+                  Construcción Comunitaria
                 </Link>
               </div>
             </div>
