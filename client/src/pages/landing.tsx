@@ -103,6 +103,8 @@ export default function Landing() {
   const [currentBgImage, setCurrentBgImage] = useState(0);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [activitiesDropdownOpen, setActivitiesDropdownOpen] = useState(false);
+  const [mobileActivitiesOpen, setMobileActivitiesOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
@@ -444,6 +446,33 @@ export default function Landing() {
                   )}
                 </div>
 
+                {/* Actividades Dropdown */}
+                <div 
+                  className="relative isolate"
+                  onMouseEnter={() => setActivitiesDropdownOpen(true)}
+                  onMouseLeave={() => setActivitiesDropdownOpen(false)}
+                >
+                  <button 
+                    className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg flex items-center gap-1"
+                    data-testid="nav-actividades"
+                    onClick={() => setActivitiesDropdownOpen(!activitiesDropdownOpen)}
+                  >
+                    Actividades
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activitiesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {activitiesDropdownOpen && (
+                    <div 
+                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-[100]"
+                      style={{ backgroundColor: '#6847f6' }}
+                    >
+                      <Link data-testid="nav-dropdown-programa" href="/programa" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Programa</Link>
+                      <Link data-testid="nav-dropdown-talleres" href="/talleres" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Talleres</Link>
+                      <Link data-testid="nav-dropdown-eventos-sociales" href="/eventos-sociales" className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm">Eventos Sociales</Link>
+                    </div>
+                  )}
+                </div>
+
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
                   className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
@@ -544,6 +573,47 @@ export default function Landing() {
                       >
                         Galerías
                       </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Actividades Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileActivitiesOpen(!mobileActivitiesOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-actividades"
+                  >
+                    <span>Actividades</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileActivitiesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileActivitiesOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/programa"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-programa"
+                      >
+                        Programa
+                      </Link>
+                      <Link 
+                        href="/talleres"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-talleres"
+                      >
+                        Talleres
+                      </Link>
+                      <Link 
+                        href="/eventos-sociales"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-eventos-sociales"
+                      >
+                        Eventos Sociales
+                      </Link>
                     </div>
                   )}
                 </div>
