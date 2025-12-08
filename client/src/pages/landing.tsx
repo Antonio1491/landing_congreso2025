@@ -431,7 +431,7 @@ export default function Landing() {
                   
                   {/* Desktop Dropdown Menu */}
                   {aboutDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl border border-white/10 py-2 z-50" style={{ backgroundColor: '#6847f6' }}>
                       <Link 
                         href="/congreso"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/10 transition-colors text-sm"
