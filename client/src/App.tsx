@@ -19,6 +19,7 @@ import SesionesEducativas from "@/pages/sesiones-educativas";
 import PostersCientificos from "@/pages/posters-cientificos";
 import Voluntarios from "@/pages/voluntarios";
 import ComiteEvaluador from "@/pages/comite-evaluador";
+import ExpoEspacioPublico from "@/pages/expo-espacio-publico";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -40,6 +41,7 @@ function Router() {
       <Route path="/posters-cientificos" component={PostersCientificos} />
       <Route path="/voluntarios" component={Voluntarios} />
       <Route path="/comite-evaluador" component={ComiteEvaluador} />
+      <Route path="/expo-espacio-publico" component={ExpoEspacioPublico} />
       <Route component={NotFound} />
     </Switch>
   );

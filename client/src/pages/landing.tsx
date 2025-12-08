@@ -618,6 +618,15 @@ export default function Landing() {
                     </div>
                   )}
                 </div>
+
+                {/* Expo Espacio Público - Direct Link */}
+                <Link 
+                  href="/expo-espacio-publico"
+                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  data-testid="nav-expo-espacio-publico"
+                >
+                  <span className="relative z-10">Expo Espacio Público</span>
+                </Link>
               </div>
             </div>
             
@@ -835,6 +844,16 @@ export default function Landing() {
                     </div>
                   )}
                 </div>
+
+                {/* Mobile Expo Espacio Público - Direct Link */}
+                <Link 
+                  href="/expo-espacio-publico"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  data-testid="mobile-nav-expo-espacio-publico"
+                >
+                  Expo Espacio Público
+                </Link>
               </div>
             </div>
           )}
