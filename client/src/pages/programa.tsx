@@ -46,6 +46,9 @@ export default function Programa() {
             </h1>
             
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
+              <p className="text-gray-600 text-center text-lg">
+                Contenido próximamente disponible.
+              </p>
             </div>
           </div>
         </div>
