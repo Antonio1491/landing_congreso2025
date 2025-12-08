@@ -187,12 +187,12 @@ export default function Congreso() {
         </section>
 
         {/* Nuestro Legado */}
-        <section className="py-16 bg-black">
+        <section className="py-16 bg-[#0e0477]">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Nuestro Legado
             </h2>
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <img 
                 src={lineaTiempo} 
                 alt="Línea del tiempo del Congreso Parques 2018-2024" 
