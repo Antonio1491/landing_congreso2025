@@ -5,7 +5,7 @@ import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 export default function Programa() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 shadow-lg" style={{ backgroundColor: '#6847f6' }}>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 md:py-4">
             <Link href="/" className="flex items-center gap-3" data-testid="header-logo-link">
@@ -46,6 +46,9 @@ export default function Programa() {
             </h1>
             
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
+              <p className="text-gray-600 text-center text-lg">
+                Contenido próximamente disponible.
+              </p>
             </div>
           </div>
         </div>

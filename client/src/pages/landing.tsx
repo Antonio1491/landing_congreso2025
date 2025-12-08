@@ -446,7 +446,7 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Actividades Dropdown */}
+                {/* Actividades Dropdown - Isolated stacking context */}
                 <div 
                   className="relative isolate"
                   onMouseEnter={() => setActivitiesDropdownOpen(true)}
@@ -475,20 +475,10 @@ export default function Landing() {
 
                 <button 
                   onClick={() => scrollToSection('convocatorias')} 
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  className="text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg"
                   data-testid="nav-convocatorias"
                 >
-                  <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
+                  Convocatorias
                 </button>
               </div>
             </div>
@@ -623,20 +613,10 @@ export default function Landing() {
                     scrollToSection('convocatorias');
                     setMobileMenuOpen(false);
                   }} 
-                  className="relative overflow-hidden block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors group"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-convocatorias"
                 >
-                  <span className="relative z-10">Convocatorias</span>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="particle-container">
-                      <div className="particle particle-1"></div>
-                      <div className="particle particle-2"></div>
-                      <div className="particle particle-3"></div>
-                      <div className="particle particle-4"></div>
-                      <div className="particle particle-5"></div>
-                      <div className="particle particle-6"></div>
-                    </div>
-                  </div>
+                  Convocatorias
                 </button>
               </div>
             </div>
