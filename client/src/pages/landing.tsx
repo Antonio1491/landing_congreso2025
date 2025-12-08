@@ -545,11 +545,11 @@ export default function Landing() {
                   {sedeDropdownOpen && (
                     <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
                       <Link 
-                        href="/merida-yucatan"
+                        href="/sede"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
-                        data-testid="nav-dropdown-merida"
+                        data-testid="nav-dropdown-sede"
                       >
-                        Mérida, Yucatán
+                        Tijuana, Baja California
                       </Link>
                       <Link 
                         href="/conectividad"
@@ -778,12 +778,12 @@ export default function Landing() {
                   {mobileSedeOpen && (
                     <div className="pl-4 space-y-1 mt-1">
                       <Link 
-                        href="/merida-yucatan"
+                        href="/sede"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-merida"
+                        data-testid="mobile-nav-sede"
                       >
-                        Mérida, Yucatán
+                        Tijuana, Baja California
                       </Link>
                       <Link 
                         href="/conectividad"
