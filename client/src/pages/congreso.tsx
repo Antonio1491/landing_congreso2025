@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ArrowLeft, Clock, Calendar, MapPin, Globe } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
@@ -9,62 +10,56 @@ import tallerVivencial from "@assets/Taller vivencial_1758578349360.jpg";
 import masterClasses from "@assets/Master classes_1758578349365.jpg";
 import expoEspacioPublico from "@assets/Expo Espacio Publico_1758578349359.jpg";
 import eventosSociales from "@assets/Eventos Sociales_1758578349366.jpg";
+import masterClassesIconUrl from "@assets/Master Classes_1758578569492.png";
+import conferenciasIconUrl from "@assets/Conferencias Magistrales_1758578569495.png";
+import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
+import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
+import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
+import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 
 export default function Congreso() {
   const experiencias = [
     {
-      titulo: "Conferencias Magistrales",
+      iconUrl: conferenciasIconUrl,
+      title: "Conferencias Magistrales",
+      description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
       fecha: "14 y 15 de mayo",
-      descripcion: "Líderes en parques y espacios públicos ofrecerán charlas inspiradoras basadas en su trayectoria y en los desafíos urbanos actuales.",
-      imagen: conferenciaMagistral,
-      link: "/programa",
-      posicionImagen: "left",
-      showButton: false
+      image: conferenciaMagistral
     },
     {
-      titulo: "Sesiones Educativas",
+      iconUrl: sesionesIconUrl,
+      title: "Sesiones Educativas",
+      description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
       fecha: "14 y 15 de mayo",
-      descripcion: "Más de 30 sesiones educativas impartidas por conferencistas nacionales e internacionales ofrecerán un espacio dedicado al aprendizaje y la capacitación.",
-      imagen: sesionEducativa,
-      link: "/programa",
-      posicionImagen: "right",
-      showButton: false
+      image: sesionEducativa
     },
     {
-      titulo: "Talleres Vivenciales",
+      iconUrl: talleresIconUrl,
+      title: "Talleres Vivenciales",
+      description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
       fecha: "13 de mayo",
-      descripcion: "Explora parques urbanos, proyectos ciudadanos, centros recreativos y técnicas especializadas en temas clave del espacio público. Una oportunidad ideal para ampliar tus conocimientos.",
-      imagen: tallerVivencial,
-      link: "/talleres",
-      posicionImagen: "left",
-      showButton: false
+      image: tallerVivencial
     },
     {
-      titulo: "Master Classes",
+      iconUrl: masterClassesIconUrl,
+      title: "Master Classes",
+      description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
       fecha: "13 de mayo",
-      descripcion: "Aprende de especialistas que te brindarán herramientas y técnicas avanzadas para profundizar en temas esenciales del espacio público.",
-      imagen: masterClasses,
-      link: "/talleres",
-      posicionImagen: "right",
-      showButton: false
+      image: masterClasses
     },
     {
-      titulo: "Expo Espacio Público",
+      iconUrl: expoIconUrl,
+      title: "Expo Espacio Público",
+      description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
       fecha: "14 y 15 de mayo",
-      descripcion: "El punto de encuentro de las compañías líderes que impulsan el sector, exhibiendo productos y servicios clave para transformar y equipar los espacios públicos.",
-      imagen: expoEspacioPublico,
-      link: "/expo-espacio-publico",
-      posicionImagen: "left",
-      showButton: true
+      image: expoEspacioPublico
     },
     {
-      titulo: "Eventos Sociales",
-      fecha: "13 al 15 de mayo",
-      descripcion: "Disfruta tres experiencias pensadas para conectar y celebrar: la cena de consejo, la fiesta de la cerveza y la clausura del Congreso. Un ambiente ideal para convivir y crear nuevas relaciones profesionales.",
-      imagen: eventosSociales,
-      link: "/eventos-sociales",
-      posicionImagen: "right",
-      showButton: false
+      iconUrl: eventosIconUrl,
+      title: "Eventos Sociales",
+      description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
+      fecha: "14 y 15 de mayo",
+      image: eventosSociales
     }
   ];
 
@@ -209,37 +204,54 @@ export default function Congreso() {
         </div>
 
         {/* Diseña tu experiencia */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Diseña tu experiencia
-            </h2>
-            <p className="text-gray-600 text-lg">Los asistentes pueden participar en:</p>
-          </div>
-
-          {experiencias.map((exp, index) => (
-            <div 
-              key={index} 
-              className="relative min-h-[400px] bg-cover bg-center flex items-center"
-              style={{ backgroundImage: `linear-gradient(to ${exp.posicionImagen === 'left' ? 'left' : 'right'}, rgba(14, 4, 119, 0.85) 50%, transparent 100%), url(${exp.imagen})` }}
-            >
-              <div className="container mx-auto px-4">
-                <div className={`max-w-xl ${exp.posicionImagen === 'left' ? 'ml-auto mr-0 md:mr-12' : 'mr-auto ml-0 md:ml-12'} text-white py-12`}>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">{exp.titulo}</h3>
-                  <p className="text-[#BCCE16] font-semibold mb-4">{exp.fecha}</p>
-                  <p className="text-white/90 mb-6 leading-relaxed">{exp.descripcion}</p>
-                  {exp.showButton && (
-                    <Link 
-                      href={exp.link}
-                      className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors"
-                    >
-                      Ver Más
-                    </Link>
-                  )}
-                </div>
+        <section className="py-16" style={{ backgroundColor: '#35219b' }}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Diseña tu experiencia
+                </h2>
+                <p className="text-white/80 text-lg">Los asistentes pueden participar en:</p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {experiencias.map((experiencia, index) => (
+                  <div 
+                    key={index} 
+                    className="experience-card animate"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    data-testid={`congreso-experience-${index}`}
+                  >
+                    <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px 8px' }}>
+                      <div className="experience-icon">
+                        <img 
+                          src={experiencia.iconUrl}
+                          alt={`${experiencia.title} icon`}
+                        />
+                      </div>
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img 
+                          src={experiencia.image} 
+                          alt={experiencia.title}
+                          className="w-full h-64 object-cover"
+                        />
+                      </div>
+                      <CardContent className="p-4 flex flex-col h-48">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                          <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                        </div>
+                        <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                          <Calendar className="w-4 h-4 mr-2" />
+                          {experiencia.fecha}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </section>
       </main>
 
