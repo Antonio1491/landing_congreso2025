@@ -1,8 +1,43 @@
 import { Link } from "wouter";
-import { ArrowLeft, Plane, Bus } from "lucide-react";
+import { ArrowLeft, Plane, Bus, Car } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
 export default function Conectividad() {
+  const vuelosNacionales = [
+    "Acapulco",
+    "Aguascalientes",
+    "Cabo San Lucas (San José del Cabo)",
+    "Cancún",
+    "Ciudad de México (AICM y AIFA)",
+    "Culiacán",
+    "Guadalajara",
+    "Hermosillo",
+    "León / Bajío",
+    "Mérida",
+    "Monterrey",
+    "Oaxaca",
+    "Querétaro",
+    "San Luis Potosí",
+    "Torreón",
+    "Tuxtla Gutiérrez",
+    "Veracruz",
+    "Villahermosa",
+    "Zacatecas"
+  ];
+
+  const conexionesNacionales = [
+    { estado: "Baja California Sur", distancia: "1,430 km" },
+    { estado: "Sonora", distancia: "230 km" },
+    { estado: "Sinaloa", distancia: "1,320 km" },
+    { estado: "Chihuahua", distancia: "1,170 km" }
+  ];
+
+  const conexionesInternacionales = [
+    { estado: "Arizona", distancia: "270 km" },
+    { estado: "Nevada", distancia: "480 km" },
+    { estado: "Nuevo México", distancia: "900 km" }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
@@ -37,7 +72,7 @@ export default function Conectividad() {
           <div className="container mx-auto px-4 text-center">
             <h3 className="text-[#BCCE16] text-2xl font-bold mb-4">¿Cómo llegar a Tijuana?</h3>
             <p className="text-white text-lg max-w-4xl mx-auto">
-              Al ser un destino de carácter de ciudad fronteriza, cosmopolita y de progresivo desarrollo económico, llegar a Tijuana no conlleva mayores dificultades, ya que puede accederse tanto por aire como por tierra.
+              Gracias a su ubicación estratégica en la frontera norte de México, llegar a Tijuana es sencillo y accesible. La ciudad cuenta con múltiples opciones de conexión tanto por aire como por tierra, lo que facilita el arribo de visitantes nacionales e internacionales.
             </p>
           </div>
         </section>
@@ -52,8 +87,8 @@ export default function Conectividad() {
                 </h2>
                 <Plane className="w-8 h-8 text-[#6847f6]" />
               </div>
-              <p className="text-gray-700 mb-8 max-w-3xl">
-                El Aeropuerto Internacional General Abelardo L. Rodríguez o Aeropuerto Internacional de Tijuana es uno de los aeropuertos más importantes de México, con conexión directa a Estados Unidos a través del Cross Border Xpress (CBX).
+              <p className="text-gray-700 mb-8 max-w-4xl">
+                El Aeropuerto Internacional de Tijuana (TIJ) es un importante aeropuerto fronterizo en el norte de México, y su ubicación estratégica lo convierte en una puerta de enlace clave tanto para vuelos nacionales como internacionales.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -62,89 +97,40 @@ export default function Conectividad() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Los Angeles, California (LAX)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>San Diego, California (SAN) - vía CBX</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Houston, Texas (IAH)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Dallas/Fort Worth, Texas (DFW)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Phoenix, Arizona (PHX)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Las Vegas, Nevada (LAS)</span>
+                      <span>Phoenix, Arizona (PHX) – American Eagle</span>
                     </li>
                   </ul>
+                  <p className="text-gray-600 mt-4 text-sm">
+                    Además, la conexión a través de CBX permite a pasajeros de Estados Unidos volar hacia Tijuana utilizando rutas que despegan desde San Diego (SAN), ampliando significativamente las alternativas de llegada al destino.
+                  </p>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos nacionales:</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Ciudad de México (MEX)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Guadalajara (GDL)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Monterrey (MTY)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>León/El Bajío (BJX)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Culiacán (CUL)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Hermosillo (HMO)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Los Mochis (LMM)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Querétaro (QRO)</span>
-                    </li>
+                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos nacionales desde:</h3>
+                  <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
+                    {vuelosNacionales.map((ciudad, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <span className="text-[#BCCE16] mt-1">•</span>
+                        <span className="text-sm">{ciudad}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
               <div className="border-t border-gray-200 pt-8">
                 <h3 className="text-xl font-bold text-[#0e0477] mb-6">Aerolíneas</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">Aeroméxico</span>
-                  </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
                     <span className="text-gray-600 font-semibold text-sm">Volaris</span>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">VivaAerobus</span>
+                    <span className="text-gray-600 font-semibold text-sm">Viva Aerobus</span>
+                  </div>
+                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
+                    <span className="text-gray-600 font-semibold text-sm">Aeroméxico</span>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
                     <span className="text-gray-600 font-semibold text-sm">American Airlines</span>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">United</span>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">Delta</span>
                   </div>
                 </div>
               </div>
@@ -162,78 +148,43 @@ export default function Conectividad() {
                 </h2>
                 <Bus className="w-8 h-8 text-[#6847f6]" />
               </div>
-              <p className="text-gray-700 mb-8 max-w-3xl">
-                Tijuana tiene acceso a las redes carreteras y puertos más importantes, conectando de manera rápida tanto el norte como al sur del país.
+              <p className="text-gray-700 mb-8 max-w-4xl">
+                Tijuana cuenta con una ubicación estratégica en la frontera norte de México, que le permite conectarse rápidamente con importantes corredores carreteros del país, así como con Estados Unidos y Canadá. Además, forma parte de la red federal que une Baja California con Sonora y otros estados del norte.
               </p>
 
-              <h3 className="text-xl font-bold text-[#0e0477] mb-6">Estados con los que conecta de manera más directa vía terrestre:</h3>
-              
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Baja California Sur</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 1,500 km</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Sonora</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 650 km</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Sinaloa</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 1,200 km</span>
-                    </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#0e0477] mb-6">Conexión terrestre nacional:</h3>
+                  <div className="space-y-4">
+                    {conexionesNacionales.map((conexion, index) => (
+                      <div key={index} className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
+                        <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
+                          <Car className="w-6 h-6 text-[#6847f6]" />
+                        </div>
+                        <div>
+                          <span className="text-gray-700">{conexion.estado}</span>
+                          <span className="text-[#0e0477] font-bold ml-2">| {conexion.distancia}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Chihuahua</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 1,400 km</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Ciudad de México</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 2,800 km</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
-                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center">
-                      <span className="text-xl">🚗</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-700">Guadalajara</span>
-                      <span className="text-[#0e0477] font-bold ml-2">| 2,200 km</span>
-                    </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#0e0477] mb-6">Conexión terrestre internacional:</h3>
+                  <div className="space-y-4">
+                    {conexionesInternacionales.map((conexion, index) => (
+                      <div key={index} className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm">
+                        <div className="w-12 h-12 bg-[#BCCE16]/20 rounded-full flex items-center justify-center">
+                          <Car className="w-6 h-6 text-[#0e0477]" />
+                        </div>
+                        <div>
+                          <span className="text-gray-700">{conexion.estado}</span>
+                          <span className="text-[#0e0477] font-bold ml-2">| {conexion.distancia}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-12 bg-[#0e0477] rounded-lg p-6 text-white">
-                <h3 className="text-xl font-bold mb-4">Cross Border Xpress (CBX)</h3>
-                <p className="text-white/90">
-                  Tijuana cuenta con el Cross Border Xpress, un puente peatonal que conecta directamente el Aeropuerto de Tijuana con San Diego, California. Esta innovadora infraestructura permite a los viajeros cruzar la frontera de manera rápida y eficiente.
-                </p>
               </div>
             </div>
           </div>
