@@ -18,7 +18,7 @@ import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 
 export default function Congreso() {
-  const experiencias = [
+  const experienciasCards = [
     {
       iconUrl: conferenciasIconUrl,
       title: "Conferencias Magistrales",
@@ -60,6 +60,63 @@ export default function Congreso() {
       description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
       fecha: "14 y 15 de mayo",
       image: eventosSociales
+    }
+  ];
+
+  const experienciasDetalle = [
+    {
+      titulo: "Conferencias Magistrales",
+      fecha: "14 y 15 de mayo",
+      descripcion: "Líderes en parques y espacios públicos ofrecerán charlas inspiradoras basadas en su trayectoria y en los desafíos urbanos actuales.",
+      imagen: conferenciaMagistral,
+      link: "/programa",
+      posicionImagen: "left",
+      showButton: false
+    },
+    {
+      titulo: "Sesiones Educativas",
+      fecha: "14 y 15 de mayo",
+      descripcion: "Más de 30 sesiones educativas impartidas por conferencistas nacionales e internacionales ofrecerán un espacio dedicado al aprendizaje y la capacitación.",
+      imagen: sesionEducativa,
+      link: "/programa",
+      posicionImagen: "right",
+      showButton: false
+    },
+    {
+      titulo: "Talleres Vivenciales",
+      fecha: "13 de mayo",
+      descripcion: "Explora parques urbanos, proyectos ciudadanos, centros recreativos y técnicas especializadas en temas clave del espacio público. Una oportunidad ideal para ampliar tus conocimientos.",
+      imagen: tallerVivencial,
+      link: "/talleres",
+      posicionImagen: "left",
+      showButton: false
+    },
+    {
+      titulo: "Master Classes",
+      fecha: "13 de mayo",
+      descripcion: "Aprende de especialistas que te brindarán herramientas y técnicas avanzadas para profundizar en temas esenciales del espacio público.",
+      imagen: masterClasses,
+      link: "/talleres",
+      posicionImagen: "right",
+      showButton: false
+    },
+    {
+      titulo: "Expo Espacio Público",
+      fecha: "14 y 15 de mayo",
+      descripcion: "El punto de encuentro de las compañías líderes que impulsan el sector, exhibiendo productos y servicios clave para transformar y equipar los espacios públicos.",
+      imagen: expoEspacioPublico,
+      link: "/expo-espacio-publico",
+      posicionImagen: "left",
+      showButton: false
+    },
+    {
+      titulo: "Eventos Sociales",
+      fecha: "13 al 15 de mayo",
+      descripcion: "Disfruta tres experiencias pensadas para conectar y celebrar: la cena de consejo, la fiesta de la cerveza y la clausura del Congreso. Un ambiente ideal para convivir y crear nuevas relaciones profesionales.",
+      imagen: eventosSociales,
+      link: "/eventos-sociales",
+      posicionImagen: "right",
+      showButton: false
     }
   ];
 
@@ -203,7 +260,7 @@ export default function Congreso() {
           <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
         </div>
 
-        {/* Diseña tu experiencia */}
+        {/* Diseña tu experiencia - Tarjetas */}
         <section className="py-16" style={{ backgroundColor: '#35219b' }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
@@ -215,7 +272,7 @@ export default function Congreso() {
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {experiencias.map((experiencia, index) => (
+                {experienciasCards.map((experiencia, index) => (
                   <div 
                     key={index} 
                     className="experience-card animate"
@@ -253,6 +310,31 @@ export default function Congreso() {
             </div>
           </div>
         </section>
+
+        {/* Secciones detalladas de experiencias */}
+        {experienciasDetalle.map((exp, index) => (
+          <div 
+            key={index} 
+            className="relative min-h-[400px] bg-cover bg-center flex items-center"
+            style={{ backgroundImage: `linear-gradient(to ${exp.posicionImagen === 'left' ? 'left' : 'right'}, rgba(14, 4, 119, 0.85) 50%, transparent 100%), url(${exp.imagen})` }}
+          >
+            <div className="container mx-auto px-4">
+              <div className={`max-w-xl ${exp.posicionImagen === 'left' ? 'ml-auto mr-0 md:mr-12' : 'mr-auto ml-0 md:ml-12'} text-white py-12`}>
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">{exp.titulo}</h3>
+                <p className="text-[#BCCE16] font-semibold mb-4">{exp.fecha}</p>
+                <p className="text-white/90 mb-6 leading-relaxed">{exp.descripcion}</p>
+                {exp.showButton && (
+                  <Link 
+                    href={exp.link}
+                    className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors"
+                  >
+                    Ver Más
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
       </main>
 
       <footer className="py-8 bg-[#0e0477] text-white text-center">
