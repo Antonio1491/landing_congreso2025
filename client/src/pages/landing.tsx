@@ -241,42 +241,42 @@ export default function Landing() {
     {
       iconUrl: conferenciasIconUrl,
       title: "Conferencias Magistrales",
-      description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
+      description: "Voces inspiradoras que marcan el rumbo de los parques y las ciudades.",
       fecha: "14 y 15 de mayo",
       image: conferenciaMagistralUrl
     },
     {
       iconUrl: sesionesIconUrl,
       title: "Sesiones Educativas",
-      description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
+      description: "+30 espacios formativos con especialistas de todo el mundo.",
       fecha: "14 y 15 de mayo",
       image: sesionEducativaUrl
     },
     {
       iconUrl: talleresIconUrl,
       title: "Talleres Vivenciales",
-      description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
+      description: "Aprende con dinámicas prácticas sobre diseño, gestión y activación comunitaria.",
       fecha: "13 de mayo",
       image: tallerVivencialUrl
     },
     {
       iconUrl: masterClassesIconUrl,
       title: "Master Classes",
-      description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
+      description: "Formación intensiva en temas especializados con expertos reconocidos.",
       fecha: "13 de mayo",
       image: masterClassesUrl
     },
     {
       iconUrl: expoIconUrl,
       title: "Expo Espacio Público",
-      description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
+      description: "Encuentro de negocios con las empresas líderes del sector en México y el mundo.",
       fecha: "14 y 15 de mayo",
       image: expoEspacioPublicoUrl
     },
     {
       iconUrl: eventosIconUrl,
       title: "Eventos Sociales",
-      description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
+      description: "Beer and Mix Party y fiesta de clausura: la mejor oportunidad para ampliar tu red en un ambiente relajado y divertido.",
       fecha: "14 y 15 de mayo",
       image: eventosSocialesUrl
     }
@@ -285,64 +285,58 @@ export default function Landing() {
   const ejesTemáticos = [
     {
       título: "1. Naturaleza y Sostenibilidad",
-      descripción: "Resiliencia climática y adaptación de espacios públicos ante el cambio climático.",
+      descripción: "La resiliencia climática es prioridad operativa para los espacios públicos del futuro.",
       subtemas: [
-        "Hidrología urbana y gestión de agua",
-        "Bosque urbano y silvicultura",
-        "Biodiversidad funcional",
-        "Buenas prácticas ambientales"
+        "Hidrología: zanjas, jardines de lluvia, humedales, reutilización de agua",
+        "Bosque urbano: metas de sombra, especies para calor/sequía",
+        "Biodiversidad funcional: polinizadores, corredores verde-azules",
+        "Buenas prácticas de áreas verdes y arbolado"
       ]
     },
     {
       título: "2. Comunidad y Participación Ciudadana",
-      descripción: "Legitimidad social y apropiación comunitaria de los espacios públicos.",
+      descripción: "Legitimidad, activación y corresponsabilidad con la comunidad.",
       subtemas: [
-        "Co-gestión comunitaria",
-        "Comunicación y educación ambiental",
-        "Eventos ancla y activación",
-        "Metodologías participativas"
+        "Co-gestión: voluntariado, amigos del parque, presupuestos participativos",
+        "Comunicación efectiva y educación ambiental",
+        "Eventos y experiencias que fortalecen el tejido social"
       ]
     },
     {
       título: "3. Diseño, Operación y Gestión Eficiente",
       descripción: "Lo que no se mantiene, se pierde. Gestión integral de activos públicos.",
       subtemas: [
-        "Asset management",
-        "Costo total de propiedad (TCO)",
-        "Mantenimiento preventivo",
-        "Innovaciones en materiales",
-        "Diseño universal"
+        "Asset management, TCO (costo de ciclo de vida), planes de mantenimiento",
+        "Innovaciones en mobiliario y equipamiento urbano",
+        "Estrategias de gestión integral de espacios públicos",
+        "Diseño universal; perspectiva de género y niñez"
       ]
     },
     {
       título: "4. Tecnología e Innovación Urbana",
-      descripción: "Datos para decidir. Transformación digital de la gestión de espacios públicos.",
+      descripción: "Datos para decidir, no para decorar dashboards.",
       subtemas: [
-        "Mantenimiento predictivo",
-        "Inventarios digitales",
-        "Señalética digital",
-        "AR/QR y experiencias inmersivas",
-        "Analítica de aforos"
+        "Mantenimiento predictivo, inventarios de arbolado",
+        "Señalética y wayfinding digital; AR/QR para interpretación",
+        "Analítica de aforos y percepción"
       ]
     },
     {
       título: "5. Ciudad, Movilidad y Gobernanza",
-      descripción: "Parques como red. Integración sistémica en la planificación urbana.",
+      descripción: "Los parques como red, no islas. Integración sistémica en la planificación urbana.",
       subtemas: [
         "Parques + movilidad sostenible",
-        "Planeación sistémica",
-        "Modelos de gobernanza",
-        "Políticas públicas"
+        "Planeación sistémica: red de parques, estándares de cobertura y equidad",
+        "Modelos de gobernanza: agencias, fideicomisos, conservancies, OCVs"
       ]
     },
     {
       título: "6. Finanzas, Patrocinios y Modelos de Ingreso",
-      descripción: "Sin flujo financiero no hay sostenibilidad. Diversificación de fuentes de ingresos.",
+      descripción: "Sin flujo financiero sostenido, no hay excelencia operativa.",
       subtemas: [
-        "Modelos de ingresos",
-        "Patrocinios con ROI",
-        "Fondos climáticos",
-        "Soluciones basadas en naturaleza (SBN)"
+        "Estructuras de ingreso: concesiones, eventos, membresías, donativos",
+        "Patrocinios con ROI; contratos y KPIs",
+        "Fondos climáticos y subvenciones (proyectos SBN)"
       ]
     }
   ];
@@ -998,7 +992,7 @@ export default function Landing() {
               </div>
             </div>
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold mb-5 sm:mb-6 md:mb-7 lg:mb-8 text-white leading-relaxed max-w-3xl mx-auto px-4 hero-subtitle-animate hero-subtitle-text" data-testid="hero-subtitle">
-              Forma parte de este Evento
+              El punto de encuentro más importante en Latinoamérica para profesionales, líderes y organizaciones que transforman la vida urbana a través de parques y espacios públicos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4">
               <button 
@@ -1038,7 +1032,7 @@ export default function Landing() {
                 
                 {/* Description */}
                 <p className="text-description" data-testid="info-description">
-                  Un evento internacional de capacitación, intercambio y experiencias inmersivas que reúne a los principales actores del sector de parques y espacios públicos para compartir conocimientos, innovaciones y mejores prácticas.
+                  Un evento internacional de capacitación, intercambio y experiencias inmersivas, dirigido a quienes gestionan, diseñan y promueven los parques urbanos y los espacios públicos. Reunimos presencialmente a profesionales, sociedad civil, funcionarios públicos, académicos y empresas de la industria para generar conocimiento, crear redes y transformar ciudades.
                 </p>
               </div>
 
@@ -1064,7 +1058,7 @@ export default function Landing() {
                     <Target className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Descubre</div>
-                  <div className="description-text">Tendencias globales e innovación</div>
+                  <div className="description-text">Tendencias globales y soluciones innovadoras</div>
                 </div>
                 <div className="text-center">
                   <div className="icon-container-gradient mb-6">
@@ -1078,7 +1072,7 @@ export default function Landing() {
                     <PartyPopper className="w-8 h-8" />
                   </div>
                   <div className="keyword-text">Vive</div>
-                  <div className="description-text">Capacitación, inspiración y networking</div>
+                  <div className="description-text">Una experiencia única de capacitación, inspiración y networking</div>
                 </div>
               </div>
             </div>
