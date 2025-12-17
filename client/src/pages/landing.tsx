@@ -1218,70 +1218,77 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-3 md:p-4 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
-                      {/* Main Content Area with Flexbox for text and icon */}
-                      <div className="flex-1 flex flex-row items-start gap-2">
-                        {/* Text Content - Takes available space, respects icon */}
-                        <div className={`flex-1 min-w-0 transition-all duration-300 ${isExpanded ? '' : ''}`}>
-                          <div className="text-[9px] md:text-[10px] font-semibold mb-1 opacity-90 truncate">CONGRESO PARQUES</div>
-                          <h3 className={`font-bold leading-tight transition-all duration-300 break-words ${
-                            isExpanded ? 'text-base md:text-lg mb-3' : 'text-xs md:text-sm mb-1'
-                          }`} style={{ 
-                            display: '-webkit-box',
-                            WebkitLineClamp: isExpanded ? 'unset' : 3,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: isExpanded ? 'visible' : 'hidden'
-                          }}>
-                            {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                          </h3>
-                          
-                          {/* Expanded Content on Hover/Click */}
-                          <div className={`transition-all duration-300 overflow-hidden ${
-                            isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                          }`}>
-                            <p className="text-xs md:text-sm mb-3 leading-relaxed" style={{ opacity: 0.9 }}>
-                              {eje.descripción}
-                            </p>
-                            <div className="space-y-1">
-                              <div className="text-[10px] md:text-xs font-semibold mb-1" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
-                              <ul className="text-[10px] md:text-xs space-y-0.5" style={{ opacity: 0.8 }}>
-                                {eje.subtemas.map((subtema, subIndex) => (
-                                  <li key={subIndex} className="flex items-start gap-1">
-                                    <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
-                                    <span>{subtema}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
+                    <div className="h-full p-3 md:p-4 flex flex-col relative" style={{ color: textColors[index] }}>
+                      {/* Hexagonal Icon at Top - Prominent and distinctive */}
+                      <div className="mb-2 md:mb-3">
+                        <svg 
+                          width="0" 
+                          height="0" 
+                          className="absolute"
+                        >
+                          <defs>
+                            <clipPath id={`hexagon-clip-${index}`} clipPathUnits="objectBoundingBox">
+                              <path d="M0.5,0.03 L0.93,0.25 Q0.97,0.27 0.97,0.32 L0.97,0.68 Q0.97,0.73 0.93,0.75 L0.5,0.97 Q0.5,0.97 0.5,0.97 L0.07,0.75 Q0.03,0.73 0.03,0.68 L0.03,0.32 Q0.03,0.27 0.07,0.25 Z" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <div 
+                          className="flex items-center justify-center bg-white shadow-lg transition-all duration-300"
+                          style={{
+                            width: isExpanded ? '52px' : '44px',
+                            height: isExpanded ? '60px' : '50px',
+                            clipPath: 'polygon(50% 2%, 95% 25%, 95% 75%, 50% 98%, 5% 75%, 5% 25%)',
+                            borderRadius: '4px',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
+                          {(() => {
+                            const IconComponent = IconComponents[index];
+                            return <IconComponent 
+                              className={`transition-all duration-300 ${isExpanded ? 'w-6 h-6 md:w-7 md:h-7' : 'w-5 h-5 md:w-6 md:h-6'}`}
+                              style={{ color: '#0e0477' }}
+                            />;
+                          })()}
                         </div>
+                      </div>
+                      
+                      {/* Text Content */}
+                      <div className="flex-1 flex flex-col">
+                        <div className="text-[9px] md:text-[10px] font-semibold mb-1 opacity-90">CONGRESO PARQUES</div>
+                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
+                          isExpanded ? 'text-sm md:text-base lg:text-lg mb-2' : 'text-xs md:text-sm mb-1'
+                        }`} style={{ 
+                          display: '-webkit-box',
+                          WebkitLineClamp: isExpanded ? 'unset' : 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: isExpanded ? 'visible' : 'hidden'
+                        }}>
+                          {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                        </h3>
                         
-                        {/* Hexagonal Icon Container - Always visible, scales with card */}
-                        <div className={`flex-shrink-0 transition-all duration-300 ${
-                          isExpanded ? 'opacity-60 scale-75' : 'opacity-100 scale-100'
+                        {/* Expanded Content on Hover/Click */}
+                        <div className={`transition-all duration-300 overflow-hidden ${
+                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                         }`}>
-                          <div 
-                            className="relative flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-lg"
-                            style={{
-                              width: isExpanded ? '28px' : '36px',
-                              height: isExpanded ? '32px' : '42px',
-                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                              transition: 'all 0.3s ease'
-                            }}
-                          >
-                            {(() => {
-                              const IconComponent = IconComponents[index];
-                              return <IconComponent 
-                                className={`transition-all duration-300 ${isExpanded ? 'w-3.5 h-3.5' : 'w-5 h-5'}`}
-                                style={{ color: textColors[index] === '#ffffff' ? '#0e0477' : textColors[index] }}
-                              />;
-                            })()}
+                          <p className="text-xs md:text-sm mb-2 leading-relaxed" style={{ opacity: 0.9 }}>
+                            {eje.descripción}
+                          </p>
+                          <div className="space-y-1">
+                            <div className="text-[10px] md:text-xs font-semibold mb-1" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
+                            <ul className="text-[10px] md:text-xs space-y-0.5" style={{ opacity: 0.8 }}>
+                              {eje.subtemas.map((subtema, subIndex) => (
+                                <li key={subIndex} className="flex items-start gap-1">
+                                  <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
+                                  <span>{subtema}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       </div>
                       
                       {/* MORE INFO Button */}
-                      <div className={`mt-2 transition-all duration-300 ${
+                      <div className={`mt-auto pt-2 transition-all duration-300 ${
                         isExpanded ? 'opacity-100' : 'opacity-70'
                       }`}>
                         <button 
