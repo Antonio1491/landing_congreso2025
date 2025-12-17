@@ -1411,3 +1411,44 @@ header {
     padding-bottom: 2rem !important;
   }
 }
+
+/* Brands Carousel - Infinite Scroll Animation */
+.brands-carousel-container {
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.brands-carousel {
+  display: flex;
+  width: max-content;
+}
+
+.animate-scroll-brands {
+  animation: scrollBrands 25s linear infinite;
+}
+
+.animate-scroll-brands:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollBrands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-logo-wrapper {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-brands {
+    animation: none;
+  }
+}

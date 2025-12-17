@@ -60,6 +60,11 @@ import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
+import parkSysLogoUrl from "@assets/Recurso_3_1766012664883.png";
+import proludicLogoUrl from "@assets/Recurso_4_1766012668282.png";
+import jumboLogoUrl from "@assets/Recurso_5_1766012671100.png";
+import cieLogoUrl from "@assets/Recurso_6_1766012674283.png";
+import brand5LogoUrl from "@assets/Recurso_7_1766012677493.png";
 
 
 interface StatCounterProps {
@@ -1602,8 +1607,53 @@ export default function Landing() {
               Las Mejores Marcas Presentes
             </h2>
             
-            <div className="flex flex-wrap items-center justify-center gap-8 py-8">
-              <p className="text-center text-muted-foreground text-lg">Próximamente anunciaremos las marcas participantes</p>
+            <div className="brands-carousel-container overflow-hidden py-8">
+              <div className="brands-carousel flex animate-scroll-brands gap-12 items-center">
+                {[...Array(2)].map((_, setIndex) => (
+                  <div key={setIndex} className="flex gap-12 items-center shrink-0">
+                    <div className="brand-logo-wrapper group shrink-0">
+                      <img 
+                        src={parkSysLogoUrl} 
+                        alt="ParkSys Smart Management" 
+                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                        data-testid="brand-logo-parksys"
+                      />
+                    </div>
+                    <div className="brand-logo-wrapper group shrink-0">
+                      <img 
+                        src={proludicLogoUrl} 
+                        alt="Proludic" 
+                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                        data-testid="brand-logo-proludic"
+                      />
+                    </div>
+                    <div className="brand-logo-wrapper group shrink-0">
+                      <img 
+                        src={jumboLogoUrl} 
+                        alt="Productos Jumbo" 
+                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                        data-testid="brand-logo-jumbo"
+                      />
+                    </div>
+                    <div className="brand-logo-wrapper group shrink-0">
+                      <img 
+                        src={cieLogoUrl} 
+                        alt="CIE Centro de Información Empresarial" 
+                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                        data-testid="brand-logo-cie"
+                      />
+                    </div>
+                    <div className="brand-logo-wrapper group shrink-0">
+                      <img 
+                        src={brand5LogoUrl} 
+                        alt="Marca Patrocinadora" 
+                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
+                        data-testid="brand-logo-5"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
