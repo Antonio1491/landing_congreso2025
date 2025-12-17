@@ -159,15 +159,14 @@ export default function ExpoEspacioPublico() {
                 <p className="text-white/90 mb-6 leading-relaxed">
                   Únete como expositor a la <strong>única feria especializada en el sector de parques y espacios públicos en América Latina</strong>. Presenta tus productos, promueve tus servicios y conecta con cientos de compradores interesados en nuevas soluciones.
                 </p>
-                <a 
-                  href="https://www.congresoparques.com/registro" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#BCCE16] text-[#0e0477] px-6 py-3 rounded-lg font-bold hover:bg-[#d4e61a] transition-colors"
+                <button 
+                  disabled
+                  className="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-bold cursor-not-allowed opacity-70"
                   data-testid="btn-registro-expositor"
                 >
-                  ¡Regístrate como Expositor!
-                </a>
+                  Registro próximamente
+                </button>
+                <p className="text-white/70 text-sm mt-3">El registro de expositores estará disponible próximamente</p>
               </div>
 
               {/* Visitante */}
@@ -179,15 +178,14 @@ export default function ExpoEspacioPublico() {
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   Asiste como visitante a la <strong>única exposición especializada en parques y espacios públicos en América Latina</strong>. Descubre tendencias, equipamientos, materiales y mobiliario urbano para tus proyectos. Es el espacio ideal para arquitectos paisajistas, urbanistas, desarrolladores inmobiliarios, áreas de obra pública y desarrollo urbano, direcciones de planeación y profesionales de la construcción.
                 </p>
-                <a 
-                  href="https://www.congresoparques.com/registro" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-[#6847f6] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#5639e0] transition-colors"
+                <button 
+                  disabled
+                  className="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-bold cursor-not-allowed opacity-70"
                   data-testid="btn-entrada-visitante"
                 >
-                  Comprar Entrada
-                </a>
+                  Comprar Entrada próximamente
+                </button>
+                <p className="text-gray-500 text-sm mt-3">La venta de entradas estará disponible próximamente</p>
               </div>
             </div>
           </div>
@@ -267,15 +265,14 @@ export default function ExpoEspacioPublico() {
                 </p>
               </div>
 
-              <a 
-                href="https://www.congresoparques.com/registro" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#d4e61a] transition-colors"
+              <button 
+                disabled
+                className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
                 data-testid="btn-registro-expositor-main"
               >
-                Regístrate como Expositor
-              </a>
+                Registro próximamente
+              </button>
+              <p className="text-white/70 text-sm mt-4">El registro de expositores estará disponible próximamente</p>
             </div>
           </div>
         </section>
@@ -309,15 +306,14 @@ export default function ExpoEspacioPublico() {
                 <br /><br />
                 Entonces <strong className="text-[#6847f6]">no puedes faltar a la Expo Espacio Público</strong>, el evento que te acerca a las últimas tendencias y soluciones innovadoras que están moldeando el futuro urbano.
               </p>
-              <a 
-                href="https://www.congresoparques.com/registro" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-[#6847f6] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#5639e0] transition-colors"
+              <button 
+                disabled
+                className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
                 data-testid="btn-comprar-entrada"
               >
-                Comprar Entrada a la Expo
-              </a>
+                Comprar Entrada próximamente
+              </button>
+              <p className="text-gray-500 text-sm mt-4">La venta de entradas estará disponible próximamente</p>
             </div>
           </div>
         </section>
