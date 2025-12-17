@@ -1838,7 +1838,6 @@ export default function Landing() {
             </div>
             
             <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-              <p className="mb-2">Proyecto apoyado con recursos del FIDEM</p>
               <p>&copy; 2026 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
             </div>
           </div>
