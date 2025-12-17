@@ -1180,14 +1180,7 @@ export default function Landing() {
                   '#ffffff'  // Blanco para Finanzas (fondo verde/púrpura)
                 ];
                 
-                const icons = [
-                  <Leaf className="w-8 h-8" />,           // Naturaleza
-                  <Users className="w-8 h-8" />,          // Comunidad
-                  <Compass className="w-8 h-8" />,        // Diseño
-                  <Zap className="w-8 h-8" />,            // Tecnología
-                  <Building className="w-8 h-8" />,       // Ciudad
-                  <DollarSign className="w-8 h-8" />      // Finanzas
-                ];
+                const IconComponents = [Leaf, Users, Compass, Zap, Building, DollarSign];
                 
                 const isHovered = hoveredAxis === index;
                 const isSelected = selectedAxis === index;
@@ -1225,61 +1218,82 @@ export default function Landing() {
                     onMouseEnter={() => setHoveredAxis(index)}
                     onMouseLeave={() => setHoveredAxis(null)}
                   >
-                    <div className="h-full p-4 md:p-6 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
-                      {/* Main Content */}
-                      <div className={`transition-all duration-300 ${isExpanded ? 'transform translate-y-0' : 'transform translate-y-4'}`}>
-                        <div className="text-[10px] md:text-xs font-semibold mb-1 md:mb-2 opacity-90">CONGRESO PARQUES</div>
-                        <h3 className={`font-bold leading-tight transition-all duration-300 ${
-                          isExpanded ? 'text-lg md:text-xl mb-4' : 'text-sm md:text-lg mb-2'
-                        }`}>
-                          {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
-                        </h3>
+                    <div className="h-full p-3 md:p-4 flex flex-col justify-between relative" style={{ color: textColors[index] }}>
+                      {/* Main Content Area with Flexbox for text and icon */}
+                      <div className="flex-1 flex flex-row items-start gap-2">
+                        {/* Text Content - Takes available space, respects icon */}
+                        <div className={`flex-1 min-w-0 transition-all duration-300 ${isExpanded ? '' : ''}`}>
+                          <div className="text-[9px] md:text-[10px] font-semibold mb-1 opacity-90 truncate">CONGRESO PARQUES</div>
+                          <h3 className={`font-bold leading-tight transition-all duration-300 break-words ${
+                            isExpanded ? 'text-base md:text-lg mb-3' : 'text-xs md:text-sm mb-1'
+                          }`} style={{ 
+                            display: '-webkit-box',
+                            WebkitLineClamp: isExpanded ? 'unset' : 3,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: isExpanded ? 'visible' : 'hidden'
+                          }}>
+                            {eje.título.replace(/^\d+\.\s*/, '').toUpperCase()}
+                          </h3>
+                          
+                          {/* Expanded Content on Hover/Click */}
+                          <div className={`transition-all duration-300 overflow-hidden ${
+                            isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                          }`}>
+                            <p className="text-xs md:text-sm mb-3 leading-relaxed" style={{ opacity: 0.9 }}>
+                              {eje.descripción}
+                            </p>
+                            <div className="space-y-1">
+                              <div className="text-[10px] md:text-xs font-semibold mb-1" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
+                              <ul className="text-[10px] md:text-xs space-y-0.5" style={{ opacity: 0.8 }}>
+                                {eje.subtemas.map((subtema, subIndex) => (
+                                  <li key={subIndex} className="flex items-start gap-1">
+                                    <span className="mt-0.5 flex-shrink-0" style={{ opacity: 0.6 }}>•</span>
+                                    <span>{subtema}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                         
-                        {/* Expanded Content on Hover/Click */}
-                        <div className={`transition-all duration-300 overflow-hidden ${
-                          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        {/* Hexagonal Icon Container - Always visible, scales with card */}
+                        <div className={`flex-shrink-0 transition-all duration-300 ${
+                          isExpanded ? 'opacity-60 scale-75' : 'opacity-100 scale-100'
                         }`}>
-                          <p className="text-sm mb-4 leading-relaxed" style={{ opacity: 0.9 }}>
-                            {eje.descripción}
-                          </p>
-                          <div className="space-y-2">
-                            <div className="text-xs font-semibold mb-2" style={{ opacity: 0.8 }}>TEMAS PRINCIPALES:</div>
-                            <ul className="text-xs space-y-1" style={{ opacity: 0.8 }}>
-                              {eje.subtemas.map((subtema, subIndex) => (
-                                <li key={subIndex} className="flex items-start gap-2">
-                                  <span className="mt-0.5" style={{ opacity: 0.6 }}>•</span>
-                                  <span>{subtema}</span>
-                                </li>
-                              ))}
-                            </ul>
+                          <div 
+                            className="relative flex items-center justify-center bg-white/95 backdrop-blur-sm shadow-lg"
+                            style={{
+                              width: isExpanded ? '28px' : '36px',
+                              height: isExpanded ? '32px' : '42px',
+                              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+                              transition: 'all 0.3s ease'
+                            }}
+                          >
+                            {(() => {
+                              const IconComponent = IconComponents[index];
+                              return <IconComponent 
+                                className={`transition-all duration-300 ${isExpanded ? 'w-3.5 h-3.5' : 'w-5 h-5'}`}
+                                style={{ color: textColors[index] === '#ffffff' ? '#0e0477' : textColors[index] }}
+                              />;
+                            })()}
                           </div>
                         </div>
                       </div>
                       
                       {/* MORE INFO Button */}
-                      <div className={`transition-all duration-300 ${
-                        isExpanded ? 'opacity-100 transform translate-y-0' : 'opacity-70 transform translate-y-2'
+                      <div className={`mt-2 transition-all duration-300 ${
+                        isExpanded ? 'opacity-100' : 'opacity-70'
                       }`}>
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
-                            // Scroll to convocatorias section as this is thematically related
                             scrollToSection('convocatorias');
                           }}
-                          className="bg-black/20 hover:bg-black/30 text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                          className="bg-black/20 hover:bg-black/30 text-white text-[10px] md:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
                         >
                           MÁS INFO →
                         </button>
                       </div>
-                      
-                      {/* Minimalist Icon for Non-Expanded State - Hidden on Mobile */}
-                      {!isExpanded && (
-                        <div className="hidden md:block absolute right-6 top-1/2 transform -translate-y-1/2">
-                          <div className="text-white/80">
-                            {icons[index]}
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </div>
                 );
