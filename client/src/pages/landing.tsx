@@ -1567,7 +1567,7 @@ export default function Landing() {
 
                 {/* Presenta */}
                 <div className="text-center">
-                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Presenta:</h3>
+                  <h3 className="text-xl font-bold mb-6" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Proyecto apoyado con recursos del FIDEM:</h3>
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="bg-white rounded-lg shadow-md p-6 w-56 h-32 flex items-center justify-center">
                       <img 
