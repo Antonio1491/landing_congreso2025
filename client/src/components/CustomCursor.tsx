@@ -158,7 +158,12 @@ export function CustomCursor() {
   }, [isEnabled, prefersReducedMotion, isTouchDevice, createParticle]);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    const existingStyle = document.getElementById('custom-cursor-style');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+    
+    if (isTouchDevice || !isEnabled || prefersReducedMotion) return;
     
     const style = document.createElement('style');
     style.id = 'custom-cursor-style';
@@ -187,7 +192,7 @@ export function CustomCursor() {
         existingStyle.remove();
       }
     };
-  }, [isTouchDevice]);
+  }, [isTouchDevice, isEnabled, prefersReducedMotion]);
 
   const toggleCursor = () => {
     setIsEnabled(prev => !prev);
