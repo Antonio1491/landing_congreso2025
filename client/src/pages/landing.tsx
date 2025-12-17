@@ -1163,21 +1163,21 @@ export default function Landing() {
             <div className="flex flex-col md:flex-row gap-2 md:h-96 relative">
               {ejesTemáticos.map((eje, index) => {
                 const gradients = [
-                  'linear-gradient(to bottom right, #bddd23, #49db76)', // Naturaleza y Sostenibilidad
-                  'linear-gradient(to bottom right, #e47f71, #f819e1)', // Comunidad y Participación Ciudadana
-                  'linear-gradient(to bottom right, #45deaf, #00deff)', // Diseño, Operación y Gestión Eficiente
-                  'linear-gradient(to bottom right, #35219b, #0e0477)', // Tecnología e Innovación Urbana
-                  'linear-gradient(to bottom right, #6847f6, #5539d4)', // Ciudad, Movilidad y Gobernanza
-                  'linear-gradient(to bottom right, #d2dd0a, #e09757)'  // Finanzas, Patrocinios y Modelos de Ingreso
+                  'linear-gradient(to bottom right, #68df8b, #c1dd00)', // Naturaleza y Sostenibilidad
+                  'linear-gradient(to bottom right, #1adfab, #00e1fc)', // Comunidad y Participación Ciudadana
+                  'linear-gradient(to bottom right, #ff8daa, #ff13e3)', // Diseño, Operación y Gestión Eficiente
+                  'linear-gradient(to bottom right, #ff7991, #d6d300)', // Tecnología e Innovación Urbana
+                  'linear-gradient(to bottom right, #6847f6, #ff13e3)', // Ciudad, Movilidad y Gobernanza
+                  'linear-gradient(to bottom right, #68df8b, #6847f6)'  // Finanzas, Patrocinios y Modelos de Ingreso
                 ];
                 
                 const textColors = [
-                  '#0e0477', // Azul oscuro para Naturaleza (fondo claro)
-                  '#ffffff', // Blanco para Comunidad
-                  '#0e0477', // Azul oscuro para Diseño (fondo claro)
-                  '#ffffff', // Blanco para Tecnología (fondo oscuro)
-                  '#ffffff', // Blanco para Ciudad (fondo oscuro)
-                  '#0e0477'  // Azul oscuro para Finanzas (fondo claro)
+                  '#0e0477', // Azul oscuro para Naturaleza (fondo claro verde)
+                  '#0e0477', // Azul oscuro para Comunidad (fondo claro cyan)
+                  '#ffffff', // Blanco para Diseño (fondo rosa/magenta)
+                  '#0e0477', // Azul oscuro para Tecnología (fondo rosa/amarillo)
+                  '#ffffff', // Blanco para Ciudad (fondo púrpura/magenta)
+                  '#ffffff'  // Blanco para Finanzas (fondo verde/púrpura)
                 ];
                 
                 const icons = [
