@@ -1,0 +1,34 @@
+Implementa un cursor personalizado en el sitio que cumpla lo siguiente:
+ 
+1. Cursor principal
+- Reemplaza el cursor por un icono SVG de **avión de papel** (archivo: paper-plane.svg). 
+- El punto activo (hotspot) del cursor debe coincidir con la punta del avión para que la interacción sea precisa.
+- Si el navegador o dispositivo no soporta cursor personalizado, usar fallback a `cursor: pointer;`.
+ 
+2. Partículas rastro (trail)
+- Al mover el cursor, generar un **rastro de partículas** compuesto por triángulos y círculos geométricos.
+- Tonalidad de colores: usar la paleta del sitio (primario y acentos). Ejemplo: `#d0dd15`, `#fd00fd`, `#00dfbf`.
+- Tamaños: círculos de 4–10px, triángulos de 6–14px. Variación aleatoria dentro de esos rangos.
+- Opacidad inicial 0.9 que decrece hasta 0 en la vida útil.
+- Vida útil por partícula: 500–900 ms, con fade-out y desplazamiento leve (y/o leve rotación en triángulos).
+- Densidad: 1–3 partículas por movimiento del mouse; configurable (mínimo para rendimiento).
+ 
+3. Animación y comportamiento
+- Usar `requestAnimationFrame` para animaciones fluidas; evitar timers fijos que dañen rendimiento.
+- La animación debe ser suave y de baja CPU: limitar el número máximo de partículas activas (ej. 60) y reciclar objetos.
+- Las partículas deben seguir ligeramente la trayectoria del cursor (pequeña inercia) y dispersarse con un desplazamiento aleatorio de 6–18px.
+- Al soltar o detener el cursor (idle), las partículas deben desaparecer gradualmente.
+ 
+4. Accesibilidad y preferencias del usuario
+- Respetar `prefers-reduced-motion`: si el usuario lo tiene activado, desactivar la animación del rastro y usar solo el cursor estático.
+- Tener una opción en el UI para **activar/desactivar** el rastro por parte del usuario (ej.: botón en footer o setting).
+- Mantener foco y accesibilidad del teclado: no interferir con tab-focus ni con elementos interactivos. Para elementos con `:focus`, usar el cursor por defecto o un indicador claro.
+ 
+5. Compatibilidad móvil / touch
+- En dispositivos táctiles, **desactivar el rastro** por defecto para ahorro de recursos y evitar bloqueos; opcional: efecto puntual al `tap` (un único pulso de partículas).
+- Hacer fallback para navegadores que no permitan cursores personalizados.
+ 
+6. Integración visual y detalles
+- El avión de papel debe tener un tamaño razonable (ej. 32–40px en desktop; 24px en tablet). Usar `transform: translate(-x, -y)` para ajustar hotspot.
+- Asegurar contraste y visibilidad sobre cualquier fondo (agregar sutil sombra o trazo si hace falta).
+- Las partículas deben quedar **por debajo** del cursor (z-index) para no ocultar la punta del avión.
