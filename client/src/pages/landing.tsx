@@ -1597,59 +1597,53 @@ export default function Landing() {
       </section>
 
       {/* Las Mejores Marcas Presentes */}
-      <section id="marcas" className="py-16 bg-white section-animate animate-fadeInUp border-t border-gray-100">
+      <section id="marcas" className="py-16 bg-gray-50 section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl text-center mb-8 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="brands-title">
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="brands-title">
               Las Mejores Marcas Presentes
             </h2>
             
-            <div className="brands-carousel-container overflow-hidden py-8">
-              <div className="brands-carousel flex animate-scroll-brands gap-12 items-center">
-                {[...Array(2)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex gap-12 items-center shrink-0">
-                    <div className="brand-logo-wrapper group shrink-0">
-                      <img 
-                        src={parkSysLogoUrl} 
-                        alt="ParkSys Smart Management" 
-                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
-                        data-testid="brand-logo-parksys"
-                      />
-                    </div>
-                    <div className="brand-logo-wrapper group shrink-0">
-                      <img 
-                        src={proludicLogoUrl} 
-                        alt="Proludic" 
-                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
-                        data-testid="brand-logo-proludic"
-                      />
-                    </div>
-                    <div className="brand-logo-wrapper group shrink-0">
-                      <img 
-                        src={jumboLogoUrl} 
-                        alt="Productos Jumbo" 
-                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
-                        data-testid="brand-logo-jumbo"
-                      />
-                    </div>
-                    <div className="brand-logo-wrapper group shrink-0">
-                      <img 
-                        src={cieLogoUrl} 
-                        alt="CIE Centro de Información Empresarial" 
-                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
-                        data-testid="brand-logo-cie"
-                      />
-                    </div>
-                    <div className="brand-logo-wrapper group shrink-0">
-                      <img 
-                        src={brand5LogoUrl} 
-                        alt="Marca Patrocinadora" 
-                        className="h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out"
-                        data-testid="brand-logo-5"
-                      />
-                    </div>
-                  </div>
-                ))}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={parkSysLogoUrl} 
+                  alt="ParkSys Smart Management" 
+                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  data-testid="brand-logo-parksys"
+                />
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={proludicLogoUrl} 
+                  alt="Proludic" 
+                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  data-testid="brand-logo-proludic"
+                />
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={jumboLogoUrl} 
+                  alt="Productos Jumbo" 
+                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  data-testid="brand-logo-jumbo"
+                />
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={cieLogoUrl} 
+                  alt="CIE Centro de Información Empresarial" 
+                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  data-testid="brand-logo-cie"
+                />
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={brand5LogoUrl} 
+                  alt="Marca Patrocinadora" 
+                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+                  data-testid="brand-logo-5"
+                />
               </div>
             </div>
           </div>
