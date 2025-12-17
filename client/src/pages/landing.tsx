@@ -996,9 +996,6 @@ export default function Landing() {
                 })}
               </div>
             </div>
-            <p className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold mb-5 sm:mb-6 md:mb-7 lg:mb-8 text-white leading-relaxed max-w-3xl mx-auto px-4 hero-subtitle-animate hero-subtitle-text" data-testid="hero-subtitle">
-              El punto de encuentro más importante en Latinoamérica para profesionales, líderes y organizaciones que transforman la vida urbana a través de parques y espacios públicos.
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4">
               <button 
                 onClick={() => scrollToSection('convocatorias')} 
