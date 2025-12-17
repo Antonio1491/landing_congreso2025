@@ -1597,7 +1597,7 @@ export default function Landing() {
       </section>
 
       {/* Las Mejores Marcas Presentes */}
-      <section id="marcas" className="py-16 bg-gray-50 section-animate animate-fadeInUp">
+      <section id="marcas" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="brands-title">
