@@ -1668,11 +1668,11 @@ export default function Landing() {
                 className="flex-shrink-0 mx-3 md:mx-6 group"
                 data-testid={`brand-logo-${brand.id}`}
               >
-                <div className="bg-white rounded-lg shadow-md p-4 md:p-6 w-32 h-20 md:w-48 md:h-28 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-lg shadow-md p-2 md:p-3 w-36 h-22 md:w-52 md:h-32 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
                   <img 
                     src={brand.logo} 
                     alt={brand.name}
-                    className="max-h-12 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
+                    className="max-h-16 md:max-h-24 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
                     loading="lazy"
                   />
                 </div>
@@ -1688,11 +1688,11 @@ export default function Landing() {
                 className="flex-shrink-0 mx-3 md:mx-6 group"
                 aria-hidden="true"
               >
-                <div className="bg-white rounded-lg shadow-md p-4 md:p-6 w-32 h-20 md:w-48 md:h-28 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-lg shadow-md p-2 md:p-3 w-36 h-22 md:w-52 md:h-32 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
                   <img 
                     src={brand.logo} 
                     alt={brand.name}
-                    className="max-h-12 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
+                    className="max-h-16 md:max-h-24 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
                     loading="lazy"
                   />
                 </div>
