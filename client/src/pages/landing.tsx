@@ -117,6 +117,24 @@ export default function Landing() {
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
+  // Brand logos data - easily extensible for future additions
+  const brands = [
+    { id: 'parksys', logo: parkSysLogoUrl, name: 'ParkSys Smart Management', url: 'https://parksys.com.mx/' },
+    { id: 'proludic', logo: proludicLogoUrl, name: 'Proludic', url: 'https://www.proludic.com.mx/' },
+    { id: 'jumbo', logo: jumboLogoUrl, name: 'Productos Jumbo', url: 'https://productosjumbo.com/' },
+    { id: 'cie', logo: cieLogoUrl, name: 'CIE Centro de Información Empresarial', url: 'https://cie.mx/' },
+    { id: 'brand5', logo: brand5LogoUrl, name: 'Marca Patrocinadora', url: '#' },
+  ];
+
+  // Shuffle brands on initial render for random order
+  const [shuffledBrands] = useState(() => {
+    const shuffled = [...brands];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  });
 
   // Background image carousel
   useEffect(() => {
@@ -1604,56 +1622,62 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Las Mejores Marcas Presentes */}
-      <section id="marcas" className="py-16 bg-gray-50">
+      {/* Las Mejores Marcas Presentes - Infinite Marquee */}
+      <section id="marcas" className="py-16 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="brands-title">
               Las Mejores Marcas Presentes
             </h2>
-            
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={parkSysLogoUrl} 
-                  alt="ParkSys Smart Management" 
-                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-                  data-testid="brand-logo-parksys"
-                />
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={proludicLogoUrl} 
-                  alt="Proludic" 
-                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-                  data-testid="brand-logo-proludic"
-                />
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={jumboLogoUrl} 
-                  alt="Productos Jumbo" 
-                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-                  data-testid="brand-logo-jumbo"
-                />
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={cieLogoUrl} 
-                  alt="CIE Centro de Información Empresarial" 
-                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-                  data-testid="brand-logo-cie"
-                />
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 w-40 h-24 md:w-48 md:h-28 flex items-center justify-center group hover:shadow-lg transition-all duration-300">
-                <img 
-                  src={brand5LogoUrl} 
-                  alt="Marca Patrocinadora" 
-                  className="max-h-16 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-                  data-testid="brand-logo-5"
-                />
-              </div>
-            </div>
+          </div>
+        </div>
+        
+        {/* Infinite Marquee Container */}
+        <div className="relative w-full">
+          <div 
+            className="flex animate-marquee"
+            style={{ width: 'max-content' }}
+          >
+            {/* First set of shuffled brands */}
+            {shuffledBrands.map((brand, index) => (
+              <a
+                key={`brand-1-${index}`}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 mx-3 md:mx-6 group"
+                data-testid={`brand-logo-${brand.id}`}
+              >
+                <div className="bg-white rounded-lg shadow-md p-4 md:p-6 w-32 h-20 md:w-48 md:h-28 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name}
+                    className="max-h-12 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </a>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {shuffledBrands.map((brand, index) => (
+              <a
+                key={`brand-2-${index}`}
+                href={brand.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 mx-3 md:mx-6 group"
+                aria-hidden="true"
+              >
+                <div className="bg-white rounded-lg shadow-md p-4 md:p-6 w-32 h-20 md:w-48 md:h-28 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name}
+                    className="max-h-12 md:max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
