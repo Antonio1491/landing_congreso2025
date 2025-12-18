@@ -426,7 +426,7 @@ export default function Landing() {
                   onMouseLeave={() => setAboutDropdownOpen(false)}
                 >
                   <button 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    className={`relative overflow-hidden px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group flex items-center gap-1 ${aboutDropdownOpen ? 'text-[#d0dd15]' : 'text-white/90 hover:text-[#d0dd15]'}`}
                     data-testid="nav-acerca-de"
                     onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   >
@@ -491,7 +491,7 @@ export default function Landing() {
                   onMouseLeave={() => setActivitiesDropdownOpen(false)}
                 >
                   <button 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    className={`relative overflow-hidden px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group flex items-center gap-1 ${activitiesDropdownOpen ? 'text-[#d0dd15]' : 'text-white/90 hover:text-[#d0dd15]'}`}
                     data-testid="nav-actividades"
                     onClick={() => setActivitiesDropdownOpen(!activitiesDropdownOpen)}
                   >
@@ -536,7 +536,7 @@ export default function Landing() {
                   onMouseLeave={() => setSedeDropdownOpen(false)}
                 >
                   <button 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    className={`relative overflow-hidden px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group flex items-center gap-1 ${sedeDropdownOpen ? 'text-[#d0dd15]' : 'text-white/90 hover:text-[#d0dd15]'}`}
                     data-testid="nav-sede"
                     onClick={() => setSedeDropdownOpen(!sedeDropdownOpen)}
                   >
@@ -581,7 +581,7 @@ export default function Landing() {
                   onMouseLeave={() => setConvocatoriasDropdownOpen(false)}
                 >
                   <button 
-                    className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group flex items-center gap-1"
+                    className={`relative overflow-hidden px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group flex items-center gap-1 ${convocatoriasDropdownOpen ? 'text-[#d0dd15]' : 'text-white/90 hover:text-[#d0dd15]'}`}
                     data-testid="nav-convocatorias"
                     onClick={() => setConvocatoriasDropdownOpen(!convocatoriasDropdownOpen)}
                   >
@@ -629,7 +629,7 @@ export default function Landing() {
                 {/* Expo Espacio Público - Direct Link */}
                 <Link 
                   href="/expo-espacio-publico"
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  className="relative overflow-hidden text-white/90 hover:text-[#d0dd15] px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group"
                   data-testid="nav-expo-espacio-publico"
                 >
                   <span className="relative z-10">Expo Espacio Público</span>
@@ -638,7 +638,7 @@ export default function Landing() {
                 {/* Construcción Comunitaria - Direct Link */}
                 <Link 
                   href="/construccion-comunitaria"
-                  className="relative overflow-hidden text-white/90 hover:text-white px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors rounded-lg group"
+                  className="relative overflow-hidden text-white/90 hover:text-[#d0dd15] px-4 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium transition-colors duration-200 rounded-lg group"
                   data-testid="nav-construccion-comunitaria"
                 >
                   <span className="relative z-10">Construcción Comunitaria</span>
