@@ -165,15 +165,20 @@ export function CustomCursor() {
     
     if (isTouchDevice || !isEnabled || prefersReducedMotion) return;
     
+    const normalCursor = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='normalGrad' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D0DD15'/%3E%3Cstop offset='100%25' stop-color='%2300DFBF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M22 2L15 22L11 13L2 9L22 2Z' fill='url(%23normalGrad)' stroke='%230e0477' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 2L11 13' stroke='%230e0477' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E`;
+    
+    const hoverCursor = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='hoverGrad' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D0DD15'/%3E%3Cstop offset='100%25' stop-color='%23F71CDD'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M22 2L15 22L11 13L2 9L22 2Z' fill='url(%23hoverGrad)' stroke='%230e0477' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 2L11 13' stroke='%230e0477' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E`;
+
     const style = document.createElement('style');
     style.id = 'custom-cursor-style';
     style.textContent = `
       * {
-        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%230e0477' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 2L11 13'/%3E%3Cpath d='M22 2L15 22L11 13L2 9L22 2Z'/%3E%3C/svg%3E") 2 2, auto !important;
+        cursor: url("${normalCursor}") 2 2, auto !important;
+        transition: cursor 200ms ease;
       }
       
       a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='%23fd00fd' stroke='%230e0477' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 2L11 13'/%3E%3Cpath d='M22 2L15 22L11 13L2 9L22 2Z'/%3E%3C/svg%3E") 2 2, pointer !important;
+        cursor: url("${hoverCursor}") 2 2, pointer !important;
       }
       
       input:not([type="submit"]):not([type="button"]), textarea, select {
