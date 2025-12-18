@@ -436,7 +436,8 @@ export default function Landing() {
                   
                   {/* Desktop Dropdown Menu */}
                   {aboutDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                       <Link 
                         href="/congreso"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -478,6 +479,7 @@ export default function Landing() {
                       >
                         Galerías
                       </span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -499,7 +501,8 @@ export default function Landing() {
                   
                   {/* Desktop Actividades Dropdown Menu */}
                   {activitiesDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                       <Link 
                         href="/programa"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -521,6 +524,7 @@ export default function Landing() {
                       >
                         Eventos Sociales
                       </Link>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -542,7 +546,8 @@ export default function Landing() {
                   
                   {/* Desktop Sede Dropdown Menu */}
                   {sedeDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                       <Link 
                         href="/sede"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -564,6 +569,7 @@ export default function Landing() {
                       >
                         Hospedaje
                       </Link>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -585,7 +591,8 @@ export default function Landing() {
                   
                   {/* Desktop Convocatorias Dropdown Menu */}
                   {convocatoriasDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2 z-50">
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                       <Link 
                         href="/sesiones-educativas"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -614,6 +621,7 @@ export default function Landing() {
                       >
                         Comité Evaluador
                       </Link>
+                      </div>
                     </div>
                   )}
                 </div>
