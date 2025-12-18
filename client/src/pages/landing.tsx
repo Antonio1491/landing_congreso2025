@@ -439,7 +439,7 @@ export default function Landing() {
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12" aria-label="Navegación principal">
           <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
             {/* Left Side: Logo + Tijuana 2026 */}
-            <div className="flex flex-row items-center gap-2 md:gap-3 shrink-0">
+            <div className="flex flex-row items-end gap-2 md:flex-col md:items-center md:gap-1.5 shrink-0">
               <img 
                 src={logoUrl} 
                 alt="IX Congreso Internacional de Parques Urbanos y Espacio Público - Logo Oficial ANPR Tijuana 2026" 
@@ -447,7 +447,7 @@ export default function Landing() {
                 data-testid="header-logo"
               />
               
-              {/* Tijuana 2026 Badge */}
+              {/* Tijuana 2026 Badge - al lado en móvil (alineado al fondo), debajo en desktop (centrado) */}
               <div className="bg-[#0e0477] px-2 py-0.5 md:px-2.5 md:py-1 rounded">
                 <span className="text-[#d2dd0a] font-black text-[0.6rem] sm:text-[0.65rem] md:text-xs lg:text-sm tracking-wider uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>
                   TIJUANA <span className="text-[#1edede]">2026</span>
