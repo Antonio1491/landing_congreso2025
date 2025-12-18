@@ -60,11 +60,21 @@ import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
 import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
-import parkSysLogoUrl from "@assets/Recurso_3_1766012664883.png";
-import proludicLogoUrl from "@assets/Recurso_4_1766012668282.png";
-import jumboLogoUrl from "@assets/Recurso_5_1766012671100.png";
-import cieLogoUrl from "@assets/Recurso_6_1766012674283.png";
-import brand5LogoUrl from "@assets/Recurso_7_1766012677493.png";
+import parquesAlegresLogoUrl from "@assets/Parques_Alegres_1766080172845.png";
+import parquesMexicoLogoUrl from "@assets/Parques_de_Mexico_1766080172846.png";
+import jimumexLogoUrl from "@assets/Jimumex_1766080172847.png";
+import playClubLogoUrl from "@assets/Play_Club_1766080172847.png";
+import deportanLogoUrl from "@assets/Deportan_1766080172847.png";
+import hunterLogoUrl from "@assets/Hunter_1766080172848.png";
+import muscoLogoUrl from "@assets/Musco_1766080172848.png";
+import bodenLogoUrl from "@assets/Boden_1766080172848.png";
+import bugyLogoUrl from "@assets/Bugy_1766080172848.png";
+import rainBirdLogoUrl from "@assets/Rain_Bird_1766080172849.png";
+import dihlaLogoUrl from "@assets/DIHLA_1766080172849.png";
+import cdtLogoUrl from "@assets/CDT_1766080172849.png";
+import jumboLogoUrl from "@assets/Jumbo_1766080172849.png";
+import proludicLogoUrl from "@assets/Proludic_1766080172850.png";
+import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";
 
 
 interface StatCounterProps {
@@ -119,11 +129,21 @@ export default function Landing() {
 
   // Brand logos data - easily extensible for future additions
   const brands = [
-    { id: 'parksys', logo: parkSysLogoUrl, name: 'ParkSys Smart Management', url: 'https://parksys.com.mx/' },
-    { id: 'proludic', logo: proludicLogoUrl, name: 'Proludic', url: 'https://www.proludic.com.mx/' },
-    { id: 'jumbo', logo: jumboLogoUrl, name: 'Productos Jumbo', url: 'https://productosjumbo.com/' },
-    { id: 'cie', logo: cieLogoUrl, name: 'CIE Centro de Información Empresarial', url: 'https://cie.mx/' },
-    { id: 'brand5', logo: brand5LogoUrl, name: 'Marca Patrocinadora', url: '#' },
+    { id: 'parksys', logo: parkSysLogoUrl, name: 'ParkSys Smart Management', url: 'https://park-sys.com/' },
+    { id: 'proludic', logo: proludicLogoUrl, name: 'Proludic', url: 'https://www.proludic.com/' },
+    { id: 'jumbo', logo: jumboLogoUrl, name: 'Productos Jumbo', url: 'https://www.productosjumbo.com/' },
+    { id: 'cdt', logo: cdtLogoUrl, name: 'CDT Centro de Desarrollo Turístico', url: 'https://cdt.org.mx/' },
+    { id: 'dihla', logo: dihlaLogoUrl, name: 'DIHLA', url: 'https://dihla.com.mx/' },
+    { id: 'rainbird', logo: rainBirdLogoUrl, name: 'Rain Bird', url: 'https://www.rainbird.com/es' },
+    { id: 'bugy', logo: bugyLogoUrl, name: 'Grupo Bugy Proyectos Recreativos', url: 'https://bugy.mx/' },
+    { id: 'boden', logo: bodenLogoUrl, name: 'Boden Eco Superficie', url: 'https://www.bodeneco.com/' },
+    { id: 'musco', logo: muscoLogoUrl, name: 'Musco Lighting', url: 'https://www.musco.com/' },
+    { id: 'hunter', logo: hunterLogoUrl, name: 'Hunter Industries', url: 'https://www.hunterirrigation.com/es' },
+    { id: 'deportan', logo: deportanLogoUrl, name: 'Deportan Soluciones Deportivas', url: 'https://deportan.com.mx/' },
+    { id: 'playclub', logo: playClubLogoUrl, name: 'Play Club', url: 'https://www.playclub.com.mx/' },
+    { id: 'jimumex', logo: jimumexLogoUrl, name: 'Jimumex Equipamiento Urbano', url: 'https://jimumex.com.mx/' },
+    { id: 'parquesmexico', logo: parquesMexicoLogoUrl, name: 'Parques de México', url: 'https://parquesdemexico.org/' },
+    { id: 'parquesalegres', logo: parquesAlegresLogoUrl, name: 'Parques Alegres', url: 'https://parquesalegres.org/' },
   ];
 
   // Shuffle brands on initial render for random order
