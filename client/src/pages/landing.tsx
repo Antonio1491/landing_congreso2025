@@ -437,7 +437,7 @@ export default function Landing() {
       {/* Header Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12" aria-label="Navegación principal">
-          <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
+          <div className="flex items-center justify-between h-20 md:h-24 lg:h-28">
             {/* Left Side: Logo + Tijuana 2026 */}
             <div className="flex flex-row items-end gap-2 md:flex-col md:items-center md:gap-1.5 shrink-0">
               <img 
