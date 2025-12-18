@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Clock, Calendar, MapPin, Globe } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
@@ -140,13 +141,22 @@ export default function Congreso() {
 
       <main className="pt-20 md:pt-24">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+        <section 
+          className="relative py-20 md:py-28 lg:py-32 text-center text-white overflow-hidden"
+          style={{
+            backgroundImage: `url(${fondoCongresoUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center bottom',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0477]/30 to-transparent"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4 drop-shadow-lg" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
               Congreso Parques 2026
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/90">
+            <p className="text-lg md:text-xl max-w-3xl mx-auto text-white drop-shadow-md">
               Un espacio de aprendizaje y formación creado para quienes transforman los parques y espacios públicos en motores de bienestar urbano.
             </p>
           </div>
