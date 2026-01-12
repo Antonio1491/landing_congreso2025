@@ -5,7 +5,7 @@ import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 export default function Organizadores() {
   const contactos = [
     { titulo: "Dir. de Contenido y Educación:", email: "contenido@congresoparques.com" },
-    { titulo: "Dir. Comercial y Ventas:", email: "comercial@congresoparques.com" },
+    { titulo: "Dir. Comercial y Ventas:", email: "comercial@anpr.org.mx" },
     { titulo: "Coordinación Comercial:", email: "expo@congresoparques.com" },
     { titulo: "Comunicación y Prensa:", email: "comunicacion@congresoparques.com" },
     { titulo: "Información General:", email: "info@congresoparques.com" }
