@@ -33,7 +33,7 @@ import {
   Ticket
 } from "lucide-react";
 import { Link } from "wouter";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import decorativeLeavesUrl from "@assets/Hojas coloridas_1758562659824.png";
 import heroImage1 from "@assets/Congreso Parques 1_1761672357092.jpg";
@@ -1965,7 +1965,7 @@ export default function Landing() {
                     <Instagram className="w-5 h-5" />
                   </a>
                   <a href="https://x.com/ANPRMexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
-                    <Twitter className="w-5 h-5" />
+                    <FaXTwitter className="w-5 h-5" />
                   </a>
                   <a href="https://www.youtube.com/@anprmexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
