@@ -455,8 +455,8 @@ export default function Landing() {
               </div>
             </div>
             
-            {/* Center: Desktop Navigation - HIDDEN TEMPORARILY */}
-            <div className="hidden /* lg:flex */ items-center justify-center flex-1 mx-4 xl:mx-8">
+            {/* Center: Desktop Navigation - HIDDEN TEMPORARILY (restore lg:flex to show) */}
+            <div className="hidden items-center justify-center flex-1 mx-4 xl:mx-8">
               <div className="flex items-center gap-0.5 xl:gap-1">
                 {/* Acerca de Dropdown */}
                 <div 
@@ -705,8 +705,8 @@ export default function Landing() {
                 <span>Adquirir entradas</span>
               </button>
               
-              {/* Mobile Menu Button - HIDDEN TEMPORARILY */}
-              <div className="hidden /* lg:hidden */">
+              {/* Mobile Menu Button - HIDDEN TEMPORARILY (restore lg:hidden to show) */}
+              <div className="hidden">
                 <Button 
                   variant="ghost"
                   size="sm"
